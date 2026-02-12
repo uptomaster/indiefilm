@@ -1,4 +1,13 @@
 {
+  "name": "indiefilm",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "install": "cd web && npm install",
+    "dev": "cd web && npm run dev",
+    "build": "cd web && npm run build",
+    "start": "cd web && npm run start"
+  },
   "dependencies": {
     "firebase": "^12.9.0"
   }
