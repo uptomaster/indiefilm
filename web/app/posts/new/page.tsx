@@ -32,7 +32,7 @@ z.setErrorMap((issue, ctx) => {
 
 const postSchema = z.object({
   type: z.enum(["casting_call", "actor_seeking", "general"], {
-    required_error: "게시글 유형을 선택해주세요",
+    message: "게시글 유형을 선택해주세요",
   }),
   title: z.string().min(1, "제목을 입력해주세요").max(100, "제목은 100자 이하로 입력해주세요"),
   content: z.string().min(10, "내용을 최소 10자 이상 입력해주세요"),

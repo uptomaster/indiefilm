@@ -40,24 +40,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 const filmmakerSchema = z.object({
   type: z.enum(["individual", "team"], {
-    required_error: "유형을 선택해주세요",
-    invalid_type_error: "유형을 선택해주세요",
+    message: "유형을 선택해주세요",
   }),
-  name: z.string({
-    required_error: "이름을 입력해주세요",
-    invalid_type_error: "이름을 입력해주세요",
-  }).min(1, "이름을 입력해주세요"),
-  bio: z.string({
-    invalid_type_error: "소개를 입력해주세요",
-  }).optional().or(z.literal("")),
-  location: z.string({
-    invalid_type_error: "지역을 입력해주세요",
-  }).optional().or(z.literal("")),
+  name: z.string().min(1, "이름을 입력해주세요"),
+  bio: z.string().optional().or(z.literal("")),
+  location: z.string().optional().or(z.literal("")),
   website: z.string().url("올바른 URL 형식을 입력해주세요").optional().or(z.literal("")),
   email: z.string().email("올바른 이메일 형식을 입력해주세요").optional().or(z.literal("")),
-  phone: z.string({
-    invalid_type_error: "전화번호를 입력해주세요",
-  }).optional().or(z.literal("")),
+  phone: z.string().optional().or(z.literal("")),
   specialties: z.array(z.string()).optional(),
   equipment: z.array(z.string()).optional(),
   experience: z.array(z.string()).optional(),
@@ -77,8 +67,7 @@ const filmmakerSchema = z.object({
     })
   ).optional(),
   isPublic: z.boolean({
-    required_error: "공개 설정을 선택해주세요",
-    invalid_type_error: "공개 설정을 선택해주세요",
+    message: "공개 설정을 선택해주세요",
   }),
 });
 

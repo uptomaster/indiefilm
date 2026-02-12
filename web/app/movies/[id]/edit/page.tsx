@@ -33,17 +33,12 @@ z.setErrorMap((issue, ctx) => {
 });
 
 const movieSchema = z.object({
-  title: z.string({
-    required_error: "제목을 입력해주세요",
-    invalid_type_error: "제목을 입력해주세요",
-  }).min(1, "제목을 입력해주세요"),
+  title: z.string().min(1, "제목을 입력해주세요"),
   genre: z.enum(["drama", "comedy", "horror", "romance", "etc"], {
-    required_error: "장르를 선택해주세요",
-    invalid_type_error: "장르를 선택해주세요",
+    message: "장르를 선택해주세요",
   }),
   status: z.enum(["production", "planned", "completed"], {
-    required_error: "제작 상태를 선택해주세요",
-    invalid_type_error: "제작 상태를 선택해주세요",
+    message: "제작 상태를 선택해주세요",
   }),
   runtimeMinutes: z.preprocess(
     (val) => {
@@ -52,30 +47,19 @@ const movieSchema = z.object({
       return isNaN(num) ? undefined : num;
     },
     z.number({
-      required_error: "러닝타임을 입력해주세요",
-      invalid_type_error: "러닝타임은 숫자로 입력해주세요",
+      message: "러닝타임은 숫자로 입력해주세요",
     })
       .min(1, "러닝타임을 입력해주세요")
       .refine((val) => !isNaN(val), {
         message: "러닝타임은 숫자로 입력해주세요",
       })
   ),
-  logline: z.string({
-    required_error: "한 줄 요약을 입력해주세요",
-    invalid_type_error: "한 줄 요약을 입력해주세요",
-  }).min(1, "한 줄 요약을 입력해주세요"),
-  description: z.string({
-    required_error: "상세 설명을 입력해주세요",
-    invalid_type_error: "상세 설명을 입력해주세요",
-  }).min(1, "상세 설명을 입력해주세요"),
+  logline: z.string().min(1, "한 줄 요약을 입력해주세요"),
+  description: z.string().min(1, "상세 설명을 입력해주세요"),
   videoPlatform: z.enum(["youtube", "vimeo"], {
-    required_error: "영상 플랫폼을 선택해주세요",
-    invalid_type_error: "영상 플랫폼을 선택해주세요",
+    message: "영상 플랫폼을 선택해주세요",
   }),
-  videoUrl: z.string({
-    required_error: "영상 URL을 입력해주세요",
-    invalid_type_error: "영상 URL을 입력해주세요",
-  }).url("올바른 URL 형식을 입력해주세요"),
+  videoUrl: z.string().min(1, "영상 URL을 입력해주세요").url("올바른 URL 형식을 입력해주세요"),
   thumbnailUrl: z.union([
     z.string().url("올바른 URL 형식을 입력해주세요"),
     z.literal(""),

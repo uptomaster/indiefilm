@@ -13,14 +13,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const loginSchema = z.object({
-  email: z.string({
-    required_error: "이메일을 입력해주세요",
-    invalid_type_error: "이메일을 입력해주세요",
-  }).email("올바른 이메일 형식을 입력해주세요"),
-  password: z.string({
-    required_error: "비밀번호를 입력해주세요",
-    invalid_type_error: "비밀번호를 입력해주세요",
-  }).min(6, "비밀번호는 최소 6자 이상이어야 합니다"),
+  email: z.string().min(1, "이메일을 입력해주세요").email("올바른 이메일 형식을 입력해주세요"),
+  password: z.string().min(6, "비밀번호는 최소 6자 이상이어야 합니다"),
 });
 
 type LoginForm = z.infer<typeof loginSchema>;

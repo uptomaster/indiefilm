@@ -49,13 +49,9 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const actorSchema = z.object({
-  stageName: z.string({
-    required_error: "예명을 입력해주세요",
-    invalid_type_error: "예명을 입력해주세요",
-  }).min(1, "예명을 입력해주세요"),
+  stageName: z.string().min(1, "예명을 입력해주세요"),
   ageRange: z.enum(["10s", "20s", "30s", "40s", "50plus"], {
-    required_error: "나이대를 선택해주세요",
-    invalid_type_error: "나이대를 선택해주세요",
+    message: "나이대를 선택해주세요",
   }),
   heightCm: z.preprocess(
     (val) => {
@@ -64,8 +60,7 @@ const actorSchema = z.object({
       return isNaN(num) ? undefined : num;
     },
     z.number({
-      required_error: "키를 입력해주세요",
-      invalid_type_error: "키는 숫자로 입력해주세요",
+      message: "키는 숫자로 입력해주세요",
     })
       .min(100, "키는 100cm 이상 입력해주세요")
       .max(250, "키는 250cm 이하로 입력해주세요")
@@ -73,34 +68,19 @@ const actorSchema = z.object({
         message: "키는 숫자로 입력해주세요",
       })
   ),
-  bodyType: z.string({
-    required_error: "체형을 입력해주세요",
-    invalid_type_error: "체형을 입력해주세요",
-  }).min(1, "체형을 입력해주세요"),
-  location: z.string({
-    required_error: "지역을 선택해주세요",
-    invalid_type_error: "지역을 선택해주세요",
-  }).min(1, "지역을 선택해주세요"),
-  bio: z.string({
-    required_error: "자기소개를 입력해주세요",
-    invalid_type_error: "자기소개를 입력해주세요",
-  }).min(10, "자기소개를 최소 10자 이상 입력해주세요"),
+  bodyType: z.string().min(1, "체형을 입력해주세요"),
+  location: z.string().min(1, "지역을 선택해주세요"),
+  bio: z.string().min(10, "자기소개를 최소 10자 이상 입력해주세요"),
   email: z.string().email("올바른 이메일 형식을 입력해주세요").optional().or(z.literal("")),
   phone: z.string().optional(),
   mainPhotoUrl: z.string().url("올바른 URL 형식을 입력해주세요").optional().or(z.literal("")),
   mainPhotoPath: z.string().optional(),
   demoPlatform: z.enum(["youtube", "vimeo"], {
-    invalid_type_error: "플랫폼을 선택해주세요",
+    message: "플랫폼을 선택해주세요",
   }).optional(),
   demoUrl: z.string().url("올바른 URL 형식을 입력해주세요").optional().or(z.literal("")),
-  experience: z.array(z.string({
-    required_error: "경력을 입력해주세요",
-    invalid_type_error: "경력을 입력해주세요",
-  }).min(1, "경력을 입력해주세요")),
-  skills: z.array(z.string({
-    required_error: "스킬을 입력해주세요",
-    invalid_type_error: "스킬을 입력해주세요",
-  }).min(1, "스킬을 입력해주세요")),
+  experience: z.array(z.string().min(1, "경력을 입력해주세요")),
+  skills: z.array(z.string().min(1, "스킬을 입력해주세요")),
   gallery: z.array(
     z.object({
       url: z.string().url("올바른 URL 형식을 입력해주세요"),
@@ -108,12 +88,9 @@ const actorSchema = z.object({
     })
   ).optional(),
   isPublic: z.boolean({
-    required_error: "공개 설정을 선택해주세요",
-    invalid_type_error: "공개 설정을 선택해주세요",
+    message: "공개 설정을 선택해주세요",
   }),
-  mbti: z.string({
-    invalid_type_error: "MBTI를 입력해주세요",
-  }).optional().or(z.literal("")),
+  mbti: z.string().optional().or(z.literal("")),
   traits: z.object({
     acting: z.number().min(0).max(100).optional(),
     appearance: z.number().min(0).max(100).optional(),
