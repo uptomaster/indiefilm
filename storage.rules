@@ -1,0 +1,50 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // 헬퍼 함수: 로그인 확인
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    // 헬퍼 함수: 본인 확인
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    
+    // 영화 썸네일: thumbnails/{userId}/{fileName}
+    match /thumbnails/{userId}/{fileName} {
+      // 읽기: 모든 사람 (공개)
+      allow read: if true;
+      // 쓰기: 본인만, 5MB 이하, 이미지 파일만
+      allow write: if isOwner(userId) && 
+                      request.resource.size < 5 * 1024 * 1024 && // 5MB 제한
+                      request.resource.contentType.matches('image/.*');
+    }
+    
+    // 배우 프로필 사진: actors/{userId}/{fileName}
+    match /actors/{userId}/{fileName} {
+      // 읽기: 모든 사람 (공개)
+      allow read: if true;
+      // 쓰기: 본인만, 5MB 이하, 이미지 파일만
+      allow write: if isOwner(userId) && 
+                      request.resource.size < 5 * 1024 * 1024 && // 5MB 제한
+                      request.resource.contentType.matches('image/.*');
+    }
+    
+    // 배우 갤러리: actors/{userId}/gallery/{fileName}
+    match /actors/{userId}/gallery/{fileName} {
+      // 읽기: 모든 사람 (공개)
+      allow read: if true;
+      // 쓰기: 본인만, 5MB 이하, 이미지 파일만
+      allow write: if isOwner(userId) && 
+                      request.resource.size < 5 * 1024 * 1024 && // 5MB 제한
+                      request.resource.contentType.matches('image/.*');
+    }
+    
+    // 기타 모든 경로는 거부
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

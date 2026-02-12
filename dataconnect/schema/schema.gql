@@ -1,0 +1,54 @@
+type User @table {
+  username: String!
+  email: String!
+  createdAt: Timestamp!
+  displayName: String
+  bio: String
+  profilePictureUrl: String
+}
+
+type Film @table {
+  title: String!
+  releaseYear: Int!
+  director: String!
+  createdAt: Timestamp!
+  synopsis: String
+  runtimeMinutes: Int
+  posterUrl: String
+  genres: [String]
+}
+
+type Review @table {
+  rating: Int!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  isPublic: Boolean!
+  reviewText: String
+  user: User
+  film: Film
+}
+
+type Comment @table {
+  commentText: String!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  user: User
+  review: Review
+  filmList: FilmList
+}
+
+type FilmList @table {
+  name: String!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  isPublic: Boolean!
+  description: String
+  user: User
+}
+
+type FilmListItem @table(key: ["filmList", "film"]) {
+  position: Int!
+  note: String
+  filmList: FilmList!
+  film: Film!
+}

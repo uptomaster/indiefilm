@@ -1,0 +1,78 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Testing
+/coverage
+*.log
+
+# Next.js
+web/.next/
+web/out/
+web/build/
+web/dist/
+web/.vercel
+
+# React Native / Expo
+mobile/.expo/
+mobile/.expo-shared/
+mobile/dist/
+mobile/node_modules/
+mobile/.env
+
+# Production builds
+/build
+/dist
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment variables (민감한 정보)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+.firebaserc
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Misc
+*.pem
+.cache/
+.parcel-cache/
+.turbo/
+
+# Optional: Firebase 설정 파일 (보안상 제외할 수도 있음)
+# google-services.json
+# firebase-options.json

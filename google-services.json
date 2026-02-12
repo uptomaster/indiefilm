@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "789760649620",
+    "project_id": "indiefilm-hub",
+    "storage_bucket": "indiefilm-hub.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789760649620:android:3bf63b2202dfeae3d44781",
+        "android_client_info": {
+          "package_name": "com.namhyuk.indiefilmhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSYz8zty-KEdP_Tf7prMP7Nof0cCTAaeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
