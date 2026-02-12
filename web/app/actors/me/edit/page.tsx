@@ -30,22 +30,19 @@ const actorSchema = z.object({
   ageRange: z.enum(["10s", "20s", "30s", "40s", "50plus"], {
     message: "나이대를 선택해주세요",
   }),
-  heightCm: z.union([
-    z.string(),
-    z.number(),
-  ]).transform((val) => {
-    if (val === "" || val === null || val === undefined) return undefined;
-    const num = typeof val === "string" ? Number(val) : val;
-    if (isNaN(num)) return undefined;
-    return num;
-  }).pipe(
+  heightCm: z.preprocess(
+    (val) => {
+      if (val === "" || val === null || val === undefined) return undefined;
+      const num = typeof val === "string" ? Number(val) : Number(val);
+      return isNaN(num) ? undefined : num;
+    },
     z.number({
       message: "키는 숫자로 입력해주세요",
     })
       .min(100, "키는 100cm 이상 입력해주세요")
       .max(250, "키는 250cm 이하로 입력해주세요")
       .optional()
-  ),
+  ) as z.ZodType<number | undefined>,
   bodyType: z.string().min(1, "체형을 입력해주세요"),
   location: z.string().min(1, "지역을 선택해주세요"),
   bio: z.string().min(10, "자기소개를 최소 10자 이상 입력해주세요"),
