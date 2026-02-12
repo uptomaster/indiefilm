@@ -5,30 +5,6 @@ import { useRouter } from "next/navigation";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
-// Zod 에러 메시지를 한글로 설정
-z.setErrorMap((issue, ctx) => {
-  if (issue.code === z.ZodIssueCode.invalid_enum_value) {
-    if (issue.path[0] === "genre") {
-      return { message: "장르를 선택해주세요 (드라마, 코미디, 공포, 로맨스, 기타 중 하나)" };
-    }
-    if (issue.path[0] === "videoPlatform") {
-      return { message: "영상 플랫폼을 선택해주세요 (YouTube 또는 Vimeo)" };
-    }
-    return { message: "올바른 값을 선택해주세요" };
-  }
-  if (issue.code === z.ZodIssueCode.invalid_type && issue.expected === "number") {
-    if (issue.path[0] === "runtimeMinutes") {
-      return { message: "러닝타임은 숫자로 입력해주세요" };
-    }
-    if (issue.path[0] === "year") {
-      return { message: "제작 연도는 숫자로 입력해주세요" };
-    }
-    return { message: "숫자로 입력해주세요" };
-  }
-  return { message: ctx?.defaultError || "입력값을 확인해주세요" };
-});
-
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useAuth } from "@/hooks/useAuth";
 import { db } from "@/lib/firebase";

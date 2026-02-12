@@ -22,14 +22,6 @@ import {
 } from "@/components/ui/select";
 import { z } from "zod";
 
-// Zod 에러 메시지를 한글로 설정
-z.setErrorMap((issue, ctx) => {
-  if (issue.code === z.ZodIssueCode.invalid_enum_value) {
-    return { message: "올바른 값을 선택해주세요" };
-  }
-  return { message: ctx?.defaultError || "입력값을 확인해주세요" };
-});
-
 const postSchema = z.object({
   type: z.enum(["casting_call", "actor_seeking", "general"], {
     message: "게시글 유형을 선택해주세요",

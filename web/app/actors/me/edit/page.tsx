@@ -5,29 +5,6 @@ import { useRouter } from "next/navigation";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
-// Zod 에러 메시지를 한글로 설정
-z.setErrorMap((issue, ctx) => {
-  if (issue.code === z.ZodIssueCode.invalid_enum_value) {
-    if (issue.path[0] === "ageRange") {
-      return { message: "나이대를 선택해주세요 (10대, 20대, 30대, 40대, 50대 이상 중 하나)" };
-    }
-    if (issue.path[0] === "demoPlatform") {
-      return { message: "플랫폼을 선택해주세요 (YouTube 또는 Vimeo)" };
-    }
-    return { message: "올바른 값을 선택해주세요" };
-  }
-  if (issue.code === z.ZodIssueCode.invalid_type && issue.expected === "number") {
-    if (issue.path[0] === "heightCm") {
-      return { message: "키는 숫자로 입력해주세요" };
-    }
-    if (issue.path[0] === "traits" && issue.path[1]) {
-      return { message: `${issue.path[1]}은(는) 숫자로 입력해주세요` };
-    }
-    return { message: "숫자로 입력해주세요" };
-  }
-  return { message: ctx.defaultError };
-});
 import { useAuth } from "@/hooks/useAuth";
 import {
   getActorByUserId,

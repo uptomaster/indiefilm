@@ -5,20 +5,6 @@ import { useRouter } from "next/navigation";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
-// Zod 에러 메시지를 한글로 설정
-z.setErrorMap((issue, ctx) => {
-  if (issue.code === z.ZodIssueCode.invalid_enum_value) {
-    if (issue.path[0] === "type") {
-      return { message: "유형을 선택해주세요 (개인 또는 팀)" };
-    }
-    return { message: "올바른 값을 선택해주세요" };
-  }
-  if (issue.code === z.ZodIssueCode.invalid_type && issue.expected === "number") {
-    return { message: "숫자로 입력해주세요" };
-  }
-  return { message: ctx.defaultError };
-});
 import { useAuth } from "@/hooks/useAuth";
 import {
   getFilmmakerByUserId,

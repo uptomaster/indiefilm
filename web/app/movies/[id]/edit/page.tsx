@@ -24,14 +24,6 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
-// Zod 에러 메시지를 한글로 설정
-z.setErrorMap((issue, ctx) => {
-  if (issue.code === z.ZodIssueCode.invalid_enum_value) {
-    return { message: "올바른 값을 선택해주세요" };
-  }
-  return { message: ctx?.defaultError || "입력값을 확인해주세요" };
-});
-
 const movieSchema = z.object({
   title: z.string().min(1, "제목을 입력해주세요"),
   genre: z.enum(["drama", "comedy", "horror", "romance", "etc"], {
