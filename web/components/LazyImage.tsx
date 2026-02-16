@@ -51,7 +51,7 @@ const LazyImage = memo(function LazyImage({ src, alt, fallback, className, ...pr
   if (!finalSrc) {
     return (
       <div className={`relative overflow-hidden ${className || ""}`}>
-        <div className="absolute inset-0 bg-gray-800 animate-pulse" />
+        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
       </div>
     );
   }
@@ -59,7 +59,7 @@ const LazyImage = memo(function LazyImage({ src, alt, fallback, className, ...pr
   return (
     <div className={`relative overflow-hidden ${className || ""}`}>
       {!isLoaded && !hasError && (
-        <div className="absolute inset-0 bg-gray-800 animate-pulse" />
+        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
       )}
       <img
         ref={imgRef}

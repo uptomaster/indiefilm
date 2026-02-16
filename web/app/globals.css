@@ -126,10 +126,22 @@
     @apply tracking-tight leading-tight;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tighter leading-tight;
+    @apply tracking-tighter leading-tight font-bold;
+  }
+  h1 {
+    @apply text-gray-900;
+  }
+  h2 {
+    @apply text-gray-900;
+  }
+  h3 {
+    @apply text-gray-800;
   }
   p {
-    @apply tracking-tight leading-snug;
+    @apply tracking-tight leading-snug text-gray-800;
+  }
+  strong, b {
+    @apply font-bold text-gray-900;
   }
 }
 
