@@ -42,7 +42,7 @@ const actorSchema = z.object({
       .min(100, "키는 100cm 이상 입력해주세요")
       .max(250, "키는 250cm 이하로 입력해주세요")
       .optional()
-  ) as z.ZodOptional<z.ZodNumber>,
+  ) as unknown as z.ZodOptional<z.ZodNumber>,
   bodyType: z.string().min(1, "체형을 입력해주세요"),
   location: z.string().min(1, "지역을 선택해주세요"),
   bio: z.string().min(10, "자기소개를 최소 10자 이상 입력해주세요"),
