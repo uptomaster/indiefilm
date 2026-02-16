@@ -77,7 +77,7 @@ export default function FilmmakerProfileViewPage() {
       <div className="min-h-screen bg-black text-gray-900">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-yellow-600 border-t-transparent" />
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
             <p className="mt-4 text-gray-400">로딩 중...</p>
           </div>
         </div>
@@ -108,11 +108,11 @@ export default function FilmmakerProfileViewPage() {
               <Link href="/requests">
                 <Button
                   variant="outline"
-                  className="relative border-red-400 text-red-500 hover:bg-red-50 text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5"
+                  className="relative border-violet-400 text-violet-500 hover:bg-violet-50 text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5"
                 >
                   요청 확인
                   {unreadCount > 0 && (
-                    <span className="absolute -right-1 -top-1 flex h-4 w-4 md:h-5 md:w-5 items-center justify-center rounded-full bg-red-600 text-[10px] md:text-xs font-bold text-white">
+                    <span className="absolute -right-1 -top-1 flex h-4 w-4 md:h-5 md:w-5 items-center justify-center rounded-full bg-violet-600 text-[10px] md:text-xs font-bold text-white">
                       {unreadCount > 9 ? "9+" : unreadCount}
                     </span>
                   )}
@@ -156,7 +156,7 @@ export default function FilmmakerProfileViewPage() {
               {/* 기본 정보 */}
               <div className="flex-1">
                 <div className="mb-2">
-                  <span className="rounded-full bg-yellow-600/20 px-3 py-1 text-sm text-red-600">
+                  <span className="rounded-full bg-violet-600/20 px-3 py-1 text-sm text-violet-600">
                     {filmmaker.type === "team" ? "팀" : "개인"}
                   </span>
                 </div>
@@ -174,7 +174,7 @@ export default function FilmmakerProfileViewPage() {
                         href={filmmaker.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-red-600 hover:text-yellow-300"
+                        className="text-violet-600 hover:text-violet-300"
                       >
                         웹사이트
                       </a>
@@ -205,7 +205,7 @@ export default function FilmmakerProfileViewPage() {
                   {filmmaker.specialties.map((specialty, index) => (
                     <span
                       key={index}
-                      className="rounded-full bg-yellow-600/20 px-4 py-2 text-red-600"
+                      className="rounded-full bg-violet-600/20 px-4 py-2 text-violet-600"
                     >
                       {specialty}
                     </span>
@@ -226,7 +226,7 @@ export default function FilmmakerProfileViewPage() {
                       key={index}
                       className="flex items-start gap-3 border-l-2 border-gray-200 pl-4"
                     >
-                      <span className="text-red-600">▸</span>
+                      <span className="text-violet-600">▸</span>
                       <span className="text-gray-700">{exp}</span>
                     </li>
                   ))}
@@ -268,7 +268,7 @@ export default function FilmmakerProfileViewPage() {
                         className="flex items-start gap-3 border-l-2 border-gray-200 pl-4"
                       >
                         <div>
-                          <span className="font-semibold text-red-600">
+                          <span className="font-semibold text-violet-600">
                             {member.name}
                           </span>
                           <span className="ml-2 text-gray-400">
@@ -279,7 +279,7 @@ export default function FilmmakerProfileViewPage() {
                               href={member.profileLink}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="ml-2 text-red-600 hover:text-yellow-300 hover:underline"
+                              className="ml-2 text-violet-600 hover:text-violet-300 hover:underline"
                             >
                               프로필 →
                             </a>
@@ -301,7 +301,7 @@ export default function FilmmakerProfileViewPage() {
                   {movies.map((movie) => (
                     <div key={movie.id} className="relative group">
                       <Link href={`/movies/${movie.id}`}>
-                        <Card className="border-yellow-600/20 bg-gray-50 hover:bg-gray-900/70 transition-colors cursor-pointer">
+                        <Card className="border-violet-600/20 bg-gray-50 hover:bg-gray-900/70 transition-colors cursor-pointer">
                           <CardContent className="p-0">
                             {movie.thumbnailUrl && (
                               <div className="aspect-video overflow-hidden">
@@ -330,7 +330,7 @@ export default function FilmmakerProfileViewPage() {
                         <Button
                           size="sm"
                           variant="outline"
-                          className="bg-black/80 backdrop-blur-sm border-yellow-600/50 text-red-600 hover:bg-yellow-600/20"
+                          className="bg-black/80 backdrop-blur-sm border-violet-600/50 text-violet-600 hover:bg-violet-600/20"
                         >
                           수정
                         </Button>
@@ -369,7 +369,7 @@ export default function FilmmakerProfileViewPage() {
           <div className="lg:col-span-1">
             <div className="sticky top-8 space-y-6">
               {/* 프로필 정보 */}
-              <div className="rounded-lg border border-yellow-600/20 bg-gray-50 p-6 backdrop-blur-sm">
+              <div className="rounded-lg border border-violet-600/20 bg-gray-50 p-6 backdrop-blur-sm">
                 <h3 className="mb-4 text-sm font-semibold text-gray-400">
                   프로필 정보
                 </h3>
@@ -391,7 +391,7 @@ export default function FilmmakerProfileViewPage() {
                       <span className="text-gray-400">이메일</span>
                       <a
                         href={`mailto:${filmmaker.email}`}
-                        className="text-red-600 hover:text-yellow-300"
+                        className="text-violet-600 hover:text-violet-300"
                       >
                         {filmmaker.email}
                       </a>
@@ -402,7 +402,7 @@ export default function FilmmakerProfileViewPage() {
                       <span className="text-gray-400">전화번호</span>
                       <a
                         href={`tel:${filmmaker.phone}`}
-                        className="text-red-600 hover:text-yellow-300"
+                        className="text-violet-600 hover:text-violet-300"
                       >
                         {filmmaker.phone}
                       </a>
@@ -422,12 +422,12 @@ export default function FilmmakerProfileViewPage() {
               </div>
 
               {/* 제작 영화 통계 */}
-              <div className="rounded-lg border border-yellow-600/20 bg-gray-50 p-6 backdrop-blur-sm">
+              <div className="rounded-lg border border-violet-600/20 bg-gray-50 p-6 backdrop-blur-sm">
                 <h3 className="mb-4 text-sm font-semibold text-gray-400">
                   제작 통계
                 </h3>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-red-600">
+                  <div className="text-3xl font-bold text-violet-600">
                     {movies.length}
                   </div>
                   <div className="text-sm text-gray-400 mt-1">제작 영화</div>

@@ -151,11 +151,11 @@ export default function NewPostPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-yellow-900/30 bg-gradient-to-b from-black via-gray-950 to-black">
+      <div className="relative overflow-hidden border-b border-violet-900/30 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-16">
           <div className="mx-auto max-w-3xl">
-            <Link href="/posts" className="mb-4 inline-block text-yellow-400 hover:text-yellow-300">
+            <Link href="/posts" className="mb-4 inline-block text-violet-400 hover:text-violet-300">
               ← 커뮤니티로
             </Link>
             <h1 className="mb-4 text-4xl font-bold tracking-tight film-gold">
@@ -168,11 +168,11 @@ export default function NewPostPage() {
       {/* 폼 */}
       <div className="container mx-auto px-4 py-12">
         <div className="mx-auto max-w-3xl">
-          <Card className="border-yellow-600/20 bg-gray-900/50">
+          <Card className="border-violet-600/20 bg-white">
             <CardContent className="p-6">
               <form onSubmit={handleSubmit} className="space-y-6">
                 {error && (
-                  <div className="rounded-lg bg-red-600/20 border border-red-600/50 p-4 text-red-400">
+                  <div className="rounded-lg bg-violet-600/20 border border-violet-600/50 p-4 text-violet-400">
                     {error}
                   </div>
                 )}
@@ -191,14 +191,14 @@ export default function NewPostPage() {
                     <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-900 border-yellow-600/30">
-                      <SelectItem value="casting_call" className="text-yellow-400 hover:bg-gray-800">
+                    <SelectContent className="bg-gray-900 border-violet-600/30">
+                      <SelectItem value="casting_call" className="text-violet-400 hover:bg-violet-50">
                         구인공고
                       </SelectItem>
-                      <SelectItem value="actor_seeking" className="text-yellow-400 hover:bg-gray-800">
+                      <SelectItem value="actor_seeking" className="text-violet-400 hover:bg-violet-50">
                         배우 구직
                       </SelectItem>
-                      <SelectItem value="general" className="text-yellow-400 hover:bg-gray-800">
+                      <SelectItem value="general" className="text-violet-400 hover:bg-violet-50">
                         일반
                       </SelectItem>
                     </SelectContent>
@@ -235,7 +235,7 @@ export default function NewPostPage() {
                     }
                     placeholder="게시글 내용을 입력하세요"
                     rows={10}
-                    className="w-full rounded-md border border-gray-700 bg-gray-800/50 px-3 py-2 text-white placeholder:text-gray-500 focus:border-yellow-600 focus:outline-none focus:ring-1 focus:ring-yellow-600"
+                    className="w-full rounded-md border border-gray-700 bg-gray-800/50 px-3 py-2 text-white placeholder:text-gray-500 focus:border-violet-600 focus:outline-none focus:ring-1 focus:ring-violet-500"
                   />
                 </div>
 
@@ -256,20 +256,20 @@ export default function NewPostPage() {
                     <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
                       <SelectValue placeholder="선택 안 함" />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-900 border-yellow-600/30">
-                      <SelectItem value="none" className="text-yellow-400 hover:bg-gray-800">
+                    <SelectContent className="bg-gray-900 border-violet-600/30">
+                      <SelectItem value="none" className="text-violet-400 hover:bg-violet-50">
                         선택 안 함
                       </SelectItem>
-                      <SelectItem value="casting" className="text-yellow-400 hover:bg-gray-800">
+                      <SelectItem value="casting" className="text-violet-400 hover:bg-violet-50">
                         캐스팅
                       </SelectItem>
-                      <SelectItem value="seeking" className="text-yellow-400 hover:bg-gray-800">
+                      <SelectItem value="seeking" className="text-violet-400 hover:bg-violet-50">
                         구직
                       </SelectItem>
-                      <SelectItem value="collaboration" className="text-yellow-400 hover:bg-gray-800">
+                      <SelectItem value="collaboration" className="text-violet-400 hover:bg-violet-50">
                         협업
                       </SelectItem>
-                      <SelectItem value="general" className="text-yellow-400 hover:bg-gray-800">
+                      <SelectItem value="general" className="text-violet-400 hover:bg-violet-50">
                         일반
                       </SelectItem>
                     </SelectContent>
@@ -328,15 +328,15 @@ export default function NewPostPage() {
                       <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
                         <SelectValue placeholder="선택 안 함" />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-yellow-600/30">
-                        <SelectItem value="none" className="text-yellow-400 hover:bg-gray-800">
+                      <SelectContent className="bg-gray-900 border-violet-600/30">
+                        <SelectItem value="none" className="text-violet-400 hover:bg-violet-50">
                           선택 안 함
                         </SelectItem>
                         {movies.map((movie) => (
                           <SelectItem
                             key={movie.id}
                             value={movie.id}
-                            className="text-yellow-400 hover:bg-gray-800"
+                            className="text-violet-400 hover:bg-violet-50"
                           >
                             {movie.title}
                           </SelectItem>
@@ -355,7 +355,7 @@ export default function NewPostPage() {
                     onChange={(e) =>
                       setFormData((prev) => ({ ...prev, isPublic: e.target.checked }))
                     }
-                    className="h-5 w-5 rounded border-gray-700 bg-gray-800 text-yellow-600 focus:ring-yellow-600 cursor-pointer"
+                    className="h-5 w-5 rounded border-gray-700 bg-gray-800 text-violet-600 focus:ring-violet-500 cursor-pointer"
                   />
                   <Label htmlFor="isPublic" className="text-gray-300 cursor-pointer">
                     공개
@@ -368,14 +368,14 @@ export default function NewPostPage() {
                     type="button"
                     variant="outline"
                     onClick={() => router.push("/posts")}
-                    className="flex-1 border-gray-700 text-gray-300 hover:bg-gray-800"
+                    className="flex-1 border-gray-700 text-gray-300 hover:bg-violet-50"
                   >
                     취소
                   </Button>
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="flex-1 bg-yellow-600 text-black hover:bg-yellow-500"
+                    className="flex-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-black hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
                   >
                     {loading ? "작성 중..." : "작성하기"}
                   </Button>

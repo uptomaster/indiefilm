@@ -32,7 +32,7 @@ export default function FilmmakerProfilePage() {
   return (
     <div className="container mx-auto px-4 py-20">
       <div className="text-center">
-        <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-yellow-600 border-t-transparent" />
+        <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
         <p className="mt-4 text-gray-400">로딩 중...</p>
       </div>
     </div>

@@ -345,7 +345,7 @@ export default function EditMoviePage() {
       <div className="min-h-screen bg-black text-white">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-yellow-600 border-t-transparent" />
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
             <p className="mt-4 text-gray-400">로딩 중...</p>
           </div>
         </div>
@@ -360,11 +360,11 @@ export default function EditMoviePage() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-yellow-900/30 bg-gradient-to-b from-black via-gray-950 to-black">
+      <div className="relative overflow-hidden border-b border-violet-900/30 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-16">
           <div className="mx-auto max-w-3xl">
-            <Link href={`/movies/${movie.id}`} className="mb-4 inline-block text-yellow-400 hover:text-yellow-300">
+            <Link href={`/movies/${movie.id}`} className="mb-4 inline-block text-violet-400 hover:text-violet-300">
               ← 영화로 돌아가기
             </Link>
             <h1 className="mb-4 text-4xl font-bold tracking-tight film-gold">
@@ -378,11 +378,11 @@ export default function EditMoviePage() {
       {/* 폼 */}
       <div className="container mx-auto px-4 py-12">
         <div className="mx-auto max-w-3xl">
-          <Card className="border-yellow-600/20 bg-gray-900/50">
+          <Card className="border-violet-600/20 bg-white">
             <CardContent className="p-6">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 {error && (
-                  <div className="rounded-lg bg-red-600/20 border border-red-600/50 p-4 text-red-400">
+                  <div className="rounded-lg bg-violet-600/20 border border-violet-600/50 p-4 text-violet-400">
                     {error}
                   </div>
                 )}
@@ -398,7 +398,7 @@ export default function EditMoviePage() {
                     className="bg-gray-800/50 border-gray-700 text-white"
                   />
                   {errors.title && (
-                    <p className="text-sm text-red-400">{errors.title.message}</p>
+                    <p className="text-sm text-violet-400">{errors.title.message}</p>
                   )}
                 </div>
 
@@ -415,16 +415,16 @@ export default function EditMoviePage() {
                       <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-yellow-600/30">
-                        <SelectItem value="drama" className="text-yellow-400 hover:bg-gray-800">드라마</SelectItem>
-                        <SelectItem value="comedy" className="text-yellow-400 hover:bg-gray-800">코미디</SelectItem>
-                        <SelectItem value="horror" className="text-yellow-400 hover:bg-gray-800">공포</SelectItem>
-                        <SelectItem value="romance" className="text-yellow-400 hover:bg-gray-800">로맨스</SelectItem>
-                        <SelectItem value="etc" className="text-yellow-400 hover:bg-gray-800">기타</SelectItem>
+                      <SelectContent className="bg-gray-900 border-violet-600/30">
+                        <SelectItem value="drama" className="text-violet-400 hover:bg-violet-50">드라마</SelectItem>
+                        <SelectItem value="comedy" className="text-violet-400 hover:bg-violet-50">코미디</SelectItem>
+                        <SelectItem value="horror" className="text-violet-400 hover:bg-violet-50">공포</SelectItem>
+                        <SelectItem value="romance" className="text-violet-400 hover:bg-violet-50">로맨스</SelectItem>
+                        <SelectItem value="etc" className="text-violet-400 hover:bg-violet-50">기타</SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.genre && (
-                      <p className="text-sm text-red-400">{errors.genre.message}</p>
+                      <p className="text-sm text-violet-400">{errors.genre.message}</p>
                     )}
                   </div>
 
@@ -439,7 +439,7 @@ export default function EditMoviePage() {
                       className="bg-gray-800/50 border-gray-700 text-white"
                     />
                     {errors.runtimeMinutes && (
-                      <p className="text-sm text-red-400">{errors.runtimeMinutes.message}</p>
+                      <p className="text-sm text-violet-400">{errors.runtimeMinutes.message}</p>
                     )}
                   </div>
 
@@ -454,14 +454,14 @@ export default function EditMoviePage() {
                       <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-yellow-600/30">
-                        <SelectItem value="production" className="text-yellow-400 hover:bg-gray-800">제작중</SelectItem>
-                        <SelectItem value="planned" className="text-yellow-400 hover:bg-gray-800">제작예정</SelectItem>
-                        <SelectItem value="completed" className="text-yellow-400 hover:bg-gray-800">제작완료</SelectItem>
+                      <SelectContent className="bg-gray-900 border-violet-600/30">
+                        <SelectItem value="production" className="text-violet-400 hover:bg-violet-50">제작중</SelectItem>
+                        <SelectItem value="planned" className="text-violet-400 hover:bg-violet-50">제작예정</SelectItem>
+                        <SelectItem value="completed" className="text-violet-400 hover:bg-violet-50">제작완료</SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.status && (
-                      <p className="text-sm text-red-400">{errors.status.message}</p>
+                      <p className="text-sm text-violet-400">{errors.status.message}</p>
                     )}
                   </div>
                 </div>
@@ -477,7 +477,7 @@ export default function EditMoviePage() {
                     className="bg-gray-800/50 border-gray-700 text-white"
                   />
                   {errors.logline && (
-                    <p className="text-sm text-red-400">{errors.logline.message}</p>
+                    <p className="text-sm text-violet-400">{errors.logline.message}</p>
                   )}
                 </div>
 
@@ -490,10 +490,10 @@ export default function EditMoviePage() {
                     id="description"
                     rows={6}
                     {...register("description")}
-                    className="w-full rounded-md border border-gray-700 bg-gray-800/50 px-3 py-2 text-white placeholder:text-gray-500 focus:border-yellow-600 focus:outline-none focus:ring-1 focus:ring-yellow-600"
+                    className="w-full rounded-md border border-gray-700 bg-gray-800/50 px-3 py-2 text-white placeholder:text-gray-500 focus:border-violet-600 focus:outline-none focus:ring-1 focus:ring-violet-500"
                   />
                   {errors.description && (
-                    <p className="text-sm text-red-400">{errors.description.message}</p>
+                    <p className="text-sm text-violet-400">{errors.description.message}</p>
                   )}
                 </div>
 
@@ -510,13 +510,13 @@ export default function EditMoviePage() {
                       <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-yellow-600/30">
-                        <SelectItem value="youtube" className="text-yellow-400 hover:bg-gray-800">YouTube</SelectItem>
-                        <SelectItem value="vimeo" className="text-yellow-400 hover:bg-gray-800">Vimeo</SelectItem>
+                      <SelectContent className="bg-gray-900 border-violet-600/30">
+                        <SelectItem value="youtube" className="text-violet-400 hover:bg-violet-50">YouTube</SelectItem>
+                        <SelectItem value="vimeo" className="text-violet-400 hover:bg-violet-50">Vimeo</SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.videoPlatform && (
-                      <p className="text-sm text-red-400">{errors.videoPlatform.message}</p>
+                      <p className="text-sm text-violet-400">{errors.videoPlatform.message}</p>
                     )}
                   </div>
 
@@ -530,7 +530,7 @@ export default function EditMoviePage() {
                       className="bg-gray-800/50 border-gray-700 text-white"
                     />
                     {errors.videoUrl && (
-                      <p className="text-sm text-red-400">{errors.videoUrl.message}</p>
+                      <p className="text-sm text-violet-400">{errors.videoUrl.message}</p>
                     )}
                   </div>
                 </div>
@@ -545,7 +545,7 @@ export default function EditMoviePage() {
                     onDrop={handleDrop}
                     className={`relative border-2 border-dashed rounded-lg p-6 transition-colors ${
                       isDragging
-                        ? "border-yellow-600 bg-yellow-600/10"
+                        ? "border-violet-600 bg-violet-600/10"
                         : "border-gray-700 bg-gray-800/30"
                     }`}
                   >
@@ -566,7 +566,7 @@ export default function EditMoviePage() {
                               fileInputRef.current.value = "";
                             }
                           }}
-                          className="mt-2 text-sm text-red-400 hover:text-red-300"
+                          className="mt-2 text-sm text-violet-400 hover:text-violet-300"
                         >
                           제거
                         </button>
@@ -588,7 +588,7 @@ export default function EditMoviePage() {
                           onClick={() => fileInputRef.current?.click()}
                           disabled={uploadingThumbnail}
                           variant="outline"
-                          className="border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+                          className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
                         >
                           {uploadingThumbnail ? "업로드 중..." : "파일 선택"}
                         </Button>
@@ -619,13 +619,13 @@ export default function EditMoviePage() {
                         <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
                           <SelectValue placeholder="배우 선택" />
                         </SelectTrigger>
-                        <SelectContent className="bg-gray-900 border-yellow-600/30">
-                          <SelectItem value="none" className="text-yellow-400 hover:bg-gray-800">선택 안 함</SelectItem>
+                        <SelectContent className="bg-gray-900 border-violet-600/30">
+                          <SelectItem value="none" className="text-violet-400 hover:bg-violet-50">선택 안 함</SelectItem>
                           {actors.map((actor) => (
                             <SelectItem
                               key={actor.id}
                               value={actor.id}
-                              className="text-yellow-400 hover:bg-gray-800"
+                              className="text-violet-400 hover:bg-violet-50"
                             >
                               {actor.stageName}
                             </SelectItem>
@@ -643,7 +643,7 @@ export default function EditMoviePage() {
                             type="button"
                             onClick={() => removeCredit(index)}
                             variant="outline"
-                            className="border-red-600/50 text-red-400 hover:bg-red-600/10"
+                            className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
                           >
                             삭제
                           </Button>
@@ -655,7 +655,7 @@ export default function EditMoviePage() {
                     type="button"
                     onClick={() => appendCredit({ role: "", name: "", profileLink: "", actorId: undefined })}
                     variant="outline"
-                    className="border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+                    className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
                   >
                     + 제작진 추가
                   </Button>
@@ -674,7 +674,7 @@ export default function EditMoviePage() {
                       className="bg-gray-800/50 border-gray-700 text-white"
                     />
                     {errors.year && (
-                      <p className="text-sm text-red-400">{errors.year.message}</p>
+                      <p className="text-sm text-violet-400">{errors.year.message}</p>
                     )}
                   </div>
 
@@ -697,14 +697,14 @@ export default function EditMoviePage() {
                     type="button"
                     variant="outline"
                     onClick={() => router.push(`/movies/${movie.id}`)}
-                    className="flex-1 border-gray-700 text-gray-300 hover:bg-gray-800"
+                    className="flex-1 border-gray-700 text-gray-300 hover:bg-violet-50"
                   >
                     취소
                   </Button>
                   <Button
                     type="submit"
                     disabled={saving}
-                    className="flex-1 bg-yellow-600 text-black hover:bg-yellow-500"
+                    className="flex-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-black hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
                   >
                     {saving ? "저장 중..." : "저장하기"}
                   </Button>

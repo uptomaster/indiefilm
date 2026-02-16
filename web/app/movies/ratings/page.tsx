@@ -113,7 +113,7 @@ export default function MovieRatingsPage() {
       <div className="min-h-screen bg-black text-white">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-yellow-600 border-t-transparent" />
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
             <p className="mt-4 text-gray-400">로딩 중...</p>
           </div>
         </div>
@@ -133,7 +133,7 @@ export default function MovieRatingsPage() {
           </div>
           <Button
             onClick={() => setShowAddForm(!showAddForm)}
-            className="bg-yellow-600 text-black hover:bg-yellow-500"
+            className="bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-black hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
           >
             {showAddForm ? "취소" : "+ 영화 추가"}
           </Button>
@@ -141,16 +141,16 @@ export default function MovieRatingsPage() {
 
         {/* 추가/수정 폼 */}
         {showAddForm && (
-          <Card className="mb-8 border-yellow-600/20 bg-gray-900/50">
+          <Card className="mb-8 border-violet-600/20 bg-white">
             <CardHeader>
-              <CardTitle className="text-yellow-400">
+              <CardTitle className="text-violet-400">
                 {editingRating ? "평점 수정" : "새 영화 추가"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <Label htmlFor="movieTitle" className="text-yellow-400">
+                  <Label htmlFor="movieTitle" className="text-violet-400">
                     영화 제목 *
                   </Label>
                   <Input
@@ -165,7 +165,7 @@ export default function MovieRatingsPage() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="movieYear" className="text-yellow-400">
+                    <Label htmlFor="movieYear" className="text-violet-400">
                       제작 연도 (선택)
                     </Label>
                     <Input
@@ -181,7 +181,7 @@ export default function MovieRatingsPage() {
                   </div>
 
                   <div>
-                    <Label htmlFor="movieThumbnail" className="text-yellow-400">
+                    <Label htmlFor="movieThumbnail" className="text-violet-400">
                       포스터 URL (선택)
                     </Label>
                     <Input
@@ -196,7 +196,7 @@ export default function MovieRatingsPage() {
                 </div>
 
                 <div>
-                  <Label className="text-yellow-400 mb-2 block">별점</Label>
+                  <Label className="text-violet-400 mb-2 block">별점</Label>
                   <div className="flex items-center gap-2">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
@@ -204,20 +204,20 @@ export default function MovieRatingsPage() {
                         type="button"
                         onClick={() => setRating(star)}
                         className={`text-3xl transition-transform hover:scale-110 ${
-                          star <= rating ? "text-yellow-400" : "text-gray-600"
+                          star <= rating ? "text-violet-400" : "text-gray-600"
                         }`}
                       >
                         ★
                       </button>
                     ))}
-                    <span className="ml-2 text-yellow-400 font-semibold">
+                    <span className="ml-2 text-violet-400 font-semibold">
                       {rating}점
                     </span>
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="review" className="text-yellow-400">
+                  <Label htmlFor="review" className="text-violet-400">
                     리뷰 (선택)
                   </Label>
                   <textarea
@@ -225,7 +225,7 @@ export default function MovieRatingsPage() {
                     value={review}
                     onChange={(e) => setReview(e.target.value)}
                     placeholder="이 영화에 대한 생각을 남겨주세요..."
-                    className="w-full min-h-[100px] rounded-md border border-gray-700 bg-gray-800/50 px-3 py-2 text-white placeholder:text-gray-500 focus:border-yellow-600 focus:outline-none focus:ring-1 focus:ring-yellow-600"
+                    className="w-full min-h-[100px] rounded-md border border-gray-700 bg-gray-800/50 px-3 py-2 text-white placeholder:text-gray-500 focus:border-violet-600 focus:outline-none focus:ring-1 focus:ring-violet-500"
                   />
                 </div>
 
@@ -235,7 +235,7 @@ export default function MovieRatingsPage() {
                     id="isFavorite"
                     checked={isFavorite}
                     onChange={(e) => setIsFavorite(e.target.checked)}
-                    className="h-5 w-5 rounded border-gray-700 bg-gray-800 text-yellow-600 focus:ring-yellow-600 cursor-pointer"
+                    className="h-5 w-5 rounded border-gray-700 bg-gray-800 text-violet-600 focus:ring-violet-500 cursor-pointer"
                   />
                   <Label htmlFor="isFavorite" className="text-gray-300 cursor-pointer">
                     ⭐ 인생영화로 등록
@@ -246,7 +246,7 @@ export default function MovieRatingsPage() {
                   <Button
                     type="submit"
                     disabled={saving}
-                    className="flex-1 bg-yellow-600 text-black hover:bg-yellow-500"
+                    className="flex-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-black hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
                   >
                     {saving ? "저장 중..." : editingRating ? "수정" : "추가"}
                   </Button>
@@ -272,7 +272,7 @@ export default function MovieRatingsPage() {
             </p>
             <Button
               onClick={() => setShowAddForm(true)}
-              className="bg-yellow-600 text-black hover:bg-yellow-500"
+              className="bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-black hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
             >
               첫 영화 추가하기
             </Button>
@@ -282,7 +282,7 @@ export default function MovieRatingsPage() {
             {ratings.map((rating) => (
               <Card
                 key={rating.id}
-                className="border-yellow-600/20 bg-gray-900/50 hover:bg-gray-900/70 transition-colors"
+                className="border-violet-600/20 bg-white hover:bg-gray-900/70 transition-colors"
               >
                 <CardContent className="p-6">
                   {rating.movieThumbnail && (
@@ -305,14 +305,14 @@ export default function MovieRatingsPage() {
                       <span
                         key={i}
                         className={`text-lg ${
-                          i < rating.rating ? "text-yellow-400" : "text-gray-600"
+                          i < rating.rating ? "text-violet-400" : "text-gray-600"
                         }`}
                       >
                         ★
                       </span>
                     ))}
                     {rating.isFavorite && (
-                      <span className="ml-auto text-yellow-400">⭐</span>
+                      <span className="ml-auto text-violet-400">⭐</span>
                     )}
                   </div>
                   {rating.review && (
@@ -323,7 +323,7 @@ export default function MovieRatingsPage() {
                   <Button
                     onClick={() => handleEdit(rating)}
                     variant="outline"
-                    className="w-full border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+                    className="w-full border-violet-600/50 text-violet-400 hover:bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500/10"
                   >
                     수정
                   </Button>

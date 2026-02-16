@@ -252,7 +252,7 @@ export default function FilmmakerProfileEditPage() {
       <div className="min-h-screen bg-black text-white">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-yellow-600 border-t-transparent" />
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
             <p className="mt-4 text-gray-400">로딩 중...</p>
           </div>
         </div>
@@ -263,7 +263,7 @@ export default function FilmmakerProfileEditPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="container mx-auto max-w-4xl px-4 py-12">
-        <Card className="border-yellow-600/20 bg-gray-900/50 backdrop-blur-sm">
+        <Card className="border-violet-600/20 bg-gray-900/50 backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-2xl film-gold">제작자 프로필</CardTitle>
             <CardDescription className="text-gray-400">
@@ -272,7 +272,7 @@ export default function FilmmakerProfileEditPage() {
           </CardHeader>
           <CardContent>
             {error && (
-              <div className="mb-6 rounded-md bg-red-900/20 border border-red-600/30 p-4 text-red-300">
+              <div className="mb-6 rounded-md bg-violet-900/20 border border-violet-600/30 p-4 text-violet-300">
                 {error}
               </div>
             )}
@@ -280,7 +280,7 @@ export default function FilmmakerProfileEditPage() {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* 기본 정보 */}
               <section className="space-y-4">
-                <h3 className="text-xl font-bold text-yellow-400 border-b border-yellow-600/30 pb-2">
+                <h3 className="text-xl font-bold text-violet-400 border-b border-violet-600/30 pb-2">
                   기본 정보
                 </h3>
 
@@ -293,11 +293,11 @@ export default function FilmmakerProfileEditPage() {
                     <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
                       <SelectValue placeholder="유형 선택" />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-900 border-yellow-600/30">
-                      <SelectItem value="individual" className="text-yellow-400 hover:bg-gray-800 focus:bg-gray-800 cursor-pointer">
+                    <SelectContent className="bg-gray-900 border-violet-600/30">
+                      <SelectItem value="individual" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">
                         개인
                       </SelectItem>
-                      <SelectItem value="team" className="text-yellow-400 hover:bg-gray-800 focus:bg-gray-800 cursor-pointer">
+                      <SelectItem value="team" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">
                         팀
                       </SelectItem>
                     </SelectContent>
@@ -314,7 +314,7 @@ export default function FilmmakerProfileEditPage() {
                     {...register("name")}
                   />
                   {errors.name && (
-                    <p className="text-sm text-red-400">{errors.name.message}</p>
+                    <p className="text-sm text-violet-400">{errors.name.message}</p>
                   )}
                 </div>
 
@@ -341,12 +341,12 @@ export default function FilmmakerProfileEditPage() {
                       <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
                         <SelectValue placeholder="지역 선택" />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-yellow-600/30">
-                        <SelectItem value="none" className="text-yellow-400 hover:bg-gray-800 focus:bg-gray-800 cursor-pointer">
+                      <SelectContent className="bg-gray-900 border-violet-600/30">
+                        <SelectItem value="none" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">
                           선택 안 함
                         </SelectItem>
                         {locations.map((loc) => (
-                          <SelectItem key={loc} value={loc} className="text-yellow-400 hover:bg-gray-800 focus:bg-gray-800 cursor-pointer">
+                          <SelectItem key={loc} value={loc} className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">
                             {loc}
                           </SelectItem>
                         ))}
@@ -393,13 +393,13 @@ export default function FilmmakerProfileEditPage() {
 
               {/* 프로필 사진 */}
               <section className="space-y-6">
-                <h3 className="text-xl font-bold text-yellow-400 border-b border-yellow-600/30 pb-2">
+                <h3 className="text-xl font-bold text-violet-400 border-b border-violet-600/30 pb-2">
                   프로필 사진
                 </h3>
 
                 {/* 프로필 사진 미리보기 */}
                 <div className="flex justify-center">
-                  <div className="relative h-64 w-64 rounded-full overflow-hidden border-4 border-yellow-600/30 shadow-2xl">
+                  <div className="relative h-64 w-64 rounded-full overflow-hidden border-4 border-violet-600/30 shadow-2xl">
                     {photoPreview || mainPhotoUrl ? (
                       <img
                         src={photoPreview || mainPhotoUrl || ""}
@@ -417,8 +417,8 @@ export default function FilmmakerProfileEditPage() {
                     {uploadingPhoto && (
                       <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
                         <div className="flex flex-col items-center gap-2">
-                          <div className="h-8 w-8 animate-spin rounded-full border-4 border-yellow-600 border-t-transparent" />
-                          <span className="text-sm text-yellow-400">업로드 중...</span>
+                          <div className="h-8 w-8 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
+                          <span className="text-sm text-violet-400">업로드 중...</span>
                         </div>
                       </div>
                     )}
@@ -447,8 +447,8 @@ export default function FilmmakerProfileEditPage() {
                   onClick={() => fileInputRef.current?.click()}
                   className={`relative cursor-pointer rounded-xl border-2 border-dashed transition-all ${
                     isDragging
-                      ? "border-yellow-500 bg-yellow-900/20"
-                      : "border-gray-700 bg-gray-800/30 hover:border-yellow-600/50 hover:bg-gray-800/50"
+                      ? "border-violet-500 bg-violet-900/20"
+                      : "border-gray-700 bg-gray-800/30 hover:border-violet-600/50 hover:bg-violet-50/50"
                   }`}
                 >
                   <input
@@ -465,7 +465,7 @@ export default function FilmmakerProfileEditPage() {
                   />
                   
                   <div className="p-8 text-center">
-                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-yellow-600/10">
+                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-violet-600/10">
                       <span className="text-3xl">📸</span>
                     </div>
                     <p className="mb-2 text-lg font-medium text-gray-200">
@@ -484,7 +484,7 @@ export default function FilmmakerProfileEditPage() {
                   </Label>
                   <Input
                     id="mainPhotoUrl"
-                    className="bg-gray-800/50 border-gray-700 text-white transition-all focus:border-yellow-600 focus:ring-2 focus:ring-yellow-600/20"
+                    className="bg-gray-800/50 border-gray-700 text-white transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20"
                     placeholder="https://example.com/image.jpg"
                     {...register("mainPhotoUrl")}
                     onChange={(e) => {
@@ -500,7 +500,7 @@ export default function FilmmakerProfileEditPage() {
 
               {/* 전문 분야 */}
               <section className="space-y-4">
-                <h3 className="text-xl font-bold text-yellow-400 border-b border-yellow-600/30 pb-2">
+                <h3 className="text-xl font-bold text-violet-400 border-b border-violet-600/30 pb-2">
                   전문 분야
                 </h3>
                 {specialtyFields.map((field, index) => (
@@ -513,7 +513,7 @@ export default function FilmmakerProfileEditPage() {
                     <Button
                       type="button"
                       variant="outline"
-                      className="border-gray-700 text-gray-300 hover:bg-gray-800"
+                      className="border-gray-700 text-gray-300 hover:bg-violet-50"
                       onClick={() => removeSpecialty(index)}
                     >
                       삭제
@@ -523,7 +523,7 @@ export default function FilmmakerProfileEditPage() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+                  className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
                   onClick={() => appendSpecialty("")}
                 >
                   전문 분야 추가
@@ -532,7 +532,7 @@ export default function FilmmakerProfileEditPage() {
 
               {/* 보유 장비 */}
               <section className="space-y-4">
-                <h3 className="text-xl font-bold text-yellow-400 border-b border-yellow-600/30 pb-2">
+                <h3 className="text-xl font-bold text-violet-400 border-b border-violet-600/30 pb-2">
                   보유 장비
                 </h3>
                 {equipmentFields.map((field, index) => (
@@ -545,7 +545,7 @@ export default function FilmmakerProfileEditPage() {
                     <Button
                       type="button"
                       variant="outline"
-                      className="border-gray-700 text-gray-300 hover:bg-gray-800"
+                      className="border-gray-700 text-gray-300 hover:bg-violet-50"
                       onClick={() => removeEquipment(index)}
                     >
                       삭제
@@ -555,7 +555,7 @@ export default function FilmmakerProfileEditPage() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+                  className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
                   onClick={() => appendEquipment("")}
                 >
                   장비 추가
@@ -564,7 +564,7 @@ export default function FilmmakerProfileEditPage() {
 
               {/* 경력 */}
               <section className="space-y-4">
-                <h3 className="text-xl font-bold text-yellow-400 border-b border-yellow-600/30 pb-2">
+                <h3 className="text-xl font-bold text-violet-400 border-b border-violet-600/30 pb-2">
                   경력
                 </h3>
                 {experienceFields.map((field, index) => (
@@ -577,7 +577,7 @@ export default function FilmmakerProfileEditPage() {
                     <Button
                       type="button"
                       variant="outline"
-                      className="border-gray-700 text-gray-300 hover:bg-gray-800"
+                      className="border-gray-700 text-gray-300 hover:bg-violet-50"
                       onClick={() => removeExperience(index)}
                     >
                       삭제
@@ -587,7 +587,7 @@ export default function FilmmakerProfileEditPage() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+                  className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
                   onClick={() => appendExperience("")}
                 >
                   경력 추가
@@ -597,7 +597,7 @@ export default function FilmmakerProfileEditPage() {
               {/* 팀 멤버 (팀인 경우만) */}
               {filmmakerType === "team" && (
                 <section className="space-y-4">
-                  <h3 className="text-xl font-bold text-yellow-400 border-b border-yellow-600/30 pb-2">
+                  <h3 className="text-xl font-bold text-violet-400 border-b border-violet-600/30 pb-2">
                     팀 멤버
                   </h3>
                   {teamMemberFields.map((field, index) => (
@@ -622,7 +622,7 @@ export default function FilmmakerProfileEditPage() {
                       <Button
                         type="button"
                         variant="outline"
-                        className="border-gray-700 text-gray-300 hover:bg-gray-800"
+                        className="border-gray-700 text-gray-300 hover:bg-violet-50"
                         onClick={() => removeTeamMember(index)}
                       >
                         삭제
@@ -632,7 +632,7 @@ export default function FilmmakerProfileEditPage() {
                   <Button
                     type="button"
                     variant="outline"
-                    className="border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+                    className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
                     onClick={() => appendTeamMember({ name: "", role: "", profileLink: "" })}
                   >
                     팀 멤버 추가
@@ -642,16 +642,16 @@ export default function FilmmakerProfileEditPage() {
 
               {/* 공개 설정 */}
               <section className="space-y-4">
-                <div className="flex items-center gap-3 rounded-lg border border-yellow-600/20 bg-yellow-600/5 p-4">
+                <div className="flex items-center gap-3 rounded-lg border border-violet-600/20 bg-violet-600/5 p-4">
                   <input
                     type="checkbox"
                     id="isPublic"
                     checked={isPublic}
                     onChange={(e) => setValue("isPublic", e.target.checked)}
-                    className="h-5 w-5 rounded border-gray-700 bg-gray-800 text-yellow-600 focus:ring-yellow-600 cursor-pointer"
+                    className="h-5 w-5 rounded border-gray-700 bg-gray-800 text-violet-600 focus:ring-violet-600 cursor-pointer"
                   />
                   <Label htmlFor="isPublic" className="text-gray-300 cursor-pointer">
-                    <span className="font-semibold text-yellow-400">프로필 공개</span>
+                    <span className="font-semibold text-violet-400">프로필 공개</span>
                     <span className="block text-sm text-gray-400 mt-1">
                       프로필을 공개하면 다른 사용자들이 검색하여 찾을 수 있습니다
                     </span>
@@ -660,11 +660,11 @@ export default function FilmmakerProfileEditPage() {
               </section>
 
               {/* 제출 버튼 */}
-              <div className="flex gap-4 border-t border-yellow-600/20 pt-6">
+              <div className="flex gap-4 border-t border-violet-600/20 pt-6">
                 <Button
                   type="submit"
                   disabled={saving}
-                  className="flex-1 bg-yellow-600 text-black hover:bg-yellow-500"
+                  className="flex-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-black hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
                 >
                   {saving ? "저장 중..." : "프로필 저장"}
                 </Button>
@@ -672,7 +672,7 @@ export default function FilmmakerProfileEditPage() {
                   type="button"
                   variant="outline"
                   onClick={() => router.push("/filmmakers/me/view")}
-                  className="border-gray-700 text-gray-300 hover:bg-gray-800"
+                  className="border-gray-700 text-gray-300 hover:bg-violet-50"
                 >
                   취소
                 </Button>

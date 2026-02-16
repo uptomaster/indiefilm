@@ -102,7 +102,7 @@ export default function ActorProfileViewPage() {
       <div className="min-h-screen bg-white text-gray-900">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-red-500 border-t-transparent" />
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-500 border-t-transparent" />
             <p className="mt-4 text-gray-400">로딩 중...</p>
           </div>
         </div>
@@ -143,11 +143,11 @@ export default function ActorProfileViewPage() {
               <Link href="/requests">
                 <Button
                   variant="outline"
-                  className="relative border-red-400 text-red-500 hover:bg-red-50 text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5"
+                  className="relative border-violet-400 text-violet-500 hover:bg-violet-50 text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5"
                 >
                   요청 확인
                   {unreadCount > 0 && (
-                    <span className="absolute -right-1 -top-1 flex h-4 w-4 md:h-5 md:w-5 items-center justify-center rounded-full bg-red-600 text-[10px] md:text-xs font-bold text-white">
+                    <span className="absolute -right-1 -top-1 flex h-4 w-4 md:h-5 md:w-5 items-center justify-center rounded-full bg-violet-600 text-[10px] md:text-xs font-bold text-white">
                       {unreadCount > 9 ? "9+" : unreadCount}
                     </span>
                   )}
@@ -173,7 +173,7 @@ export default function ActorProfileViewPage() {
             <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 pb-6 md:pb-8 border-b border-gray-200">
               {/* 프로필 사진 */}
               <div className="flex-shrink-0 w-full md:w-auto">
-                <div className="relative h-32 w-32 mx-auto md:h-40 md:w-40 rounded-full overflow-hidden border-4 border-red-200 shadow-lg">
+                <div className="relative h-32 w-32 mx-auto md:h-40 md:w-40 rounded-full overflow-hidden border-4 border-violet-200 shadow-lg">
                   {actor.mainPhotoUrl ? (
                     <img
                       src={actor.mainPhotoUrl}
@@ -194,7 +194,7 @@ export default function ActorProfileViewPage() {
                   {actor.stageName}
                 </h1>
                 <div className="flex flex-wrap gap-4 text-lg">
-                  <span className="text-red-600 font-semibold">
+                  <span className="text-violet-600 font-semibold">
                     {getAgeRangeLabel(actor.ageRange)}
                   </span>
                   <span className="text-gray-400">•</span>
@@ -235,10 +235,10 @@ export default function ActorProfileViewPage() {
                 <div className="space-y-3">
                   {actor.email && (
                     <div className="flex items-center gap-3">
-                      <span className="text-red-600 font-semibold min-w-[80px] tracking-tight">이메일</span>
+                      <span className="text-violet-600 font-semibold min-w-[80px] tracking-tight">이메일</span>
                       <a
                         href={`mailto:${actor.email}`}
-                        className="text-gray-700 hover:text-red-500 hover:underline tracking-tight"
+                        className="text-gray-700 hover:text-violet-500 hover:underline tracking-tight"
                       >
                         {actor.email}
                       </a>
@@ -246,10 +246,10 @@ export default function ActorProfileViewPage() {
                   )}
                   {actor.phone && (
                     <div className="flex items-center gap-3">
-                      <span className="text-red-600 font-semibold min-w-[80px] tracking-tight">전화번호</span>
+                      <span className="text-violet-600 font-semibold min-w-[80px] tracking-tight">전화번호</span>
                       <a
                         href={`tel:${actor.phone}`}
-                        className="text-gray-700 hover:text-red-500 hover:underline tracking-tight"
+                        className="text-gray-700 hover:text-violet-500 hover:underline tracking-tight"
                       >
                         {actor.phone}
                       </a>
@@ -286,7 +286,7 @@ export default function ActorProfileViewPage() {
                   {actor.experience.map((exp, index) => (
                     <li
                       key={index}
-                      className="border-l-2 border-red-200 pl-4 text-gray-700 tracking-tight"
+                      className="border-l-2 border-violet-200 pl-4 text-gray-700 tracking-tight"
                     >
                       {exp}
                     </li>
@@ -305,7 +305,7 @@ export default function ActorProfileViewPage() {
                   {actor.skills.map((skill, index) => (
                     <span
                       key={index}
-                      className="rounded-full bg-red-50 px-4 py-2 text-red-600 font-medium tracking-tight"
+                      className="rounded-full bg-violet-50 px-4 py-2 text-violet-600 font-medium tracking-tight"
                     >
                       {skill}
                     </span>
@@ -372,7 +372,7 @@ export default function ActorProfileViewPage() {
                   {actor.mbti && (
                     <div className="flex justify-between">
                       <span className="text-gray-400">MBTI</span>
-                      <span className="text-red-600 font-bold">{actor.mbti}</span>
+                      <span className="text-violet-600 font-bold">{actor.mbti}</span>
                     </div>
                   )}
                   {actor.email && (
@@ -380,7 +380,7 @@ export default function ActorProfileViewPage() {
                       <span className="text-gray-400">이메일</span>
                       <a
                         href={`mailto:${actor.email}`}
-                        className="text-red-600 hover:text-red-500 hover:underline truncate max-w-[150px] font-medium"
+                        className="text-violet-600 hover:text-violet-500 hover:underline truncate max-w-[150px] font-medium"
                         title={actor.email}
                       >
                         {actor.email}
@@ -392,7 +392,7 @@ export default function ActorProfileViewPage() {
                       <span className="text-gray-400">전화번호</span>
                       <a
                         href={`tel:${actor.phone}`}
-                        className="text-red-600 hover:text-red-500 hover:underline font-medium"
+                        className="text-violet-600 hover:text-violet-500 hover:underline font-medium"
                       >
                         {actor.phone}
                       </a>
@@ -420,13 +420,13 @@ export default function ActorProfileViewPage() {
               )}
 
               {/* 영화 평점 */}
-              <div className="rounded-lg border border-yellow-200/50 bg-gradient-to-br from-yellow-50 via-red-50 to-pink-50 p-4 md:p-6 lg:p-8 shadow-lg">
-                <h3 className="mb-4 text-base md:text-lg font-bold text-red-600 flex items-center gap-2">
+              <div className="rounded-lg border border-violet-200/50 bg-gradient-to-br from-indigo-50 via-violet-50 to-purple-50 p-4 md:p-6 lg:p-8 shadow-lg">
+                <h3 className="mb-4 text-base md:text-lg font-bold text-violet-600 flex items-center gap-2">
                   <span className="text-xl">⭐</span> 내 영화 평점
                 </h3>
                 {ratingsLoading ? (
                   <div className="text-center py-4">
-                    <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-yellow-500 border-t-transparent" />
+                    <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-violet-500 border-t-transparent" />
                   </div>
                 ) : movieRatings.length === 0 ? (
                   <div className="text-center py-4">

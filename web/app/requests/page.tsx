@@ -71,9 +71,9 @@ export default function RequestsPage() {
 
   const getStatusColor = (status: RequestStatus): string => {
     const colors: Record<RequestStatus, string> = {
-      pending: "bg-yellow-600/20 text-yellow-400",
+      pending: "bg-violet-600/20 text-violet-400",
       accepted: "bg-green-600/20 text-green-400",
-      rejected: "bg-red-600/20 text-red-400",
+      rejected: "bg-violet-600/20 text-violet-400",
     };
     return colors[status];
   };
@@ -83,7 +83,7 @@ export default function RequestsPage() {
       <div className="min-h-screen bg-black text-white">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-yellow-600 border-t-transparent" />
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
             <p className="mt-4 text-gray-400">로딩 중...</p>
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function RequestsPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-yellow-900/30 bg-gradient-to-b from-black via-gray-950 to-black">
+      <div className="relative overflow-hidden border-b border-violet-900/30 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-16">
           <div className="mx-auto max-w-3xl text-center">
@@ -112,13 +112,13 @@ export default function RequestsPage() {
 
       {/* 탭 */}
       <div className="container mx-auto px-4 py-8">
-        <div className="mb-6 flex gap-4 border-b border-yellow-600/30">
+        <div className="mb-6 flex gap-4 border-b border-violet-600/30">
           <button
             onClick={() => setActiveTab("received")}
             className={`pb-4 px-4 font-semibold transition-colors ${
               activeTab === "received"
-                ? "border-b-2 border-yellow-600 text-yellow-400"
-                : "text-gray-400 hover:text-yellow-400"
+                ? "border-b-2 border-violet-600 text-violet-400"
+                : "text-gray-400 hover:text-violet-400"
             }`}
           >
             받은 요청 ({receivedRequests.length})
@@ -127,8 +127,8 @@ export default function RequestsPage() {
             onClick={() => setActiveTab("sent")}
             className={`pb-4 px-4 font-semibold transition-colors ${
               activeTab === "sent"
-                ? "border-b-2 border-yellow-600 text-yellow-400"
-                : "text-gray-400 hover:text-yellow-400"
+                ? "border-b-2 border-violet-600 text-violet-400"
+                : "text-gray-400 hover:text-violet-400"
             }`}
           >
             보낸 요청 ({sentRequests.length})
@@ -222,16 +222,16 @@ function RequestCard({
 
   const getStatusColor = (status: RequestStatus): string => {
     const colors: Record<RequestStatus, string> = {
-      pending: "bg-yellow-600/20 text-yellow-400",
+      pending: "bg-violet-600/20 text-violet-400",
       accepted: "bg-green-600/20 text-green-400",
-      rejected: "bg-red-600/20 text-red-400",
+      rejected: "bg-violet-600/20 text-violet-400",
     };
     return colors[status];
   };
 
   if (loading) {
     return (
-      <Card className="border-yellow-600/20 bg-gray-900/50">
+      <Card className="border-violet-600/20 bg-gray-900/50">
         <CardContent className="p-6">
           <div className="h-20 animate-pulse bg-gray-800 rounded" />
         </CardContent>
@@ -241,12 +241,12 @@ function RequestCard({
 
   return (
     <Link href={`/requests/${request.id}`}>
-      <Card className="border-yellow-600/20 bg-gray-900/50 transition-all hover:border-yellow-600/40 hover:bg-gray-900/70 cursor-pointer">
+      <Card className="border-violet-600/20 bg-gray-900/50 transition-all hover:border-violet-600/40 hover:bg-gray-900/70 cursor-pointer">
         <CardContent className="p-6">
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <div className="mb-2 flex items-center gap-3">
-                <span className="rounded-full bg-yellow-600/20 px-3 py-1 text-xs font-semibold text-yellow-400">
+                <span className="rounded-full bg-violet-600/20 px-3 py-1 text-xs font-semibold text-violet-400">
                   {getRequestTypeLabel(request.type)}
                 </span>
                 <span
