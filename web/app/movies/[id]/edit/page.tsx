@@ -45,7 +45,7 @@ const movieSchema = z.object({
       .refine((val) => !isNaN(val), {
         message: "러닝타임은 숫자로 입력해주세요",
       })
-  ),
+  ) as unknown as z.ZodNumber,
   logline: z.string().min(1, "한 줄 요약을 입력해주세요"),
   description: z.string().min(1, "상세 설명을 입력해주세요"),
   videoPlatform: z.enum(["youtube", "vimeo"], {
@@ -77,7 +77,7 @@ const movieSchema = z.object({
     z.number().optional()
   ).refine((val) => val === undefined || !isNaN(val), {
     message: "제작 연도는 숫자로 입력해주세요",
-  }),
+  }) as unknown as z.ZodOptional<z.ZodNumber>,
   tags: z.string().optional(),
 });
 
