@@ -30,18 +30,19 @@ const actorSchema = z.object({
   ageRange: z.enum(["10s", "20s", "30s", "40s", "50plus"], {
     message: "나이대를 선택해주세요",
   }),
-  heightCm: z
-    .string()
-    .transform((val) => (val.trim() === "" ? undefined : val.trim()))
-    .pipe(
-      z.coerce
-        .number({ message: "키는 숫자로 입력해주세요" })
-        .optional()
-    )
-    .refine(
-      (val) => val === undefined || (val >= 100 && val <= 250),
-      { message: "키는 100~250cm 사이로 입력해주세요" }
-    ),
+  heightCm: z.preprocess(
+    (val) => {
+      if (val === "" || val == null || val === undefined) return undefined;
+      const str = String(val).trim();
+      if (str === "") return undefined;
+      const num = Number(str);
+      return isNaN(num) ? undefined : num;
+    },
+    z.number({ message: "키는 숫자로 입력해주세요" })
+      .min(100, "키는 100cm 이상 입력해주세요")
+      .max(250, "키는 250cm 이하로 입력해주세요")
+      .optional()
+  ) as unknown as z.ZodOptional<z.ZodNumber>,
   bodyType: z.string().min(1, "체형을 입력해주세요"),
   location: z.string().min(1, "지역을 선택해주세요"),
   bio: z.string().min(10, "자기소개를 최소 10자 이상 입력해주세요"),
@@ -126,7 +127,7 @@ export default function ActorProfileEditPage() {
     remove: removeExperience,
   } = useFieldArray({
     control,
-    name: "experience",
+    name: "experience" as any,
   });
 
   const {
@@ -135,7 +136,7 @@ export default function ActorProfileEditPage() {
     remove: removeSkill,
   } = useFieldArray({
     control,
-    name: "skills",
+    name: "skills" as any,
   });
 
   const isPublic = watch("isPublic");
@@ -266,6 +267,11 @@ export default function ActorProfileEditPage() {
       setSaving(true);
       setError(null);
 
+      if (!data.heightCm) {
+        setError("키를 입력해주세요.");
+        return;
+      }
+
       await createOrUpdateActorProfile(user.uid, {
         stageName: data.stageName,
         ageRange: data.ageRange,
@@ -275,8 +281,8 @@ export default function ActorProfileEditPage() {
         bio: data.bio,
         email: data.email && data.email.trim() !== "" ? data.email.trim() : undefined,
         phone: data.phone && data.phone.trim() !== "" ? data.phone.trim() : undefined,
-        mainPhotoUrl: data.mainPhotoUrl || null,
-        mainPhotoPath: data.mainPhotoPath || null,
+        mainPhotoUrl: data.mainPhotoUrl && data.mainPhotoUrl.trim() !== "" ? data.mainPhotoUrl : undefined,
+        mainPhotoPath: data.mainPhotoPath && data.mainPhotoPath.trim() !== "" ? data.mainPhotoPath : undefined,
         demoPlatform: data.demoPlatform || null,
         demoUrl: (data.demoUrl && data.demoUrl.trim() !== "") ? data.demoUrl : null,
         experience: data.experience.filter((exp) => exp.trim() !== ""),
@@ -284,7 +290,22 @@ export default function ActorProfileEditPage() {
         gallery: data.gallery || [],
         isPublic: data.isPublic,
         mbti: data.mbti && data.mbti.trim() !== "" ? data.mbti : undefined,
-        traits: data.traits,
+        traits: data.traits && 
+                typeof data.traits.acting === 'number' && 
+                typeof data.traits.appearance === 'number' && 
+                typeof data.traits.charisma === 'number' && 
+                typeof data.traits.emotion === 'number' && 
+                typeof data.traits.humor === 'number' && 
+                typeof data.traits.action === 'number'
+          ? {
+              acting: data.traits.acting,
+              appearance: data.traits.appearance,
+              charisma: data.traits.charisma,
+              emotion: data.traits.emotion,
+              humor: data.traits.humor,
+              action: data.traits.action,
+            } as { acting: number; appearance: number; charisma: number; emotion: number; humor: number; action: number }
+          : undefined,
       });
 
       alert("프로필이 저장되었습니다!");
@@ -406,7 +427,7 @@ export default function ActorProfileEditPage() {
                     />
                     {errors.heightCm && (
                       <p className="text-sm text-red-400 font-medium">
-                        {errors.heightCm.message}
+                        {String(errors.heightCm.message || '키를 올바르게 입력해주세요')}
                       </p>
                     )}
                   </div>
