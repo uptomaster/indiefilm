@@ -74,7 +74,7 @@ export default function FilmmakerDetailPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* 히어로 섹션 - 배경만 */}
-      <div className="relative h-[40vh] min-h-[300px] overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-50 via-white to-pink-50">
+      <div className="relative h-[40vh] min-h-[300px] overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-100 via-pink-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
         
         {/* 상단 네비게이션 */}

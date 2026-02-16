@@ -76,17 +76,17 @@ export default function Home() {
 
       <main className="flex-1">
         {/* 히어로 섹션 */}
-        <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-50 via-white to-pink-50">
-          <div className="film-strip absolute inset-0 opacity-10" />
+        <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-100 via-pink-50 to-white">
+          <div className="film-strip absolute inset-0 opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(229, 9, 20, 0.1) 10px, rgba(229, 9, 20, 0.1) 12px)' }} />
           <div className="container relative mx-auto px-4 py-24">
             <div className="mx-auto max-w-4xl text-center">
               <h1 className="mb-6 text-6xl font-bold tracking-tight film-gold">
                 INDIE FILM HUB
               </h1>
-              <p className="mb-12 text-2xl text-gray-700 font-medium">
+              <p className="mb-12 text-2xl text-gray-900 font-bold tracking-tight">
                 인디 영화 제작자와 배우를 연결하는 플랫폼
               </p>
-              <p className="mb-12 text-lg text-gray-600 leading-relaxed">
+              <p className="mb-12 text-lg text-gray-800 leading-relaxed font-medium">
                 대학생 동아리·인디 영화 제작자들이 만든 작품을 전시하고,
                 <br />
                 배우 지망생들이 프로필을 만들어 오디션 기회를 찾을 수 있습니다.

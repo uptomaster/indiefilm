@@ -39,7 +39,7 @@ export default function Navigation() {
         <div className="border-b border-gray-200 p-6">
           <Link href="/" className="block">
             <h1 className="text-2xl font-bold film-gold tracking-tight">IndieFilm Hub</h1>
-            <p className="mt-1 text-xs text-gray-500 tracking-tight">인디 영화 허브</p>
+            <p className="mt-1 text-xs text-gray-700 font-semibold tracking-tight">인디 영화 허브</p>
           </Link>
         </div>
 
@@ -50,8 +50,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 pathname === "/search"
-                  ? "bg-red-50 text-red-600 font-semibold"
-                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
+                  ? "bg-red-50 text-red-600 font-bold"
+                  : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
               }`}
             >
               <Search className="mr-2 h-4 w-4" />
@@ -65,8 +65,8 @@ export default function Navigation() {
                 variant="ghost"
                 className={`w-full justify-start relative ${
                   pathname === "/requests"
-                    ? "bg-red-500/20 text-red-400"
-                    : "text-gray-300 hover:bg-pink-900/20 hover:text-pink-300"
+                    ? "bg-red-50 text-red-600 font-bold"
+                    : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
                 }`}
               >
                 <Bell className="mr-2 h-4 w-4" />
@@ -88,8 +88,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 isActive("/") && pathname !== "/actors" && pathname !== "/movies"
-                  ? "bg-red-50 text-red-600 font-semibold"
-                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
+                  ? "bg-red-50 text-red-600 font-bold"
+                  : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
               }`}
             >
               <Home className="mr-2 h-4 w-4" />
@@ -102,8 +102,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 isActive("/actors")
-                  ? "bg-red-50 text-red-600 font-semibold"
-                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
+                  ? "bg-red-50 text-red-600 font-bold"
+                  : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
               }`}
             >
               <Users className="mr-2 h-4 w-4" />
@@ -116,8 +116,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 isActive("/movies")
-                  ? "bg-red-50 text-red-600 font-semibold"
-                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
+                  ? "bg-red-50 text-red-600 font-bold"
+                  : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
               }`}
             >
               <Film className="mr-2 h-4 w-4" />
@@ -130,8 +130,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 isActive("/posts")
-                  ? "bg-red-50 text-red-600 font-semibold"
-                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
+                  ? "bg-red-50 text-red-600 font-bold"
+                  : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
               }`}
             >
               <MessageSquare className="mr-2 h-4 w-4" />
@@ -144,8 +144,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 isActive("/credits")
-                  ? "bg-red-50 text-red-600 font-semibold"
-                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
+                  ? "bg-red-50 text-red-600 font-bold"
+                  : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
               }`}
             >
               <CreditCard className="mr-2 h-4 w-4" />
@@ -158,8 +158,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 isActive("/filmmakers")
-                  ? "bg-red-50 text-red-600 font-semibold"
-                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
+                  ? "bg-red-50 text-red-600 font-bold"
+                  : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
               }`}
             >
               <Film className="mr-2 h-4 w-4" />
@@ -240,11 +240,11 @@ export default function Navigation() {
           {user ? (
             <div className="space-y-2">
               <div className="rounded-lg bg-gray-50 p-3 border border-gray-200">
-                <p className="text-sm font-semibold text-gray-900 tracking-tight">
+                <p className="text-sm font-bold text-gray-900 tracking-tight">
                   {userProfile?.displayName || user.email}
                 </p>
                 {userProfile?.role && (
-                  <p className="text-xs text-gray-600 tracking-tight">
+                  <p className="text-xs text-gray-800 font-semibold tracking-tight">
                     {userProfile.role === "actor"
                       ? "배우"
                       : userProfile.role === "filmmaker"
@@ -256,7 +256,7 @@ export default function Navigation() {
               <Button
                 variant="ghost"
                 onClick={handleLogout}
-                className="w-full text-gray-700 hover:bg-gray-100 font-medium"
+                className="w-full text-gray-900 hover:bg-gray-100 font-semibold"
               >
                 <LogOut className="mr-2 h-4 w-4" />
                 로그아웃
