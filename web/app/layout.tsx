@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-[#1a1418] via-[#251a20] to-[#1a1418] text-white`}
       >
         <ErrorBoundary>
           <ToastProvider>

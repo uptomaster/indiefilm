@@ -113,9 +113,9 @@ export default function ActorsPage() {
   }, [actors, searchQuery, sortBy]);
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#1a1418] via-[#251a20] to-[#1a1418] text-white">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-yellow-900/30 bg-gradient-to-b from-black via-gray-950 to-black">
+      <div className="relative overflow-hidden border-b border-red-900/30 bg-gradient-to-b from-[#1a1418] via-[#251a20] to-[#1a1418]">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-16">
           <div className="mx-auto max-w-3xl text-center">
@@ -132,7 +132,7 @@ export default function ActorsPage() {
                 placeholder="이름, 스킬, 경력으로 검색..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-yellow-600"
+                className="bg-[#251a20]/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-red-500"
               />
 
               <div className="flex flex-wrap gap-2 justify-center">
@@ -142,13 +142,13 @@ export default function ActorsPage() {
                     setSelectedLocation(value === "all" ? null : value)
                   }
                 >
-                  <SelectTrigger className="w-[140px] bg-gray-900/50 border-gray-700 text-white">
+                  <SelectTrigger className="w-[140px] bg-[#251a20]/50 border-gray-700 text-white">
                     <SelectValue placeholder="지역" />
                   </SelectTrigger>
-                  <SelectContent className="bg-gray-900 border-yellow-600/30">
-                    <SelectItem value="all" className="text-yellow-400 hover:bg-gray-800 focus:bg-gray-800 cursor-pointer">전체 지역</SelectItem>
+                  <SelectContent className="bg-[#251a20] border-red-500/30">
+                    <SelectItem value="all" className="text-red-400 hover:bg-pink-900/20 focus:bg-pink-900/20 cursor-pointer">전체 지역</SelectItem>
                     {locations.map((loc) => (
-                      <SelectItem key={loc} value={loc} className="text-yellow-400 hover:bg-gray-800 focus:bg-gray-800 cursor-pointer">
+                      <SelectItem key={loc} value={loc} className="text-red-400 hover:bg-pink-900/20 focus:bg-pink-900/20 cursor-pointer">
                         {loc}
                       </SelectItem>
                     ))}
@@ -163,13 +163,13 @@ export default function ActorsPage() {
                     )
                   }
                 >
-                  <SelectTrigger className="w-[140px] bg-gray-900/50 border-gray-700 text-white">
+                  <SelectTrigger className="w-[140px] bg-[#251a20]/50 border-gray-700 text-white">
                     <SelectValue placeholder="나이대" />
                   </SelectTrigger>
-                  <SelectContent className="bg-gray-900 border-yellow-600/30">
-                    <SelectItem value="all" className="text-yellow-400 hover:bg-gray-800 focus:bg-gray-800 cursor-pointer">전체 나이대</SelectItem>
+                  <SelectContent className="bg-[#251a20] border-red-500/30">
+                    <SelectItem value="all" className="text-red-400 hover:bg-pink-900/20 focus:bg-pink-900/20 cursor-pointer">전체 나이대</SelectItem>
                     {ageRanges.map((age) => (
-                      <SelectItem key={age} value={age} className="text-yellow-400 hover:bg-gray-800 focus:bg-gray-800 cursor-pointer">
+                      <SelectItem key={age} value={age} className="text-red-400 hover:bg-pink-900/20 focus:bg-pink-900/20 cursor-pointer">
                         {getAgeRangeLabel(age)}
                       </SelectItem>
                     ))}
@@ -201,9 +201,9 @@ export default function ActorsPage() {
                 <SelectTrigger className="w-[140px] bg-gray-900/50 border-gray-700 text-white">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-900 border-yellow-600/30">
-                  <SelectItem value="latest" className="text-yellow-400 hover:bg-gray-800">최신순</SelectItem>
-                  <SelectItem value="name" className="text-yellow-400 hover:bg-gray-800">이름순</SelectItem>
+                <SelectContent className="bg-[#251a20] border-red-500/30">
+                  <SelectItem value="latest" className="text-red-400 hover:bg-pink-900/20">최신순</SelectItem>
+                  <SelectItem value="name" className="text-red-400 hover:bg-pink-900/20">이름순</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -233,7 +233,7 @@ export default function ActorsPage() {
                         {actor.stageName}
                       </h3>
                       <div className="mb-3 flex flex-wrap gap-2 text-sm">
-                        <span className="rounded-full bg-yellow-600/20 px-3 py-1 text-yellow-400">
+                        <span className="rounded-full bg-red-500/20 px-3 py-1 text-red-400">
                           {getAgeRangeLabel(actor.ageRange)}
                         </span>
                         <span className="rounded-full bg-gray-800/50 px-3 py-1 text-gray-300">
@@ -255,7 +255,7 @@ export default function ActorsPage() {
                           {actor.skills.slice(0, 3).map((skill, idx) => (
                             <span
                               key={idx}
-                              className="rounded bg-yellow-600/10 px-2 py-1 text-xs text-yellow-400"
+                              className="rounded bg-red-500/10 px-2 py-1 text-xs text-red-400"
                             >
                               {skill}
                             </span>
@@ -264,7 +264,7 @@ export default function ActorsPage() {
                       )}
                     </div>
                     <div className="absolute right-4 top-4 z-20">
-                      <div className="rounded-full bg-black/50 px-3 py-1 text-xs text-yellow-400 backdrop-blur-sm">
+                      <div className="rounded-full bg-[#1a1418]/50 px-3 py-1 text-xs text-red-400 backdrop-blur-sm">
                         프로필 보기 →
                       </div>
                     </div>
@@ -278,7 +278,7 @@ export default function ActorsPage() {
                 <Button
                   onClick={loadMore}
                   variant="outline"
-                  className="border-yellow-600/50 bg-black/50 text-yellow-400 hover:bg-yellow-600/10 hover:text-yellow-300"
+                  className="border-red-500/50 bg-[#1a1418]/50 text-red-400 hover:bg-red-500/10 hover:text-red-300"
                 >
                   더 보기
                 </Button>

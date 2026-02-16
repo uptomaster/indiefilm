@@ -108,9 +108,9 @@ export default function MoviesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#1a1418] via-[#251a20] to-[#1a1418] text-white">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-yellow-900/30 bg-gradient-to-b from-black via-gray-950 to-black">
+      <div className="relative overflow-hidden border-b border-red-900/30 bg-gradient-to-b from-[#1a1418] via-[#251a20] to-[#1a1418]">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-16">
           <div className="mx-auto max-w-3xl text-center">
@@ -128,8 +128,8 @@ export default function MoviesPage() {
                 onClick={() => setSelectedGenre(null)}
                 className={
                   selectedGenre === null
-                    ? "bg-yellow-600 text-black hover:bg-yellow-500"
-                    : "border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+                    ? "bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-500 hover:to-pink-500"
+                    : "border-red-500/50 text-red-400 hover:bg-red-500/10"
                 }
               >
                 전체
@@ -173,17 +173,17 @@ export default function MoviesPage() {
                 <SelectTrigger className="w-[140px] bg-gray-900/50 border-gray-700 text-white">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-900 border-yellow-600/30">
-                  <SelectItem value="latest" className="text-yellow-400 hover:bg-gray-800">최신순</SelectItem>
-                  <SelectItem value="popular" className="text-yellow-400 hover:bg-gray-800">인기순</SelectItem>
-                  <SelectItem value="rating" className="text-yellow-400 hover:bg-gray-800">평점순</SelectItem>
+                <SelectContent className="bg-[#251a20] border-red-500/30">
+                  <SelectItem value="latest" className="text-red-400 hover:bg-pink-900/20">최신순</SelectItem>
+                  <SelectItem value="popular" className="text-red-400 hover:bg-pink-900/20">인기순</SelectItem>
+                  <SelectItem value="rating" className="text-red-400 hover:bg-pink-900/20">평점순</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {sortedMovies.map((movie) => (
                 <Link key={movie.id} href={`/movies/${movie.id}`}>
-                  <Card className="group h-full overflow-hidden border-yellow-600/20 bg-gray-900/50 transition-all hover:scale-105 hover:border-yellow-600/40 hover:bg-gray-900/70 hover:shadow-2xl hover:shadow-yellow-600/20">
+                  <Card className="group h-full overflow-hidden border-red-500/20 bg-[#251a20]/50 transition-all hover:scale-105 hover:border-red-500/40 hover:bg-[#251a20]/70 hover:shadow-2xl hover:shadow-red-500/20">
                     <div className="relative aspect-[2/3] overflow-hidden">
                       {movie.thumbnailUrl ? (
                         <LazyImage
@@ -203,20 +203,20 @@ export default function MoviesPage() {
                       )}
                       <div className="film-overlay absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                       <div className="absolute right-3 top-3 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        <div className="rounded-full bg-yellow-600/90 px-3 py-1.5 text-xs font-semibold text-black backdrop-blur-sm shadow-lg">
+                        <div className="rounded-full bg-gradient-to-r from-red-600 to-pink-600 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm shadow-lg">
                           보기 →
                         </div>
                       </div>
                     </div>
                     <CardContent className="p-4">
-                      <h3 className="mb-2 text-lg font-bold text-white line-clamp-1 group-hover:text-yellow-400 transition-colors">
+                      <h3 className="mb-2 text-lg font-bold text-white line-clamp-1 group-hover:text-red-400 transition-colors">
                         {movie.title}
                       </h3>
                       <div className="mb-2 flex flex-wrap gap-2 text-xs">
                         <span className={`rounded-full border px-2.5 py-1 font-semibold ${getStatusColor(movie.status || "production")}`}>
                           {getStatusLabel(movie.status || "production")}
                         </span>
-                        <span className="rounded-full bg-yellow-600/20 px-2.5 py-1 text-yellow-400 font-medium">
+                        <span className="rounded-full bg-red-500/20 px-2.5 py-1 text-red-400 font-medium">
                           {getGenreLabel(movie.genre)}
                         </span>
                         <span className="rounded-full bg-gray-800/70 px-2.5 py-1 text-gray-300">
@@ -233,7 +233,7 @@ export default function MoviesPage() {
                         <div className="mb-2 flex items-center gap-3 text-xs">
                           {movie.averageRating > 0 && (
                             <div className="flex items-center gap-1">
-                              <span className="text-yellow-400 font-semibold">
+                              <span className="text-red-400 font-semibold">
                                 {movie.averageRating.toFixed(1)}
                               </span>
                               <div className="flex items-center gap-0.5">
@@ -242,7 +242,7 @@ export default function MoviesPage() {
                                     key={i}
                                     className={`text-xs ${
                                       i < Math.round(movie.averageRating)
-                                        ? "text-yellow-400"
+                                        ? "text-red-400"
                                         : "text-gray-600"
                                     }`}
                                   >
@@ -275,7 +275,7 @@ export default function MoviesPage() {
                 <Button
                   onClick={loadMore}
                   variant="outline"
-                  className="border-yellow-600/50 bg-black/50 text-yellow-400 hover:bg-yellow-600/10 hover:text-yellow-300"
+                  className="border-red-500/50 bg-[#1a1418]/50 text-red-400 hover:bg-red-500/10 hover:text-red-300"
                 >
                   더 보기
                 </Button>

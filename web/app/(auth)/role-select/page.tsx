@@ -96,13 +96,13 @@ export default function RoleSelectPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#1a1418] via-[#251a20] to-[#1a1418] text-white flex items-center justify-center px-4">
       <div className="w-full max-w-4xl">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold film-gold mb-4">ROLE SELECTION</h1>
           <p className="text-xl text-gray-300">IndieFilm Hub에서 어떤 역할로 활동하시나요?</p>
         </div>
-        <Card className="border-yellow-600/20 bg-gray-900/50 backdrop-blur-sm">
+        <Card className="border-red-500/20 bg-[#251a20]/50 backdrop-blur-sm">
           <CardContent className="pt-6 space-y-6">
             {error && (
               <div className="rounded-md bg-red-900/20 border border-red-600/30 p-3 text-sm text-red-300">
@@ -116,8 +116,8 @@ export default function RoleSelectPage() {
                 disabled={loading}
                 className={`flex flex-col items-center rounded-lg border-2 p-8 transition-all disabled:opacity-50 ${
                   selectedRole === "filmmaker"
-                    ? "border-yellow-600 bg-yellow-600/20 scale-105 cinematic-shadow"
-                    : "border-gray-700 hover:border-yellow-600/50 hover:bg-gray-800/50"
+                    ? "border-red-500 bg-red-500/20 scale-105 cinematic-shadow"
+                    : "border-gray-700 hover:border-red-500/50 hover:bg-pink-900/20"
                 } ${loading ? "cursor-wait" : "cursor-pointer"}`}
               >
                 <span className="text-6xl mb-4">🎬</span>
@@ -127,7 +127,7 @@ export default function RoleSelectPage() {
                 </p>
                 {selectedRole === "filmmaker" && loading && (
                   <div className="mt-4">
-                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-yellow-600 border-t-transparent" />
+                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-red-500 border-t-transparent" />
                   </div>
                 )}
               </button>
@@ -137,8 +137,8 @@ export default function RoleSelectPage() {
                 disabled={loading}
                 className={`flex flex-col items-center rounded-lg border-2 p-8 transition-all disabled:opacity-50 ${
                   selectedRole === "actor"
-                    ? "border-yellow-600 bg-yellow-600/20 scale-105 cinematic-shadow"
-                    : "border-gray-700 hover:border-yellow-600/50 hover:bg-gray-800/50"
+                    ? "border-red-500 bg-red-500/20 scale-105 cinematic-shadow"
+                    : "border-gray-700 hover:border-red-500/50 hover:bg-pink-900/20"
                 } ${loading ? "cursor-wait" : "cursor-pointer"}`}
               >
                 <span className="text-6xl mb-4">🎭</span>
@@ -148,7 +148,7 @@ export default function RoleSelectPage() {
                 </p>
                 {selectedRole === "actor" && loading && (
                   <div className="mt-4">
-                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-yellow-600 border-t-transparent" />
+                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-red-500 border-t-transparent" />
                   </div>
                 )}
               </button>
@@ -158,8 +158,8 @@ export default function RoleSelectPage() {
                 disabled={loading}
                 className={`flex flex-col items-center rounded-lg border-2 p-8 transition-all disabled:opacity-50 ${
                   selectedRole === "viewer"
-                    ? "border-yellow-600 bg-yellow-600/20 scale-105 cinematic-shadow"
-                    : "border-gray-700 hover:border-yellow-600/50 hover:bg-gray-800/50"
+                    ? "border-red-500 bg-red-500/20 scale-105 cinematic-shadow"
+                    : "border-gray-700 hover:border-red-500/50 hover:bg-pink-900/20"
                 } ${loading ? "cursor-wait" : "cursor-pointer"}`}
               >
                 <span className="text-6xl mb-4">👁️</span>
@@ -169,7 +169,7 @@ export default function RoleSelectPage() {
                 </p>
                 {selectedRole === "viewer" && loading && (
                   <div className="mt-4">
-                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-yellow-600 border-t-transparent" />
+                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-red-500 border-t-transparent" />
                   </div>
                 )}
               </button>

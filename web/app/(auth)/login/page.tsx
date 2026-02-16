@@ -61,7 +61,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#1a1418] via-[#251a20] to-[#1a1418] text-white flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold film-gold mb-2">LOGIN</h1>
@@ -105,7 +105,7 @@ export default function LoginPage() {
                 )}
               </div>
 
-              <Button type="submit" className="w-full bg-yellow-600 text-black hover:bg-yellow-500" disabled={loading}>
+              <Button type="submit" className="w-full bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-500 hover:to-pink-500" disabled={loading}>
                 {loading ? "로그인 중..." : "로그인"}
               </Button>
             </form>
@@ -124,7 +124,7 @@ export default function LoginPage() {
             <Button
               type="button"
               variant="outline"
-              className="w-full border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+              className="w-full border-red-500/50 text-red-400 hover:bg-red-500/10"
               onClick={handleGoogleSignIn}
               disabled={loading}
             >
@@ -151,7 +151,7 @@ export default function LoginPage() {
 
             <div className="text-center text-sm text-gray-400">
               계정이 없으신가요?{" "}
-              <Link href="/signup" className="text-yellow-400 hover:text-yellow-300 hover:underline">
+              <Link href="/signup" className="text-red-400 hover:text-red-300 hover:underline">
                 회원가입
               </Link>
             </div>
