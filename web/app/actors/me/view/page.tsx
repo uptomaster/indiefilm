@@ -99,10 +99,10 @@ export default function ActorProfileViewPage() {
 
   if (authLoading || loading) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-white text-gray-900">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-yellow-600 border-t-transparent" />
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-red-500 border-t-transparent" />
             <p className="mt-4 text-gray-400">로딩 중...</p>
           </div>
         </div>
@@ -125,9 +125,9 @@ export default function ActorProfileViewPage() {
       : null;
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white text-gray-900">
       {/* 히어로 섹션 - 배경만 */}
-      <div className="relative h-[40vh] min-h-[300px] overflow-hidden border-b border-yellow-900/30 bg-gradient-to-b from-black via-gray-950 to-black">
+      <div className="relative h-[40vh] min-h-[300px] overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-50 via-white to-pink-50">
         <div className="film-strip absolute inset-0 opacity-10" />
         
         {/* 상단 네비게이션 */}
@@ -135,7 +135,7 @@ export default function ActorProfileViewPage() {
           <div className="container mx-auto flex items-center justify-between px-4 py-6">
             <Link
               href="/actors"
-              className="rounded-full bg-black/50 px-4 py-2 text-sm text-white backdrop-blur-sm transition-colors hover:bg-black/70"
+              className="rounded-full bg-white/90 px-4 py-2 text-sm text-gray-700 backdrop-blur-sm transition-colors hover:bg-gray-50 border border-gray-200 shadow-sm"
             >
               ← 배우 목록
             </Link>
@@ -143,7 +143,7 @@ export default function ActorProfileViewPage() {
               <Link href="/requests">
                 <Button
                   variant="outline"
-                  className="relative border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+                  className="relative border-red-400 text-red-500 hover:bg-red-50"
                 >
                   요청 확인
                   {unreadCount > 0 && (
@@ -155,7 +155,7 @@ export default function ActorProfileViewPage() {
               </Link>
               <Button
                 onClick={() => router.push("/actors/me/edit")}
-                className="bg-yellow-600 text-black hover:bg-yellow-500"
+                className="btn-primary-gradient text-white font-semibold"
               >
                 프로필 수정
               </Button>
@@ -170,10 +170,10 @@ export default function ActorProfileViewPage() {
           {/* 좌측: 메인 정보 */}
           <div className="lg:col-span-2 space-y-8">
             {/* 프로필 헤더 */}
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 pb-8 border-b border-yellow-600/30">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 pb-8 border-b border-gray-200">
               {/* 프로필 사진 */}
               <div className="flex-shrink-0">
-                <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden border-4 border-yellow-600/30 shadow-2xl">
+                <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden border-4 border-red-200 shadow-lg">
                   {actor.mainPhotoUrl ? (
                     <img
                       src={actor.mainPhotoUrl}
@@ -194,21 +194,21 @@ export default function ActorProfileViewPage() {
                   {actor.stageName}
                 </h1>
                 <div className="flex flex-wrap gap-4 text-lg">
-                  <span className="text-yellow-400">
+                  <span className="text-red-600 font-semibold">
                     {getAgeRangeLabel(actor.ageRange)}
                   </span>
-                  <span className="text-gray-300">•</span>
-                  <span className="text-gray-300">{actor.location}</span>
+                  <span className="text-gray-400">•</span>
+                  <span className="text-gray-700">{actor.location}</span>
                   {actor.heightCm && (
                     <>
-                      <span className="text-gray-300">•</span>
-                      <span className="text-gray-300">{actor.heightCm}cm</span>
+                      <span className="text-gray-400">•</span>
+                      <span className="text-gray-700">{actor.heightCm}cm</span>
                     </>
                   )}
                   {actor.bodyType && (
                     <>
-                      <span className="text-gray-300">•</span>
-                      <span className="text-gray-300">{actor.bodyType}</span>
+                      <span className="text-gray-400">•</span>
+                      <span className="text-gray-700">{actor.bodyType}</span>
                     </>
                   )}
                 </div>
@@ -217,10 +217,10 @@ export default function ActorProfileViewPage() {
             {/* 자기소개 */}
             {actor.bio && (
               <section>
-                <h2 className="mb-4 border-b border-yellow-600/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
                   PROFILE
                 </h2>
-                <p className="whitespace-pre-wrap text-lg leading-relaxed text-gray-300">
+                <p className="whitespace-pre-wrap text-lg leading-snug text-gray-700 tracking-tight">
                   {actor.bio}
                 </p>
               </section>
@@ -229,16 +229,16 @@ export default function ActorProfileViewPage() {
             {/* 연락처 */}
             {(actor.email || actor.phone) && (
               <section>
-                <h2 className="mb-4 border-b border-yellow-600/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
                   CONTACT
                 </h2>
                 <div className="space-y-3">
                   {actor.email && (
                     <div className="flex items-center gap-3">
-                      <span className="text-yellow-400 font-semibold min-w-[80px]">이메일</span>
+                      <span className="text-red-600 font-semibold min-w-[80px] tracking-tight">이메일</span>
                       <a
                         href={`mailto:${actor.email}`}
-                        className="text-gray-300 hover:text-yellow-400 hover:underline"
+                        className="text-gray-700 hover:text-red-500 hover:underline tracking-tight"
                       >
                         {actor.email}
                       </a>
@@ -246,10 +246,10 @@ export default function ActorProfileViewPage() {
                   )}
                   {actor.phone && (
                     <div className="flex items-center gap-3">
-                      <span className="text-yellow-400 font-semibold min-w-[80px]">전화번호</span>
+                      <span className="text-red-600 font-semibold min-w-[80px] tracking-tight">전화번호</span>
                       <a
                         href={`tel:${actor.phone}`}
-                        className="text-gray-300 hover:text-yellow-400 hover:underline"
+                        className="text-gray-700 hover:text-red-500 hover:underline tracking-tight"
                       >
                         {actor.phone}
                       </a>
@@ -262,10 +262,10 @@ export default function ActorProfileViewPage() {
             {/* 데모 릴 */}
             {embedUrl && (
               <section>
-                <h2 className="mb-4 border-b border-yellow-600/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
                   DEMO REEL
                 </h2>
-                <div className="aspect-video w-full overflow-hidden rounded-lg bg-black cinematic-shadow">
+                <div className="aspect-video w-full overflow-hidden rounded-lg bg-gray-100 shadow-lg border border-gray-200">
                   <iframe
                     src={embedUrl}
                     className="h-full w-full"
@@ -279,14 +279,14 @@ export default function ActorProfileViewPage() {
             {/* 경력 */}
             {actor.experience.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-yellow-600/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
                   EXPERIENCE
                 </h2>
                 <ul className="space-y-3">
                   {actor.experience.map((exp, index) => (
                     <li
                       key={index}
-                      className="border-l-2 border-yellow-600/30 pl-4 text-gray-300"
+                      className="border-l-2 border-red-200 pl-4 text-gray-700 tracking-tight"
                     >
                       {exp}
                     </li>
@@ -298,14 +298,14 @@ export default function ActorProfileViewPage() {
             {/* 스킬 */}
             {actor.skills.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-yellow-600/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
                   SKILLS
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {actor.skills.map((skill, index) => (
                     <span
                       key={index}
-                      className="rounded-full bg-yellow-600/20 px-4 py-2 text-yellow-400"
+                      className="rounded-full bg-red-50 px-4 py-2 text-red-600 font-medium tracking-tight"
                     >
                       {skill}
                     </span>
@@ -317,7 +317,7 @@ export default function ActorProfileViewPage() {
             {/* 갤러리 */}
             {actor.gallery && actor.gallery.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-yellow-600/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
                   GALLERY
                 </h2>
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
@@ -342,37 +342,37 @@ export default function ActorProfileViewPage() {
           <div className="lg:col-span-1">
             <div className="sticky top-8 space-y-6">
               {/* 프로필 정보 */}
-              <div className="rounded-lg border border-yellow-600/20 bg-gray-900/50 p-6 backdrop-blur-sm">
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 shadow-sm">
                 <h3 className="mb-4 text-sm font-semibold text-gray-400">
                   프로필 정보
                 </h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-400">나이대</span>
-                    <span className="text-white">
+                    <span className="text-gray-900 font-medium tracking-tight">
                       {getAgeRangeLabel(actor.ageRange)}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">지역</span>
-                    <span className="text-white">{actor.location}</span>
+                    <span className="text-gray-900 font-medium tracking-tight">{actor.location}</span>
                   </div>
                   {actor.heightCm && (
                     <div className="flex justify-between">
                       <span className="text-gray-400">키</span>
-                      <span className="text-white">{actor.heightCm}cm</span>
+                      <span className="text-gray-900 font-medium tracking-tight">{actor.heightCm}cm</span>
                     </div>
                   )}
                   {actor.bodyType && (
                     <div className="flex justify-between">
                       <span className="text-gray-400">체형</span>
-                      <span className="text-white">{actor.bodyType}</span>
+                      <span className="text-gray-900 font-medium tracking-tight">{actor.bodyType}</span>
                     </div>
                   )}
                   {actor.mbti && (
                     <div className="flex justify-between">
                       <span className="text-gray-400">MBTI</span>
-                      <span className="text-yellow-400 font-semibold">{actor.mbti}</span>
+                      <span className="text-red-600 font-bold">{actor.mbti}</span>
                     </div>
                   )}
                   {actor.email && (
@@ -380,7 +380,7 @@ export default function ActorProfileViewPage() {
                       <span className="text-gray-400">이메일</span>
                       <a
                         href={`mailto:${actor.email}`}
-                        className="text-yellow-400 hover:text-yellow-300 hover:underline truncate max-w-[150px]"
+                        className="text-red-600 hover:text-red-500 hover:underline truncate max-w-[150px] font-medium"
                         title={actor.email}
                       >
                         {actor.email}
@@ -392,7 +392,7 @@ export default function ActorProfileViewPage() {
                       <span className="text-gray-400">전화번호</span>
                       <a
                         href={`tel:${actor.phone}`}
-                        className="text-yellow-400 hover:text-yellow-300 hover:underline"
+                        className="text-red-600 hover:text-red-500 hover:underline font-medium"
                       >
                         {actor.phone}
                       </a>
@@ -409,7 +409,7 @@ export default function ActorProfileViewPage() {
 
               {/* 특성 육각형 차트 */}
               {actor.traits && (
-                <div className="rounded-lg border border-yellow-600/20 bg-gray-900/50 p-6 backdrop-blur-sm">
+                <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 shadow-sm">
                   <h3 className="mb-4 text-sm font-semibold text-gray-400">
                     특성 분석
                   </h3>
@@ -420,7 +420,7 @@ export default function ActorProfileViewPage() {
               )}
 
               {/* 영화 평점 */}
-              <div className="rounded-lg border border-yellow-600/20 bg-gray-900/50 p-6 backdrop-blur-sm">
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 shadow-sm">
                 <h3 className="mb-4 text-sm font-semibold text-gray-400">
                   내 영화 평점
                 </h3>

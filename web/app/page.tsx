@@ -24,8 +24,8 @@ export default function Home() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-br from-[#3a2f38] via-[#4a3f48] to-[#3a2f38] text-white">
-      <header className="border-b border-red-900/30 bg-gradient-to-r from-[#3a2f38] to-[#4a3f48]">
+    <div className="flex min-h-screen flex-col bg-white text-gray-900">
+      <header className="border-b border-gray-200 bg-white">
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
           <Link href="/" className="text-2xl font-bold film-gold">
             IndieFilm Hub
@@ -33,40 +33,40 @@ export default function Home() {
           <nav className="flex items-center gap-4 text-white">
             {user ? (
               <>
-                <Link href="/movies" className="hover:text-red-400 transition-colors">영화</Link>
-                <Link href="/actors" className="hover:text-red-400 transition-colors">배우</Link>
-                <Link href="/posts" className="hover:text-red-400 transition-colors">커뮤니티</Link>
+                <Link href="/movies" className="hover:text-red-500 transition-colors text-gray-700">영화</Link>
+                <Link href="/actors" className="hover:text-red-500 transition-colors text-gray-700">배우</Link>
+                <Link href="/posts" className="hover:text-red-500 transition-colors text-gray-700">커뮤니티</Link>
                 {userProfile?.role === "filmmaker" && (
                   <Link href="/movies/new">
-                    <Button size="sm" className="bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-500 hover:to-pink-500">영화 업로드</Button>
+                    <Button size="sm" className="btn-primary-gradient text-white font-semibold">영화 업로드</Button>
                   </Link>
                 )}
                 {userProfile?.role === "viewer" && (
                   <Link href="/movies">
-                    <Button size="sm" variant="outline" className="border-red-500/50 text-red-400 hover:bg-red-500/10">영화 보기</Button>
+                    <Button size="sm" variant="outline" className="border-red-300 text-red-600 hover:bg-red-50 font-medium">영화 보기</Button>
                   </Link>
                 )}
                 {userProfile?.role === "actor" && (
                   <Link href="/actors/me">
-                    <Button size="sm" className="bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-500 hover:to-pink-500">내 프로필</Button>
+                    <Button size="sm" className="btn-primary-gradient text-white font-semibold">내 프로필</Button>
                   </Link>
                 )}
                 {(userProfile?.role === "actor" || userProfile?.role === "filmmaker") && (
                   <Link href="/requests">
-                    <Button size="sm" variant="outline" className="border-red-500/50 text-red-400 hover:bg-red-500/10">요청</Button>
+                    <Button size="sm" variant="outline" className="border-red-300 text-red-600 hover:bg-red-50 font-medium">요청</Button>
                   </Link>
                 )}
-                <Button variant="outline" size="sm" onClick={handleLogout} className="border-gray-700 text-gray-300 hover:bg-gray-800">
+                <Button variant="outline" size="sm" onClick={handleLogout} className="border-gray-300 text-gray-700 hover:bg-gray-100 font-medium">
                   로그아웃
                 </Button>
               </>
             ) : (
               <>
                 <Link href="/login">
-                  <Button variant="ghost" className="text-white hover:bg-gray-900">로그인</Button>
+                  <Button variant="ghost" className="text-gray-700 hover:bg-gray-100 font-medium">로그인</Button>
                 </Link>
                 <Link href="/signup">
-                  <Button className="bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-500 hover:to-pink-500">회원가입</Button>
+                  <Button className="btn-primary-gradient text-white font-semibold">회원가입</Button>
                 </Link>
               </>
             )}
@@ -76,17 +76,17 @@ export default function Home() {
 
       <main className="flex-1">
         {/* 히어로 섹션 */}
-        <div className="relative overflow-hidden border-b border-red-900/30 bg-gradient-to-b from-[#3a2f38] via-[#4a3f48] to-[#3a2f38]">
+        <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-50 via-white to-pink-50">
           <div className="film-strip absolute inset-0 opacity-10" />
           <div className="container relative mx-auto px-4 py-24">
             <div className="mx-auto max-w-4xl text-center">
               <h1 className="mb-6 text-6xl font-bold tracking-tight film-gold">
                 INDIE FILM HUB
               </h1>
-              <p className="mb-12 text-2xl text-gray-300">
+              <p className="mb-12 text-2xl text-gray-700 font-medium">
                 인디 영화 제작자와 배우를 연결하는 플랫폼
               </p>
-              <p className="mb-12 text-lg text-gray-400">
+              <p className="mb-12 text-lg text-gray-600 leading-relaxed">
                 대학생 동아리·인디 영화 제작자들이 만든 작품을 전시하고,
                 <br />
                 배우 지망생들이 프로필을 만들어 오디션 기회를 찾을 수 있습니다.
@@ -95,43 +95,43 @@ export default function Home() {
               {!user ? (
                 <div className="flex justify-center gap-4">
                   <Link href="/signup">
-                    <Button size="lg" className="bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-500 hover:to-pink-500 px-8 py-6 text-lg">
+                    <Button size="lg" className="btn-primary-gradient text-white font-semibold px-8 py-6 text-lg">
                       시작하기
                     </Button>
                   </Link>
                   <Link href="/movies">
-                    <Button size="lg" variant="outline" className="border-red-500/50 text-red-400 hover:bg-red-500/10 px-8 py-6 text-lg">
+                    <Button size="lg" variant="outline" className="border-red-300 text-red-600 hover:bg-red-50 px-8 py-6 text-lg font-medium">
                       영화 둘러보기
                     </Button>
                   </Link>
                 </div>
               ) : (
                 <div className="mt-8">
-                  <p className="mb-6 text-xl text-gray-300">
-                    환영합니다, <span className="film-gold font-semibold">{userProfile?.displayName || user.email}</span>님!
+                  <p className="mb-6 text-xl text-gray-700">
+                    환영합니다, <span className="film-gold font-bold">{userProfile?.displayName || user.email}</span>님!
                   </p>
                   <div className="flex justify-center gap-4">
                     {userProfile?.role === "filmmaker" && (
                       <Link href="/movies/new">
-                        <Button size="lg" className="bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-500 hover:to-pink-500 px-8 py-6 text-lg">
+                        <Button size="lg" className="btn-primary-gradient text-white font-semibold px-8 py-6 text-lg">
                           영화 업로드하기
                         </Button>
                       </Link>
                     )}
                     {userProfile?.role === "actor" && (
                       <Link href="/actors/me">
-                        <Button size="lg" className="bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-500 hover:to-pink-500 px-8 py-6 text-lg">
+                        <Button size="lg" className="btn-primary-gradient text-white font-semibold px-8 py-6 text-lg">
                           프로필 만들기
                         </Button>
                       </Link>
                     )}
                     <Link href="/movies">
-                      <Button size="lg" variant="outline" className="border-red-500/50 text-red-400 hover:bg-red-500/10 px-8 py-6 text-lg">
+                      <Button size="lg" variant="outline" className="border-red-300 text-red-600 hover:bg-red-50 px-8 py-6 text-lg font-medium">
                         영화 둘러보기
                       </Button>
                     </Link>
                     <Link href="/actors">
-                      <Button size="lg" variant="outline" className="border-red-500/50 text-red-400 hover:bg-red-500/10 px-8 py-6 text-lg">
+                      <Button size="lg" variant="outline" className="border-red-300 text-red-600 hover:bg-red-50 px-8 py-6 text-lg font-medium">
                         배우 찾기
                       </Button>
                     </Link>
@@ -147,8 +147,8 @@ export default function Home() {
           <div className="grid gap-12 md:grid-cols-3">
             <div className="text-center">
               <div className="mb-4 text-5xl">🎬</div>
-              <h3 className="mb-3 text-xl font-bold film-gold">제작자를 위한</h3>
-              <p className="text-gray-400">
+              <h3 className="mb-3 text-xl font-bold film-gold tracking-tight">제작자를 위한</h3>
+              <p className="text-gray-600 leading-snug">
                 영화를 업로드하고 배우를 검색하여 캐스팅 제안을 보낼 수 있습니다.
               </p>
             </div>

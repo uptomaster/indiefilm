@@ -33,25 +33,25 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="fixed left-0 top-0 z-50 h-screen w-64 border-r border-red-500/20 bg-gradient-to-b from-[#3a2f38] to-[#4a3f48]/95 backdrop-blur-sm">
+    <nav className="fixed left-0 top-0 z-50 h-screen w-64 border-r border-gray-200 bg-white shadow-lg">
       <div className="flex h-full flex-col">
         {/* 로고 */}
-        <div className="border-b border-red-500/20 p-6">
+        <div className="border-b border-gray-200 p-6">
           <Link href="/" className="block">
-            <h1 className="text-2xl font-bold film-gold">IndieFilm Hub</h1>
-            <p className="mt-1 text-xs text-gray-400">인디 영화 허브</p>
+            <h1 className="text-2xl font-bold film-gold tracking-tight">IndieFilm Hub</h1>
+            <p className="mt-1 text-xs text-gray-500 tracking-tight">인디 영화 허브</p>
           </Link>
         </div>
 
         {/* 검색바 */}
-        <div className="border-b border-red-500/20 p-4">
+        <div className="border-b border-gray-200 p-4">
           <Link href="/search">
             <Button
               variant="ghost"
               className={`w-full justify-start ${
                 pathname === "/search"
-                  ? "bg-red-500/20 text-red-400"
-                  : "text-gray-300 hover:bg-pink-900/20 hover:text-pink-300"
+                  ? "bg-red-50 text-red-600 font-semibold"
+                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
               }`}
             >
               <Search className="mr-2 h-4 w-4" />
@@ -88,8 +88,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 isActive("/") && pathname !== "/actors" && pathname !== "/movies"
-                  ? "bg-red-500/20 text-red-400"
-                  : "text-gray-300 hover:bg-pink-900/20 hover:text-pink-300"
+                  ? "bg-red-50 text-red-600 font-semibold"
+                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
               }`}
             >
               <Home className="mr-2 h-4 w-4" />
@@ -102,8 +102,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 isActive("/actors")
-                  ? "bg-red-500/20 text-red-400"
-                  : "text-gray-300 hover:bg-pink-900/20 hover:text-pink-300"
+                  ? "bg-red-50 text-red-600 font-semibold"
+                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
               }`}
             >
               <Users className="mr-2 h-4 w-4" />
@@ -116,8 +116,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 isActive("/movies")
-                  ? "bg-red-500/20 text-red-400"
-                  : "text-gray-300 hover:bg-pink-900/20 hover:text-pink-300"
+                  ? "bg-red-50 text-red-600 font-semibold"
+                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
               }`}
             >
               <Film className="mr-2 h-4 w-4" />
@@ -130,8 +130,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 isActive("/posts")
-                  ? "bg-red-500/20 text-red-400"
-                  : "text-gray-300 hover:bg-pink-900/20 hover:text-pink-300"
+                  ? "bg-red-50 text-red-600 font-semibold"
+                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
               }`}
             >
               <MessageSquare className="mr-2 h-4 w-4" />
@@ -144,8 +144,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 isActive("/credits")
-                  ? "bg-red-500/20 text-red-400"
-                  : "text-gray-300 hover:bg-pink-900/20 hover:text-pink-300"
+                  ? "bg-red-50 text-red-600 font-semibold"
+                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
               }`}
             >
               <CreditCard className="mr-2 h-4 w-4" />
@@ -158,8 +158,8 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start ${
                 isActive("/filmmakers")
-                  ? "bg-red-500/20 text-red-400"
-                  : "text-gray-300 hover:bg-pink-900/20 hover:text-pink-300"
+                  ? "bg-red-50 text-red-600 font-semibold"
+                  : "text-gray-700 hover:bg-pink-50 hover:text-red-500"
               }`}
             >
               <Film className="mr-2 h-4 w-4" />
@@ -236,15 +236,15 @@ export default function Navigation() {
         </div>
 
         {/* 사용자 정보 및 로그아웃 */}
-        <div className="border-t border-red-500/20 p-4">
+        <div className="border-t border-gray-200 p-4">
           {user ? (
             <div className="space-y-2">
-              <div className="rounded-lg bg-[#4a3f48]/50 p-3">
-                <p className="text-sm font-medium text-white">
+              <div className="rounded-lg bg-gray-50 p-3 border border-gray-200">
+                <p className="text-sm font-semibold text-gray-900 tracking-tight">
                   {userProfile?.displayName || user.email}
                 </p>
                 {userProfile?.role && (
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-gray-600 tracking-tight">
                     {userProfile.role === "actor"
                       ? "배우"
                       : userProfile.role === "filmmaker"
@@ -256,7 +256,7 @@ export default function Navigation() {
               <Button
                 variant="ghost"
                 onClick={handleLogout}
-                className="w-full text-gray-300 hover:bg-gray-800 hover:text-white"
+                className="w-full text-gray-700 hover:bg-gray-100 font-medium"
               >
                 <LogOut className="mr-2 h-4 w-4" />
                 로그아웃
@@ -265,14 +265,14 @@ export default function Navigation() {
           ) : (
             <div className="space-y-2">
               <Link href="/login">
-                <Button className="w-full bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-500 hover:to-pink-500">
+                <Button className="w-full btn-primary-gradient text-white font-semibold">
                   로그인
                 </Button>
               </Link>
               <Link href="/signup">
                 <Button
                   variant="outline"
-                  className="w-full border-red-500/50 text-red-400 hover:bg-red-500/10"
+                  className="w-full border-red-400 text-red-500 hover:bg-red-50 font-medium"
                 >
                   회원가입
                 </Button>

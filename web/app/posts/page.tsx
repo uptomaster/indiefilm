@@ -119,21 +119,21 @@ export default function PostsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white text-gray-900">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-yellow-900/30 bg-gradient-to-b from-black via-gray-950 to-black">
+      <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-50 via-white to-pink-50">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-16">
           <div className="mx-auto max-w-3xl">
             <h1 className="mb-4 text-5xl font-bold tracking-tight film-gold">
               COMMUNITY
             </h1>
-            <p className="mb-8 text-xl text-gray-300">
+            <p className="mb-8 text-xl text-gray-700 font-medium tracking-tight">
               구인공고, 배우 구직, 협업 정보를 공유하세요
             </p>
             {user && (
               <Link href="/posts/new">
-                <Button className="bg-yellow-600 text-black hover:bg-yellow-500">
+                <Button className="btn-primary-gradient text-white font-semibold">
                   글 작성하기
                 </Button>
               </Link>
@@ -150,8 +150,8 @@ export default function PostsPage() {
             onClick={() => setSelectedType(null)}
             className={
               selectedType === null
-                ? "bg-yellow-600 text-black hover:bg-yellow-500"
-                : "border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+                ? "bg-gradient-to-r from-red-600 to-pink-600 text-white shadow-md hover:shadow-lg"
+                : "border-red-300 text-red-600 hover:bg-red-50"
             }
           >
             전체
@@ -164,7 +164,7 @@ export default function PostsPage() {
               className={
                 selectedType === type.value
                   ? "bg-yellow-600 text-black hover:bg-yellow-500"
-                  : "border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+                  : "border-red-300 text-red-600 hover:bg-red-50"
               }
             >
               {type.label}
@@ -184,49 +184,49 @@ export default function PostsPage() {
         ) : (
           <>
             <div className="mb-6 flex items-center justify-between">
-              <div className="text-sm text-gray-400">
+              <div className="text-sm text-gray-600 tracking-tight">
                 총 {sortedPosts.length}개의 게시글
               </div>
               <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortOption)}>
-                <SelectTrigger className="w-[140px] bg-gray-900/50 border-gray-700 text-white">
+                <SelectTrigger className="w-[140px] bg-white border-gray-300 text-gray-900">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-900 border-yellow-600/30">
-                  <SelectItem value="latest" className="text-yellow-400 hover:bg-gray-800">최신순</SelectItem>
-                  <SelectItem value="popular" className="text-yellow-400 hover:bg-gray-800">인기순</SelectItem>
-                  <SelectItem value="views" className="text-yellow-400 hover:bg-gray-800">조회순</SelectItem>
+                <SelectContent className="bg-white border-gray-200">
+                  <SelectItem value="latest" className="text-gray-700 hover:bg-red-50">최신순</SelectItem>
+                  <SelectItem value="popular" className="text-gray-700 hover:bg-red-50">인기순</SelectItem>
+                  <SelectItem value="views" className="text-gray-700 hover:bg-red-50">조회순</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div className="space-y-4">
               {sortedPosts.map((post) => (
               <Link key={post.id} href={`/posts/${post.id}`}>
-                <Card className="border-yellow-600/20 bg-gray-900/50 transition-all hover:border-yellow-600/40 hover:bg-gray-900/70 cursor-pointer">
+                <Card className="border-gray-200 bg-white transition-all hover:border-red-300 hover:shadow-lg cursor-pointer shadow-sm">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="mb-2 flex items-center gap-3">
-                          <span className="rounded-full bg-yellow-600/20 px-3 py-1 text-xs font-semibold text-yellow-400">
+                          <span className="rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600 tracking-tight">
                             {getPostTypeLabel(post.type)}
                           </span>
                           {post.category && (
-                            <span className="rounded-full bg-gray-800/50 px-3 py-1 text-xs text-gray-300">
+                            <span className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-700 tracking-tight">
                               {getCategoryLabel(post.category)}
                             </span>
                           )}
                           {post.location && (
-                            <span className="rounded-full bg-gray-800/50 px-3 py-1 text-xs text-gray-300">
+                            <span className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-700 tracking-tight">
                               {post.location}
                             </span>
                           )}
                         </div>
-                        <h3 className="mb-2 text-xl font-bold text-white line-clamp-1">
+                        <h3 className="mb-2 text-xl font-bold text-gray-900 line-clamp-1 tracking-tight">
                           {post.title}
                         </h3>
-                        <p className="mb-3 line-clamp-2 text-gray-400">
+                        <p className="mb-3 line-clamp-2 text-gray-600 leading-snug tracking-tight">
                           {post.content}
                         </p>
-                        <div className="flex items-center gap-4 text-sm text-gray-500">
+                        <div className="flex items-center gap-4 text-sm text-gray-500 tracking-tight">
                           <span>{userNames[post.authorId] || "작성자"}</span>
                           <span>•</span>
                           <span>
