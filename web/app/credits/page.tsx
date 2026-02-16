@@ -93,7 +93,7 @@ export default function CreditsPage() {
       <div className="min-h-screen bg-white text-gray-900">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-red-500 border-t-transparent" />
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-500 border-t-transparent" />
             <p className="mt-4 text-gray-700 font-medium">로딩 중...</p>
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function CreditsPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-100 via-pink-50 to-white">
+      <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-6 md:py-12 lg:py-16">
           <div className="mx-auto max-w-3xl text-center">
@@ -128,7 +128,7 @@ export default function CreditsPage() {
               placeholder="이름 또는 역할로 검색..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-red-500 font-medium"
+              className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-violet-500 font-medium"
             />
           </div>
           <Select
@@ -141,14 +141,14 @@ export default function CreditsPage() {
               <SelectValue placeholder="역할 선택" />
             </SelectTrigger>
             <SelectContent className="bg-white border-gray-200">
-              <SelectItem value="all" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">
+              <SelectItem value="all" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">
                 전체 역할
               </SelectItem>
               {allRoles.map((role) => (
                 <SelectItem
                   key={role}
                   value={role}
-                  className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium"
+                  className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium"
                 >
                   {role}
                 </SelectItem>
@@ -173,18 +173,18 @@ export default function CreditsPage() {
               {filteredCredits.map((credit, index) => (
                 <Card
                   key={`${credit.name}_${credit.role}_${index}`}
-                  className="border-gray-200 bg-white hover:border-red-300 hover:shadow-lg transition-all shadow-sm"
+                  className="border-gray-200 bg-white hover:border-violet-300 hover:shadow-lg transition-all shadow-sm"
                 >
                   <CardHeader className="p-3 md:p-4 lg:p-6 pb-2 md:pb-3">
                     <CardTitle className="text-base md:text-lg lg:text-xl film-gold font-bold tracking-tight">
                       {credit.name}
                     </CardTitle>
-                    <p className="text-xs md:text-sm text-red-600 font-semibold">{credit.role}</p>
+                    <p className="text-xs md:text-sm text-violet-600 font-semibold">{credit.role}</p>
                   </CardHeader>
                   <CardContent className="p-3 md:p-4 lg:p-6 pt-0">
                     <div className="mb-3 md:mb-4">
                       <p className="text-xs md:text-sm text-gray-700 font-medium">
-                        참여 영화: <span className="text-red-600 font-bold">{credit.movieCount}편</span>
+                        참여 영화: <span className="text-violet-600 font-bold">{credit.movieCount}편</span>
                       </p>
                     </div>
                     {credit.profileLink && (
@@ -193,7 +193,7 @@ export default function CreditsPage() {
                           href={credit.profileLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm text-red-600 hover:text-red-500 hover:underline font-semibold"
+                          className="text-sm text-violet-600 hover:text-violet-500 hover:underline font-semibold"
                         >
                           프로필 보기 →
                         </a>
@@ -203,7 +203,7 @@ export default function CreditsPage() {
                       <Link href={`/actors/${credit.actorId}`}>
                         <Button
                           variant="outline"
-                          className="w-full border-red-300 text-red-600 hover:bg-red-50 font-semibold"
+                          className="w-full border-violet-300 text-violet-600 hover:bg-violet-50 font-semibold"
                         >
                           배우 프로필 보기
                         </Button>
@@ -217,7 +217,7 @@ export default function CreditsPage() {
                             <Link
                               key={movie.id}
                               href={`/movies/${movie.id}`}
-                              className="block text-xs text-gray-700 hover:text-red-600 truncate font-medium"
+                              className="block text-xs text-gray-700 hover:text-violet-600 truncate font-medium"
                             >
                               • {movie.title}
                             </Link>

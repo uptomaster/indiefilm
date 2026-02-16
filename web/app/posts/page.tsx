@@ -121,7 +121,7 @@ export default function PostsPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-100 via-pink-50 to-white">
+      <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-6 md:py-12 lg:py-16">
           <div className="mx-auto max-w-3xl">
@@ -150,8 +150,8 @@ export default function PostsPage() {
             onClick={() => setSelectedType(null)}
             className={`text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5 ${
               selectedType === null
-                ? "bg-gradient-to-r from-red-600 to-pink-600 text-white shadow-md hover:shadow-lg"
-                : "border-red-300 text-red-600 hover:bg-red-50"
+                ? "bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-white shadow-md hover:shadow-lg"
+                : "border-violet-300 text-violet-600 hover:bg-violet-50"
             }`}
           >
             전체
@@ -163,8 +163,8 @@ export default function PostsPage() {
               onClick={() => setSelectedType(type.value)}
               className={`text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5 ${
                 selectedType === type.value
-                  ? "bg-yellow-600 text-black hover:bg-yellow-500"
-                  : "border-red-300 text-red-600 hover:bg-red-50"
+                  ? "bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-white hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
+                  : "border-violet-300 text-violet-600 hover:bg-violet-50"
               }`}
             >
               {type.label}
@@ -192,21 +192,21 @@ export default function PostsPage() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-gray-200">
-                  <SelectItem value="latest" className="text-gray-700 hover:bg-red-50">최신순</SelectItem>
-                  <SelectItem value="popular" className="text-gray-700 hover:bg-red-50">인기순</SelectItem>
-                  <SelectItem value="views" className="text-gray-700 hover:bg-red-50">조회순</SelectItem>
+                  <SelectItem value="latest" className="text-gray-700 hover:bg-violet-50">최신순</SelectItem>
+                  <SelectItem value="popular" className="text-gray-700 hover:bg-violet-50">인기순</SelectItem>
+                  <SelectItem value="views" className="text-gray-700 hover:bg-violet-50">조회순</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div className="space-y-4">
               {sortedPosts.map((post) => (
               <Link key={post.id} href={`/posts/${post.id}`}>
-                <Card className="border-gray-200 bg-white transition-all hover:border-red-300 hover:shadow-lg cursor-pointer shadow-sm">
+                <Card className="border-gray-200 bg-white transition-all hover:border-violet-300 hover:shadow-lg cursor-pointer shadow-sm">
                   <CardContent className="p-3 md:p-4 lg:p-6">
                     <div className="flex items-start justify-between gap-3 md:gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="mb-2 flex items-center gap-2 md:gap-3 flex-wrap">
-                          <span className="rounded-full bg-red-50 px-2 md:px-3 py-0.5 md:py-1 text-xs font-semibold text-red-600 tracking-tight">
+                          <span className="rounded-full bg-violet-50 px-2 md:px-3 py-0.5 md:py-1 text-xs font-semibold text-violet-600 tracking-tight">
                             {getPostTypeLabel(post.type)}
                           </span>
                           {post.category && (

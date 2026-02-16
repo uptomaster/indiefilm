@@ -110,7 +110,7 @@ export default function MoviesPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-100 via-pink-50 to-white">
+      <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-6 md:py-12 lg:py-16">
           <div className="mx-auto max-w-3xl text-center">
@@ -129,7 +129,7 @@ export default function MoviesPage() {
                 className={
                   selectedGenre === null
                     ? "btn-primary-gradient text-white font-semibold"
-                    : "border-red-300 text-red-600 hover:bg-red-50 font-medium"
+                    : "border-violet-300 text-violet-600 hover:bg-violet-50 font-medium"
                 }
               >
                 전체
@@ -141,8 +141,8 @@ export default function MoviesPage() {
                   onClick={() => setSelectedGenre(genre)}
                   className={
                     selectedGenre === genre
-                      ? "bg-yellow-600 text-black hover:bg-yellow-500"
-                      : "border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/10"
+                    ? "bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-white hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
+                    : "border-violet-400/50 text-violet-500 hover:bg-violet-50"
                   }
                 >
                   {getGenreLabel(genre)}
@@ -174,16 +174,16 @@ export default function MoviesPage() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-gray-200">
-                  <SelectItem value="latest" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">최신순</SelectItem>
-                  <SelectItem value="popular" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">인기순</SelectItem>
-                  <SelectItem value="rating" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">평점순</SelectItem>
+                  <SelectItem value="latest" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">최신순</SelectItem>
+                  <SelectItem value="popular" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">인기순</SelectItem>
+                  <SelectItem value="rating" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">평점순</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-3 lg:gap-4">
               {sortedMovies.map((movie) => (
                 <Link key={movie.id} href={`/movies/${movie.id}`}>
-                  <Card className="group h-full overflow-hidden border-gray-200 bg-white transition-all hover:scale-105 hover:border-red-400 hover:shadow-xl hover:shadow-red-100">
+                  <Card className="group h-full overflow-hidden border-gray-200 bg-white transition-all hover:scale-105 hover:border-violet-400 hover:shadow-xl hover:shadow-violet-100">
                     <div className="relative aspect-[2/3] overflow-hidden max-h-[200px] sm:max-h-[240px] md:max-h-[280px]">
                       {movie.thumbnailUrl ? (
                         <LazyImage
@@ -203,20 +203,20 @@ export default function MoviesPage() {
                       )}
                       <div className="film-overlay absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                       <div className="absolute right-3 top-3 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        <div className="rounded-full bg-gradient-to-r from-red-600 to-pink-600 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm shadow-lg">
+                        <div className="rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm shadow-lg">
                           보기 →
                         </div>
                       </div>
                     </div>
                     <CardContent className="p-4">
-                      <h3 className="mb-2 text-lg font-bold text-gray-900 line-clamp-1 group-hover:text-red-500 transition-colors tracking-tight">
+                      <h3 className="mb-2 text-lg font-bold text-gray-900 line-clamp-1 group-hover:text-violet-500 transition-colors tracking-tight">
                         {movie.title}
                       </h3>
                       <div className="mb-2 flex flex-wrap gap-2 text-xs">
                         <span className={`rounded-full border px-2.5 py-1 font-semibold ${getStatusColor(movie.status || "production")}`}>
                           {getStatusLabel(movie.status || "production")}
                         </span>
-                        <span className="rounded-full bg-red-500/20 px-2.5 py-1 text-red-400 font-medium">
+                        <span className="rounded-full bg-violet-500/20 px-2.5 py-1 text-violet-500 font-medium">
                           {getGenreLabel(movie.genre)}
                         </span>
                         <span className="rounded-full bg-gray-800/70 px-2.5 py-1 text-gray-300">
@@ -275,7 +275,7 @@ export default function MoviesPage() {
                 <Button
                   onClick={loadMore}
                   variant="outline"
-                  className="border-red-300 bg-white text-red-600 hover:bg-red-50 hover:text-red-700 font-medium"
+                  className="border-violet-300 bg-white text-violet-600 hover:bg-violet-50 hover:text-violet-700 font-medium"
                 >
                   더 보기
                 </Button>

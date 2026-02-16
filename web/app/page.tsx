@@ -76,8 +76,8 @@ export default function Home() {
 
       <main className="flex-1">
         {/* 히어로 섹션 */}
-        <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-100 via-pink-50 to-white">
-          <div className="film-strip absolute inset-0 opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(229, 9, 20, 0.1) 10px, rgba(229, 9, 20, 0.1) 12px)' }} />
+        <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
+          <div className="film-strip absolute inset-0 opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(99, 102, 241, 0.1) 10px, rgba(99, 102, 241, 0.1) 12px)' }} />
           <div className="container relative mx-auto px-4 py-8 md:py-16 lg:py-24">
             <div className="mx-auto max-w-4xl text-center">
               <h1 className="mb-3 md:mb-6 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight film-gold px-2">

@@ -475,7 +475,7 @@ function CommentItem({
         {isOwn && (
           <button
             onClick={onDelete}
-            className="mt-2 text-xs text-red-400 hover:text-red-300"
+            className="mt-2 text-xs text-violet-400 hover:text-violet-300"
           >
             삭제
           </button>

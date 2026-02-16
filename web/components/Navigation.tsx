@@ -68,8 +68,8 @@ export default function Navigation() {
             variant="ghost"
             className={`w-full justify-start ${
               pathname === "/search"
-                ? "bg-red-50 text-red-600 font-bold"
-                : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                ? "bg-violet-50 text-violet-600 font-bold"
+                : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
             }`}
           >
             <Search className="mr-2 h-4 w-4" />
@@ -83,14 +83,14 @@ export default function Navigation() {
               variant="ghost"
               className={`w-full justify-start relative mt-2 ${
                 pathname === "/requests"
-                  ? "bg-red-50 text-red-600 font-bold"
-                  : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                  ? "bg-violet-50 text-violet-600 font-bold"
+                  : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
               }`}
             >
               <Bell className="mr-2 h-4 w-4" />
               알림
               {unreadCount > 0 && (
-                <span className="ml-auto rounded-full bg-red-500 px-2 py-0.5 text-xs font-bold text-white">
+                <span className="ml-auto rounded-full bg-violet-500 px-2 py-0.5 text-xs font-bold text-white">
                   {unreadCount > 9 ? "9+" : unreadCount}
                 </span>
               )}
@@ -106,8 +106,8 @@ export default function Navigation() {
             variant="ghost"
             className={`w-full justify-start ${
               isActive("/") && pathname !== "/actors" && pathname !== "/movies"
-                ? "bg-red-50 text-red-600 font-bold"
-                : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                ? "bg-violet-50 text-violet-600 font-bold"
+                : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
             }`}
           >
             <Home className="mr-2 h-4 w-4" />
@@ -120,8 +120,8 @@ export default function Navigation() {
             variant="ghost"
             className={`w-full justify-start ${
               isActive("/actors")
-                ? "bg-red-50 text-red-600 font-bold"
-                : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                ? "bg-violet-50 text-violet-600 font-bold"
+                : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
             }`}
           >
             <Users className="mr-2 h-4 w-4" />
@@ -134,8 +134,8 @@ export default function Navigation() {
             variant="ghost"
             className={`w-full justify-start ${
               isActive("/movies")
-                ? "bg-red-50 text-red-600 font-bold"
-                : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                ? "bg-violet-50 text-violet-600 font-bold"
+                : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
             }`}
           >
             <Film className="mr-2 h-4 w-4" />
@@ -148,8 +148,8 @@ export default function Navigation() {
             variant="ghost"
             className={`w-full justify-start ${
               isActive("/posts")
-                ? "bg-red-50 text-red-600 font-bold"
-                : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                ? "bg-violet-50 text-violet-600 font-bold"
+                : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
             }`}
           >
             <MessageSquare className="mr-2 h-4 w-4" />
@@ -162,8 +162,8 @@ export default function Navigation() {
             variant="ghost"
             className={`w-full justify-start ${
               isActive("/credits")
-                ? "bg-red-50 text-red-600 font-bold"
-                : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                ? "bg-violet-50 text-violet-600 font-bold"
+                : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
             }`}
           >
             <CreditCard className="mr-2 h-4 w-4" />
@@ -176,8 +176,8 @@ export default function Navigation() {
             variant="ghost"
             className={`w-full justify-start ${
               isActive("/filmmakers")
-                ? "bg-red-50 text-red-600 font-bold"
-                : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                ? "bg-violet-50 text-violet-600 font-bold"
+                : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
             }`}
           >
             <Film className="mr-2 h-4 w-4" />
@@ -193,8 +193,8 @@ export default function Navigation() {
                   variant="ghost"
                   className={`w-full justify-start ${
                     isActive("/actors/me")
-                      ? "bg-red-50 text-red-600 font-bold"
-                      : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                      ? "bg-violet-50 text-violet-600 font-bold"
+                      : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                   }`}
                 >
                   <User className="mr-2 h-4 w-4" />
@@ -210,8 +210,8 @@ export default function Navigation() {
                     variant="ghost"
                     className={`w-full justify-start ${
                       isActive("/filmmakers/me")
-                        ? "bg-red-50 text-red-600 font-bold"
-                        : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                        ? "bg-violet-50 text-violet-600 font-bold"
+                        : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                     }`}
                   >
                     <User className="mr-2 h-4 w-4" />
@@ -223,8 +223,8 @@ export default function Navigation() {
                     variant="ghost"
                     className={`w-full justify-start ${
                       isActive("/movies/new")
-                        ? "bg-red-50 text-red-600 font-bold"
-                        : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                        ? "bg-violet-50 text-violet-600 font-bold"
+                        : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                     }`}
                   >
                     <Plus className="mr-2 h-4 w-4" />
@@ -240,8 +240,8 @@ export default function Navigation() {
                   variant="ghost"
                   className={`w-full justify-start ${
                     isActive("/role-select")
-                      ? "bg-red-50 text-red-600 font-bold"
-                      : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                      ? "bg-violet-50 text-violet-600 font-bold"
+                      : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                   }`}
                 >
                   <User className="mr-2 h-4 w-4" />
@@ -290,7 +290,7 @@ export default function Navigation() {
             <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
               <Button
                 variant="outline"
-                className="w-full border-red-400 text-red-500 hover:bg-red-50 font-medium"
+                className="w-full border-violet-400 text-violet-500 hover:bg-violet-50 font-medium"
               >
                 회원가입
               </Button>
@@ -316,7 +316,7 @@ export default function Navigation() {
                 <Button variant="ghost" size="sm" className="h-9 w-9 p-0">
                   <Bell className="h-5 w-5 text-gray-900" />
                   {unreadCount > 0 && (
-                    <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-red-500 flex items-center justify-center text-xs font-bold text-white">
+                    <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-violet-500 flex items-center justify-center text-xs font-bold text-white">
                       {unreadCount > 9 ? "9+" : unreadCount}
                     </span>
                   )}
@@ -346,8 +346,8 @@ export default function Navigation() {
                   variant="ghost"
                   className={`w-full justify-start ${
                     isActive("/") && pathname !== "/actors" && pathname !== "/movies"
-                      ? "bg-red-50 text-red-600 font-bold"
-                      : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                      ? "bg-violet-50 text-violet-600 font-bold"
+                      : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                   }`}
                 >
                   <Home className="mr-2 h-4 w-4" />
@@ -360,8 +360,8 @@ export default function Navigation() {
                   variant="ghost"
                   className={`w-full justify-start ${
                     pathname === "/search"
-                      ? "bg-red-50 text-red-600 font-bold"
-                      : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                      ? "bg-violet-50 text-violet-600 font-bold"
+                      : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                   }`}
                 >
                   <Search className="mr-2 h-4 w-4" />
@@ -374,8 +374,8 @@ export default function Navigation() {
                   variant="ghost"
                   className={`w-full justify-start ${
                     isActive("/actors")
-                      ? "bg-red-50 text-red-600 font-bold"
-                      : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                      ? "bg-violet-50 text-violet-600 font-bold"
+                      : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                   }`}
                 >
                   <Users className="mr-2 h-4 w-4" />
@@ -388,8 +388,8 @@ export default function Navigation() {
                   variant="ghost"
                   className={`w-full justify-start ${
                     isActive("/movies")
-                      ? "bg-red-50 text-red-600 font-bold"
-                      : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                      ? "bg-violet-50 text-violet-600 font-bold"
+                      : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                   }`}
                 >
                   <Film className="mr-2 h-4 w-4" />
@@ -402,8 +402,8 @@ export default function Navigation() {
                   variant="ghost"
                   className={`w-full justify-start ${
                     isActive("/posts")
-                      ? "bg-red-50 text-red-600 font-bold"
-                      : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                      ? "bg-violet-50 text-violet-600 font-bold"
+                      : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                   }`}
                 >
                   <MessageSquare className="mr-2 h-4 w-4" />
@@ -416,8 +416,8 @@ export default function Navigation() {
                   variant="ghost"
                   className={`w-full justify-start ${
                     isActive("/credits")
-                      ? "bg-red-50 text-red-600 font-bold"
-                      : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                      ? "bg-violet-50 text-violet-600 font-bold"
+                      : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                   }`}
                 >
                   <CreditCard className="mr-2 h-4 w-4" />
@@ -430,8 +430,8 @@ export default function Navigation() {
                   variant="ghost"
                   className={`w-full justify-start ${
                     isActive("/filmmakers")
-                      ? "bg-red-50 text-red-600 font-bold"
-                      : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                      ? "bg-violet-50 text-violet-600 font-bold"
+                      : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                   }`}
                 >
                   <Film className="mr-2 h-4 w-4" />
@@ -447,8 +447,8 @@ export default function Navigation() {
                         variant="ghost"
                         className={`w-full justify-start ${
                           isActive("/actors/me")
-                            ? "bg-red-50 text-red-600 font-bold"
-                            : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                            ? "bg-violet-50 text-violet-600 font-bold"
+                            : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                         }`}
                       >
                         <User className="mr-2 h-4 w-4" />
@@ -464,8 +464,8 @@ export default function Navigation() {
                           variant="ghost"
                           className={`w-full justify-start ${
                             isActive("/filmmakers/me")
-                              ? "bg-red-50 text-red-600 font-bold"
-                              : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                              ? "bg-violet-50 text-violet-600 font-bold"
+                              : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                           }`}
                         >
                           <User className="mr-2 h-4 w-4" />
@@ -477,8 +477,8 @@ export default function Navigation() {
                           variant="ghost"
                           className={`w-full justify-start ${
                             isActive("/movies/new")
-                              ? "bg-red-50 text-red-600 font-bold"
-                              : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                              ? "bg-violet-50 text-violet-600 font-bold"
+                              : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                           }`}
                         >
                           <Plus className="mr-2 h-4 w-4" />
@@ -494,8 +494,8 @@ export default function Navigation() {
                         variant="ghost"
                         className={`w-full justify-start ${
                           isActive("/role-select")
-                            ? "bg-red-50 text-red-600 font-bold"
-                            : "text-gray-900 hover:bg-pink-50 hover:text-red-600 font-semibold"
+                            ? "bg-violet-50 text-violet-600 font-bold"
+                            : "text-gray-900 hover:bg-indigo-50 hover:text-violet-600 font-semibold"
                         }`}
                       >
                         <User className="mr-2 h-4 w-4" />
@@ -542,7 +542,7 @@ export default function Navigation() {
                     <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
                       <Button
                         variant="outline"
-                        className="w-full border-red-400 text-red-500 hover:bg-red-50 font-medium text-sm"
+                        className="w-full border-violet-400 text-violet-500 hover:bg-violet-50 font-medium text-sm"
                       >
                         회원가입
                       </Button>

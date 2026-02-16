@@ -33,9 +33,9 @@ function ToastItem({ toast, onRemove }: ToastProps) {
       case "success":
         return <CheckCircle className="h-5 w-5 text-green-400" />;
       case "error":
-        return <AlertCircle className="h-5 w-5 text-red-400" />;
+        return <AlertCircle className="h-5 w-5 text-violet-400" />;
       case "warning":
-        return <AlertTriangle className="h-5 w-5 text-yellow-400" />;
+        return <AlertTriangle className="h-5 w-5 text-indigo-400" />;
       case "info":
         return <Info className="h-5 w-5 text-blue-400" />;
     }
@@ -46,9 +46,9 @@ function ToastItem({ toast, onRemove }: ToastProps) {
       case "success":
         return "bg-green-600/20 border-green-600/50";
       case "error":
-        return "bg-red-600/20 border-red-600/50";
+        return "bg-violet-600/20 border-violet-600/50";
       case "warning":
-        return "bg-yellow-600/20 border-yellow-600/50";
+        return "bg-indigo-600/20 border-indigo-600/50";
       case "info":
         return "bg-blue-600/20 border-blue-600/50";
     }

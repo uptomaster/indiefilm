@@ -127,7 +127,7 @@ export default function ActorProfileViewPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* 히어로 섹션 - 배경만 */}
-      <div className="relative h-[40vh] min-h-[300px] overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-100 via-pink-50 to-white">
+      <div className="relative h-[40vh] min-h-[300px] overflow-hidden border-b border-gray-200 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
         
         {/* 상단 네비게이션 */}
@@ -438,7 +438,7 @@ export default function ActorProfileViewPage() {
                     {movieRatings.map((rating) => (
                       <div
                         key={rating.id}
-                        className="rounded-lg border border-yellow-200/50 bg-white/80 p-3 shadow-sm hover:shadow-md transition-all"
+                        className="rounded-lg border border-violet-200/50 bg-white/80 p-3 shadow-sm hover:shadow-md transition-all"
                       >
                         <div className="flex items-start justify-between gap-2">
                           <div className="flex-1 min-w-0">
@@ -451,7 +451,7 @@ export default function ActorProfileViewPage() {
                               </p>
                             )}
                             {rating.isFavorite && (
-                              <span className="inline-block mt-2 text-xs text-red-600 font-semibold">⭐ 인생영화</span>
+                              <span className="inline-block mt-2 text-xs text-violet-600 font-semibold">⭐ 인생영화</span>
                             )}
                           </div>
                           <div className="flex flex-col items-end gap-1">
@@ -461,7 +461,7 @@ export default function ActorProfileViewPage() {
                                   key={i}
                                   className={`text-sm md:text-base transition-all ${
                                     i < rating.rating
-                                      ? "text-yellow-500 drop-shadow-sm"
+                                      ? "text-violet-500 drop-shadow-sm"
                                       : "text-gray-300"
                                   }`}
                                 >
@@ -477,7 +477,7 @@ export default function ActorProfileViewPage() {
                 )}
                 <Link
                   href="/movies/ratings"
-                  className="mt-4 block text-center bg-gradient-to-r from-yellow-500 to-red-500 hover:from-yellow-600 hover:to-red-600 text-white font-bold py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-[1.02]"
+                  className="mt-4 block text-center bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600 text-white font-bold py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-[1.02]"
                 >
                   영화 평가하기 →
                 </Link>

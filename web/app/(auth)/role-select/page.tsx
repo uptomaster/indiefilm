@@ -102,10 +102,10 @@ export default function RoleSelectPage() {
           <h1 className="text-5xl font-bold film-gold mb-4">ROLE SELECTION</h1>
           <p className="text-xl text-gray-300">IndieFilm Hub에서 어떤 역할로 활동하시나요?</p>
         </div>
-        <Card className="border-red-500/20 bg-[#4a3f48]/50 backdrop-blur-sm">
+        <Card className="border-violet-500/20 bg-[#4a3f48]/50 backdrop-blur-sm">
           <CardContent className="pt-6 space-y-6">
             {error && (
-              <div className="rounded-md bg-red-900/20 border border-red-600/30 p-3 text-sm text-red-300">
+              <div className="rounded-md bg-violet-900/20 border border-violet-600/30 p-3 text-sm text-violet-300">
                 {error}
               </div>
             )}
@@ -116,8 +116,8 @@ export default function RoleSelectPage() {
                 disabled={loading}
                 className={`flex flex-col items-center rounded-lg border-2 p-8 transition-all disabled:opacity-50 ${
                   selectedRole === "filmmaker"
-                    ? "border-red-500 bg-red-500/20 scale-105 cinematic-shadow"
-                    : "border-gray-700 hover:border-red-500/50 hover:bg-pink-900/20"
+                    ? "border-violet-500 bg-violet-500/20 scale-105 cinematic-shadow"
+                    : "border-gray-700 hover:border-violet-500/50 hover:bg-indigo-900/20"
                 } ${loading ? "cursor-wait" : "cursor-pointer"}`}
               >
                 <span className="text-6xl mb-4">🎬</span>
@@ -127,7 +127,7 @@ export default function RoleSelectPage() {
                 </p>
                 {selectedRole === "filmmaker" && loading && (
                   <div className="mt-4">
-                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-red-500 border-t-transparent" />
+                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-violet-500 border-t-transparent" />
                   </div>
                 )}
               </button>
@@ -137,8 +137,8 @@ export default function RoleSelectPage() {
                 disabled={loading}
                 className={`flex flex-col items-center rounded-lg border-2 p-8 transition-all disabled:opacity-50 ${
                   selectedRole === "actor"
-                    ? "border-red-500 bg-red-500/20 scale-105 cinematic-shadow"
-                    : "border-gray-700 hover:border-red-500/50 hover:bg-pink-900/20"
+                    ? "border-violet-500 bg-violet-500/20 scale-105 cinematic-shadow"
+                    : "border-gray-700 hover:border-violet-500/50 hover:bg-indigo-900/20"
                 } ${loading ? "cursor-wait" : "cursor-pointer"}`}
               >
                 <span className="text-6xl mb-4">🎭</span>
@@ -148,7 +148,7 @@ export default function RoleSelectPage() {
                 </p>
                 {selectedRole === "actor" && loading && (
                   <div className="mt-4">
-                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-red-500 border-t-transparent" />
+                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-violet-500 border-t-transparent" />
                   </div>
                 )}
               </button>
@@ -158,8 +158,8 @@ export default function RoleSelectPage() {
                 disabled={loading}
                 className={`flex flex-col items-center rounded-lg border-2 p-8 transition-all disabled:opacity-50 ${
                   selectedRole === "viewer"
-                    ? "border-red-500 bg-red-500/20 scale-105 cinematic-shadow"
-                    : "border-gray-700 hover:border-red-500/50 hover:bg-pink-900/20"
+                    ? "border-violet-500 bg-violet-500/20 scale-105 cinematic-shadow"
+                    : "border-gray-700 hover:border-violet-500/50 hover:bg-indigo-900/20"
                 } ${loading ? "cursor-wait" : "cursor-pointer"}`}
               >
                 <span className="text-6xl mb-4">👁️</span>
@@ -169,7 +169,7 @@ export default function RoleSelectPage() {
                 </p>
                 {selectedRole === "viewer" && loading && (
                   <div className="mt-4">
-                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-red-500 border-t-transparent" />
+                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-violet-500 border-t-transparent" />
                   </div>
                 )}
               </button>

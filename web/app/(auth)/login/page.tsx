@@ -67,10 +67,10 @@ export default function LoginPage() {
           <h1 className="text-4xl font-bold film-gold mb-2">LOGIN</h1>
           <p className="text-gray-300">IndieFilm Hub에 오신 것을 환영합니다</p>
         </div>
-        <Card className="border-red-500/20 bg-[#4a3f48]/50 backdrop-blur-sm">
+        <Card className="border-violet-500/20 bg-[#4a3f48]/50 backdrop-blur-sm">
           <CardContent className="pt-6 space-y-4">
             {error && (
-              <div className="rounded-md bg-red-900/20 border border-red-600/30 p-3 text-sm text-red-300">
+              <div className="rounded-md bg-violet-900/20 border border-violet-600/30 p-3 text-sm text-violet-300">
                 {error}
               </div>
             )}
@@ -86,7 +86,7 @@ export default function LoginPage() {
                   {...register("email")}
                 />
                 {errors.email && (
-                  <p className="text-sm text-red-400 font-medium">{errors.email.message}</p>
+                  <p className="text-sm text-violet-400 font-medium">{errors.email.message}</p>
                 )}
               </div>
 
@@ -99,13 +99,13 @@ export default function LoginPage() {
                   {...register("password")}
                 />
                 {errors.password && (
-                  <p className="text-sm text-red-400 font-medium">
+                  <p className="text-sm text-violet-400 font-medium">
                     {errors.password.message}
                   </p>
                 )}
               </div>
 
-              <Button type="submit" className="w-full bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-500 hover:to-pink-500" disabled={loading}>
+              <Button type="submit" className="w-full bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-white hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600" disabled={loading}>
                 {loading ? "로그인 중..." : "로그인"}
               </Button>
             </form>
@@ -124,7 +124,7 @@ export default function LoginPage() {
             <Button
               type="button"
               variant="outline"
-              className="w-full border-red-500/50 text-red-400 hover:bg-red-500/10"
+              className="w-full border-violet-500/50 text-violet-400 hover:bg-violet-500/10"
               onClick={handleGoogleSignIn}
               disabled={loading}
             >
@@ -151,7 +151,7 @@ export default function LoginPage() {
 
             <div className="text-center text-sm text-gray-400">
               계정이 없으신가요?{" "}
-              <Link href="/signup" className="text-red-400 hover:text-red-300 hover:underline">
+              <Link href="/signup" className="text-violet-400 hover:text-violet-300 hover:underline">
                 회원가입
               </Link>
             </div>

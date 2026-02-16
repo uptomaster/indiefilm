@@ -115,7 +115,7 @@ export default function ActorsPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-100 via-pink-50 to-white">
+      <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-6 md:py-12 lg:py-16">
           <div className="mx-auto max-w-3xl text-center">
@@ -132,7 +132,7 @@ export default function ActorsPage() {
                 placeholder="이름, 스킬, 경력으로 검색..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-red-500 h-9 md:h-10 text-xs md:text-sm"
+                className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-violet-500 h-9 md:h-10 text-xs md:text-sm"
               />
 
               <div className="flex flex-wrap gap-2 justify-center">
@@ -202,8 +202,8 @@ export default function ActorsPage() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-gray-200">
-                  <SelectItem value="latest" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">최신순</SelectItem>
-                  <SelectItem value="name" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">이름순</SelectItem>
+                  <SelectItem value="latest" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">최신순</SelectItem>
+                  <SelectItem value="name" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">이름순</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -233,7 +233,7 @@ export default function ActorsPage() {
                         {actor.stageName}
                       </h3>
                       <div className="mb-3 flex flex-wrap gap-2 text-sm">
-                        <span className="rounded-full bg-red-500/20 px-3 py-1 text-red-400">
+                        <span className="rounded-full bg-violet-500/20 px-3 py-1 text-violet-400">
                           {getAgeRangeLabel(actor.ageRange)}
                         </span>
                         <span className="rounded-full bg-gray-800/50 px-3 py-1 text-gray-300">
@@ -255,7 +255,7 @@ export default function ActorsPage() {
                           {actor.skills.slice(0, 3).map((skill, idx) => (
                             <span
                               key={idx}
-                              className="rounded bg-red-500/10 px-2 py-1 text-xs text-red-400"
+                              className="rounded bg-violet-500/10 px-2 py-1 text-xs text-violet-400"
                             >
                               {skill}
                             </span>
@@ -264,7 +264,7 @@ export default function ActorsPage() {
                       )}
                     </div>
                     <div className="absolute right-4 top-4 z-20">
-                      <div className="rounded-full bg-[#3a2f38]/50 px-3 py-1 text-xs text-red-400 backdrop-blur-sm">
+                      <div className="rounded-full bg-white/90 px-3 py-1 text-xs text-violet-600 backdrop-blur-sm shadow-sm">
                         프로필 보기 →
                       </div>
                     </div>
@@ -278,7 +278,7 @@ export default function ActorsPage() {
                 <Button
                   onClick={loadMore}
                   variant="outline"
-                  className="border-red-500/50 bg-[#3a2f38]/50 text-red-400 hover:bg-red-500/10 hover:text-red-300"
+                  className="border-violet-500/50 bg-white text-violet-600 hover:bg-violet-50 hover:text-violet-700"
                 >
                   더 보기
                 </Button>
