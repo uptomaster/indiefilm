@@ -420,34 +420,38 @@ export default function ActorProfileViewPage() {
               )}
 
               {/* 영화 평점 */}
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 shadow-sm">
-                <h3 className="mb-4 text-sm font-semibold text-gray-400">
-                  내 영화 평점
+              <div className="rounded-lg border border-yellow-200/50 bg-gradient-to-br from-yellow-50 via-red-50 to-pink-50 p-4 md:p-6 lg:p-8 shadow-lg">
+                <h3 className="mb-4 text-base md:text-lg font-bold text-red-600 flex items-center gap-2">
+                  <span className="text-xl">⭐</span> 내 영화 평점
                 </h3>
                 {ratingsLoading ? (
                   <div className="text-center py-4">
-                    <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-yellow-600 border-t-transparent" />
+                    <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-yellow-500 border-t-transparent" />
                   </div>
                 ) : movieRatings.length === 0 ? (
-                  <p className="text-sm text-gray-500 text-center py-4">
-                    아직 평가한 영화가 없습니다
-                  </p>
+                  <div className="text-center py-4">
+                    <div className="text-3xl mb-2">🎬</div>
+                    <p className="text-sm text-gray-600 font-medium">아직 평가한 영화가 없습니다</p>
+                  </div>
                 ) : (
                   <div className="space-y-3">
                     {movieRatings.map((rating) => (
                       <div
                         key={rating.id}
-                        className="rounded border border-gray-700/50 bg-gray-800/30 p-3"
+                        className="rounded-lg border border-yellow-200/50 bg-white/80 p-3 shadow-sm hover:shadow-md transition-all"
                       >
                         <div className="flex items-start justify-between gap-2">
                           <div className="flex-1 min-w-0">
-                            <h4 className="text-sm font-semibold text-white truncate">
+                            <h4 className="text-sm font-bold text-gray-900 truncate">
                               {rating.movieTitle || "영화 제목 없음"}
                             </h4>
                             {rating.review && (
-                              <p className="mt-1 text-xs text-gray-400 line-clamp-2">
+                              <p className="mt-2 text-xs text-gray-700 line-clamp-2 bg-white/60 rounded px-2 py-1">
                                 {rating.review}
                               </p>
+                            )}
+                            {rating.isFavorite && (
+                              <span className="inline-block mt-2 text-xs text-red-600 font-semibold">⭐ 인생영화</span>
                             )}
                           </div>
                           <div className="flex flex-col items-end gap-1">
@@ -455,19 +459,16 @@ export default function ActorProfileViewPage() {
                               {[...Array(5)].map((_, i) => (
                                 <span
                                   key={i}
-                                  className={`text-sm ${
+                                  className={`text-sm md:text-base transition-all ${
                                     i < rating.rating
-                                      ? "text-yellow-400"
-                                      : "text-gray-600"
+                                      ? "text-yellow-500 drop-shadow-sm"
+                                      : "text-gray-300"
                                   }`}
                                 >
                                   ★
                                 </span>
                               ))}
                             </div>
-                            {rating.isFavorite && (
-                              <span className="text-xs text-yellow-400">⭐ 인생영화</span>
-                            )}
                           </div>
                         </div>
                       </div>
@@ -476,7 +477,7 @@ export default function ActorProfileViewPage() {
                 )}
                 <Link
                   href="/movies/ratings"
-                  className="mt-4 block text-center text-sm text-yellow-400 hover:text-yellow-300"
+                  className="mt-4 block text-center bg-gradient-to-r from-yellow-500 to-red-500 hover:from-yellow-600 hover:to-red-600 text-white font-bold py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-[1.02]"
                 >
                   영화 평가하기 →
                 </Link>

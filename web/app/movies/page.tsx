@@ -170,13 +170,13 @@ export default function MoviesPage() {
                 총 {sortedMovies.length}개의 영화
               </div>
               <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortOption)}>
-                <SelectTrigger className="w-[140px] bg-[#4a3f48]/50 border-gray-700 text-white">
+                <SelectTrigger className="w-[140px] bg-white border-gray-300 text-gray-900 font-medium h-9 md:h-10 text-xs md:text-sm">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-[#4a3f48] border-red-500/30">
-                  <SelectItem value="latest" className="text-red-400 hover:bg-pink-900/20">최신순</SelectItem>
-                  <SelectItem value="popular" className="text-red-400 hover:bg-pink-900/20">인기순</SelectItem>
-                  <SelectItem value="rating" className="text-red-400 hover:bg-pink-900/20">평점순</SelectItem>
+                <SelectContent className="bg-white border-gray-200">
+                  <SelectItem value="latest" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">최신순</SelectItem>
+                  <SelectItem value="popular" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">인기순</SelectItem>
+                  <SelectItem value="rating" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">평점순</SelectItem>
                 </SelectContent>
               </Select>
             </div>

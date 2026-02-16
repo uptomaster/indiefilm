@@ -132,7 +132,7 @@ export default function ActorsPage() {
                 placeholder="이름, 스킬, 경력으로 검색..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-[#251a20]/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-red-500"
+                className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-red-500 h-9 md:h-10 text-xs md:text-sm"
               />
 
               <div className="flex flex-wrap gap-2 justify-center">
@@ -142,13 +142,13 @@ export default function ActorsPage() {
                     setSelectedLocation(value === "all" ? null : value)
                   }
                 >
-                  <SelectTrigger className="w-[140px] bg-[#251a20]/50 border-gray-700 text-white">
+                  <SelectTrigger className="w-[140px] bg-white border-gray-300 text-gray-900 font-medium h-9 md:h-10 text-xs md:text-sm">
                     <SelectValue placeholder="지역" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#4a3f48] border-red-500/30">
-                    <SelectItem value="all" className="text-red-400 hover:bg-pink-900/20 focus:bg-pink-900/20 cursor-pointer">전체 지역</SelectItem>
+                  <SelectContent className="bg-white border-gray-200">
+                    <SelectItem value="all" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">전체 지역</SelectItem>
                     {locations.map((loc) => (
-                      <SelectItem key={loc} value={loc} className="text-red-400 hover:bg-pink-900/20 focus:bg-pink-900/20 cursor-pointer">
+                      <SelectItem key={loc} value={loc} className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">
                         {loc}
                       </SelectItem>
                     ))}
@@ -163,13 +163,13 @@ export default function ActorsPage() {
                     )
                   }
                 >
-                  <SelectTrigger className="w-[140px] bg-[#251a20]/50 border-gray-700 text-white">
+                  <SelectTrigger className="w-[140px] bg-white border-gray-300 text-gray-900 font-medium h-9 md:h-10 text-xs md:text-sm">
                     <SelectValue placeholder="나이대" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#4a3f48] border-red-500/30">
-                    <SelectItem value="all" className="text-red-400 hover:bg-pink-900/20 focus:bg-pink-900/20 cursor-pointer">전체 나이대</SelectItem>
+                  <SelectContent className="bg-white border-gray-200">
+                    <SelectItem value="all" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">전체 나이대</SelectItem>
                     {ageRanges.map((age) => (
-                      <SelectItem key={age} value={age} className="text-red-400 hover:bg-pink-900/20 focus:bg-pink-900/20 cursor-pointer">
+                      <SelectItem key={age} value={age} className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">
                         {getAgeRangeLabel(age)}
                       </SelectItem>
                     ))}
@@ -198,12 +198,12 @@ export default function ActorsPage() {
                 총 {filteredAndSortedActors.length}명의 배우
               </div>
               <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortOption)}>
-                <SelectTrigger className="w-[140px] bg-[#4a3f48]/50 border-gray-700 text-white">
+                <SelectTrigger className="w-[140px] bg-white border-gray-300 text-gray-900 font-medium h-9 md:h-10 text-xs md:text-sm">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-[#4a3f48] border-red-500/30">
-                  <SelectItem value="latest" className="text-red-400 hover:bg-pink-900/20">최신순</SelectItem>
-                  <SelectItem value="name" className="text-red-400 hover:bg-pink-900/20">이름순</SelectItem>
+                <SelectContent className="bg-white border-gray-200">
+                  <SelectItem value="latest" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">최신순</SelectItem>
+                  <SelectItem value="name" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">이름순</SelectItem>
                 </SelectContent>
               </Select>
             </div>

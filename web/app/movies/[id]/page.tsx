@@ -418,15 +418,17 @@ export default function MovieDetailPage() {
                   <div className="inline-block h-8 w-8 animate-spin rounded-full border-2 border-red-500 border-t-transparent" />
                 </div>
               ) : allRatings.length === 0 ? (
-                <div className="rounded-lg border border-red-500/20 bg-gray-50 p-4 md:p-8 text-center">
-                  <p className="text-gray-400">아직 리뷰가 없습니다.</p>
+                <div className="rounded-lg border border-yellow-200/50 bg-gradient-to-br from-yellow-50/50 via-red-50/50 to-pink-50/50 p-6 md:p-10 text-center shadow-sm">
+                  <div className="text-4xl mb-3">⭐</div>
+                  <p className="text-gray-600 font-medium">아직 리뷰가 없습니다.</p>
+                  <p className="text-sm text-gray-500 mt-2">첫 번째 리뷰를 남겨보세요!</p>
                 </div>
               ) : (
                 <div className="space-y-4">
                   {allRatings.map((rating) => (
                     <Card
                       key={rating.id}
-                      className="border-red-500/20 bg-gray-50 hover:bg-white/70 transition-colors"
+                      className="border-yellow-200/50 bg-gradient-to-br from-white via-yellow-50/30 to-red-50/20 hover:from-white hover:via-yellow-50/50 hover:to-red-50/40 transition-all duration-200 shadow-sm hover:shadow-md"
                     >
                       <CardContent className="p-3 md:p-4 lg:p-6">
                         <div className="flex items-start gap-4">
@@ -489,8 +491,8 @@ export default function MovieDetailPage() {
                 <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold">
                   내 평점
                 </h2>
-                <Card className="border-red-500/20 bg-gray-50">
-                  <CardContent className="p-6">
+                <Card className="border-yellow-400/30 bg-gradient-to-br from-yellow-50 via-red-50 to-pink-50 shadow-lg">
+                  <CardContent className="p-4 md:p-6 lg:p-8">
                     {ratingLoading ? (
                       <div className="text-center py-4">
                         <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-red-500 border-t-transparent" />
@@ -498,33 +500,33 @@ export default function MovieDetailPage() {
                     ) : (
                       <div className="space-y-4">
                         {/* 별점 */}
-                        <div>
-                          <Label className="text-red-600 font-semibold mb-2 block">
-                            별점
+                        <div className="bg-white/60 rounded-lg p-4 border border-yellow-200/50">
+                          <Label className="text-red-600 font-bold mb-3 block text-base md:text-lg">
+                            ⭐ 별점
                           </Label>
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2 md:gap-3">
                             {[1, 2, 3, 4, 5].map((star) => (
                               <button
                                 key={star}
                                 type="button"
                                 onClick={() => setRating(star)}
-                                className={`text-3xl transition-transform hover:scale-110 ${
+                                className={`text-3xl md:text-4xl transition-all duration-200 hover:scale-125 active:scale-95 ${
                                   star <= rating
-                                    ? "text-red-600"
-                                    : "text-gray-600"
+                                    ? "text-yellow-500 drop-shadow-lg filter"
+                                    : "text-gray-300 hover:text-yellow-300"
                                 }`}
                               >
                                 ★
                               </button>
                             ))}
-                            <span className="ml-2 text-red-600 font-semibold">
+                            <span className="ml-3 md:ml-4 text-lg md:text-xl font-bold text-red-600 bg-white/80 px-3 py-1.5 rounded-lg shadow-sm">
                               {rating}점
                             </span>
                           </div>
                         </div>
 
                         {/* 리뷰 */}
-                        <div>
+                        <div className="bg-white/60 rounded-lg p-4 border border-yellow-200/50">
                           <Label htmlFor="review" className="text-red-600 font-semibold mb-2 block">
                             리뷰 (선택)
                           </Label>
@@ -608,32 +610,32 @@ export default function MovieDetailPage() {
               <div className="space-y-4 border-t border-red-500/20 pt-6">
                 {/* 평균 평점 */}
                 {averageRating > 0 && (
-                  <div className="rounded-lg bg-gradient-to-br from-yellow-600/20 to-yellow-400/10 p-4 border border-gray-200">
-                    <h3 className="mb-2 text-sm font-semibold text-gray-400">
-                      평균 평점
+                  <div className="rounded-lg border border-yellow-200/50 bg-gradient-to-br from-yellow-50 via-red-50 to-pink-50 p-4 md:p-5 shadow-lg">
+                    <h3 className="mb-3 text-sm md:text-base font-bold text-red-600 flex items-center gap-2">
+                      <span className="text-lg">⭐</span> 평균 평점
                     </h3>
-                    <div className="flex items-center gap-3">
-                      <span className="text-3xl font-bold text-red-600">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                      <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500 bg-clip-text text-transparent">
                         {averageRating.toFixed(1)}
                       </span>
                       <div className="flex items-center gap-1">
                         {[...Array(5)].map((_, i) => (
                           <span
                             key={i}
-                            className={`text-xl ${
+                            className={`text-xl md:text-2xl transition-all ${
                               i < Math.round(averageRating)
-                                ? "text-red-600"
-                                : "text-gray-600"
+                                ? "text-yellow-500 drop-shadow-lg filter"
+                                : "text-gray-300"
                             }`}
                           >
                             ★
                           </span>
                         ))}
                       </div>
+                      <p className="text-xs text-gray-600 font-medium ml-auto">
+                        총 {allRatings.length}명 평가
+                      </p>
                     </div>
-                    <p className="mt-2 text-xs text-gray-400">
-                      총 {allRatings.length}명의 평가
-                    </p>
                   </div>
                 )}
                 
