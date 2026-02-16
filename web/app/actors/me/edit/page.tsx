@@ -30,7 +30,7 @@ const actorSchema = z.object({
   ageRange: z.enum(["10s", "20s", "30s", "40s", "50plus"], {
     message: "나이대를 선택해주세요",
   }),
-  heightCm: z.preprocess(
+  heightCm: z.preprocess<number | undefined, number | undefined>(
     (val) => {
       if (val === "" || val === null || val === undefined) return undefined;
       const num = Number(val);
@@ -41,9 +41,6 @@ const actorSchema = z.object({
     })
       .min(100, "키는 100cm 이상 입력해주세요")
       .max(250, "키는 250cm 이하로 입력해주세요")
-      .refine((val) => !isNaN(val), {
-        message: "키는 숫자로 입력해주세요",
-      })
       .optional()
   ) as z.ZodOptional<z.ZodNumber>,
   bodyType: z.string().min(1, "체형을 입력해주세요"),
