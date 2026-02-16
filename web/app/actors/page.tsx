@@ -113,9 +113,9 @@ export default function ActorsPage() {
   }, [actors, searchQuery, sortBy]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1a1418] via-[#251a20] to-[#1a1418] text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#3a2f38] via-[#4a3f48] to-[#3a2f38] text-white">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-red-900/30 bg-gradient-to-b from-[#1a1418] via-[#251a20] to-[#1a1418]">
+      <div className="relative overflow-hidden border-b border-red-900/30 bg-gradient-to-b from-[#3a2f38] via-[#4a3f48] to-[#3a2f38]">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-16">
           <div className="mx-auto max-w-3xl text-center">
@@ -145,7 +145,7 @@ export default function ActorsPage() {
                   <SelectTrigger className="w-[140px] bg-[#251a20]/50 border-gray-700 text-white">
                     <SelectValue placeholder="지역" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#251a20] border-red-500/30">
+                  <SelectContent className="bg-[#4a3f48] border-red-500/30">
                     <SelectItem value="all" className="text-red-400 hover:bg-pink-900/20 focus:bg-pink-900/20 cursor-pointer">전체 지역</SelectItem>
                     {locations.map((loc) => (
                       <SelectItem key={loc} value={loc} className="text-red-400 hover:bg-pink-900/20 focus:bg-pink-900/20 cursor-pointer">
@@ -166,7 +166,7 @@ export default function ActorsPage() {
                   <SelectTrigger className="w-[140px] bg-[#251a20]/50 border-gray-700 text-white">
                     <SelectValue placeholder="나이대" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#251a20] border-red-500/30">
+                  <SelectContent className="bg-[#4a3f48] border-red-500/30">
                     <SelectItem value="all" className="text-red-400 hover:bg-pink-900/20 focus:bg-pink-900/20 cursor-pointer">전체 나이대</SelectItem>
                     {ageRanges.map((age) => (
                       <SelectItem key={age} value={age} className="text-red-400 hover:bg-pink-900/20 focus:bg-pink-900/20 cursor-pointer">
@@ -198,19 +198,19 @@ export default function ActorsPage() {
                 총 {filteredAndSortedActors.length}명의 배우
               </div>
               <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortOption)}>
-                <SelectTrigger className="w-[140px] bg-gray-900/50 border-gray-700 text-white">
+                <SelectTrigger className="w-[140px] bg-[#4a3f48]/50 border-gray-700 text-white">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-[#251a20] border-red-500/30">
+                <SelectContent className="bg-[#4a3f48] border-red-500/30">
                   <SelectItem value="latest" className="text-red-400 hover:bg-pink-900/20">최신순</SelectItem>
                   <SelectItem value="name" className="text-red-400 hover:bg-pink-900/20">이름순</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {filteredAndSortedActors.map((actor) => (
                 <Link key={actor.id} href={`/actors/${actor.id}`}>
-                  <div className="actor-card group relative h-[500px] overflow-hidden rounded-lg cinematic-shadow">
+                  <div className="actor-card group relative h-[380px] overflow-hidden rounded-lg cinematic-shadow">
                     {actor.mainPhotoUrl ? (
                       <LazyImage
                         src={actor.mainPhotoUrl}
@@ -264,7 +264,7 @@ export default function ActorsPage() {
                       )}
                     </div>
                     <div className="absolute right-4 top-4 z-20">
-                      <div className="rounded-full bg-[#1a1418]/50 px-3 py-1 text-xs text-red-400 backdrop-blur-sm">
+                      <div className="rounded-full bg-[#3a2f38]/50 px-3 py-1 text-xs text-red-400 backdrop-blur-sm">
                         프로필 보기 →
                       </div>
                     </div>
@@ -278,7 +278,7 @@ export default function ActorsPage() {
                 <Button
                   onClick={loadMore}
                   variant="outline"
-                  className="border-red-500/50 bg-[#1a1418]/50 text-red-400 hover:bg-red-500/10 hover:text-red-300"
+                  className="border-red-500/50 bg-[#3a2f38]/50 text-red-400 hover:bg-red-500/10 hover:text-red-300"
                 >
                   더 보기
                 </Button>

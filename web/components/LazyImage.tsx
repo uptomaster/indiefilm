@@ -25,7 +25,7 @@ const LazyImage = memo(function LazyImage({ src, alt, fallback, className, ...pr
           }
         });
       },
-      { rootMargin: "50px" }
+      { rootMargin: "200px" }
     );
 
     if (imgRef.current) {
@@ -71,6 +71,7 @@ const LazyImage = memo(function LazyImage({ src, alt, fallback, className, ...pr
           isLoaded ? "opacity-100" : "opacity-0"
         } ${className || ""}`}
         loading="lazy"
+        decoding="async"
         {...props}
       />
     </div>

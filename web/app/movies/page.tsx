@@ -108,9 +108,9 @@ export default function MoviesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1a1418] via-[#251a20] to-[#1a1418] text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#3a2f38] via-[#4a3f48] to-[#3a2f38] text-white">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-red-900/30 bg-gradient-to-b from-[#1a1418] via-[#251a20] to-[#1a1418]">
+      <div className="relative overflow-hidden border-b border-red-900/30 bg-gradient-to-b from-[#3a2f38] via-[#4a3f48] to-[#3a2f38]">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-16">
           <div className="mx-auto max-w-3xl text-center">
@@ -170,21 +170,21 @@ export default function MoviesPage() {
                 총 {sortedMovies.length}개의 영화
               </div>
               <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortOption)}>
-                <SelectTrigger className="w-[140px] bg-gray-900/50 border-gray-700 text-white">
+                <SelectTrigger className="w-[140px] bg-[#4a3f48]/50 border-gray-700 text-white">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-[#251a20] border-red-500/30">
+                <SelectContent className="bg-[#4a3f48] border-red-500/30">
                   <SelectItem value="latest" className="text-red-400 hover:bg-pink-900/20">최신순</SelectItem>
                   <SelectItem value="popular" className="text-red-400 hover:bg-pink-900/20">인기순</SelectItem>
                   <SelectItem value="rating" className="text-red-400 hover:bg-pink-900/20">평점순</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {sortedMovies.map((movie) => (
                 <Link key={movie.id} href={`/movies/${movie.id}`}>
-                  <Card className="group h-full overflow-hidden border-red-500/20 bg-[#251a20]/50 transition-all hover:scale-105 hover:border-red-500/40 hover:bg-[#251a20]/70 hover:shadow-2xl hover:shadow-red-500/20">
-                    <div className="relative aspect-[2/3] overflow-hidden">
+                  <Card className="group h-full overflow-hidden border-red-500/20 bg-[#4a3f48]/50 transition-all hover:scale-105 hover:border-red-500/40 hover:bg-[#4a3f48]/70 hover:shadow-2xl hover:shadow-red-500/20">
+                    <div className="relative aspect-[2/3] overflow-hidden max-h-[280px]">
                       {movie.thumbnailUrl ? (
                         <LazyImage
                           src={movie.thumbnailUrl}
@@ -275,7 +275,7 @@ export default function MoviesPage() {
                 <Button
                   onClick={loadMore}
                   variant="outline"
-                  className="border-red-500/50 bg-[#1a1418]/50 text-red-400 hover:bg-red-500/10 hover:text-red-300"
+                  className="border-red-500/50 bg-[#3a2f38]/50 text-red-400 hover:bg-red-500/10 hover:text-red-300"
                 >
                   더 보기
                 </Button>

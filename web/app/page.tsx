@@ -24,8 +24,8 @@ export default function Home() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-br from-[#1a1418] via-[#251a20] to-[#1a1418] text-white">
-      <header className="border-b border-red-900/30 bg-gradient-to-r from-[#1a1418] to-[#251a20]">
+    <div className="flex min-h-screen flex-col bg-gradient-to-br from-[#3a2f38] via-[#4a3f48] to-[#3a2f38] text-white">
+      <header className="border-b border-red-900/30 bg-gradient-to-r from-[#3a2f38] to-[#4a3f48]">
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
           <Link href="/" className="text-2xl font-bold film-gold">
             IndieFilm Hub
@@ -76,7 +76,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* 히어로 섹션 */}
-        <div className="relative overflow-hidden border-b border-red-900/30 bg-gradient-to-b from-[#1a1418] via-[#251a20] to-[#1a1418]">
+        <div className="relative overflow-hidden border-b border-red-900/30 bg-gradient-to-b from-[#3a2f38] via-[#4a3f48] to-[#3a2f38]">
           <div className="film-strip absolute inset-0 opacity-10" />
           <div className="container relative mx-auto px-4 py-24">
             <div className="mx-auto max-w-4xl text-center">

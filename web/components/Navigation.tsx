@@ -33,7 +33,7 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="fixed left-0 top-0 z-50 h-screen w-64 border-r border-red-500/20 bg-gradient-to-b from-[#1a1418] to-[#251a20]/95 backdrop-blur-sm">
+    <nav className="fixed left-0 top-0 z-50 h-screen w-64 border-r border-red-500/20 bg-gradient-to-b from-[#3a2f38] to-[#4a3f48]/95 backdrop-blur-sm">
       <div className="flex h-full flex-col">
         {/* 로고 */}
         <div className="border-b border-red-500/20 p-6">
@@ -239,7 +239,7 @@ export default function Navigation() {
         <div className="border-t border-red-500/20 p-4">
           {user ? (
             <div className="space-y-2">
-              <div className="rounded-lg bg-[#251a20]/50 p-3">
+              <div className="rounded-lg bg-[#4a3f48]/50 p-3">
                 <p className="text-sm font-medium text-white">
                   {userProfile?.displayName || user.email}
                 </p>

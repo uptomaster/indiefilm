@@ -79,13 +79,13 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1a1418] via-[#251a20] to-[#1a1418] text-white flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#3a2f38] via-[#4a3f48] to-[#3a2f38] text-white flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold film-gold mb-2">SIGN UP</h1>
           <p className="text-gray-300">IndieFilm Hub에 가입하고 시작하세요</p>
         </div>
-        <Card className="border-yellow-600/20 bg-gray-900/50 backdrop-blur-sm">
+        <Card className="border-red-500/20 bg-[#4a3f48]/50 backdrop-blur-sm">
           <CardContent className="pt-6 space-y-4">
             {error && (
               <div className="rounded-md bg-red-900/20 border border-red-600/30 p-3 text-sm text-red-300">
@@ -204,7 +204,7 @@ export default function SignupPage() {
                 <span className="w-full border-t border-gray-700" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-[#251a20]/50 px-2 text-gray-400">
+                <span className="bg-[#4a3f48]/50 px-2 text-gray-400">
                   또는
                 </span>
               </div>
