@@ -239,10 +239,10 @@ export default function MovieDetailPage() {
         
         {/* 상단 네비게이션 */}
         <div className="absolute left-0 right-0 top-0 z-20">
-          <div className="container mx-auto flex items-center justify-between px-4 py-6">
+          <div className="container mx-auto flex items-center justify-between px-4 py-3 md:py-6 gap-2">
             <Link
               href="/movies"
-              className="rounded-full bg-white/90 px-4 py-2 text-sm text-gray-900 backdrop-blur-sm transition-colors hover:bg-gray-50 border border-gray-200 shadow-sm font-semibold"
+              className="rounded-full bg-white/90 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm text-gray-900 backdrop-blur-sm transition-colors hover:bg-gray-50 border border-gray-200 shadow-sm font-semibold whitespace-nowrap"
             >
               ← 영화 목록
             </Link>
@@ -250,7 +250,7 @@ export default function MovieDetailPage() {
               <Button
                 onClick={handleApplyForRole}
                 disabled={sendingRequest}
-                className="btn-primary-gradient text-white font-semibold"
+                className="btn-primary-gradient text-white font-semibold text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 whitespace-nowrap"
               >
                 {sendingRequest ? "전송 중..." : "출연 희망하기"}
               </Button>
@@ -260,12 +260,12 @@ export default function MovieDetailPage() {
       </div>
 
       {/* 메인 콘텐츠 */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid gap-12 lg:grid-cols-3">
+      <div className="container mx-auto px-3 md:px-4 py-4 md:py-8 lg:py-12">
+        <div className="grid gap-4 md:gap-8 lg:gap-12 lg:grid-cols-3">
           {/* 좌측: 메인 정보 */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-4 md:space-y-6 lg:space-y-8">
             {/* 영화 헤더 */}
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 pb-8 border-b border-gray-200">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4 lg:gap-6 pb-4 md:pb-6 lg:pb-8 border-b border-gray-200">
               {/* 썸네일 */}
               <div className="flex-shrink-0">
                 <div className="relative h-48 w-36 md:h-56 md:w-40 rounded-lg overflow-hidden border-4 border-gray-200 shadow-2xl">
@@ -293,7 +293,7 @@ export default function MovieDetailPage() {
                     {getStatusLabel(movie.status || "production")}
                   </span>
                 </div>
-                <div className="flex flex-wrap gap-4 text-lg">
+                <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-4 text-xs md:text-sm lg:text-base">
                   <span className="text-red-600">
                     {getGenreLabel(movie.genre)}
                   </span>
@@ -328,7 +328,7 @@ export default function MovieDetailPage() {
                 <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold">
                   SYNOPSIS
                 </h2>
-                <p className="text-lg leading-relaxed text-gray-800">
+                <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-800">
                   {movie.logline}
                 </p>
               </section>
@@ -340,7 +340,7 @@ export default function MovieDetailPage() {
                 <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold">
                   DESCRIPTION
                 </h2>
-                <p className="whitespace-pre-wrap text-lg leading-relaxed text-gray-800">
+                <p className="whitespace-pre-wrap text-sm md:text-base lg:text-lg leading-relaxed text-gray-800">
                   {movie.description}
                 </p>
               </section>
@@ -418,7 +418,7 @@ export default function MovieDetailPage() {
                   <div className="inline-block h-8 w-8 animate-spin rounded-full border-2 border-red-500 border-t-transparent" />
                 </div>
               ) : allRatings.length === 0 ? (
-                <div className="rounded-lg border border-red-500/20 bg-gray-50 p-8 text-center">
+                <div className="rounded-lg border border-red-500/20 bg-gray-50 p-4 md:p-8 text-center">
                   <p className="text-gray-400">아직 리뷰가 없습니다.</p>
                 </div>
               ) : (
@@ -428,7 +428,7 @@ export default function MovieDetailPage() {
                       key={rating.id}
                       className="border-red-500/20 bg-gray-50 hover:bg-white/70 transition-colors"
                     >
-                      <CardContent className="p-6">
+                      <CardContent className="p-3 md:p-4 lg:p-6">
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0">
                             <div className="h-12 w-12 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-400 flex items-center justify-center text-black font-bold text-lg">
@@ -555,7 +555,7 @@ export default function MovieDetailPage() {
                         <Button
                           onClick={handleSaveRating}
                           disabled={savingRating}
-                          className="w-full bg-red-600 text-black hover:bg-yellow-500"
+                          className="w-full bg-red-600 text-white hover:bg-red-500 py-2.5 md:py-2 font-semibold text-sm md:text-base"
                         >
                           {savingRating ? "저장 중..." : userRating ? "평점 수정" : "평점 저장"}
                         </Button>
@@ -575,12 +575,12 @@ export default function MovieDetailPage() {
 
           {/* 우측: 사이드바 */}
           <div className="lg:col-span-1">
-            <div className="sticky top-8 space-y-6 rounded-lg border border-red-500/20 bg-gray-50 p-6 backdrop-blur-sm">
+            <div className="lg:sticky lg:top-4 md:top-8 space-y-3 md:space-y-4 lg:space-y-6 rounded-lg border border-red-500/20 bg-gray-50 p-3 md:p-4 lg:p-6 backdrop-blur-sm">
               {userProfile?.role === "actor" && movie.status !== "completed" ? (
                 <Button
                   onClick={handleApplyForRole}
                   disabled={sendingRequest}
-                  className="w-full bg-red-600 text-black hover:bg-yellow-500"
+                          className="w-full bg-red-600 text-white hover:bg-red-500 py-2.5 md:py-2 font-semibold text-sm md:text-base"
                 >
                   {sendingRequest ? "전송 중..." : "출연 희망하기"}
                 </Button>
@@ -597,7 +597,7 @@ export default function MovieDetailPage() {
                   <Link href="/login">
                     <Button
                       variant="outline"
-                      className="w-full border-red-500/50 text-red-600 hover:bg-red-600/10"
+                      className="w-full border-red-500/50 text-red-600 hover:bg-red-600/10 py-2.5 md:py-2 font-semibold text-sm md:text-base"
                     >
                       로그인
                     </Button>

@@ -91,10 +91,10 @@ export default function FilmmakerDetailPage() {
       </div>
 
       {/* 메인 콘텐츠 */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid gap-12 lg:grid-cols-3">
+      <div className="container mx-auto px-4 py-6 md:py-12">
+        <div className="grid gap-6 md:gap-12 lg:grid-cols-3">
           {/* 좌측: 메인 정보 */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-6 md:space-y-8">
             {/* 프로필 헤더 */}
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6 pb-8 border-b border-gray-200">
               {/* 프로필 사진 */}
@@ -147,10 +147,10 @@ export default function FilmmakerDetailPage() {
             {/* 소개 */}
             {filmmaker.bio && (
               <section>
-                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
+                <h2 className="mb-2 md:mb-3 lg:mb-4 border-b border-gray-200 pb-1.5 md:pb-2 text-lg md:text-xl lg:text-2xl font-bold film-gold tracking-tight">
                   PROFILE
                 </h2>
-                <p className="whitespace-pre-wrap text-lg leading-snug text-gray-800 font-medium tracking-tight">
+                <p className="whitespace-pre-wrap text-sm md:text-base lg:text-lg leading-snug text-gray-800 font-medium tracking-tight">
                   {filmmaker.bio}
                 </p>
               </section>
@@ -159,7 +159,7 @@ export default function FilmmakerDetailPage() {
             {/* 전문 분야 */}
             {filmmaker.specialties && filmmaker.specialties.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
+                <h2 className="mb-2 md:mb-3 lg:mb-4 border-b border-gray-200 pb-1.5 md:pb-2 text-lg md:text-xl lg:text-2xl font-bold film-gold tracking-tight">
                   SPECIALTIES
                 </h2>
                 <div className="flex flex-wrap gap-2">
@@ -178,7 +178,7 @@ export default function FilmmakerDetailPage() {
             {/* 경력 */}
             {filmmaker.experience && filmmaker.experience.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
+                <h2 className="mb-2 md:mb-3 lg:mb-4 border-b border-gray-200 pb-1.5 md:pb-2 text-lg md:text-xl lg:text-2xl font-bold film-gold tracking-tight">
                   EXPERIENCE
                 </h2>
                 <ul className="space-y-3">
@@ -198,7 +198,7 @@ export default function FilmmakerDetailPage() {
             {/* 보유 장비 */}
             {filmmaker.equipment && filmmaker.equipment.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
+                <h2 className="mb-2 md:mb-3 lg:mb-4 border-b border-gray-200 pb-1.5 md:pb-2 text-lg md:text-xl lg:text-2xl font-bold film-gold tracking-tight">
                   EQUIPMENT
                 </h2>
                 <div className="flex flex-wrap gap-2">
@@ -219,7 +219,7 @@ export default function FilmmakerDetailPage() {
               filmmaker.teamMembers &&
               filmmaker.teamMembers.length > 0 && (
                 <section>
-                  <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
+                  <h2 className="mb-2 md:mb-3 lg:mb-4 border-b border-gray-200 pb-1.5 md:pb-2 text-lg md:text-xl lg:text-2xl font-bold film-gold tracking-tight">
                     TEAM MEMBERS
                   </h2>
                   <div className="space-y-3">
@@ -255,7 +255,7 @@ export default function FilmmakerDetailPage() {
             {/* 제작 영화 */}
             {movies.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
+                <h2 className="mb-2 md:mb-3 lg:mb-4 border-b border-gray-200 pb-1.5 md:pb-2 text-lg md:text-xl lg:text-2xl font-bold film-gold tracking-tight">
                   FILMOGRAPHY
                 </h2>
                 <div className="grid gap-6 md:grid-cols-2">
@@ -291,7 +291,7 @@ export default function FilmmakerDetailPage() {
             {/* 갤러리 */}
             {filmmaker.gallery && filmmaker.gallery.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold tracking-tight">
+                <h2 className="mb-2 md:mb-3 lg:mb-4 border-b border-gray-200 pb-1.5 md:pb-2 text-lg md:text-xl lg:text-2xl font-bold film-gold tracking-tight">
                   GALLERY
                 </h2>
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3">

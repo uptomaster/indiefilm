@@ -108,12 +108,12 @@ export default function CreditsPage() {
       {/* 히어로 섹션 */}
       <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-100 via-pink-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
-        <div className="container relative mx-auto px-4 py-16">
+        <div className="container relative mx-auto px-4 py-6 md:py-12 lg:py-16">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-4 text-5xl font-bold tracking-tight film-gold">
+            <h1 className="mb-2 md:mb-4 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight film-gold px-2">
               CREDITS
             </h1>
-            <p className="text-xl text-gray-800 font-semibold tracking-tight">
+            <p className="text-base md:text-lg lg:text-xl text-gray-800 font-semibold tracking-tight px-2">
               영화 제작에 참여한 모든 제작진을 만나보세요
             </p>
           </div>
@@ -121,7 +121,7 @@ export default function CreditsPage() {
       </div>
 
       {/* 필터 섹션 */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-4 md:py-6 lg:py-8">
         <div className="mb-6 flex flex-col gap-4 md:flex-row">
           <div className="flex-1">
             <Input
@@ -169,21 +169,21 @@ export default function CreditsPage() {
             <div className="mb-6 text-sm text-gray-700 font-semibold tracking-tight">
               총 {filteredCredits.length}명의 제작진
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {filteredCredits.map((credit, index) => (
                 <Card
                   key={`${credit.name}_${credit.role}_${index}`}
                   className="border-gray-200 bg-white hover:border-red-300 hover:shadow-lg transition-all shadow-sm"
                 >
-                  <CardHeader>
-                    <CardTitle className="text-xl film-gold font-bold tracking-tight">
+                  <CardHeader className="p-3 md:p-4 lg:p-6 pb-2 md:pb-3">
+                    <CardTitle className="text-base md:text-lg lg:text-xl film-gold font-bold tracking-tight">
                       {credit.name}
                     </CardTitle>
-                    <p className="text-sm text-red-600 font-semibold">{credit.role}</p>
+                    <p className="text-xs md:text-sm text-red-600 font-semibold">{credit.role}</p>
                   </CardHeader>
-                  <CardContent>
-                    <div className="mb-4">
-                      <p className="text-sm text-gray-700 font-medium">
+                  <CardContent className="p-3 md:p-4 lg:p-6 pt-0">
+                    <div className="mb-3 md:mb-4">
+                      <p className="text-xs md:text-sm text-gray-700 font-medium">
                         참여 영화: <span className="text-red-600 font-bold">{credit.movieCount}편</span>
                       </p>
                     </div>

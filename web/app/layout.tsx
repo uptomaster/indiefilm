@@ -33,7 +33,7 @@ export default function RootLayout({
         <ErrorBoundary>
           <ToastProvider>
             <Navigation />
-            <div className="ml-64">
+            <div className="pt-[60px] md:pt-0 md:ml-64">
               {children}
             </div>
           </ToastProvider>

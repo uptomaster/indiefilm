@@ -97,22 +97,22 @@ export default function FilmmakerProfileViewPage() {
         
         {/* 상단 네비게이션 */}
         <div className="absolute left-0 right-0 top-0 z-20">
-          <div className="container mx-auto flex items-center justify-between px-4 py-6">
+          <div className="container mx-auto flex items-center justify-between px-4 py-3 md:py-6 gap-2">
             <Link
               href="/filmmakers"
-              className="rounded-full bg-white/90 px-4 py-2 text-sm text-gray-700 backdrop-blur-sm transition-colors hover:bg-gray-50 border border-gray-200 shadow-sm"
+              className="rounded-full bg-white/90 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm text-gray-900 backdrop-blur-sm transition-colors hover:bg-gray-50 border border-gray-200 shadow-sm font-semibold whitespace-nowrap"
             >
               ← 제작자 목록
             </Link>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <Link href="/requests">
                 <Button
                   variant="outline"
-                  className="relative border-red-400 text-red-500 hover:bg-red-50"
+                  className="relative border-red-400 text-red-500 hover:bg-red-50 text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5"
                 >
                   요청 확인
                   {unreadCount > 0 && (
-                    <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-gray-900">
+                    <span className="absolute -right-1 -top-1 flex h-4 w-4 md:h-5 md:w-5 items-center justify-center rounded-full bg-red-600 text-[10px] md:text-xs font-bold text-white">
                       {unreadCount > 9 ? "9+" : unreadCount}
                     </span>
                   )}
@@ -120,7 +120,7 @@ export default function FilmmakerProfileViewPage() {
               </Link>
               <Button
                 onClick={() => router.push("/filmmakers/me/edit")}
-                className="btn-primary-gradient text-gray-900 font-semibold"
+                className="btn-primary-gradient text-white font-semibold text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 whitespace-nowrap"
               >
                 프로필 수정
               </Button>
@@ -130,8 +130,8 @@ export default function FilmmakerProfileViewPage() {
       </div>
 
       {/* 메인 콘텐츠 */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid gap-12 lg:grid-cols-3">
+      <div className="container mx-auto px-4 py-6 md:py-12">
+        <div className="grid gap-6 md:gap-12 lg:grid-cols-3">
           {/* 좌측: 메인 정보 */}
           <div className="lg:col-span-2 space-y-8">
             {/* 프로필 헤더 */}
@@ -189,7 +189,7 @@ export default function FilmmakerProfileViewPage() {
                 <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold">
                   PROFILE
                 </h2>
-                <p className="whitespace-pre-wrap text-lg leading-relaxed text-gray-700">
+                <p className="whitespace-pre-wrap text-sm md:text-base lg:text-lg leading-relaxed text-gray-700">
                   {filmmaker.bio}
                 </p>
               </section>

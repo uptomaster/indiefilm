@@ -112,12 +112,12 @@ export default function MoviesPage() {
       {/* 히어로 섹션 */}
       <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-100 via-pink-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
-        <div className="container relative mx-auto px-4 py-16">
+        <div className="container relative mx-auto px-4 py-6 md:py-12 lg:py-16">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-4 text-5xl font-bold tracking-tight film-gold">
+            <h1 className="mb-2 md:mb-4 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight film-gold px-2">
               MOVIES
             </h1>
-            <p className="mb-8 text-xl text-gray-700 font-medium tracking-tight">
+            <p className="mb-4 md:mb-8 text-base md:text-lg lg:text-xl text-gray-700 font-medium tracking-tight px-2">
               인디 영화 제작자들의 작품을 감상하세요
             </p>
 
@@ -154,7 +154,7 @@ export default function MoviesPage() {
       </div>
 
       {/* 영화 목록 */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-4 md:py-8 lg:py-12">
         {loading && movies.length === 0 ? (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {Array.from({ length: 8 }).map((_, i) => (
@@ -180,11 +180,11 @@ export default function MoviesPage() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-3 lg:gap-4">
               {sortedMovies.map((movie) => (
                 <Link key={movie.id} href={`/movies/${movie.id}`}>
                   <Card className="group h-full overflow-hidden border-gray-200 bg-white transition-all hover:scale-105 hover:border-red-400 hover:shadow-xl hover:shadow-red-100">
-                    <div className="relative aspect-[2/3] overflow-hidden max-h-[280px]">
+                    <div className="relative aspect-[2/3] overflow-hidden max-h-[200px] sm:max-h-[240px] md:max-h-[280px]">
                       {movie.thumbnailUrl ? (
                         <LazyImage
                           src={movie.thumbnailUrl}

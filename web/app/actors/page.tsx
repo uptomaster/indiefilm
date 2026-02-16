@@ -117,12 +117,12 @@ export default function ActorsPage() {
       {/* 히어로 섹션 */}
       <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-100 via-pink-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
-        <div className="container relative mx-auto px-4 py-16">
+        <div className="container relative mx-auto px-4 py-6 md:py-12 lg:py-16">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-4 text-5xl font-bold tracking-tight film-gold">
+            <h1 className="mb-2 md:mb-4 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight film-gold px-2">
               CASTING
             </h1>
-            <p className="mb-8 text-xl text-gray-300">
+            <p className="mb-4 md:mb-8 text-base md:text-lg lg:text-xl text-gray-800 font-semibold px-2">
               당신의 다음 작품을 위한 완벽한 배우를 찾아보세요
             </p>
 
@@ -182,7 +182,7 @@ export default function ActorsPage() {
       </div>
 
       {/* 배우 목록 */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-4 md:py-8 lg:py-12">
         {loading && actors.length === 0 ? (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 6 }).map((_, i) => (
@@ -207,10 +207,10 @@ export default function ActorsPage() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-3 lg:gap-4">
               {filteredAndSortedActors.map((actor) => (
                 <Link key={actor.id} href={`/actors/${actor.id}`}>
-                  <div className="actor-card group relative h-[380px] overflow-hidden rounded-lg cinematic-shadow">
+                  <div className="actor-card group relative h-[280px] sm:h-[320px] md:h-[360px] lg:h-[380px] overflow-hidden rounded-lg cinematic-shadow">
                     {actor.mainPhotoUrl ? (
                       <LazyImage
                         src={actor.mainPhotoUrl}

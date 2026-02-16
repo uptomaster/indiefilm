@@ -123,36 +123,36 @@ export default function PostsPage() {
       {/* 히어로 섹션 */}
       <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-pink-100 via-pink-50 to-white">
         <div className="film-strip absolute inset-0 opacity-10" />
-        <div className="container relative mx-auto px-4 py-16">
+        <div className="container relative mx-auto px-4 py-6 md:py-12 lg:py-16">
           <div className="mx-auto max-w-3xl">
-            <h1 className="mb-4 text-5xl font-bold tracking-tight film-gold">
+            <h1 className="mb-2 md:mb-4 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight film-gold px-2">
               COMMUNITY
             </h1>
-            <p className="mb-8 text-xl text-gray-700 font-medium tracking-tight">
+            <p className="mb-4 md:mb-8 text-base md:text-lg lg:text-xl text-gray-700 font-medium tracking-tight px-2">
               구인공고, 배우 구직, 협업 정보를 공유하세요
             </p>
             {user && (
-              <Link href="/posts/new">
-                <Button className="btn-primary-gradient text-white font-semibold">
-                  글 작성하기
-                </Button>
-              </Link>
+            <Link href="/posts/new">
+              <Button className="btn-primary-gradient text-white font-semibold px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 text-xs md:text-sm lg:text-base w-full sm:w-auto">
+                글 작성하기
+              </Button>
+            </Link>
             )}
           </div>
         </div>
       </div>
 
       {/* 필터 */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="mb-6 flex flex-wrap gap-2">
+      <div className="container mx-auto px-4 py-4 md:py-6 lg:py-8">
+        <div className="mb-4 md:mb-6 flex flex-wrap gap-1.5 md:gap-2">
           <Button
             variant={selectedType === null ? "default" : "outline"}
             onClick={() => setSelectedType(null)}
-            className={
+            className={`text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5 ${
               selectedType === null
                 ? "bg-gradient-to-r from-red-600 to-pink-600 text-white shadow-md hover:shadow-lg"
                 : "border-red-300 text-red-600 hover:bg-red-50"
-            }
+            }`}
           >
             전체
           </Button>
@@ -161,11 +161,11 @@ export default function PostsPage() {
               key={type.value}
               variant={selectedType === type.value ? "default" : "outline"}
               onClick={() => setSelectedType(type.value)}
-              className={
+              className={`text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5 ${
                 selectedType === type.value
                   ? "bg-yellow-600 text-black hover:bg-yellow-500"
                   : "border-red-300 text-red-600 hover:bg-red-50"
-              }
+              }`}
             >
               {type.label}
             </Button>
@@ -202,31 +202,31 @@ export default function PostsPage() {
               {sortedPosts.map((post) => (
               <Link key={post.id} href={`/posts/${post.id}`}>
                 <Card className="border-gray-200 bg-white transition-all hover:border-red-300 hover:shadow-lg cursor-pointer shadow-sm">
-                  <CardContent className="p-6">
-                    <div className="flex items-start justify-between gap-4">
+                  <CardContent className="p-3 md:p-4 lg:p-6">
+                    <div className="flex items-start justify-between gap-3 md:gap-4">
                       <div className="flex-1 min-w-0">
-                        <div className="mb-2 flex items-center gap-3">
-                          <span className="rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600 tracking-tight">
+                        <div className="mb-2 flex items-center gap-2 md:gap-3 flex-wrap">
+                          <span className="rounded-full bg-red-50 px-2 md:px-3 py-0.5 md:py-1 text-xs font-semibold text-red-600 tracking-tight">
                             {getPostTypeLabel(post.type)}
                           </span>
                           {post.category && (
-                            <span className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-700 tracking-tight">
+                            <span className="rounded-full bg-gray-100 px-2 md:px-3 py-0.5 md:py-1 text-xs text-gray-700 tracking-tight">
                               {getCategoryLabel(post.category)}
                             </span>
                           )}
                           {post.location && (
-                            <span className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-700 tracking-tight">
+                            <span className="rounded-full bg-gray-100 px-2 md:px-3 py-0.5 md:py-1 text-xs text-gray-700 tracking-tight">
                               {post.location}
                             </span>
                           )}
                         </div>
-                        <h3 className="mb-2 text-xl font-bold text-gray-900 line-clamp-1 tracking-tight">
+                        <h3 className="mb-2 text-base md:text-lg lg:text-xl font-bold text-gray-900 line-clamp-1 tracking-tight">
                           {post.title}
                         </h3>
-                        <p className="mb-3 line-clamp-2 text-gray-600 leading-snug tracking-tight">
+                        <p className="mb-3 line-clamp-2 text-xs md:text-sm lg:text-base text-gray-600 leading-snug tracking-tight">
                           {post.content}
                         </p>
-                        <div className="flex items-center gap-4 text-sm text-gray-500 tracking-tight">
+                        <div className="flex items-center gap-2 md:gap-4 text-xs md:text-sm text-gray-500 tracking-tight">
                           <span>{userNames[post.authorId] || "작성자"}</span>
                           <span>•</span>
                           <span>
