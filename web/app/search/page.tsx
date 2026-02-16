@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { searchAll, SearchResult } from "@/lib/search";
@@ -13,7 +13,7 @@ import { Search, Film, Users, User, MessageSquare } from "lucide-react";
 import { useToastContext } from "@/components/ToastProvider";
 import { MovieCardSkeleton, ActorCardSkeleton, PostCardSkeleton } from "@/components/SkeletonLoader";
 
-export default function SearchPage() {
+function SearchContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { error: showError } = useToastContext();
@@ -301,5 +301,20 @@ export default function SearchPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <Search className="mx-auto h-16 w-16 text-gray-600 mb-4 animate-pulse" />
+          <p className="text-xl text-gray-400">로딩 중...</p>
+        </div>
+      </div>
+    }>
+      <SearchContent />
+    </Suspense>
   );
 }
