@@ -30,9 +30,9 @@ const actorSchema = z.object({
   ageRange: z.enum(["10s", "20s", "30s", "40s", "50plus"], {
     message: "나이대를 선택해주세요",
   }),
-  heightCm: z.preprocess<number | undefined, number | undefined>(
+  heightCm: z.preprocess(
     (val) => {
-      if (val === "" || val === null || val === undefined) return undefined;
+      if (val === "" || val == null || val === undefined) return undefined;
       const num = Number(val);
       return isNaN(num) ? undefined : num;
     },
@@ -111,6 +111,7 @@ export default function ActorProfileEditPage() {
       gallery: [],
       demoPlatform: undefined,
       mbti: "",
+      heightCm: undefined,
       traits: {
         acting: 50,
         appearance: 50,
