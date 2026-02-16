@@ -99,7 +99,7 @@ export default function FilmmakerProfileEditPage() {
     remove: removeSpecialty,
   } = useFieldArray({
     control,
-    name: "specialties",
+    name: "specialties" as any,
   });
 
   const {
@@ -108,7 +108,7 @@ export default function FilmmakerProfileEditPage() {
     remove: removeEquipment,
   } = useFieldArray({
     control,
-    name: "equipment",
+    name: "equipment" as any,
   });
 
   const {
@@ -117,7 +117,7 @@ export default function FilmmakerProfileEditPage() {
     remove: removeExperience,
   } = useFieldArray({
     control,
-    name: "experience",
+    name: "experience" as any,
   });
 
   const {
@@ -126,7 +126,7 @@ export default function FilmmakerProfileEditPage() {
     remove: removeTeamMember,
   } = useFieldArray({
     control,
-    name: "teamMembers",
+    name: "teamMembers" as any,
   });
 
   const filmmakerType = watch("type");
