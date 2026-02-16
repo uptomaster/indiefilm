@@ -33,9 +33,9 @@ export default function Home() {
           <nav className="flex items-center gap-4">
             {user ? (
               <>
-                <Link href="/movies" className="hover:text-red-500 transition-colors text-gray-700">영화</Link>
-                <Link href="/actors" className="hover:text-red-500 transition-colors text-gray-700">배우</Link>
-                <Link href="/posts" className="hover:text-red-500 transition-colors text-gray-700">커뮤니티</Link>
+                <Link href="/movies" className="hover:text-violet-500 transition-colors text-gray-700">영화</Link>
+                <Link href="/actors" className="hover:text-violet-500 transition-colors text-gray-700">배우</Link>
+                <Link href="/posts" className="hover:text-violet-500 transition-colors text-gray-700">커뮤니티</Link>
                 {userProfile?.role === "filmmaker" && (
                   <Link href="/movies/new">
                     <Button size="sm" className="btn-primary-gradient text-white font-semibold">영화 업로드</Button>
@@ -43,7 +43,7 @@ export default function Home() {
                 )}
                 {userProfile?.role === "viewer" && (
                   <Link href="/movies">
-                    <Button size="sm" variant="outline" className="border-red-300 text-red-600 hover:bg-red-50 font-medium">영화 보기</Button>
+                    <Button size="sm" variant="outline" className="border-violet-300 text-violet-600 hover:bg-violet-50 font-medium">영화 보기</Button>
                   </Link>
                 )}
                 {userProfile?.role === "actor" && (
@@ -53,7 +53,7 @@ export default function Home() {
                 )}
                 {(userProfile?.role === "actor" || userProfile?.role === "filmmaker") && (
                   <Link href="/requests">
-                    <Button size="sm" variant="outline" className="border-red-300 text-red-600 hover:bg-red-50 font-medium">요청</Button>
+                    <Button size="sm" variant="outline" className="border-violet-300 text-violet-600 hover:bg-violet-50 font-medium">요청</Button>
                   </Link>
                 )}
                 <Button variant="outline" size="sm" onClick={handleLogout} className="border-gray-300 text-gray-700 hover:bg-gray-100 font-medium">
@@ -77,7 +77,7 @@ export default function Home() {
       <main className="flex-1">
         {/* 히어로 섹션 */}
         <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
-          <div className="film-strip absolute inset-0 opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(99, 102, 241, 0.1) 10px, rgba(99, 102, 241, 0.1) 12px)' }} />
+          <div className="film-strip absolute inset-0 opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(99, 102, 241, 0.3) 10px, rgba(99, 102, 241, 0.3) 12px)' }} />
           <div className="container relative mx-auto px-4 py-8 md:py-16 lg:py-24">
             <div className="mx-auto max-w-4xl text-center">
               <h1 className="mb-3 md:mb-6 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight film-gold px-2">
@@ -100,7 +100,7 @@ export default function Home() {
                     </Button>
                   </Link>
                   <Link href="/movies" className="w-full sm:w-auto">
-                    <Button size="lg" variant="outline" className="w-full sm:w-auto border-red-300 text-red-600 hover:bg-red-50 px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-medium">
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto border-violet-300 text-violet-600 hover:bg-violet-50 px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-medium">
                       영화 둘러보기
                     </Button>
                   </Link>
@@ -126,12 +126,12 @@ export default function Home() {
                       </Link>
                     )}
                     <Link href="/movies" className="w-full sm:w-auto">
-                      <Button size="lg" variant="outline" className="w-full sm:w-auto border-red-300 text-red-600 hover:bg-red-50 px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-medium">
+                      <Button size="lg" variant="outline" className="w-full sm:w-auto border-violet-300 text-violet-600 hover:bg-violet-50 px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-medium">
                         영화 둘러보기
                       </Button>
                     </Link>
                     <Link href="/actors" className="w-full sm:w-auto">
-                      <Button size="lg" variant="outline" className="w-full sm:w-auto border-red-300 text-red-600 hover:bg-red-50 px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-medium">
+                      <Button size="lg" variant="outline" className="w-full sm:w-auto border-violet-300 text-violet-600 hover:bg-violet-50 px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-medium">
                         배우 찾기
                       </Button>
                     </Link>

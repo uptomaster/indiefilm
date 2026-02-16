@@ -233,7 +233,7 @@ export default function MoviesPage() {
                         <div className="mb-2 flex items-center gap-3 text-xs">
                           {movie.averageRating > 0 && (
                             <div className="flex items-center gap-1">
-                              <span className="text-red-400 font-semibold">
+                              <span className="text-violet-400 font-semibold">
                                 {movie.averageRating.toFixed(1)}
                               </span>
                               <div className="flex items-center gap-0.5">
@@ -242,7 +242,7 @@ export default function MoviesPage() {
                                     key={i}
                                     className={`text-xs ${
                                       i < Math.round(movie.averageRating)
-                                        ? "text-red-400"
+                                        ? "text-violet-400"
                                         : "text-gray-600"
                                     }`}
                                   >

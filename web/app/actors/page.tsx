@@ -146,9 +146,9 @@ export default function ActorsPage() {
                     <SelectValue placeholder="지역" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-gray-200">
-                    <SelectItem value="all" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">전체 지역</SelectItem>
+                    <SelectItem value="all" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">전체 지역</SelectItem>
                     {locations.map((loc) => (
-                      <SelectItem key={loc} value={loc} className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">
+                      <SelectItem key={loc} value={loc} className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">
                         {loc}
                       </SelectItem>
                     ))}
@@ -167,9 +167,9 @@ export default function ActorsPage() {
                     <SelectValue placeholder="나이대" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-gray-200">
-                    <SelectItem value="all" className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">전체 나이대</SelectItem>
+                    <SelectItem value="all" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">전체 나이대</SelectItem>
                     {ageRanges.map((age) => (
-                      <SelectItem key={age} value={age} className="text-gray-900 hover:bg-red-50 focus:bg-red-50 cursor-pointer font-medium">
+                      <SelectItem key={age} value={age} className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">
                         {getAgeRangeLabel(age)}
                       </SelectItem>
                     ))}

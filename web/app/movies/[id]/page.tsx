@@ -358,7 +358,7 @@ export default function MovieDetailPage() {
                       key={index}
                       className="flex items-start gap-3 border-l-2 border-gray-200 pl-4"
                     >
-                      <span className="font-semibold text-red-600 min-w-[80px]">
+                      <span className="font-semibold text-violet-600 min-w-[80px]">
                         {credit.role}
                       </span>
                       <span className="text-gray-800">{credit.name}</span>
@@ -393,7 +393,7 @@ export default function MovieDetailPage() {
                 </h2>
                 {averageRating > 0 && (
                   <div className="flex items-center gap-2">
-                    <span className="text-lg font-semibold text-red-600">
+                    <span className="text-lg font-semibold text-violet-600">
                       {averageRating.toFixed(1)}
                     </span>
                     <div className="flex items-center gap-1">
@@ -402,7 +402,7 @@ export default function MovieDetailPage() {
                           key={i}
                           className={`text-xl ${
                             i < Math.round(averageRating)
-                              ? "text-red-600"
+                              ? "text-violet-600"
                               : "text-gray-600"
                           }`}
                         >
@@ -607,7 +607,7 @@ export default function MovieDetailPage() {
                 </div>
               ) : null}
 
-              <div className="space-y-4 border-t border-red-500/20 pt-6">
+              <div className="space-y-4 border-t border-violet-500/20 pt-6">
                 {/* 평균 평점 */}
                 {averageRating > 0 && (
                   <div className="rounded-lg border border-violet-200/50 bg-gradient-to-br from-indigo-50 via-violet-50 to-purple-50 p-4 md:p-5 shadow-lg">
