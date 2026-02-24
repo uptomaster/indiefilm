@@ -80,7 +80,7 @@ export default function Navigation() {
           <li key={href}>
             <Link
               href={href}
-              className={`text-xs tracking-[0.15em] uppercase no-underline transition-colors duration-300 ${
+              className={`text-sm md:text-base font-semibold tracking-[0.12em] uppercase no-underline transition-colors duration-300 ${
                 isActive(href) ? "text-[#e8a020]" : "text-[#8a807a] hover:text-[#e8a020]"
               }`}
             >
@@ -105,7 +105,7 @@ export default function Navigation() {
           >
             <Bell className="w-4 h-4" />
             {unreadCount > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] rounded-full bg-[#e8a020] flex items-center justify-center text-[10px] font-bold text-[#0a0805]">
+              <span className="absolute -top-0.5 -right-0.5 min-w-[20px] h-[20px] rounded-full bg-[#e8a020] flex items-center justify-center text-xs font-bold text-[#0a0805]">
                 {unreadCount > 9 ? "9+" : unreadCount}
               </span>
             )}
@@ -124,13 +124,13 @@ export default function Navigation() {
               <>
                 <Link
                   href={userProfile?.role === "actor" ? "/actors/me" : userProfile?.role === "filmmaker" ? "/filmmakers/me" : userProfile?.role === "venue" ? "/venues/me" : "/"}
-                  className="text-[11px] tracking-[0.15em] uppercase px-5 py-2 border border-[#5a5248] text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020] transition-all"
+                  className="text-sm font-semibold tracking-[0.12em] uppercase px-5 py-2 border border-[#5a5248] text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020] transition-all"
                 >
                   내 공간
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="text-[11px] tracking-[0.15em] uppercase px-5 py-2 border border-[#5a5248] text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020] transition-all bg-transparent cursor-pointer"
+                  className="text-sm font-semibold tracking-[0.12em] uppercase px-5 py-2 border border-[#5a5248] text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020] transition-all bg-transparent cursor-pointer"
                 >
                   로그아웃
                 </button>
@@ -139,13 +139,13 @@ export default function Navigation() {
               <>
                 <Link
                   href="/login"
-                  className="text-[11px] tracking-[0.15em] uppercase px-5 py-2 border border-[#5a5248] text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020] transition-all"
+                  className="text-sm font-semibold tracking-[0.12em] uppercase px-5 py-2 border border-[#5a5248] text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020] transition-all"
                 >
                   로그인
                 </Link>
                 <Link
                   href="/signup"
-                  className="text-[11px] tracking-[0.15em] uppercase px-5 py-2 bg-[#e8a020] text-[#0a0805] font-medium hover:bg-[#f0b030] transition-all"
+                  className="text-sm font-semibold tracking-[0.12em] uppercase px-5 py-2 bg-[#e8a020] text-[#0a0805] hover:bg-[#f0b030] transition-all"
                 >
                   가입하기
                 </Link>
@@ -164,35 +164,35 @@ export default function Navigation() {
                 key={href}
                 href={href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`py-3 text-sm tracking-wider uppercase ${
+                className={`py-3 text-base font-semibold tracking-wider uppercase ${
                   isActive(href) ? "text-[#e8a020]" : "text-[#8a807a]"
                 }`}
               >
                 {label}
               </Link>
             ))}
-            <Link href="/search" onClick={() => setIsMobileMenuOpen(false)} className="py-3 text-sm tracking-wider text-[#8a807a] flex items-center gap-2">
+            <Link href="/search" onClick={() => setIsMobileMenuOpen(false)} className="py-3 text-base font-semibold tracking-wider text-[#8a807a] flex items-center gap-2">
               <Search className="w-4 h-4" /> 검색
             </Link>
             <hr className="border-[#5a5248]/30 my-2" />
             {user ? (
               <>
-                <Link href="/requests" onClick={() => setIsMobileMenuOpen(false)} className="py-3 text-sm text-[#8a807a] flex items-center gap-2">
+                <Link href="/requests" onClick={() => setIsMobileMenuOpen(false)} className="py-3 text-base font-semibold text-[#8a807a] flex items-center gap-2">
                   <Bell className="w-4 h-4" /> 알림 {unreadCount > 0 && `(${unreadCount})`}
                 </Link>
-                <Link href={userProfile?.role === "actor" ? "/actors/me" : userProfile?.role === "filmmaker" ? "/filmmakers/me" : userProfile?.role === "venue" ? "/venues/me" : "/"} onClick={() => setIsMobileMenuOpen(false)} className="py-3 text-sm text-[#8a807a]">
+                <Link href={userProfile?.role === "actor" ? "/actors/me" : userProfile?.role === "filmmaker" ? "/filmmakers/me" : userProfile?.role === "venue" ? "/venues/me" : "/"} onClick={() => setIsMobileMenuOpen(false)} className="py-3 text-base font-semibold text-[#8a807a]">
                   내 공간
                 </Link>
-                <button onClick={() => { handleLogout(); setIsMobileMenuOpen(false); }} className="py-3 text-sm text-[#8a807a] text-left">
+                <button onClick={() => { handleLogout(); setIsMobileMenuOpen(false); }} className="py-3 text-base font-semibold text-[#8a807a] text-left w-full">
                   로그아웃
                 </button>
               </>
             ) : (
               <>
-                <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="py-3 text-sm text-[#8a807a]">
+                <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="py-3 text-base font-semibold text-[#8a807a]">
                   로그인
                 </Link>
-                <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)} className="py-3 text-sm text-[#e8a020] font-medium">
+                <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)} className="py-3 text-base font-semibold text-[#e8a020]">
                   가입하기
                 </Link>
               </>

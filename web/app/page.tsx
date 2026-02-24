@@ -148,7 +148,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-[700px]">
-          <div className="flex items-center gap-3 mb-5 text-[11px] tracking-[0.25em] uppercase text-[#e8a020]">
+          <div className="flex items-center gap-3 mb-5 text-sm font-semibold tracking-[0.25em] uppercase text-[#e8a020]">
             <span className="w-[30px] h-px bg-[#e8a020]" />
             독립영화 플랫폼
           </div>
@@ -163,19 +163,19 @@ export default function Home() {
           <div className="flex gap-4 flex-wrap mb-10">
             <Link
               href="/signup"
-              className="px-8 py-3.5 bg-[#e8a020] text-[#0a0805] text-xs tracking-[0.15em] uppercase font-medium hover:bg-[#f0b030] hover:-translate-y-px transition-all"
+              className="px-8 py-3.5 bg-[#e8a020] text-[#0a0805] text-sm tracking-[0.15em] uppercase font-medium hover:bg-[#f0b030] hover:-translate-y-px transition-all"
             >
               지금 시작하기
             </Link>
             <button
               onClick={scrollTo("films")}
-              className="px-8 py-3.5 border border-[rgba(240,232,216,0.3)] text-[#f0e8d8] text-xs tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-all bg-transparent cursor-pointer"
+              className="px-8 py-3.5 border border-[rgba(240,232,216,0.3)] text-[#f0e8d8] text-sm tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-all bg-transparent cursor-pointer"
             >
               작품 보기
             </button>
           </div>
           <div className="flex gap-0 max-w-[700px]">
-            <select className="flex-[0_0_120px] bg-[#181410] border border-[#5a5248] border-r-0 text-[#8a807a] px-4 py-3 text-xs outline-none">
+            <select className="flex-[0_0_120px] bg-[#181410] border border-[#5a5248] border-r-0 text-[#8a807a] px-4 py-3 text-sm outline-none">
               <option>전체</option>
               <option>배우 찾기</option>
               <option>구인 공고</option>
@@ -189,7 +189,7 @@ export default function Home() {
             />
             <Link
               href="/search"
-              className="px-7 py-3 bg-[#e8a020] text-[#0a0805] text-xs tracking-[0.15em] uppercase font-medium hover:bg-[#f0b030] transition-colors"
+              className="px-7 py-3 bg-[#e8a020] text-[#0a0805] text-sm tracking-[0.15em] uppercase font-medium hover:bg-[#f0b030] transition-colors"
             >
               검색
             </Link>
@@ -199,15 +199,15 @@ export default function Home() {
         <div className="absolute right-[140px] bottom-20 hidden xl:flex flex-col gap-6 text-right z-10">
           <div>
             <div className="font-display text-[36px] text-[#e8a020] leading-none">{actors.length > 0 ? actors.length * 200 : 1240}</div>
-            <div className="text-[10px] tracking-[0.15em] uppercase text-[#5a5248]">등록 배우</div>
+            <div className="text-sm font-semibold tracking-[0.15em] uppercase text-[#5a5248]">등록 배우</div>
           </div>
           <div>
             <div className="font-display text-[36px] text-[#e8a020] leading-none">{movies.length > 0 ? movies.length * 76 : 380}</div>
-            <div className="text-[10px] tracking-[0.15em] uppercase text-[#5a5248]">상영 작품</div>
+            <div className="text-sm font-semibold tracking-[0.15em] uppercase text-[#5a5248]">상영 작품</div>
           </div>
           <div>
             <div className="font-display text-[36px] text-[#e8a020] leading-none">{venues.length > 0 ? venues.length * 104 : 520}</div>
-            <div className="text-[10px] tracking-[0.15em] uppercase text-[#5a5248]">대여 장소</div>
+            <div className="text-sm font-semibold tracking-[0.15em] uppercase text-[#5a5248]">대여 장소</div>
           </div>
         </div>
       </section>
@@ -218,7 +218,7 @@ export default function Home() {
           <div className="font-display text-[80px] leading-none text-[#1a1510] [-webkit-text-stroke:1px_var(--indie-gray)]">01</div>
           <div>
             <div className="font-serif text-[28px] font-light text-[#faf6f0]">나는 누구인가요?</div>
-            <div className="text-xs tracking-[0.15em] text-[#5a5248] uppercase mt-1">가입 후 맞춤 경험이 제공됩니다</div>
+            <div className="text-sm font-medium tracking-[0.15em] text-[#5a5248] uppercase mt-1">가입 후 맞춤 경험이 제공됩니다</div>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#5a5248]">
@@ -248,7 +248,7 @@ export default function Home() {
           <div className="font-display text-[80px] leading-none text-[#1a1510] [-webkit-text-stroke:1px_var(--indie-gray)]">02</div>
           <div>
             <div className="font-serif text-[28px] font-light text-[#faf6f0]">최근 상영작</div>
-            <div className="text-xs tracking-[0.15em] text-[#5a5248] uppercase mt-1">인디씬의 새로운 목소리들</div>
+            <div className="text-sm font-medium tracking-[0.15em] text-[#5a5248] uppercase mt-1">인디씬의 새로운 목소리들</div>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0.5 mt-14 [grid-template-rows:auto_auto]">
@@ -270,12 +270,12 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-black/85 to-transparent translate-y-5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <div className="text-[10px] tracking-[0.15em] uppercase text-[#e8a020]">{GENRE_LABEL[sortedMovies[0].genre] || sortedMovies[0].genre} · 2024</div>
+                    <div className="text-sm tracking-[0.15em] uppercase text-[#e8a020]">{GENRE_LABEL[sortedMovies[0].genre] || sortedMovies[0].genre} · 2024</div>
                     <div className="font-serif text-[18px] md:text-[22px] text-[#faf6f0] mt-2">{sortedMovies[0].title}</div>
-                    <div className="text-[11px] text-[#8a807a] mt-1">상영시간 {sortedMovies[0].runtimeMinutes || "—"}분</div>
+                    <div className="text-sm text-[#8a807a] mt-1">상영시간 {sortedMovies[0].runtimeMinutes || "—"}분</div>
                   </div>
                   <div className="absolute bottom-5 left-6">
-                    <div className="text-[10px] tracking-[0.15em] uppercase text-[#e8a020]">{GENRE_LABEL[sortedMovies[0].genre] || sortedMovies[0].genre} · 2024</div>
+                    <div className="text-sm tracking-[0.15em] uppercase text-[#e8a020]">{GENRE_LABEL[sortedMovies[0].genre] || sortedMovies[0].genre} · 2024</div>
                     <div className="font-serif text-base md:text-[18px] text-[#faf6f0] mt-1 group-hover:opacity-0 transition-opacity">{sortedMovies[0].title}</div>
                   </div>
                 </div>
@@ -295,12 +295,12 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/85 to-transparent translate-y-5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                      <div className="text-[10px] tracking-[0.15em] uppercase text-[#e8a020]">{GENRE_LABEL[movie.genre] || movie.genre} · 2024</div>
+                      <div className="text-sm tracking-[0.15em] uppercase text-[#e8a020]">{GENRE_LABEL[movie.genre] || movie.genre} · 2024</div>
                       <div className="font-serif text-base text-[#faf6f0] mt-1">{movie.title}</div>
-                      <div className="text-[10px] text-[#5a5248] mt-2">상영시간 {movie.runtimeMinutes || "—"}분</div>
+                      <div className="text-sm text-[#5a5248] mt-2">상영시간 {movie.runtimeMinutes || "—"}분</div>
                     </div>
                     <div className="absolute bottom-5 left-6">
-                      <div className="text-[10px] tracking-[0.15em] uppercase text-[#e8a020]">{GENRE_LABEL[movie.genre] || movie.genre}</div>
+                      <div className="text-sm tracking-[0.15em] uppercase text-[#e8a020]">{GENRE_LABEL[movie.genre] || movie.genre}</div>
                       <div className="font-serif text-base text-[#faf6f0] mt-1 group-hover:opacity-0 transition-opacity">{movie.title}</div>
                     </div>
                   </div>
@@ -312,7 +312,7 @@ export default function Home() {
               <p className="text-[#8a807a] mb-4">{loadError}</p>
               <button
                 onClick={loadData}
-                className="px-6 py-2.5 border border-[#e8a020] text-[#e8a020] text-xs tracking-[0.15em] uppercase hover:bg-[#e8a020]/10 transition-colors"
+                className="px-6 py-2.5 border border-[#e8a020] text-[#e8a020] text-sm tracking-[0.15em] uppercase hover:bg-[#e8a020]/10 transition-colors"
               >
                 새로고침
               </button>
@@ -322,7 +322,7 @@ export default function Home() {
           )}
         </div>
         <div className="mt-10">
-          <Link href="/movies" className="inline-block px-6 py-2.5 border border-[rgba(240,232,216,0.3)] text-[11px] tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-colors">
+          <Link href="/movies" className="inline-block px-6 py-2.5 border border-[rgba(240,232,216,0.3)] text-sm tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-colors">
             전체 작품 보기 →
           </Link>
         </div>
@@ -334,7 +334,7 @@ export default function Home() {
           <div className="font-display text-[80px] leading-none text-[#1a1510] [-webkit-text-stroke:1px_var(--indie-gray)]">03</div>
           <div>
             <div className="font-serif text-[28px] font-light text-[#faf6f0]">캐스팅 & 배우</div>
-            <div className="text-xs tracking-[0.15em] text-[#5a5248] uppercase mt-1">오디션 공고와 프로필 배우들</div>
+            <div className="text-sm font-medium tracking-[0.15em] text-[#5a5248] uppercase mt-1">오디션 공고와 프로필 배우들</div>
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 mt-14">
@@ -353,16 +353,16 @@ export default function Home() {
                     <span className="font-display text-sm text-[#5a5248] w-6">{String(i + 1).padStart(2, "0")}</span>
                     <div>
                       <div className="font-serif text-base font-normal text-[#faf6f0] group-hover:text-[#e8a020] transition-colors mb-1">{post.title}</div>
-                      <div className="text-[11px] text-[#8a807a] tracking-wider">{post.location || "—"} · {post.requirements?.join(", ") || "—"}</div>
+                      <div className="text-sm text-[#8a807a] tracking-wider">{post.location || "—"} · {post.requirements?.join(", ") || "—"}</div>
                     </div>
-                    <span className="text-[10px] tracking-wider px-2.5 py-1 border border-[#5a5248] text-[#8a807a] uppercase">모집중</span>
+                    <span className="text-sm tracking-wider px-2.5 py-1 border border-[#5a5248] text-[#8a807a] uppercase">모집중</span>
                   </Link>
                 ))
               ) : (
                 <div className="py-10 text-[#8a807a]">등록된 공고가 없습니다.</div>
               )}
             </div>
-            <Link href="/posts?type=casting_call" className="inline-block mt-7 px-6 py-2.5 border border-[rgba(240,232,216,0.3)] text-[11px] tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-colors">
+            <Link href="/posts?type=casting_call" className="inline-block mt-7 px-6 py-2.5 border border-[rgba(240,232,216,0.3)] text-sm tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-colors">
               전체 공고 보기 →
             </Link>
           </div>
@@ -385,7 +385,7 @@ export default function Home() {
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 bg-gradient-to-t from-black/90 to-transparent">
                       <div className="font-serif text-[13px] text-[#faf6f0]">{actor.stageName}</div>
-                      <div className="text-[10px] text-[#8a807a] tracking-wider">{actor.ageRange || "—"} · {actor.location || "—"}</div>
+                      <div className="text-sm text-[#8a807a] tracking-wider">{actor.ageRange || "—"} · {actor.location || "—"}</div>
                     </div>
                     {i % 2 === 0 && <div className="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-[#40c060]" />}
                   </Link>
@@ -395,7 +395,7 @@ export default function Home() {
               )}
             </div>
             <div className="mt-5 text-right">
-              <Link href="/actors" className="inline-block px-6 py-2.5 border border-[rgba(240,232,216,0.3)] text-[11px] tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-colors">
+              <Link href="/actors" className="inline-block px-6 py-2.5 border border-[rgba(240,232,216,0.3)] text-sm tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-colors">
                 배우 전체 보기 →
               </Link>
             </div>
@@ -409,7 +409,7 @@ export default function Home() {
           <div className="font-display text-[80px] leading-none text-[#1a1510] [-webkit-text-stroke:1px_var(--indie-gray)]">04</div>
           <div>
             <div className="font-serif text-[28px] font-light text-[#faf6f0]">촬영 장소 대여</div>
-            <div className="text-xs tracking-[0.15em] text-[#5a5248] uppercase mt-1">당신의 작품에 어울리는 공간을 찾으세요</div>
+            <div className="text-sm font-medium tracking-[0.15em] text-[#5a5248] uppercase mt-1">당신의 작품에 어울리는 공간을 찾으세요</div>
           </div>
         </div>
         <div className="flex gap-5 mt-14 overflow-x-auto pb-5 scrollbar-thin">
@@ -428,7 +428,7 @@ export default function Home() {
                     background: `linear-gradient(135deg, ${["#1a1010", "#101520", "#151510", "#101818", "#181010"][i % 5]} 0%, #201010 100%)`,
                   }}
                 >
-                  <div className="absolute top-3 left-3 bg-[#0a0805]/80 border border-[#5a5248] px-2.5 py-1 text-[10px] tracking-wider text-[#8a807a] uppercase">
+                  <div className="absolute top-3 left-3 bg-[#0a0805]/80 border border-[#5a5248] px-2.5 py-1 text-sm tracking-wider text-[#8a807a] uppercase">
                     {venue.location}
                   </div>
                   <div className="absolute bottom-3 right-3 text-[#e8a020] font-display text-[18px] tracking-wider">
@@ -436,7 +436,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="font-serif text-base font-normal text-[#faf6f0] mb-1.5 group-hover:text-[#e8a020] transition-colors">{venue.name}</div>
-                <div className="text-[11px] text-[#8a807a] flex gap-4">
+                <div className="text-sm text-[#8a807a] flex gap-4">
                   {venue.area && <span>{venue.area}㎡</span>}
                   {venue.hasParking && <span>주차 가능</span>}
                   {venue.availableHours && <span>{venue.availableHours}</span>}
@@ -455,7 +455,7 @@ export default function Home() {
           <div className="font-display text-[80px] leading-none text-[#1a1510] [-webkit-text-stroke:1px_var(--indie-gray)]">05</div>
           <div>
             <div className="font-serif text-[28px] font-light text-[#faf6f0]">커뮤니티</div>
-            <div className="text-xs tracking-[0.15em] text-[#5a5248] uppercase mt-1">인디씬의 이야기가 흐르는 곳</div>
+            <div className="text-sm font-medium tracking-[0.15em] text-[#5a5248] uppercase mt-1">인디씬의 이야기가 흐르는 곳</div>
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-14">
@@ -483,17 +483,17 @@ export default function Home() {
                         {icon}
                       </div>
                       <div className="min-w-0">
-                        <div className="text-xs font-medium text-[#f0e8d8] mb-1 flex items-center gap-2 flex-wrap">
+                        <div className="text-sm font-medium text-[#f0e8d8] mb-1 flex items-center gap-2 flex-wrap">
                           {authorNames[post.authorId] || "—"}
                           <span className={`text-[9px] px-1.5 py-0.5 tracking-wider uppercase border ${badgeClass}`}>
                             {badgeLabel}
                           </span>
                         </div>
                         <div className="text-[13px] text-[#8a807a] leading-relaxed line-clamp-2 group-hover:text-[#b0a898]">{post.title ? `[${post.title}] ` : ""}{post.content}</div>
-                        <div className="text-[10px] text-[#5a5248] tracking-wider mt-1">{timeStr}</div>
+                        <div className="text-sm font-medium text-[#5a5248] tracking-wider mt-1">{timeStr}</div>
                       </div>
                       <div className="flex items-center gap-3 flex-shrink-0">
-                        <span className="text-xs text-[#5a5248]">조회 {post.views || 0}</span>
+                        <span className="text-sm font-medium text-[#5a5248]">조회 {post.views || 0}</span>
                       </div>
                     </Link>
                   );
@@ -502,7 +502,7 @@ export default function Home() {
                 <div className="py-12 text-center text-[#8a807a]">아직 커뮤니티 글이 없습니다.</div>
               )}
             </div>
-            <Link href="/posts" className="inline-block mt-6 px-6 py-2.5 border border-[rgba(240,232,216,0.3)] text-[11px] tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-colors">
+            <Link href="/posts" className="inline-block mt-6 px-6 py-2.5 border border-[rgba(240,232,216,0.3)] text-sm tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-colors">
               커뮤니티 전체 보기 →
             </Link>
           </div>
@@ -511,7 +511,7 @@ export default function Home() {
               <div className="font-display text-[18px] tracking-[0.15em] text-[#e8a020] mb-5">인기 태그</div>
               <div className="flex flex-wrap gap-2">
                 {["#단편드라마", "#오디션", "#로케이션", "#신인감독", "#다큐멘터리", "#스릴러", "#인디씬"].map((tag) => (
-                  <Link key={tag} href={`/search?q=${tag}`} className="text-[11px] px-3 py-1.5 bg-[#e8a020]/10 border border-[#e8a020]/20 text-[#a06c10] hover:bg-[#e8a020]/20 hover:text-[#e8a020] transition-all tracking-wider">
+                  <Link key={tag} href={`/search?q=${tag}`} className="text-sm px-3 py-1.5 bg-[#e8a020]/10 border border-[#e8a020]/20 text-[#a06c10] hover:bg-[#e8a020]/20 hover:text-[#e8a020] transition-all tracking-wider">
                     {tag}
                   </Link>
                 ))}
@@ -522,11 +522,11 @@ export default function Home() {
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3 cursor-pointer group">
                   <div className="w-1 h-1 rounded-full bg-[#e8a020] mt-1.5 flex-shrink-0" />
-                  <div className="text-xs text-[#8a807a] leading-relaxed group-hover:text-[#f0e8d8]">제8회 인디필름 어워즈 출품작 접수가 시작됩니다.</div>
+                  <div className="text-sm text-[#8a807a] leading-relaxed group-hover:text-[#f0e8d8]">제8회 인디필름 어워즈 출품작 접수가 시작됩니다.</div>
                 </div>
                 <div className="flex gap-3 cursor-pointer group">
                   <div className="w-1 h-1 rounded-full bg-[#e8a020] mt-1.5 flex-shrink-0" />
-                  <div className="text-xs text-[#8a807a] leading-relaxed group-hover:text-[#f0e8d8]">장소 대여 예약 시스템이 새롭게 업데이트 되었습니다.</div>
+                  <div className="text-sm text-[#8a807a] leading-relaxed group-hover:text-[#f0e8d8]">장소 대여 예약 시스템이 새롭게 업데이트 되었습니다.</div>
                 </div>
               </div>
             </div>
@@ -541,16 +541,16 @@ export default function Home() {
             <Link href="/" className="font-display text-2xl tracking-[0.15em] text-[#e8a020] no-underline inline-block mb-4">
               INDIE<span className="text-[#faf6f0]">FILM</span>
             </Link>
-            <p className="text-xs leading-[1.8] text-[#5a5248] max-w-[280px]">
+            <p className="text-sm font-medium leading-[1.8] text-[#5a5248] max-w-[280px]">
               독립영화의 배우, 제작진, 관객, 장소가 한 곳에서 만나는 플랫폼. 인디씬의 모든 연결을 지원합니다.
             </p>
           </div>
           <div>
-            <div className="text-[10px] tracking-[0.25em] uppercase text-[#e8a020] mb-5">플랫폼</div>
+            <div className="text-sm font-semibold tracking-[0.25em] uppercase text-[#e8a020] mb-5">플랫폼</div>
             <ul className="flex flex-col gap-2.5 list-none">
               {["작품 보기", "캐스팅 공고", "배우 검색", "장소 대여", "커뮤니티"].map((label, i) => (
                 <li key={i}>
-                  <Link href={["/movies", "/posts", "/actors", "/venues", "/posts"][i]} className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8] transition-colors">
+                  <Link href={["/movies", "/posts", "/actors", "/venues", "/posts"][i]} className="text-sm font-medium text-[#5a5248] no-underline hover:text-[#f0e8d8] transition-colors">
                     {label}
                   </Link>
                 </li>
@@ -558,28 +558,28 @@ export default function Home() {
             </ul>
           </div>
           <div>
-            <div className="text-[10px] tracking-[0.25em] uppercase text-[#e8a020] mb-5">정보</div>
+            <div className="text-sm font-semibold tracking-[0.25em] uppercase text-[#e8a020] mb-5">정보</div>
             <ul className="flex flex-col gap-2.5 list-none">
-              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">소개</Link></li>
-              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">공지사항</Link></li>
-              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">이용약관</Link></li>
-              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">문의하기</Link></li>
+              <li><Link href="#" className="text-sm text-[#5a5248] no-underline hover:text-[#f0e8d8]">소개</Link></li>
+              <li><Link href="#" className="text-sm text-[#5a5248] no-underline hover:text-[#f0e8d8]">공지사항</Link></li>
+              <li><Link href="#" className="text-sm text-[#5a5248] no-underline hover:text-[#f0e8d8]">이용약관</Link></li>
+              <li><Link href="#" className="text-sm text-[#5a5248] no-underline hover:text-[#f0e8d8]">문의하기</Link></li>
             </ul>
           </div>
           <div>
-            <div className="text-[10px] tracking-[0.25em] uppercase text-[#e8a020] mb-5">리소스</div>
+            <div className="text-sm font-semibold tracking-[0.25em] uppercase text-[#e8a020] mb-5">리소스</div>
             <ul className="flex flex-col gap-2.5 list-none">
-              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">인디영화 가이드</Link></li>
-              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">오디션 준비법</Link></li>
-              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">촬영 체크리스트</Link></li>
+              <li><Link href="#" className="text-sm text-[#5a5248] no-underline hover:text-[#f0e8d8]">인디영화 가이드</Link></li>
+              <li><Link href="#" className="text-sm text-[#5a5248] no-underline hover:text-[#f0e8d8]">오디션 준비법</Link></li>
+              <li><Link href="#" className="text-sm text-[#5a5248] no-underline hover:text-[#f0e8d8]">촬영 체크리스트</Link></li>
             </ul>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-[#5a5248]/15">
-          <div className="text-[11px] text-[#5a5248] tracking-wider">© 2025 인디필름. All rights reserved.</div>
+          <div className="text-sm text-[#5a5248] tracking-wider">© 2025 인디필름. All rights reserved.</div>
           <div className="flex gap-5">
-            <Link href="#" className="text-[11px] tracking-wider text-[#5a5248] no-underline uppercase hover:text-[#e8a020] transition-colors">Instagram</Link>
-            <Link href="#" className="text-[11px] tracking-wider text-[#5a5248] no-underline uppercase hover:text-[#e8a020] transition-colors">Youtube</Link>
+            <Link href="#" className="text-sm font-medium tracking-wider text-[#5a5248] no-underline uppercase hover:text-[#e8a020] transition-colors">Instagram</Link>
+            <Link href="#" className="text-sm font-medium tracking-wider text-[#5a5248] no-underline uppercase hover:text-[#e8a020] transition-colors">Youtube</Link>
           </div>
         </div>
       </footer>

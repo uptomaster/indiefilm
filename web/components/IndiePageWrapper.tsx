@@ -24,7 +24,7 @@ export function IndiePageWrapper({ children, title, subtitle, sectionNum }: Indi
               <div>
                 <h1 className="font-serif text-2xl md:text-3xl lg:text-4xl font-light text-[#faf6f0]">{title}</h1>
                 {subtitle && (
-                  <div className="text-xs md:text-sm tracking-[0.15em] text-[#5a5248] uppercase mt-1">{subtitle}</div>
+                  <div className="text-sm md:text-base font-medium tracking-[0.15em] text-[#5a5248] uppercase mt-1">{subtitle}</div>
                 )}
               </div>
             </div>
