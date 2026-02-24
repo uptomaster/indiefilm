@@ -162,7 +162,7 @@ export default function RequestDetailPage() {
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
             <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
-            <p className="mt-4 text-[#8a807a]">로딩 중...</p>
+            <p className="mt-4 text-[#b8a898]">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -174,7 +174,7 @@ export default function RequestDetailPage() {
       <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <p className="mb-4 text-xl text-[#8a807a]">요청을 찾을 수 없습니다.</p>
+            <p className="mb-4 text-xl text-[#b8a898]">요청을 찾을 수 없습니다.</p>
             <Link href="/requests">
               <Button className="btn-primary-gradient">
                 요청 목록으로
@@ -204,7 +204,7 @@ export default function RequestDetailPage() {
     const colors: Record<RequestStatus, string> = {
       pending: "bg-[#e8a020]/20 text-[#e8a020]",
       accepted: "bg-green-600/20 text-green-400",
-      rejected: "bg-[#5a5248]/40 text-[#8a807a]",
+      rejected: "bg-[#e8a020]/25 text-[#b8a898]",
     };
     return colors[status];
   };
@@ -233,23 +233,23 @@ export default function RequestDetailPage() {
       <div className="mx-auto max-w-4xl">
         <div className="grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-1">
-            <Card className="border-[#5a5248]/30 bg-[#100e0a]">
+            <Card className="border-[#e8a020]/30 bg-[#100e0a]">
                 <CardContent className="p-6">
-                  <h3 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-lg font-bold film-gold">
+                  <h3 className="mb-4 border-b border-[#e8a020]/30 pb-2 text-lg font-bold film-gold">
                     요청 정보
                   </h3>
                   <div className="space-y-4 text-sm">
                     <div>
-                      <p className="text-[#8a807a]">요청자</p>
+                      <p className="text-[#b8a898]">요청자</p>
                       <p className="text-[#faf6f0]">{fromUserName}</p>
                     </div>
                     <div>
-                      <p className="text-[#8a807a]">받는 사람</p>
+                      <p className="text-[#b8a898]">받는 사람</p>
                       <p className="text-[#faf6f0]">{toUserName}</p>
                     </div>
                     {request.movieId && (
                       <div>
-                        <p className="text-[#8a807a]">영화</p>
+                        <p className="text-[#b8a898]">영화</p>
                         <Link
                           href={`/movies/${request.movieId}`}
                           className="text-[#e8a020] hover:text-[#e8a020]/80 hover:underline"
@@ -260,7 +260,7 @@ export default function RequestDetailPage() {
                     )}
                     {request.actorId && (
                       <div>
-                        <p className="text-[#8a807a]">배우</p>
+                        <p className="text-[#b8a898]">배우</p>
                         <Link
                           href={`/actors/${request.actorId}`}
                           className="text-[#e8a020] hover:text-[#e8a020]/80 hover:underline"
@@ -270,11 +270,11 @@ export default function RequestDetailPage() {
                       </div>
                     )}
                     <div>
-                      <p className="text-[#8a807a]">메시지</p>
+                      <p className="text-[#b8a898]">메시지</p>
                       <p className="mt-1 text-[#faf6f0]">{request.message}</p>
                     </div>
                     <div>
-                      <p className="text-[#8a807a]">요청 날짜</p>
+                      <p className="text-[#b8a898]">요청 날짜</p>
                       <p className="text-[#faf6f0]">
                         {request.createdAt?.toDate
                           ? new Date(
@@ -295,7 +295,7 @@ export default function RequestDetailPage() {
                         <Button
                           onClick={() => handleUpdateStatus("rejected")}
                           variant="outline"
-                          className="flex-1 border-[#5a5248] text-[#8a807a] hover:bg-[#181410]"
+                          className="flex-1 border-[#e8a020]/35 text-[#b8a898] hover:bg-[#0d0b08]"
                         >
                           거절
                         </Button>
@@ -312,8 +312,8 @@ export default function RequestDetailPage() {
                           요청이 수락되어 프로젝트가 시작되었습니다.
                         </p>
                         {request.movieId && movieTitle && (
-                          <div className="mt-3 rounded-lg bg-[#181410] p-3">
-                            <p className="text-xs text-[#8a807a] mb-1">프로젝트 영화</p>
+                          <div className="mt-3 rounded-lg bg-[#0d0b08] p-3">
+                            <p className="text-xs text-[#b8a898] mb-1">프로젝트 영화</p>
                             <Link
                               href={`/movies/${request.movieId}`}
                               className="text-base font-semibold text-[#e8a020] hover:text-[#e8a020]/80 hover:underline"
@@ -323,8 +323,8 @@ export default function RequestDetailPage() {
                           </div>
                         )}
                         {request.actorId && actorName && (
-                          <div className="mt-3 rounded-lg bg-[#181410] p-3">
-                            <p className="text-xs text-[#8a807a] mb-1">협업 배우</p>
+                          <div className="mt-3 rounded-lg bg-[#0d0b08] p-3">
+                            <p className="text-xs text-[#b8a898] mb-1">협업 배우</p>
                             <Link
                               href={`/actors/${request.actorId}`}
                               className="text-base font-semibold text-[#e8a020] hover:text-[#e8a020]/80 hover:underline"
@@ -341,14 +341,14 @@ export default function RequestDetailPage() {
             </div>
 
           <div className="lg:col-span-2">
-            <Card className="border-[#5a5248]/30 bg-[#100e0a]">
+            <Card className="border-[#e8a020]/30 bg-[#100e0a]">
               <CardContent className="p-6">
-                <h3 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-lg font-bold film-gold">
+                <h3 className="mb-4 border-b border-[#e8a020]/30 pb-2 text-lg font-bold film-gold">
                   채팅
                 </h3>
                 <div className="mb-4 max-h-[500px] space-y-4 overflow-y-auto">
                   {messages.length === 0 ? (
-                    <div className="py-8 text-center text-[#8a807a]">
+                    <div className="py-8 text-center text-[#b8a898]">
                         아직 메시지가 없습니다.
                       </div>
                     ) : (
@@ -374,7 +374,7 @@ export default function RequestDetailPage() {
                         }
                       }}
                       placeholder="메시지를 입력하세요..."
-                      className="flex-1 border-[#5a5248] bg-[#181410] text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
+                      className="flex-1 border-[#e8a020]/35 bg-[#0d0b08] text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020]"
                       disabled={sending || request.status === "rejected"}
                     />
                     <Button
@@ -390,17 +390,17 @@ export default function RequestDetailPage() {
                       <p className="text-sm font-semibold text-green-400 mb-2">
                         ✅ 협업이 시작되었습니다!
                       </p>
-                      <p className="text-xs text-[#8a807a]">
+                      <p className="text-xs text-[#b8a898]">
                         프로젝트 진행에 대한 소통은 이 채팅방을 통해 계속하실 수 있습니다.
                       </p>
                     </div>
                   )}
                   {request.status === "rejected" && (
-                    <div className="mt-4 rounded-lg border border-[#5a5248]/30 bg-[#181410] p-4">
-                      <p className="text-sm font-semibold text-[#8a807a] mb-2">
+                    <div className="mt-4 rounded-lg border border-[#e8a020]/30 bg-[#0d0b08] p-4">
+                      <p className="text-sm font-semibold text-[#b8a898] mb-2">
                         요청이 거절되었습니다.
                       </p>
-                      <p className="text-xs text-[#5a5248]">
+                      <p className="text-xs text-[#b8a898]">
                         요청이 거절되어 채팅이 종료되었습니다.
                       </p>
                     </div>
@@ -433,7 +433,7 @@ function MessageBubble({
         className={`max-w-[70%] rounded-lg px-4 py-2 ${
           isOwn
             ? "bg-[#e8a020]/20 text-[#faf6f0]"
-            : "bg-[#181410] text-[#f0e8d8]"
+            : "bg-[#0d0b08] text-[#f0e8d8]"
         }`}
       >
         {!isOwn && (
@@ -442,7 +442,7 @@ function MessageBubble({
           </p>
         )}
         <p className="whitespace-pre-wrap">{message.message}</p>
-        <p className="mt-1 text-xs text-[#5a5248]">
+        <p className="mt-1 text-xs text-[#b8a898]">
           {message.createdAt?.toDate
             ? new Date(message.createdAt.toDate()).toLocaleTimeString("ko-KR", {
                 hour: "2-digit",

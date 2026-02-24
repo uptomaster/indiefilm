@@ -29,7 +29,7 @@ const postSchema = z.object({
   }),
   title: z.string().min(1, "제목을 입력해주세요").max(100, "제목은 100자 이하로 입력해주세요"),
   content: z.string().min(10, "내용을 최소 10자 이상 입력해주세요"),
-  category: z.enum(["casting", "seeking", "collaboration", "general"]).optional(),
+  category: z.enum(["free", "review", "tech", "equipment", "qna", "casting_review", "casting", "seeking", "collaboration", "general"]).optional(),
   location: z.string().optional(),
   requirements: z.string().optional(),
   movieId: z.string().optional(),
@@ -157,7 +157,7 @@ export default function NewPostPage() {
         ← 커뮤니티로
       </Link>
       <div className="mx-auto max-w-3xl">
-        <Card className="border-[#5a5248]/30 bg-[#100e0a]">
+        <Card className="border-[#e8a020]/30 bg-[#100e0a]">
             <CardContent className="p-6">
               <form onSubmit={handleSubmit} className="space-y-6">
                 {error && (
@@ -176,10 +176,10 @@ export default function NewPostPage() {
                       setFormData((prev) => ({ ...prev, type: value as PostType }))
                     }
                   >
-                    <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]">
+                    <SelectTrigger className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] focus:border-[#e8a020] focus:ring-[#e8a020]/20">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#100e0a] border-[#5a5248]/30">
+                    <SelectContent className="bg-[#0d0b08] border-[#e8a020]/35">
                       <SelectItem value="casting_call" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
                         오디션 공고
                       </SelectItem>
@@ -207,7 +207,7 @@ export default function NewPostPage() {
                       setFormData((prev) => ({ ...prev, title: e.target.value }))
                     }
                     placeholder="게시글 제목을 입력하세요"
-                    className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                    className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020] focus:ring-[#e8a020]/20"
                     maxLength={100}
                   />
                 </div>
@@ -224,7 +224,7 @@ export default function NewPostPage() {
                     }
                     placeholder="게시글 내용을 입력하세요"
                     rows={10}
-                    className="w-full rounded-md border border-[#5a5248] bg-[#181410] px-3 py-2 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020] focus:outline-none focus:ring-1 focus:ring-[#e8a020]"
+                    className="w-full rounded-md border border-[#e8a020]/35 bg-[#0d0b08] px-3 py-2 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020] focus:outline-none focus:ring-1 focus:ring-[#e8a020]"
                   />
                 </div>
 
@@ -241,24 +241,30 @@ export default function NewPostPage() {
                       }))
                     }
                   >
-                    <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]">
+                    <SelectTrigger className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] focus:border-[#e8a020] focus:ring-[#e8a020]/20">
                       <SelectValue placeholder="선택 안 함" />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#100e0a] border-[#5a5248]/30">
+                    <SelectContent className="bg-[#0d0b08] border-[#e8a020]/35">
                       <SelectItem value="none" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
                         선택 안 함
                       </SelectItem>
-                      <SelectItem value="casting" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
-                        캐스팅
+                      <SelectItem value="free" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
+                        자유
                       </SelectItem>
-                      <SelectItem value="seeking" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
-                        구직
+                      <SelectItem value="review" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
+                        작품리뷰
                       </SelectItem>
-                      <SelectItem value="collaboration" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
-                        협업
+                      <SelectItem value="tech" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
+                        촬영팁
                       </SelectItem>
-                      <SelectItem value="general" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
-                        일반
+                      <SelectItem value="equipment" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
+                        장비
+                      </SelectItem>
+                      <SelectItem value="qna" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
+                        Q&A
+                      </SelectItem>
+                      <SelectItem value="casting_review" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
+                        오디션후기
                       </SelectItem>
                     </SelectContent>
                   </Select>
@@ -275,7 +281,7 @@ export default function NewPostPage() {
                       setFormData((prev) => ({ ...prev, location: e.target.value }))
                     }
                     placeholder="예: 서울, 부산"
-                    className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                    className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020] focus:ring-[#e8a020]/20"
                   />
                 </div>
 
@@ -292,7 +298,7 @@ export default function NewPostPage() {
                         setFormData((prev) => ({ ...prev, requirements: e.target.value }))
                       }
                       placeholder="예: 나이대 20대, 키 170cm 이상"
-                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                      className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020] focus:ring-[#e8a020]/20"
                     />
                   </div>
                 )}
@@ -312,10 +318,10 @@ export default function NewPostPage() {
                         }))
                       }
                     >
-                      <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]">
+                      <SelectTrigger className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] focus:border-[#e8a020] focus:ring-[#e8a020]/20">
                         <SelectValue placeholder="선택 안 함" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#100e0a] border-[#5a5248]/30">
+                      <SelectContent className="bg-[#0d0b08] border-[#e8a020]/35">
                         <SelectItem value="none" className="text-[#faf6f0] hover:bg-[#e8a020]/10">
                           선택 안 함
                         </SelectItem>
@@ -342,7 +348,7 @@ export default function NewPostPage() {
                     onChange={(e) =>
                       setFormData((prev) => ({ ...prev, isPublic: e.target.checked }))
                     }
-                    className="h-5 w-5 rounded border-[#5a5248] bg-[#181410] text-[#e8a020] focus:ring-[#e8a020] cursor-pointer"
+                    className="h-5 w-5 rounded border-[#e8a020]/35 bg-[#0d0b08] text-[#e8a020] focus:ring-[#e8a020] cursor-pointer"
                   />
                   <Label htmlFor="isPublic" className="text-[#f0e8d8] cursor-pointer">
                     공개
@@ -354,7 +360,7 @@ export default function NewPostPage() {
                     type="button"
                     variant="outline"
                     onClick={() => router.push("/posts")}
-                    className="flex-1 border-[#5a5248] text-[#f0e8d8] hover:bg-[#181410]"
+                    className="flex-1 border-[#e8a020]/35 text-[#f0e8d8] hover:bg-[#0d0b08]"
                   >
                     취소
                   </Button>

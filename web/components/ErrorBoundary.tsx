@@ -44,10 +44,10 @@ export class ErrorBoundary extends Component<Props, State> {
             </p>
             {this.state.error && process.env.NODE_ENV === "development" && (
               <details className="mb-4 text-left">
-                <summary className="cursor-pointer text-sm text-gray-500 mb-2">
+                <summary className="cursor-pointer text-sm text-[#b8a898] mb-2">
                   오류 상세 정보
                 </summary>
-                <pre className="text-xs bg-gray-900 p-4 rounded overflow-auto">
+                <pre className="text-xs bg-[#0d0b08] p-4 rounded overflow-auto">
                   {this.state.error.toString()}
                 </pre>
               </details>

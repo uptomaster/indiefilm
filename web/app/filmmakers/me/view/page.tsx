@@ -78,7 +78,7 @@ export default function FilmmakerProfileViewPage() {
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
             <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
-            <p className="mt-4 text-[#8a807a]">로딩 중...</p>
+            <p className="mt-4 text-[#b8a898]">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@ export default function FilmmakerProfileViewPage() {
   return (
     <div className="min-h-screen bg-white text-[#faf6f0]">
       {/* 히어로 섹션 - 배경만 */}
-      <div className="relative h-[40vh] min-h-[300px] overflow-hidden border-b border-[#5a5248]/30 bg-gradient-to-b from-[#100e0a] to-[#0a0805]">
+      <div className="relative h-[40vh] min-h-[300px] overflow-hidden border-b border-[#e8a020]/30 bg-gradient-to-b from-[#100e0a] to-[#0a0805]">
         <div className="film-strip absolute inset-0 opacity-10" />
         
         {/* 상단 네비게이션 */}
@@ -100,7 +100,7 @@ export default function FilmmakerProfileViewPage() {
           <div className="container mx-auto flex items-center justify-between px-4 py-3 md:py-6 gap-2">
             <Link
               href="/filmmakers"
-              className="rounded-full bg-white/90 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm text-[#faf6f0] backdrop-blur-sm transition-colors hover:bg-[#100e0a] border border-[#5a5248]/30 shadow-sm font-semibold whitespace-nowrap"
+              className="rounded-full bg-white/90 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm text-[#faf6f0] backdrop-blur-sm transition-colors hover:bg-[#100e0a] border border-[#e8a020]/30 shadow-sm font-semibold whitespace-nowrap"
             >
               ← 제작자 목록
             </Link>
@@ -135,10 +135,10 @@ export default function FilmmakerProfileViewPage() {
           {/* 좌측: 메인 정보 */}
           <div className="lg:col-span-2 space-y-8">
             {/* 프로필 헤더 */}
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 pb-8 border-b border-[#5a5248]/30">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 pb-8 border-b border-[#e8a020]/30">
               {/* 프로필 사진 */}
               <div className="flex-shrink-0">
-                <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden border-4 border-[#5a5248]/30 shadow-2xl">
+                <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden border-4 border-[#e8a020]/30 shadow-2xl">
                   {filmmaker.mainPhotoUrl ? (
                     <img
                       src={filmmaker.mainPhotoUrl}
@@ -146,7 +146,7 @@ export default function FilmmakerProfileViewPage() {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
+                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#0d0b08] to-[#0a0805]">
                       <span className="text-4xl md:text-5xl">🎬</span>
                     </div>
                   )}
@@ -165,11 +165,11 @@ export default function FilmmakerProfileViewPage() {
                 </h1>
                 <div className="flex flex-wrap gap-4 text-lg">
                   {filmmaker.location && (
-                    <span className="text-gray-700">{filmmaker.location}</span>
+                    <span className="text-[#b8a898]">{filmmaker.location}</span>
                   )}
                   {filmmaker.website && (
                     <>
-                      <span className="text-gray-700">•</span>
+                      <span className="text-[#b8a898]">•</span>
                       <a
                         href={filmmaker.website}
                         target="_blank"
@@ -186,10 +186,10 @@ export default function FilmmakerProfileViewPage() {
             {/* 소개 */}
             {filmmaker.bio && (
               <section>
-                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#e8a020]/30 pb-2 text-2xl font-bold film-gold">
                   PROFILE
                 </h2>
-                <p className="whitespace-pre-wrap text-sm md:text-base lg:text-lg leading-relaxed text-gray-700">
+                <p className="whitespace-pre-wrap text-sm md:text-base lg:text-lg leading-relaxed text-[#b8a898]">
                   {filmmaker.bio}
                 </p>
               </section>
@@ -198,7 +198,7 @@ export default function FilmmakerProfileViewPage() {
             {/* 전문 분야 */}
             {filmmaker.specialties && filmmaker.specialties.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#e8a020]/30 pb-2 text-2xl font-bold film-gold">
                   SPECIALTIES
                 </h2>
                 <div className="flex flex-wrap gap-2">
@@ -217,17 +217,17 @@ export default function FilmmakerProfileViewPage() {
             {/* 경력 */}
             {filmmaker.experience && filmmaker.experience.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#e8a020]/30 pb-2 text-2xl font-bold film-gold">
                   EXPERIENCE
                 </h2>
                 <ul className="space-y-3">
                   {filmmaker.experience.map((exp, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-3 border-l-2 border-[#5a5248]/30 pl-4"
+                      className="flex items-start gap-3 border-l-2 border-[#e8a020]/30 pl-4"
                     >
                       <span className="text-[#e8a020]">▸</span>
-                      <span className="text-gray-700">{exp}</span>
+                      <span className="text-[#b8a898]">{exp}</span>
                     </li>
                   ))}
                 </ul>
@@ -237,14 +237,14 @@ export default function FilmmakerProfileViewPage() {
             {/* 보유 장비 */}
             {filmmaker.equipment && filmmaker.equipment.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#e8a020]/30 pb-2 text-2xl font-bold film-gold">
                   EQUIPMENT
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {filmmaker.equipment.map((item, index) => (
                     <span
                       key={index}
-                      className="rounded-full bg-gray-800/50 px-4 py-2 text-gray-700"
+                      className="rounded-full bg-[#0d0b08]/80 px-4 py-2 text-[#b8a898]"
                     >
                       {item}
                     </span>
@@ -258,20 +258,20 @@ export default function FilmmakerProfileViewPage() {
               filmmaker.teamMembers &&
               filmmaker.teamMembers.length > 0 && (
                 <section>
-                  <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
+                  <h2 className="mb-4 border-b border-[#e8a020]/30 pb-2 text-2xl font-bold film-gold">
                     TEAM MEMBERS
                   </h2>
                   <div className="space-y-3">
                     {filmmaker.teamMembers.map((member, index) => (
                       <div
                         key={index}
-                        className="flex items-start gap-3 border-l-2 border-[#5a5248]/30 pl-4"
+                        className="flex items-start gap-3 border-l-2 border-[#e8a020]/30 pl-4"
                       >
                         <div>
                           <span className="font-semibold text-[#e8a020]">
                             {member.name}
                           </span>
-                          <span className="ml-2 text-[#8a807a]">
+                          <span className="ml-2 text-[#b8a898]">
                             - {member.role}
                           </span>
                           {member.profileLink && (
@@ -294,7 +294,7 @@ export default function FilmmakerProfileViewPage() {
             {/* 제작 영화 */}
             {movies.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#e8a020]/30 pb-2 text-2xl font-bold film-gold">
                   FILMOGRAPHY
                 </h2>
                 <div className="grid gap-6 md:grid-cols-2">
@@ -316,7 +316,7 @@ export default function FilmmakerProfileViewPage() {
                               <h3 className="text-xl font-bold text-[#faf6f0] mb-2">
                                 {movie.title}
                               </h3>
-                              <p className="text-sm text-[#8a807a] line-clamp-2">
+                              <p className="text-sm text-[#b8a898] line-clamp-2">
                                 {movie.logline}
                               </p>
                             </div>
@@ -344,7 +344,7 @@ export default function FilmmakerProfileViewPage() {
             {/* 갤러리 */}
             {filmmaker.gallery && filmmaker.gallery.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#e8a020]/30 pb-2 text-2xl font-bold film-gold">
                   GALLERY
                 </h2>
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
@@ -370,25 +370,25 @@ export default function FilmmakerProfileViewPage() {
             <div className="sticky top-8 space-y-6">
               {/* 프로필 정보 */}
               <div className="rounded-lg border border-[#e8a020]/20 bg-[#100e0a] p-6 backdrop-blur-sm">
-                <h3 className="mb-4 text-sm font-semibold text-[#8a807a]">
+                <h3 className="mb-4 text-sm font-semibold text-[#b8a898]">
                   프로필 정보
                 </h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-[#8a807a]">유형</span>
+                    <span className="text-[#b8a898]">유형</span>
                     <span className="text-[#faf6f0]">
                       {filmmaker.type === "team" ? "팀" : "개인"}
                     </span>
                   </div>
                   {filmmaker.location && (
                     <div className="flex justify-between">
-                      <span className="text-[#8a807a]">지역</span>
+                      <span className="text-[#b8a898]">지역</span>
                       <span className="text-[#faf6f0]">{filmmaker.location}</span>
                     </div>
                   )}
                   {filmmaker.email && (
                     <div className="flex justify-between">
-                      <span className="text-[#8a807a]">이메일</span>
+                      <span className="text-[#b8a898]">이메일</span>
                       <a
                         href={`mailto:${filmmaker.email}`}
                         className="text-[#e8a020] hover:text-[#e8a020]/80"
@@ -399,7 +399,7 @@ export default function FilmmakerProfileViewPage() {
                   )}
                   {filmmaker.phone && (
                     <div className="flex justify-between">
-                      <span className="text-[#8a807a]">전화번호</span>
+                      <span className="text-[#b8a898]">전화번호</span>
                       <a
                         href={`tel:${filmmaker.phone}`}
                         className="text-[#e8a020] hover:text-[#e8a020]/80"
@@ -409,10 +409,10 @@ export default function FilmmakerProfileViewPage() {
                     </div>
                   )}
                   <div className="flex justify-between">
-                    <span className="text-[#8a807a]">공개 상태</span>
+                    <span className="text-[#b8a898]">공개 상태</span>
                     <span
                       className={
-                        filmmaker.isPublic ? "text-green-400" : "text-[#8a807a]"
+                        filmmaker.isPublic ? "text-green-400" : "text-[#b8a898]"
                       }
                     >
                       {filmmaker.isPublic ? "공개" : "비공개"}
@@ -423,14 +423,14 @@ export default function FilmmakerProfileViewPage() {
 
               {/* 제작 영화 통계 */}
               <div className="rounded-lg border border-[#e8a020]/20 bg-[#100e0a] p-6 backdrop-blur-sm">
-                <h3 className="mb-4 text-sm font-semibold text-[#8a807a]">
+                <h3 className="mb-4 text-sm font-semibold text-[#b8a898]">
                   제작 통계
                 </h3>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-[#e8a020]">
                     {movies.length}
                   </div>
-                  <div className="text-sm text-[#8a807a] mt-1">제작 영화</div>
+                  <div className="text-sm text-[#b8a898] mt-1">제작 영화</div>
                 </div>
               </div>
             </div>

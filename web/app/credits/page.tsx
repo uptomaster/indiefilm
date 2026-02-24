@@ -95,7 +95,7 @@ export default function CreditsPage() {
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
             <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
-            <p className="mt-4 text-[#8a807a] font-medium">로딩 중...</p>
+            <p className="mt-4 text-[#b8a898] font-medium">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -112,7 +112,7 @@ export default function CreditsPage() {
             placeholder="이름 또는 역할로 검색..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] placeholder:text-[#8a807a] focus:border-[#e8a020] focus:ring-[#e8a020]/20 font-medium"
+            className="bg-[#0d0b08] border-[#e8a020]/25 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020] focus:ring-[#e8a020]/20 font-medium"
           />
         </div>
         <Select
@@ -121,10 +121,10 @@ export default function CreditsPage() {
             setSelectedRole(value === "all" ? null : value)
           }
         >
-          <SelectTrigger className="w-full md:w-[200px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] font-medium focus:border-[#e8a020] focus:ring-[#e8a020]/20">
+          <SelectTrigger className="w-full md:w-[200px] bg-[#0d0b08] border-[#e8a020]/25 text-[#faf6f0] font-medium focus:border-[#e8a020] focus:ring-[#e8a020]/20">
             <SelectValue placeholder="역할 선택" />
           </SelectTrigger>
-          <SelectContent className="bg-[#100e0a] border-[#5a5248]/30">
+          <SelectContent className="bg-[#100e0a] border-[#e8a020]/30">
             <SelectItem value="all" className="text-[#faf6f0] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer font-medium">
               전체 역할
             </SelectItem>
@@ -143,20 +143,20 @@ export default function CreditsPage() {
 
       {filteredCredits.length === 0 ? (
         <div className="text-center py-20">
-          <p className="text-xl text-[#8a807a] font-semibold">
+          <p className="text-xl text-[#b8a898] font-semibold">
             조건에 맞는 제작진이 없습니다.
           </p>
         </div>
       ) : (
         <>
-          <div className="mb-6 text-sm text-[#8a807a] font-semibold tracking-tight">
+          <div className="mb-6 text-sm text-[#b8a898] font-semibold tracking-tight">
             총 {filteredCredits.length}명의 제작진
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {filteredCredits.map((credit, index) => (
               <Card
                 key={`${credit.name}_${credit.role}_${index}`}
-                className="border-[#5a5248]/30 bg-[#100e0a] hover:border-[#e8a020]/50 transition-all"
+                className="border-[#e8a020]/30 bg-[#100e0a] hover:border-[#e8a020]/50 transition-all"
               >
                 <CardHeader className="p-3 md:p-4 lg:p-6 pb-2 md:pb-3">
                   <CardTitle className="text-base md:text-lg lg:text-xl film-gold font-bold tracking-tight">
@@ -186,15 +186,15 @@ export default function CreditsPage() {
                     <Link href={`/actors/${credit.actorId}`}>
                       <Button
                         variant="outline"
-                        className="w-full border-[#5a5248] text-[#e8a020] hover:bg-[#e8a020]/10 font-semibold"
+                        className="w-full border-[#e8a020]/35 text-[#e8a020] hover:bg-[#e8a020]/10 font-semibold"
                       >
                         배우 프로필 보기
                       </Button>
                     </Link>
                   )}
                   {credit.movies.length > 0 && (
-                    <div className="mt-4 pt-4 border-t border-[#5a5248]/30">
-                      <p className="text-xs text-[#8a807a] mb-2 font-semibold">참여 작품:</p>
+                    <div className="mt-4 pt-4 border-t border-[#e8a020]/30">
+                      <p className="text-xs text-[#b8a898] mb-2 font-semibold">참여 작품:</p>
                       <div className="space-y-1">
                         {credit.movies.slice(0, 3).map((movie) => (
                           <Link
@@ -206,7 +206,7 @@ export default function CreditsPage() {
                           </Link>
                         ))}
                         {credit.movies.length > 3 && (
-                          <p className="text-xs text-[#8a807a] font-medium">
+                          <p className="text-xs text-[#b8a898] font-medium">
                               +{credit.movies.length - 3}편 더
                             </p>
                           )}

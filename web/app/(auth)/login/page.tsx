@@ -65,9 +65,9 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="font-serif text-4xl font-light text-[#faf6f0] mb-2">로그인</h1>
-          <p className="text-[#8a807a] text-sm">인디필름에 오신 것을 환영합니다</p>
+          <p className="text-[#b8a898] text-sm">인디필름에 오신 것을 환영합니다</p>
         </div>
-        <Card className="border-[#5a5248]/30 bg-[#100e0a]">
+        <Card className="border-[#e8a020]/30 bg-[#100e0a]">
           <CardContent className="pt-6 space-y-4">
             {error && (
               <div className="rounded-md bg-[#c03020]/10 border border-[#c03020]/30 p-3 text-sm text-[#e08080]">
@@ -77,11 +77,11 @@ export default function LoginPage() {
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-[#8a807a]">이메일</Label>
+                <Label htmlFor="email" className="text-[#b8a898]">이메일</Label>
                 <Input
                   id="email"
                   type="email"
-                  className="bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
+                  className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020]"
                   placeholder="example@email.com"
                   {...register("email")}
                 />
@@ -91,11 +91,11 @@ export default function LoginPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-[#8a807a]">비밀번호</Label>
+                <Label htmlFor="password" className="text-[#b8a898]">비밀번호</Label>
                 <Input
                   id="password"
                   type="password"
-                  className="bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
+                  className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020]"
                   {...register("password")}
                 />
                 {errors.password && (
@@ -112,10 +112,10 @@ export default function LoginPage() {
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-[#5a5248]/30" />
+              <span className="w-full border-t border-[#e8a020]/30" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-[#100e0a] px-2 text-[#5a5248]">
+              <span className="bg-[#100e0a] px-2 text-[#b8a898]">
                 또는
               </span>
             </div>
@@ -124,7 +124,7 @@ export default function LoginPage() {
             <Button
               type="button"
               variant="outline"
-              className="w-full border-[#5a5248]/50 text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020] hover:bg-[#e8a020]/10"
+              className="w-full border-[#e8a020]/35 text-[#b8a898] hover:border-[#e8a020] hover:text-[#e8a020] hover:bg-[#e8a020]/10"
               onClick={handleGoogleSignIn}
               disabled={loading}
             >
@@ -149,7 +149,7 @@ export default function LoginPage() {
               Google로 로그인
             </Button>
 
-            <div className="text-center text-sm text-[#8a807a]">
+            <div className="text-center text-sm text-[#b8a898]">
               계정이 없으신가요?{" "}
               <Link href="/signup" className="text-[#e8a020] hover:text-[#e8a020]/80 hover:underline">
                 회원가입

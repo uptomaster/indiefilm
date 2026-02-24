@@ -79,7 +79,7 @@ function SearchContent() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="영화, 배우, 제작자, 게시글 검색..."
-            className="flex-1 bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] placeholder:text-[#8a807a] focus:border-[#e8a020] focus:ring-[#e8a020]/20"
+            className="flex-1 bg-[#0d0b08] border-[#e8a020]/25 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020] focus:ring-[#e8a020]/20"
           />
           <Button
             type="submit"
@@ -105,7 +105,7 @@ function SearchContent() {
         ) : query.trim() ? (
           <>
             {/* 탭 */}
-            <div className="mb-6 flex gap-2 border-b border-[#5a5248]/30">
+            <div className="mb-6 flex gap-2 border-b border-[#e8a020]/30">
               {(["all","movies","actors","filmmakers","posts"] as const).map((tab) => {
                 const label = { all: `전체 (${totalResults})`, movies: `영화 (${results.movies.length})`, actors: `배우 (${results.actors.length})`, filmmakers: `제작자 (${results.filmmakers.length})`, posts: `커뮤니티 (${results.posts.length})` }[tab];
                 const active = activeTab === tab;
@@ -114,7 +114,7 @@ function SearchContent() {
                     key={tab}
                     onClick={() => setActiveTab(tab)}
                     className={`pb-4 px-4 font-semibold transition-colors ${
-                      active ? "border-b-2 border-[#e8a020] text-[#e8a020]" : "text-[#8a807a] hover:text-[#e8a020]"
+                      active ? "border-b-2 border-[#e8a020] text-[#e8a020]" : "text-[#b8a898] hover:text-[#e8a020]"
                     }`}
                   >
                     {label}
@@ -133,12 +133,12 @@ function SearchContent() {
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {results.movies.map((movie) => (
                     <Link key={movie.id} href={`/movies/${movie.id}`}>
-                      <Card className="border-[#5a5248]/30 bg-[#100e0a] transition-all hover:border-[#e8a020]/50 cursor-pointer">
+                      <Card className="border-[#e8a020]/30 bg-[#100e0a] transition-all hover:border-[#e8a020]/50 cursor-pointer">
                         <CardContent className="p-4">
                           <h3 className="mb-2 text-lg font-bold text-[#faf6f0] line-clamp-1">
                             {movie.title}
                           </h3>
-                          <p className="mb-2 line-clamp-2 text-sm text-[#8a807a]">
+                          <p className="mb-2 line-clamp-2 text-sm text-[#b8a898]">
                             {movie.logline}
                           </p>
                           <div className="flex flex-wrap gap-2 text-xs">
@@ -166,16 +166,16 @@ function SearchContent() {
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {results.actors.map((actor) => (
                     <Link key={actor.id} href={`/actors/${actor.id}`}>
-                      <Card className="border-[#5a5248]/30 bg-[#100e0a] transition-all hover:border-[#e8a020]/50 cursor-pointer">
+                      <Card className="border-[#e8a020]/30 bg-[#100e0a] transition-all hover:border-[#e8a020]/50 cursor-pointer">
                         <CardContent className="p-4">
                           <h3 className="mb-2 text-lg font-bold text-[#faf6f0]">
                             {actor.stageName}
                           </h3>
-                          <p className="mb-2 line-clamp-2 text-sm text-[#8a807a]">
+                          <p className="mb-2 line-clamp-2 text-sm text-[#b8a898]">
                             {actor.bio}
                           </p>
                           {actor.location && (
-                            <span className="text-xs text-[#5a5248]">{actor.location}</span>
+                            <span className="text-xs text-[#b8a898]">{actor.location}</span>
                           )}
                         </CardContent>
                       </Card>
@@ -194,16 +194,16 @@ function SearchContent() {
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {results.filmmakers.map((filmmaker) => (
                     <Link key={filmmaker.id} href={`/filmmakers/${filmmaker.id}`}>
-                      <Card className="border-[#5a5248]/30 bg-[#100e0a] transition-all hover:border-[#e8a020]/50 cursor-pointer">
+                      <Card className="border-[#e8a020]/30 bg-[#100e0a] transition-all hover:border-[#e8a020]/50 cursor-pointer">
                         <CardContent className="p-4">
                           <h3 className="mb-2 text-lg font-bold text-[#faf6f0]">
                             {filmmaker.name}
                           </h3>
-                          <p className="mb-2 line-clamp-2 text-sm text-[#8a807a]">
+                          <p className="mb-2 line-clamp-2 text-sm text-[#b8a898]">
                             {filmmaker.bio}
                           </p>
                           {filmmaker.location && (
-                            <span className="text-xs text-[#5a5248]">{filmmaker.location}</span>
+                            <span className="text-xs text-[#b8a898]">{filmmaker.location}</span>
                           )}
                         </CardContent>
                       </Card>
@@ -222,15 +222,15 @@ function SearchContent() {
                 <div className="space-y-4">
                   {results.posts.map((post) => (
                     <Link key={post.id} href={`/posts/${post.id}`}>
-                      <Card className="border-[#5a5248]/30 bg-[#100e0a] transition-all hover:border-[#e8a020]/50 cursor-pointer">
+                      <Card className="border-[#e8a020]/30 bg-[#100e0a] transition-all hover:border-[#e8a020]/50 cursor-pointer">
                         <CardContent className="p-4">
                           <h3 className="mb-2 text-lg font-bold text-[#faf6f0] line-clamp-1">
                             {post.title}
                           </h3>
-                          <p className="mb-2 line-clamp-2 text-sm text-[#8a807a]">
+                          <p className="mb-2 line-clamp-2 text-sm text-[#b8a898]">
                             {post.content}
                           </p>
-                          <div className="flex items-center gap-2 text-xs text-[#5a5248]">
+                          <div className="flex items-center gap-2 text-xs text-[#b8a898]">
                             <span>{new Date(post.createdAt?.toDate?.() || Date.now()).toLocaleDateString("ko-KR")}</span>
                             <span>•</span>
                             <span>조회 {post.views || 0}</span>
@@ -246,13 +246,13 @@ function SearchContent() {
             {totalResults === 0 && (
               <div className="text-center py-20">
                 <p className="text-xl text-[#f0e8d8] font-semibold">검색 결과가 없습니다.</p>
-                <p className="mt-2 text-sm text-[#8a807a]">다른 키워드로 검색해보세요.</p>
+                <p className="mt-2 text-sm text-[#b8a898]">다른 키워드로 검색해보세요.</p>
               </div>
             )}
           </>
         ) : (
           <div className="text-center py-20">
-            <Search className="mx-auto h-16 w-16 text-[#5a5248] mb-4" />
+            <Search className="mx-auto h-16 w-16 text-[#b8a898] mb-4" />
             <p className="text-xl text-[#f0e8d8] font-semibold">검색어를 입력하세요</p>
           </div>
         )}
@@ -266,7 +266,7 @@ export default function SearchPage() {
     <Suspense fallback={
       <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8] flex items-center justify-center">
         <div className="text-center">
-          <Search className="mx-auto h-16 w-16 text-[#5a5248] mb-4 animate-pulse" />
+          <Search className="mx-auto h-16 w-16 text-[#b8a898] mb-4 animate-pulse" />
           <p className="text-xl text-[#f0e8d8] font-semibold">로딩 중...</p>
         </div>
       </div>

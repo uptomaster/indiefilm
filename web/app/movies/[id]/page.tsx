@@ -206,7 +206,7 @@ export default function MovieDetailPage() {
   if (!movie) {
     return (
       <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8] flex flex-col items-center justify-center gap-4">
-        <p className="text-xl text-[#8a807a]">영화를 찾을 수 없습니다.</p>
+        <p className="text-xl text-[#b8a898]">영화를 찾을 수 없습니다.</p>
         <Link href="/movies" className="px-6 py-2 bg-[#e8a020] text-[#0a0805] font-medium hover:bg-[#f0b030]">
           영화 목록으로
         </Link>
@@ -222,9 +222,9 @@ export default function MovieDetailPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
-      <div className="relative h-[20vh] min-h-[140px] overflow-hidden border-b border-[#5a5248]/20 bg-gradient-to-b from-[#181410] to-[#0a0805]">
+      <div className="relative h-[20vh] min-h-[140px] overflow-hidden border-b border-[#e8a020]/35/20 bg-gradient-to-b from-[#0d0b08] to-[#0a0805]">
         <div className="absolute left-0 right-0 top-0 z-20 flex items-center justify-between px-5 md:px-10 py-4">
-          <Link href="/movies" className="px-4 py-2 border border-[#5a5248] text-[#8a807a] text-sm hover:border-[#e8a020] hover:text-[#e8a020]">
+          <Link href="/movies" className="px-4 py-2 border border-[#e8a020]/35 text-[#b8a898] text-sm hover:border-[#e8a020] hover:text-[#e8a020]">
             ← 영화 목록
           </Link>
           {userProfile?.role === "actor" && movie.status !== "completed" && (
@@ -242,10 +242,10 @@ export default function MovieDetailPage() {
       <div className="container mx-auto px-5 md:px-10 py-8 md:py-12">
         <div className="grid gap-6 md:gap-10 lg:grid-cols-3">
           <div className="lg:col-span-2 space-y-6 md:space-y-8">
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-4 lg:gap-6 pb-6 lg:pb-8 border-b border-[#5a5248]/30">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-4 lg:gap-6 pb-6 lg:pb-8 border-b border-[#e8a020]/35/30">
               {/* 썸네일 */}
               <div className="flex-shrink-0">
-                <div className="relative h-48 w-36 md:h-56 md:w-40 rounded-lg overflow-hidden border-4 border-[#5a5248]/50 shadow-2xl">
+                <div className="relative h-48 w-36 md:h-56 md:w-40 rounded-lg overflow-hidden border-4 border-[#e8a020]/35/50 shadow-2xl">
                   {movie.thumbnailUrl ? (
                     <img
                       src={movie.thumbnailUrl}
@@ -253,7 +253,7 @@ export default function MovieDetailPage() {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
+                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#0d0b08] to-[#0a0805]">
                       <span className="text-4xl md:text-5xl">🎬</span>
                     </div>
                   )}
@@ -274,12 +274,12 @@ export default function MovieDetailPage() {
                   <span className="text-[#e8a020]">
                     {getGenreLabel(movie.genre)}
                   </span>
-                  <span className="text-[#8a807a]">•</span>
-                  <span className="text-[#8a807a]">{movie.runtimeMinutes}분</span>
+                  <span className="text-[#b8a898]">•</span>
+                  <span className="text-[#b8a898]">{movie.runtimeMinutes}분</span>
                   {movie.year && (
                     <>
-                      <span className="text-[#8a807a]">•</span>
-                      <span className="text-[#8a807a]">{movie.year}년</span>
+                      <span className="text-[#b8a898]">•</span>
+                      <span className="text-[#b8a898]">{movie.year}년</span>
                     </>
                   )}
                 </div>
@@ -288,7 +288,7 @@ export default function MovieDetailPage() {
             {/* 영상 */}
             {videoId && (
               <section>
-                <div className="aspect-video w-full overflow-hidden rounded-lg bg-[#181410] cinematic-shadow">
+                <div className="aspect-video w-full overflow-hidden rounded-lg bg-[#0d0b08] cinematic-shadow">
                   <iframe
                     src={embedUrl}
                     className="h-full w-full"
@@ -302,10 +302,10 @@ export default function MovieDetailPage() {
             {/* 한 줄 요약 */}
             {movie.logline && (
               <section>
-                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#e8a020]/35/30 pb-2 text-2xl font-bold film-gold">
                   SYNOPSIS
                 </h2>
-                <p className="text-sm md:text-base lg:text-lg leading-relaxed text-[#8a807a]">
+                <p className="text-sm md:text-base lg:text-lg leading-relaxed text-[#b8a898]">
                   {movie.logline}
                 </p>
               </section>
@@ -314,10 +314,10 @@ export default function MovieDetailPage() {
             {/* 상세 설명 */}
             {movie.description && (
               <section>
-                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#e8a020]/35/30 pb-2 text-2xl font-bold film-gold">
                   DESCRIPTION
                 </h2>
-                <p className="whitespace-pre-wrap text-sm md:text-base lg:text-lg leading-relaxed text-[#8a807a]">
+                <p className="whitespace-pre-wrap text-sm md:text-base lg:text-lg leading-relaxed text-[#b8a898]">
                   {movie.description}
                 </p>
               </section>
@@ -326,19 +326,19 @@ export default function MovieDetailPage() {
             {/* 제작진 */}
             {movie.credits && movie.credits.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#e8a020]/35/30 pb-2 text-2xl font-bold film-gold">
                   CREDITS
                 </h2>
                 <div className="space-y-3">
                   {movie.credits.map((credit, index) => (
                     <div
                       key={index}
-                      className="flex items-start gap-3 border-l-2 border-[#5a5248]/30 pl-4"
+                      className="flex items-start gap-3 border-l-2 border-[#e8a020]/35/30 pl-4"
                     >
                       <span className="font-semibold text-[#e8a020] min-w-[80px]">
                         {credit.role}
                       </span>
-                      <span className="text-[#8a807a]">{credit.name}</span>
+                      <span className="text-[#b8a898]">{credit.name}</span>
                       {credit.actorId ? (
                         <Link
                           href={`/actors/${credit.actorId}`}
@@ -364,7 +364,7 @@ export default function MovieDetailPage() {
 
             {/* 전체 리뷰 섹션 */}
             <section>
-              <div className="mb-4 flex items-center justify-between border-b border-[#5a5248]/30 pb-2">
+              <div className="mb-4 flex items-center justify-between border-b border-[#e8a020]/35/30 pb-2">
                 <h2 className="text-2xl font-bold film-gold">
                   리뷰 ({allRatings.length})
                 </h2>
@@ -380,7 +380,7 @@ export default function MovieDetailPage() {
                           className={`text-xl ${
                             i < Math.round(averageRating)
                               ? "text-[#e8a020]"
-                              : "text-[#8a807a]"
+                              : "text-[#b8a898]"
                           }`}
                         >
                           ★
@@ -395,17 +395,17 @@ export default function MovieDetailPage() {
                   <div className="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#e8a020] border-t-transparent" />
                 </div>
               ) : allRatings.length === 0 ? (
-                <div className="rounded-lg border border-[#5a5248]/30 bg-[#181410] p-6 md:p-10 text-center">
+                <div className="rounded-lg border border-[#e8a020]/35/30 bg-[#0d0b08] p-6 md:p-10 text-center">
                   <div className="text-4xl mb-3">⭐</div>
-                  <p className="text-[#8a807a] font-medium">아직 리뷰가 없습니다.</p>
-                  <p className="text-sm text-[#5a5248] mt-2">첫 번째 리뷰를 남겨보세요!</p>
+                  <p className="text-[#b8a898] font-medium">아직 리뷰가 없습니다.</p>
+                  <p className="text-sm text-[#b8a898] mt-2">첫 번째 리뷰를 남겨보세요!</p>
                 </div>
               ) : (
                 <div className="space-y-4">
                   {allRatings.map((rating) => (
                     <Card
                       key={rating.id}
-                      className="border-[#5a5248]/30 bg-[#100e0a] hover:border-[#e8a020]/50 transition-all duration-200"
+                      className="border-[#e8a020]/35/30 bg-[#100e0a] hover:border-[#e8a020]/50 transition-all duration-200"
                     >
                       <CardContent className="p-3 md:p-4 lg:p-6">
                         <div className="flex items-start gap-4">
@@ -422,7 +422,7 @@ export default function MovieDetailPage() {
                                     ? "나" 
                                     : userNames[rating.userId] || `사용자 ${rating.userId.slice(0, 8)}`}
                                 </p>
-                                <p className="text-xs text-[#5a5248]">
+                                <p className="text-xs text-[#b8a898]">
                                   {rating.createdAt?.toDate
                                     ? new Date(rating.createdAt.toDate()).toLocaleDateString("ko-KR")
                                     : "날짜 없음"}
@@ -439,7 +439,7 @@ export default function MovieDetailPage() {
                                       className={`text-lg ${
                                         i < rating.rating
                                           ? "text-[#e8a020]"
-                                          : "text-[#8a807a]"
+                                          : "text-[#b8a898]"
                                       }`}
                                     >
                                       ★
@@ -449,7 +449,7 @@ export default function MovieDetailPage() {
                               </div>
                             </div>
                             {rating.review && (
-                              <p className="mt-2 whitespace-pre-wrap text-[#8a807a] leading-relaxed">
+                              <p className="mt-2 whitespace-pre-wrap text-[#b8a898] leading-relaxed">
                                 {rating.review}
                               </p>
                             )}
@@ -465,10 +465,10 @@ export default function MovieDetailPage() {
             {/* 영화 평점 */}
             {user && (
               <section>
-                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#e8a020]/35/30 pb-2 text-2xl font-bold film-gold">
                   내 평점
                 </h2>
-                <Card className="border-[#e8a020]/30 bg-[#181410] shadow-lg">
+                <Card className="border-[#e8a020]/30 bg-[#0d0b08] shadow-lg">
                   <CardContent className="p-4 md:p-6 lg:p-8">
                     {ratingLoading ? (
                       <div className="text-center py-4">
@@ -477,7 +477,7 @@ export default function MovieDetailPage() {
                     ) : (
                       <div className="space-y-4">
                         {/* 별점 */}
-                        <div className="bg-[#181410] rounded-lg p-4 border border-[#5a5248]/30">
+                        <div className="bg-[#0d0b08] rounded-lg p-4 border border-[#e8a020]/35/30">
                           <Label className="text-[#e8a020] font-bold mb-3 block text-base md:text-lg">
                             ⭐ 별점
                           </Label>
@@ -490,20 +490,20 @@ export default function MovieDetailPage() {
                                 className={`text-3xl md:text-4xl transition-all duration-200 hover:scale-125 active:scale-95 ${
                                   star <= rating
                                     ? "text-[#e8a020] drop-shadow-lg filter"
-                                    : "text-[#8a807a] hover:text-[#e8a020]/80"
+                                    : "text-[#b8a898] hover:text-[#e8a020]/80"
                                 }`}
                               >
                                 ★
                               </button>
                             ))}
-                            <span className="ml-3 md:ml-4 text-lg md:text-xl font-bold text-[#e8a020] bg-[#181410] px-3 py-1.5 rounded-lg shadow-sm">
+                            <span className="ml-3 md:ml-4 text-lg md:text-xl font-bold text-[#e8a020] bg-[#0d0b08] px-3 py-1.5 rounded-lg shadow-sm">
                               {rating}점
                             </span>
                           </div>
                         </div>
 
                         {/* 리뷰 */}
-                        <div className="bg-[#181410] rounded-lg p-4 border border-[#5a5248]/30">
+                        <div className="bg-[#0d0b08] rounded-lg p-4 border border-[#e8a020]/35/30">
                           <Label htmlFor="review" className="text-[#e8a020] font-semibold mb-2 block">
                             리뷰 (선택)
                           </Label>
@@ -512,12 +512,12 @@ export default function MovieDetailPage() {
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
                             placeholder="이 영화에 대한 생각을 남겨주세요..."
-                            className="w-full min-h-[100px] rounded-lg border-2 border-[#5a5248]/30 bg-[#181410] px-4 py-3 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020] focus:outline-none focus:ring-2 focus:ring-[#e8a020]/50 transition-all text-sm md:text-base"
+                            className="w-full min-h-[100px] rounded-lg border-2 border-[#e8a020]/35/30 bg-[#0d0b08] px-4 py-3 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020] focus:outline-none focus:ring-2 focus:ring-[#e8a020]/50 transition-all text-sm md:text-base"
                           />
                         </div>
 
                         {/* 인생영화 체크박스 */}
-                        <div className="flex items-center gap-3 bg-[#181410] rounded-lg p-3 border border-[#5a5248]/30">
+                        <div className="flex items-center gap-3 bg-[#0d0b08] rounded-lg p-3 border border-[#e8a020]/35/30">
                           <input
                             type="checkbox"
                             id="isFavorite"
@@ -540,7 +540,7 @@ export default function MovieDetailPage() {
                         </Button>
 
                         {userRating && (
-                          <p className="text-xs text-[#5a5248] text-center">
+                          <p className="text-xs text-[#b8a898] text-center">
                             마지막 수정: {new Date(userRating.updatedAt?.toDate?.() || Date.now()).toLocaleDateString("ko-KR")}
                           </p>
                         )}
@@ -554,7 +554,7 @@ export default function MovieDetailPage() {
 
           {/* 우측: 사이드바 */}
           <div className="lg:col-span-1">
-            <div className="lg:sticky lg:top-4 md:top-8 space-y-3 md:space-y-4 lg:space-y-6 rounded-lg border border-[#e8a020]/20 bg-[#181410] p-3 md:p-4 lg:p-6 backdrop-blur-sm">
+            <div className="lg:sticky lg:top-4 md:top-8 space-y-3 md:space-y-4 lg:space-y-6 rounded-lg border border-[#e8a020]/20 bg-[#0d0b08] p-3 md:p-4 lg:p-6 backdrop-blur-sm">
               {userProfile?.role === "actor" && movie.status !== "completed" ? (
                 <Button
                   onClick={handleApplyForRole}
@@ -566,11 +566,11 @@ export default function MovieDetailPage() {
               ) : movie.status === "completed" ? (
                 <div className="rounded-lg border border-green-600/30 bg-green-600/10 p-4 text-center">
                   <p className="text-sm font-semibold text-green-400">제작완료</p>
-                  <p className="mt-1 text-xs text-[#5a5248]">이 영화는 완성된 포트폴리오입니다</p>
+                  <p className="mt-1 text-xs text-[#b8a898]">이 영화는 완성된 포트폴리오입니다</p>
                 </div>
               ) : !user ? (
                 <div className="space-y-4">
-                  <p className="text-sm text-[#5a5248]">
+                  <p className="text-sm text-[#b8a898]">
                     출연 희망 기능을 사용하려면 배우로 로그인해주세요.
                   </p>
                   <Link href="/login">
@@ -587,7 +587,7 @@ export default function MovieDetailPage() {
               <div className="space-y-4 border-t border-[#e8a020]/20 pt-6">
                 {/* 평균 평점 */}
                 {averageRating > 0 && (
-                  <div className="rounded-lg border border-[#5a5248]/30 bg-[#181410] p-4 md:p-5 shadow-lg">
+                  <div className="rounded-lg border border-[#e8a020]/35/30 bg-[#0d0b08] p-4 md:p-5 shadow-lg">
                     <h3 className="mb-3 text-sm md:text-base font-bold text-[#e8a020] flex items-center gap-2">
                       <span className="text-lg">⭐</span> 평균 평점
                     </h3>
@@ -602,14 +602,14 @@ export default function MovieDetailPage() {
                             className={`text-xl md:text-2xl transition-all ${
                               i < Math.round(averageRating)
                                 ? "text-[#e8a020] drop-shadow-lg filter"
-                                : "text-[#8a807a]"
+                                : "text-[#b8a898]"
                             }`}
                           >
                             ★
                           </span>
                         ))}
                       </div>
-                      <p className="text-xs text-[#8a807a] font-medium ml-auto">
+                      <p className="text-xs text-[#b8a898] font-medium ml-auto">
                         총 {allRatings.length}명 평가
                       </p>
                     </div>
@@ -617,23 +617,23 @@ export default function MovieDetailPage() {
                 )}
                 
                 <div>
-                  <h3 className="mb-2 text-sm font-semibold text-[#5a5248]">
+                  <h3 className="mb-2 text-sm font-semibold text-[#b8a898]">
                     영화 정보
                   </h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-[#5a5248]">장르</span>
+                      <span className="text-[#b8a898]">장르</span>
                       <span className="text-[#faf6f0]">
                         {getGenreLabel(movie.genre)}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-[#5a5248]">러닝타임</span>
+                      <span className="text-[#b8a898]">러닝타임</span>
                       <span className="text-[#faf6f0]">{movie.runtimeMinutes}분</span>
                     </div>
                     {movie.year && (
                       <div className="flex justify-between">
-                        <span className="text-[#5a5248]">제작 연도</span>
+                        <span className="text-[#b8a898]">제작 연도</span>
                         <span className="text-[#faf6f0]">{movie.year}년</span>
                       </div>
                     )}

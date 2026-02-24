@@ -341,7 +341,7 @@ export default function NewMoviePage() {
                 영화 정보
               </span>
             </CardTitle>
-            <CardDescription className="mt-2 text-base text-[#8a807a]">
+            <CardDescription className="mt-2 text-base text-[#b8a898]">
               모든 필수 정보를 입력해주세요
             </CardDescription>
           </CardHeader>
@@ -373,7 +373,7 @@ export default function NewMoviePage() {
                   </Label>
                   <Input
                     id="title"
-                    className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
+                    className="h-12 bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                     placeholder="영화 제목을 입력하세요"
                     {...register("title")}
                   />
@@ -393,7 +393,7 @@ export default function NewMoviePage() {
                       value={watch("genre") || ""}
                       onValueChange={(value) => setValue("genre", value as "drama" | "comedy" | "horror" | "romance" | "etc")}
                     >
-                      <SelectTrigger className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20">
+                      <SelectTrigger className="h-12 bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20">
                         <SelectValue placeholder="장르 선택" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#100e0a] border-[#e8a020]/30">
@@ -418,7 +418,7 @@ export default function NewMoviePage() {
                     <Input
                       id="runtimeMinutes"
                       type="number"
-                      className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
+                      className="h-12 bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                       placeholder="예: 90"
                       {...register("runtimeMinutes", { valueAsNumber: true })}
                     />
@@ -437,7 +437,7 @@ export default function NewMoviePage() {
                       value={watch("status") || ""}
                       onValueChange={(value) => setValue("status", value as "production" | "planned" | "completed")}
                     >
-                      <SelectTrigger className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20">
+                      <SelectTrigger className="h-12 bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20">
                         <SelectValue placeholder="제작 상태 선택" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#100e0a] border-[#e8a020]/30">
@@ -460,7 +460,7 @@ export default function NewMoviePage() {
                   </Label>
                   <Input
                     id="logline"
-                    className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
+                    className="h-12 bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                     placeholder="영화를 한 줄로 설명해주세요"
                     {...register("logline")}
                   />
@@ -478,7 +478,7 @@ export default function NewMoviePage() {
                   <textarea
                     id="description"
                     rows={6}
-                    className="w-full rounded-md border border-[#5a5248]/40 bg-gray-800/50 px-4 py-3 text-sm text-[#faf6f0] placeholder:text-[#5a5248] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20 focus:outline-none"
+                    className="w-full rounded-md border border-[#e8a020]/35 bg-[#0d0b08]/80 px-4 py-3 text-sm text-[#faf6f0] placeholder:text-[#b8a898] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20 focus:outline-none"
                     placeholder="영화의 상세한 내용을 입력해주세요"
                     {...register("description")}
                   />
@@ -506,7 +506,7 @@ export default function NewMoviePage() {
                       value={watch("videoPlatform") || ""}
                       onValueChange={(value) => setValue("videoPlatform", value as "youtube" | "vimeo")}
                     >
-                      <SelectTrigger className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20">
+                      <SelectTrigger className="h-12 bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20">
                         <SelectValue placeholder="플랫폼 선택" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#100e0a] border-[#e8a020]/30">
@@ -523,7 +523,7 @@ export default function NewMoviePage() {
                     <Input
                       id="year"
                       type="number"
-                      className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
+                      className="h-12 bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                       placeholder="예: 2024"
                       {...register("year", { valueAsNumber: true })}
                     />
@@ -536,7 +536,7 @@ export default function NewMoviePage() {
                   </Label>
                   <Input
                     id="videoUrl"
-                    className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
+                    className="h-12 bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                     placeholder={
                       videoPlatform === "youtube"
                         ? "https://www.youtube.com/watch?v=..."
@@ -569,7 +569,7 @@ export default function NewMoviePage() {
                   className={`relative cursor-pointer rounded-xl border-2 border-dashed transition-all ${
                     isDragging
                       ? "border-[#e8a020]/100 bg-[#100e0a]/20"
-                      : "border-[#5a5248]/40 bg-[#181410]/50 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
+                      : "border-[#e8a020]/35 bg-[#0d0b08]/50 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
                   }`}
                 >
                   <input
@@ -623,12 +623,12 @@ export default function NewMoviePage() {
                       <p className="mb-2 text-lg font-medium text-[#f0e8d8]">
                         {uploadingThumbnail ? "업로드 중..." : "이미지를 드래그하거나 클릭하여 업로드"}
                       </p>
-                      <p className="text-sm text-[#8a807a]">
+                      <p className="text-sm text-[#b8a898]">
                         PNG, JPG, GIF 최대 5MB
                       </p>
                       {uploadingThumbnail && (
                         <div className="mt-4">
-                          <div className="mx-auto h-2 w-48 overflow-hidden rounded-full bg-[#5a5248]/50">
+                          <div className="mx-auto h-2 w-48 overflow-hidden rounded-full bg-[#e8a020]/25">
                             <div className="h-full w-full animate-pulse bg-[#e8a020]" />
                           </div>
                         </div>
@@ -639,12 +639,12 @@ export default function NewMoviePage() {
 
                 {/* URL 입력 (대안) */}
                 <div className="space-y-2">
-                  <Label htmlFor="thumbnailUrl" className="text-sm font-medium text-[#8a807a]">
+                  <Label htmlFor="thumbnailUrl" className="text-sm font-medium text-[#b8a898]">
                     또는 이미지 URL 직접 입력
                   </Label>
                   <Input
                     id="thumbnailUrl"
-                    className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
+                    className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                     placeholder="https://example.com/image.jpg"
                     {...register("thumbnailUrl")}
                   />
@@ -666,7 +666,7 @@ export default function NewMoviePage() {
                     return (
                       <div
                         key={field.id}
-                        className="group rounded-xl border border-[#5a5248]/40/50 bg-gradient-to-br from-[#181410]/50 to-[#100e0a]/50 p-6 backdrop-blur-sm transition-all hover:border-[#e8a020]/30 hover:shadow-lg"
+                        className="group rounded-xl border border-[#e8a020]/35 bg-gradient-to-br from-[#0d0b08]/50 to-[#100e0a]/50 p-6 backdrop-blur-sm transition-all hover:border-[#e8a020]/30 hover:shadow-lg"
                       >
                         <div className="mb-4 flex items-center justify-between">
                           <span className="text-sm font-medium text-[#e8a020]">
@@ -687,17 +687,17 @@ export default function NewMoviePage() {
 
                         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                           <div className="space-y-2">
-                            <Label className="text-sm text-[#8a807a]">역할</Label>
+                            <Label className="text-sm text-[#b8a898]">역할</Label>
                             <Input
-                              className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                              className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                               placeholder="예: 감독, 주연"
                               {...register(`credits.${index}.role`)}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label className="text-sm text-[#8a807a]">이름</Label>
+                            <Label className="text-sm text-[#b8a898]">이름</Label>
                             <Input
-                              className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                              className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                               placeholder="이름"
                               value={selectedActor ? selectedActor.stageName : watch(`credits.${index}.name`) || ""}
                               onChange={(e) => {
@@ -711,7 +711,7 @@ export default function NewMoviePage() {
                         </div>
 
                         <div className="mt-4 space-y-2">
-                          <Label className="text-sm text-[#8a807a]">사이트 내 배우 선택 (선택)</Label>
+                          <Label className="text-sm text-[#b8a898]">사이트 내 배우 선택 (선택)</Label>
                           <Select
                             value={selectedActorId || "none"}
                             onValueChange={(value) => {
@@ -727,7 +727,7 @@ export default function NewMoviePage() {
                               }
                             }}
                           >
-                            <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]">
+                            <SelectTrigger className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]">
                               <SelectValue placeholder="배우 선택 (선택)" />
                             </SelectTrigger>
                             <SelectContent className="bg-[#100e0a] border-[#e8a020]/30 max-h-[200px]">
@@ -748,9 +748,9 @@ export default function NewMoviePage() {
                         </div>
 
                         <div className="mt-4 space-y-2">
-                          <Label className="text-sm text-[#8a807a]">외부 프로필 링크 (선택)</Label>
+                          <Label className="text-sm text-[#b8a898]">외부 프로필 링크 (선택)</Label>
                           <Input
-                            className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                            className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                             placeholder="https://..."
                             {...register(`credits.${index}.profileLink`)}
                             disabled={!!selectedActorId}
@@ -783,11 +783,11 @@ export default function NewMoviePage() {
                 </Label>
                 <Input
                   id="tags"
-                  className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
+                  className="h-12 bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                   placeholder="예: 독립영화, 단편영화, 대학생작품 (쉼표로 구분)"
                   {...register("tags")}
                 />
-                <p className="text-xs text-[#5a5248]">
+                <p className="text-xs text-[#b8a898]">
                   태그는 쉼표로 구분하여 입력하세요
                 </p>
               </div>
@@ -814,7 +814,7 @@ export default function NewMoviePage() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="h-12 border-[#5a5248]/40 text-[#f0e8d8] transition-all hover:bg-[#e8a020]/10 hover:text-[#faf6f0]"
+                  className="h-12 border-[#e8a020]/35 text-[#f0e8d8] transition-all hover:bg-[#e8a020]/10 hover:text-[#faf6f0]"
                   onClick={() => router.back()}
                 >
                   취소

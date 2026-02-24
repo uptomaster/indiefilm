@@ -50,7 +50,7 @@ export default function VenueMePage() {
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
           <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
-          <p className="mt-4 text-[#8a807a]">로딩 중...</p>
+          <p className="mt-4 text-[#b8a898]">로딩 중...</p>
         </div>
       </div>
     );
@@ -67,7 +67,7 @@ export default function VenueMePage() {
           <h1 className="mb-4 text-3xl font-bold tracking-tight text-[#e8a020]">
             촬영 장소를 등록하세요
           </h1>
-          <p className="mb-8 text-[#8a807a] leading-relaxed">
+          <p className="mb-8 text-[#b8a898] leading-relaxed">
             사진, 위치, 면적, 대여 가능 시간대, 가격, 전기/주차/소음 여부 등
             촬영에 필요한 정보를 입력하고 제작진과 연결하세요.
           </p>
@@ -79,7 +79,7 @@ export default function VenueMePage() {
               장소 등록하기
             </Button>
           </Link>
-          <div className="mt-12 flex justify-center gap-8 text-sm text-gray-500">
+          <div className="mt-12 flex justify-center gap-8 text-sm text-[#b8a898]">
             <span className="flex items-center gap-2">
               <MapPin className="h-4 w-4" /> 위치·면적·가격
             </span>

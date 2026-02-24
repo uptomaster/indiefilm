@@ -85,9 +85,9 @@ export default function SignupPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="font-serif text-4xl font-light text-[#faf6f0] mb-2">회원가입</h1>
-          <p className="text-[#8a807a] text-sm">인디필름에 가입하고 시작하세요</p>
+          <p className="text-[#b8a898] text-sm">인디필름에 가입하고 시작하세요</p>
         </div>
-        <Card className="border-[#5a5248]/30 bg-[#100e0a]">
+        <Card className="border-[#e8a020]/30 bg-[#100e0a]">
           <CardContent className="pt-6 space-y-4">
             {error && (
               <div className="rounded-md bg-[#c03020]/10 border border-[#c03020]/30 p-3 text-sm text-[#e08080]">
@@ -102,11 +102,11 @@ export default function SignupPage() {
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-[#8a807a]">이메일</Label>
+                <Label htmlFor="email" className="text-[#b8a898]">이메일</Label>
                 <Input
                   id="email"
                   type="email"
-                  className="bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
+                  className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020]"
                   placeholder="example@email.com"
                   {...register("email")}
                 />
@@ -116,11 +116,11 @@ export default function SignupPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-[#8a807a]">비밀번호</Label>
+                <Label htmlFor="password" className="text-[#b8a898]">비밀번호</Label>
                 <Input
                   id="password"
                   type="password"
-                  className="bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
+                  className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020]"
                   {...register("password")}
                 />
                 {errors.password && (
@@ -131,11 +131,11 @@ export default function SignupPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword" className="text-[#8a807a]">비밀번호 확인</Label>
+                <Label htmlFor="confirmPassword" className="text-[#b8a898]">비밀번호 확인</Label>
                 <Input
                   id="confirmPassword"
                   type="password"
-                  className="bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
+                  className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020]"
                   {...register("confirmPassword")}
                 />
                 {errors.confirmPassword && (
@@ -146,12 +146,12 @@ export default function SignupPage() {
               </div>
 
               <div className="space-y-2">
-                <Label className="text-[#8a807a]">당신은 누구인가요?</Label>
+                <Label className="text-[#b8a898]">당신은 누구인가요?</Label>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                   <label className={`flex cursor-pointer flex-col items-center rounded-lg border-2 p-3 transition-all ${
                     selectedRole === "filmmaker"
                       ? "border-[#e8a020] bg-[#e8a020]/20 scale-105"
-                      : "border-[#5a5248]/50 hover:bg-[#e8a020]/10 hover:border-[#e8a020]/50"
+                      : "border-[#e8a020]/35 hover:bg-[#e8a020]/10 hover:border-[#e8a020]/50"
                   }`}>
                     <input
                       type="radio"
@@ -160,12 +160,12 @@ export default function SignupPage() {
                       className="sr-only"
                     />
                     <span className="text-2xl mb-1">🎬</span>
-                    <span className="text-sm font-medium text-[#8a807a]">제작자</span>
+                    <span className="text-sm font-medium text-[#b8a898]">제작자</span>
                   </label>
                   <label className={`flex cursor-pointer flex-col items-center rounded-lg border-2 p-3 transition-all ${
                     selectedRole === "actor"
                       ? "border-[#e8a020] bg-[#e8a020]/20 scale-105"
-                      : "border-[#5a5248]/50 hover:bg-[#e8a020]/10 hover:border-[#e8a020]/50"
+                      : "border-[#e8a020]/35 hover:bg-[#e8a020]/10 hover:border-[#e8a020]/50"
                   }`}>
                     <input
                       type="radio"
@@ -174,12 +174,12 @@ export default function SignupPage() {
                       className="sr-only"
                     />
                     <span className="text-2xl mb-1">🎭</span>
-                    <span className="text-sm font-medium text-[#8a807a]">배우</span>
+                    <span className="text-sm font-medium text-[#b8a898]">배우</span>
                   </label>
                   <label className={`flex cursor-pointer flex-col items-center rounded-lg border-2 p-3 transition-all ${
                     selectedRole === "viewer"
                       ? "border-[#e8a020] bg-[#e8a020]/20 scale-105"
-                      : "border-[#5a5248]/50 hover:bg-[#e8a020]/10 hover:border-[#e8a020]/50"
+                      : "border-[#e8a020]/35 hover:bg-[#e8a020]/10 hover:border-[#e8a020]/50"
                   }`}>
                     <input
                       type="radio"
@@ -188,12 +188,12 @@ export default function SignupPage() {
                       className="sr-only"
                     />
                     <span className="text-2xl mb-1">👁️</span>
-                    <span className="text-sm font-medium text-[#8a807a]">관객</span>
+                    <span className="text-sm font-medium text-[#b8a898]">관객</span>
                   </label>
                   <label className={`flex cursor-pointer flex-col items-center rounded-lg border-2 p-3 transition-all ${
                     selectedRole === "venue"
                       ? "border-[#e8a020] bg-[#e8a020]/20 scale-105"
-                      : "border-[#5a5248]/50 hover:bg-[#e8a020]/10 hover:border-[#e8a020]/50"
+                      : "border-[#e8a020]/35 hover:bg-[#e8a020]/10 hover:border-[#e8a020]/50"
                   }`}>
                     <input
                       type="radio"
@@ -202,7 +202,7 @@ export default function SignupPage() {
                       className="sr-only"
                     />
                     <span className="text-2xl mb-1">🏢</span>
-                    <span className="text-sm font-medium text-[#8a807a]">장소대여자</span>
+                    <span className="text-sm font-medium text-[#b8a898]">장소대여자</span>
                   </label>
                 </div>
                 {errors.role && (
@@ -217,10 +217,10 @@ export default function SignupPage() {
 
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t border-[#5a5248]/30" />
+                <span className="w-full border-t border-[#e8a020]/30" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-[#100e0a] px-2 text-[#5a5248]">
+                <span className="bg-[#100e0a] px-2 text-[#b8a898]">
                   또는
                 </span>
               </div>
@@ -229,7 +229,7 @@ export default function SignupPage() {
             <Button
               type="button"
               variant="outline"
-              className="w-full border-[#5a5248]/50 text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020] hover:bg-[#e8a020]/10"
+              className="w-full border-[#e8a020]/35 text-[#b8a898] hover:border-[#e8a020] hover:text-[#e8a020] hover:bg-[#e8a020]/10"
               onClick={handleGoogleSignUp}
               disabled={loading}
             >
@@ -254,7 +254,7 @@ export default function SignupPage() {
               Google로 회원가입
             </Button>
 
-            <div className="text-center text-sm text-[#8a807a]">
+            <div className="text-center text-sm text-[#b8a898]">
               이미 계정이 있으신가요?{" "}
               <Link href="/login" className="text-[#e8a020] hover:text-[#e8a020]/80 hover:underline">
                 로그인

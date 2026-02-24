@@ -323,7 +323,7 @@ export default function ActorProfileEditPage() {
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
             <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
-            <p className="mt-4 text-[#8a807a]">로딩 중...</p>
+            <p className="mt-4 text-[#b8a898]">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -340,7 +340,7 @@ export default function ActorProfileEditPage() {
             <h1 className="mb-4 text-5xl font-bold tracking-tight film-gold">
               ACTOR PROFILE EDIT
             </h1>
-            <p className="text-xl text-[#8a807a]">
+            <p className="text-xl text-[#b8a898]">
               당신의 프로필을 완성하고 제작자들에게 어필하세요
             </p>
           </div>
@@ -352,7 +352,7 @@ export default function ActorProfileEditPage() {
         <Card className="border-[#e8a020]/20 bg-[#100e0a] backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-3xl film-gold">프로필 정보</CardTitle>
-            <CardDescription className="text-[#8a807a]">
+            <CardDescription className="text-[#b8a898]">
               모든 정보는 제작자들이 검색할 수 있도록 공개됩니다
             </CardDescription>
           </CardHeader>
@@ -372,12 +372,12 @@ export default function ActorProfileEditPage() {
 
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="stageName" className="text-[#8a807a]">
+                    <Label htmlFor="stageName" className="text-[#b8a898]">
                       예명 *
                     </Label>
                     <Input
                       id="stageName"
-                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                      className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                       {...register("stageName")}
                     />
                     {errors.stageName && (
@@ -388,7 +388,7 @@ export default function ActorProfileEditPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="ageRange" className="text-[#8a807a]">
+                    <Label htmlFor="ageRange" className="text-[#b8a898]">
                       나이대 *
                     </Label>
                     <Select
@@ -397,10 +397,10 @@ export default function ActorProfileEditPage() {
                         setValue("ageRange", value as AgeRange)
                       }
                     >
-                      <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]">
+                      <SelectTrigger className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]">
                         <SelectValue placeholder="나이대 선택" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#181410]900 border-[#e8a020]/30">
+                      <SelectContent className="bg-[#0d0b08] border-[#e8a020]/30">
                         {ageRanges.map((age) => (
                           <SelectItem key={age} value={age} className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">
                             {getAgeRangeLabel(age)}
@@ -416,13 +416,13 @@ export default function ActorProfileEditPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="heightCm" className="text-[#8a807a]">
+                    <Label htmlFor="heightCm" className="text-[#b8a898]">
                       키 (cm) *
                     </Label>
                     <Input
                       id="heightCm"
                       type="number"
-                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                      className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                       {...register("heightCm", { valueAsNumber: true })}
                     />
                     {errors.heightCm && (
@@ -433,13 +433,13 @@ export default function ActorProfileEditPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="bodyType" className="text-[#8a807a]">
+                    <Label htmlFor="bodyType" className="text-[#b8a898]">
                       체형 *
                     </Label>
                     <Input
                       id="bodyType"
                       placeholder="예: 마른 체형, 보통 체형, 근육질"
-                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                      className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                       {...register("bodyType")}
                     />
                     {errors.bodyType && (
@@ -450,17 +450,17 @@ export default function ActorProfileEditPage() {
                   </div>
 
                   <div className="space-y-2 md:col-span-2">
-                    <Label htmlFor="location" className="text-[#8a807a]">
+                    <Label htmlFor="location" className="text-[#b8a898]">
                       지역 *
                     </Label>
                     <Select
                       value={watch("location")}
                       onValueChange={(value) => setValue("location", value)}
                     >
-                      <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]">
+                      <SelectTrigger className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]">
                         <SelectValue placeholder="지역 선택" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#181410]900 border-[#e8a020]/30">
+                      <SelectContent className="bg-[#0d0b08] border-[#e8a020]/30">
                         {locations.map((loc) => (
                           <SelectItem key={loc} value={loc} className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">
                             {loc}
@@ -483,13 +483,13 @@ export default function ActorProfileEditPage() {
                   자기소개
                 </h2>
                 <div className="space-y-2">
-                  <Label htmlFor="bio" className="text-[#8a807a]">
+                  <Label htmlFor="bio" className="text-[#b8a898]">
                     자기소개 *
                   </Label>
                   <textarea
                     id="bio"
                     rows={6}
-                    className="w-full rounded-md border border-[#5a5248]/40 bg-[#181410] px-3 py-2 text-[#faf6f0] placeholder:text-gray-500"
+                    className="w-full rounded-md border border-[#e8a020]/35 bg-[#0d0b08] px-3 py-2 text-[#faf6f0] placeholder:text-[#b8a898]"
                     placeholder="당신의 연기 스타일, 경력, 특기 등을 자유롭게 작성해주세요..."
                     {...register("bio")}
                   />
@@ -506,14 +506,14 @@ export default function ActorProfileEditPage() {
                 </h2>
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-[#8a807a]">
+                    <Label htmlFor="email" className="text-[#b8a898]">
                       이메일
                     </Label>
                     <Input
                       id="email"
                       type="email"
                       placeholder="example@email.com"
-                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                      className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                       {...register("email")}
                     />
                     {errors.email && (
@@ -521,14 +521,14 @@ export default function ActorProfileEditPage() {
                     )}
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-[#8a807a]">
+                    <Label htmlFor="phone" className="text-[#b8a898]">
                       전화번호
                     </Label>
                     <Input
                       id="phone"
                       type="tel"
                       placeholder="010-1234-5678"
-                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                      className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                       {...register("phone")}
                     />
                     {errors.phone && (
@@ -536,7 +536,7 @@ export default function ActorProfileEditPage() {
                     )}
                   </div>
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-[#b8a898]">
                   연락처 정보는 프로필에 공개됩니다. 원하지 않으면 비워두세요.
                 </p>
               </section>
@@ -560,7 +560,7 @@ export default function ActorProfileEditPage() {
                         }}
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#0d0b08] to-[#0a0805]">
                         <span className="text-7xl">🎭</span>
                       </div>
                     )}
@@ -598,7 +598,7 @@ export default function ActorProfileEditPage() {
                   className={`relative cursor-pointer rounded-xl border-2 border-dashed transition-all ${
                     isDragging
                       ? "border-[#e8a020]/100 bg-[#100e0a]/20"
-                      : "border-[#5a5248]/40 bg-[#181410]800/30 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
+                      : "border-[#e8a020]/35 bg-[#0d0b08]800/30 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
                   }`}
                 >
                   <input
@@ -621,7 +621,7 @@ export default function ActorProfileEditPage() {
                     <p className="mb-2 text-lg font-medium text-gray-200">
                       {uploadingPhoto ? "업로드 중..." : "이미지를 드래그하거나 클릭하여 업로드"}
                     </p>
-                    <p className="text-sm text-[#8a807a]">
+                    <p className="text-sm text-[#b8a898]">
                       PNG, JPG, GIF 최대 5MB
                     </p>
                   </div>
@@ -629,14 +629,14 @@ export default function ActorProfileEditPage() {
 
                 {/* URL 입력 (대안) */}
                 <div className="space-y-2">
-                  <Label htmlFor="mainPhotoUrl" className="text-sm font-medium text-[#8a807a]">
+                  <Label htmlFor="mainPhotoUrl" className="text-sm font-medium text-[#b8a898]">
                     또는 이미지 URL 직접 입력
                   </Label>
                   <Input
                     id="mainPhotoUrl"
                     type="url"
                     placeholder="https://example.com/photo.jpg"
-                    className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
+                    className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                     {...register("mainPhotoUrl")}
                     onChange={(e) => {
                       setValue("mainPhotoUrl", e.target.value);
@@ -646,7 +646,7 @@ export default function ActorProfileEditPage() {
                       }
                     }}
                   />
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-[#b8a898]">
                     외부 이미지 호스팅 서비스(Imgur, Cloudinary 등)의 이미지 URL을 입력하세요
                   </p>
                 </div>
@@ -659,7 +659,7 @@ export default function ActorProfileEditPage() {
                 </h2>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="demoPlatform" className="text-[#8a807a]">
+                    <Label htmlFor="demoPlatform" className="text-[#b8a898]">
                       플랫폼
                     </Label>
                     <Select
@@ -668,10 +668,10 @@ export default function ActorProfileEditPage() {
                         setValue("demoPlatform", value === "none" ? undefined : (value as "youtube" | "vimeo"))
                       }
                     >
-                      <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]">
+                      <SelectTrigger className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]">
                         <SelectValue placeholder="선택 안 함" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#181410]900 border-[#e8a020]/30">
+                      <SelectContent className="bg-[#0d0b08] border-[#e8a020]/30">
                         <SelectItem value="none" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">선택 안 함</SelectItem>
                         <SelectItem value="youtube" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">YouTube</SelectItem>
                         <SelectItem value="vimeo" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">Vimeo</SelectItem>
@@ -680,14 +680,14 @@ export default function ActorProfileEditPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="demoUrl" className="text-[#8a807a]">
+                    <Label htmlFor="demoUrl" className="text-[#b8a898]">
                       데모 릴 URL
                     </Label>
                     <Input
                       id="demoUrl"
                       type="url"
                       placeholder="https://youtube.com/watch?v=..."
-                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                      className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                       {...register("demoUrl")}
                     />
                   </div>
@@ -703,7 +703,7 @@ export default function ActorProfileEditPage() {
                   <div key={field.id} className="flex gap-2">
                     <Input
                       placeholder="예: 단편영화 '제목' 주연, 연극 '제목' 조연"
-                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                      className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                       {...register(`experience.${index}`)}
                     />
                     {experienceFields.length > 1 && (
@@ -711,7 +711,7 @@ export default function ActorProfileEditPage() {
                         type="button"
                         variant="outline"
                         onClick={() => removeExperience(index)}
-                        className="border-[#5a5248]/40 text-[#8a807a] hover:bg-[#e8a020]/10"
+                        className="border-[#e8a020]/35 text-[#b8a898] hover:bg-[#e8a020]/10"
                       >
                         삭제
                       </Button>
@@ -737,7 +737,7 @@ export default function ActorProfileEditPage() {
                   <div key={field.id} className="flex gap-2">
                     <Input
                       placeholder="예: 액션, 댄스, 노래, 악기 연주"
-                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                      className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                       {...register(`skills.${index}`)}
                     />
                     {skillFields.length > 1 && (
@@ -745,7 +745,7 @@ export default function ActorProfileEditPage() {
                         type="button"
                         variant="outline"
                         onClick={() => removeSkill(index)}
-                        className="border-[#5a5248]/40 text-[#8a807a] hover:bg-[#e8a020]/10"
+                        className="border-[#e8a020]/35 text-[#b8a898] hover:bg-[#e8a020]/10"
                       >
                         삭제
                       </Button>
@@ -772,12 +772,12 @@ export default function ActorProfileEditPage() {
                   {...register("mbti")}
                   placeholder="예: ENFP, ISTJ"
                   maxLength={4}
-                  className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] placeholder:text-gray-500"
+                  className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0] placeholder:text-[#b8a898]"
                 />
                 {errors.mbti && (
                   <p className="text-[#e8a020] text-sm">{errors.mbti.message}</p>
                 )}
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-[#b8a898]">
                   MBTI 성격 유형을 입력하세요 (선택사항)
                 </p>
               </section>
@@ -798,7 +798,7 @@ export default function ActorProfileEditPage() {
                   ].map(({ key, label }) => (
                     <div key={key} className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <Label className="text-[#8a807a] text-sm">{label}</Label>
+                        <Label className="text-[#b8a898] text-sm">{label}</Label>
                         <span className="text-[#e8a020] text-sm font-semibold">
                           {watch(`traits.${key}` as any) || 50}
                         </span>
@@ -811,12 +811,12 @@ export default function ActorProfileEditPage() {
                         onChange={(e) =>
                           setValue(`traits.${key}` as any, Number(e.target.value))
                         }
-                        className="w-full h-2 bg-[#181410]700 rounded-lg appearance-none cursor-pointer accent-[#e8a020]"
+                        className="w-full h-2 bg-[#0d0b08]/70 rounded-lg appearance-none cursor-pointer accent-[#e8a020]"
                       />
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-[#b8a898]">
                   각 특성에 대한 자신의 점수를 0-100 사이로 설정하세요
                 </p>
               </section>
@@ -829,11 +829,11 @@ export default function ActorProfileEditPage() {
                     id="isPublic"
                     checked={isPublic}
                     onChange={(e) => setValue("isPublic", e.target.checked)}
-                    className="h-5 w-5 rounded border-[#5a5248]/40 bg-[#181410]800 text-[#e8a020] focus:ring-[#e8a020] cursor-pointer"
+                    className="h-5 w-5 rounded border-[#e8a020]/35 bg-[#0d0b08]800 text-[#e8a020] focus:ring-[#e8a020] cursor-pointer"
                   />
-                  <Label htmlFor="isPublic" className="text-[#8a807a] cursor-pointer">
+                  <Label htmlFor="isPublic" className="text-[#b8a898] cursor-pointer">
                     <span className="font-semibold text-[#e8a020]">프로필 공개</span>
-                    <span className="block text-sm text-[#8a807a] mt-1">
+                    <span className="block text-sm text-[#b8a898] mt-1">
                       프로필을 공개하면 제작자들이 검색하여 찾을 수 있습니다
                     </span>
                   </Label>
@@ -858,7 +858,7 @@ export default function ActorProfileEditPage() {
                   type="button"
                   variant="outline"
                   onClick={() => router.push("/actors/me/view")}
-                  className="border-[#5a5248]/40 text-[#8a807a] hover:bg-[#e8a020]/10"
+                  className="border-[#e8a020]/35 text-[#b8a898] hover:bg-[#e8a020]/10"
                 >
                   취소
                 </Button>

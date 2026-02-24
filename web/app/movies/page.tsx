@@ -115,7 +115,7 @@ export default function MoviesPage() {
           className={`px-4 py-2 text-xs tracking-wider uppercase transition-all ${
             selectedGenre === null
               ? "bg-[#e8a020] text-[#0a0805] font-medium"
-              : "border border-[#5a5248] text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020]"
+              : "border border-[#e8a020]/35 text-[#b8a898] hover:border-[#e8a020] hover:text-[#e8a020]"
           }`}
         >
           전체
@@ -127,7 +127,7 @@ export default function MoviesPage() {
             className={`px-4 py-2 text-xs tracking-wider uppercase transition-all ${
               selectedGenre === genre
                 ? "bg-[#e8a020] text-[#0a0805] font-medium"
-                : "border border-[#5a5248] text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020]"
+                : "border border-[#e8a020]/35 text-[#b8a898] hover:border-[#e8a020] hover:text-[#e8a020]"
             }`}
           >
             {getGenreLabel(genre)}
@@ -147,14 +147,14 @@ export default function MoviesPage() {
         ) : (
           <>
             <div className="mb-6 flex items-center justify-between">
-              <div className="text-sm text-[#8a807a]">
+              <div className="text-sm text-[#b8a898]">
                 총 {sortedMovies.length}개의 영화
               </div>
               <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortOption)}>
-                <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] font-medium h-9 md:h-10 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
+                <SelectTrigger className="w-[140px] bg-[#0d0b08] border-[#e8a020]/25 text-[#faf6f0] font-medium h-9 md:h-10 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-[#141210] border-[#e8a020]/25">
+                <SelectContent className="bg-[#0d0b08] border-[#e8a020]/25">
                   <SelectItem value="latest" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">최신순</SelectItem>
                   <SelectItem value="popular" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">인기순</SelectItem>
                   <SelectItem value="rating" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">평점순</SelectItem>
@@ -164,7 +164,7 @@ export default function MoviesPage() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
               {sortedMovies.map((movie) => (
                 <Link key={movie.id} href={`/movies/${movie.id}`} className="group block">
-                  <div className="overflow-hidden rounded border border-[#5a5248]/30 bg-[#181410] transition-colors hover:border-[#e8a020]/40">
+                  <div className="overflow-hidden rounded border border-[#e8a020]/30 bg-[#0d0b08] transition-colors hover:border-[#e8a020]/40">
                     {/* 포스터 영역 - 박스에 맞게 꽉 채움 (2:3 비율) */}
                     <div className="relative aspect-[2/3] overflow-hidden bg-[#1a1510]">
                       {movie.thumbnailUrl ? (
@@ -177,7 +177,7 @@ export default function MoviesPage() {
                         <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#1a1510] via-[#100e0a] to-[#0a0805]">
                           <div className="text-center">
                             <div className="mb-2 text-5xl opacity-50">🎬</div>
-                            <div className="text-base font-bold text-[#8a807a] line-clamp-2 px-3">
+                            <div className="text-base font-bold text-[#b8a898] line-clamp-2 px-3">
                               {movie.title}
                             </div>
                           </div>
@@ -192,7 +192,7 @@ export default function MoviesPage() {
                         <span className="rounded px-2 py-0.5 bg-[#e8a020]/20 text-[#e8a020]">
                           {getGenreLabel(movie.genre)}
                         </span>
-                        <span className="rounded px-2 py-0.5 bg-[#5a5248]/50 text-[#8a807a]">
+                        <span className="rounded px-2 py-0.5 bg-[#e8a020]/25 text-[#b8a898]">
                           {movie.runtimeMinutes}분
                         </span>
                         {movie.averageRating > 0 && (
@@ -200,7 +200,7 @@ export default function MoviesPage() {
                         )}
                       </div>
                       {movie.logline && (
-                        <p className="line-clamp-2 text-sm text-[#8a807a]">{movie.logline}</p>
+                        <p className="line-clamp-2 text-sm text-[#b8a898]">{movie.logline}</p>
                       )}
                     </div>
                   </div>

@@ -184,10 +184,16 @@ export default function PostDetailPage() {
   const getCategoryLabel = (category?: string): string => {
     if (!category) return "";
     const categoryMap: Record<string, string> = {
+      free: "자유",
+      review: "작품리뷰",
+      tech: "촬영팁",
+      equipment: "장비",
+      qna: "Q&A",
+      casting_review: "오디션후기",
       casting: "캐스팅",
       seeking: "구직",
       collaboration: "협업",
-      general: "일반",
+      general: "자유",
     };
     return categoryMap[category] || category;
   };
@@ -198,7 +204,7 @@ export default function PostDetailPage() {
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
             <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
-            <p className="mt-4 text-[#8a807a]">로딩 중...</p>
+            <p className="mt-4 text-[#b8a898]">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -210,7 +216,7 @@ export default function PostDetailPage() {
       <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <p className="mb-4 text-xl text-[#8a807a]">게시글을 찾을 수 없습니다.</p>
+            <p className="mb-4 text-xl text-[#b8a898]">게시글을 찾을 수 없습니다.</p>
             <Link href="/posts">
               <Button className="border-[#e8a020]/50 bg-[#e8a020]/20 text-[#e8a020] hover:bg-[#e8a020]/30">
                 게시판으로
@@ -224,7 +230,7 @@ export default function PostDetailPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
-      <div className="relative overflow-hidden border-b border-[#5a5248]/20 bg-[#100e0a]">
+      <div className="relative overflow-hidden border-b border-[#e8a020]/25 bg-[#100e0a]">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-16">
           <div className="mx-auto max-w-3xl">
@@ -236,12 +242,12 @@ export default function PostDetailPage() {
                 {getPostTypeLabel(post.type)}
               </span>
               {post.category && (
-                <span className="rounded-full bg-[#181410] px-3 py-1 text-sm text-[#8a807a]">
+                <span className="rounded-full bg-[#0d0b08] px-3 py-1 text-sm text-[#b8a898]">
                   {getCategoryLabel(post.category)}
                 </span>
               )}
               {post.location && (
-                <span className="rounded-full bg-[#181410] px-3 py-1 text-sm text-[#8a807a]">
+                <span className="rounded-full bg-[#0d0b08] px-3 py-1 text-sm text-[#b8a898]">
                   {post.location}
                 </span>
               )}
@@ -249,7 +255,7 @@ export default function PostDetailPage() {
             <h1 className="mb-4 text-4xl font-bold tracking-tight film-gold">
               {post.title}
             </h1>
-            <div className="flex items-center gap-4 text-sm text-[#8a807a]">
+            <div className="flex items-center gap-4 text-sm text-[#b8a898]">
               <span>{authorName || "작성자"}</span>
               <span>•</span>
               <span>
@@ -270,7 +276,7 @@ export default function PostDetailPage() {
           <div className="grid gap-8 lg:grid-cols-3">
             {/* 좌측: 게시글 내용 */}
             <div className="lg:col-span-2 space-y-6">
-              <Card className="border-[#5a5248]/30 bg-[#181410]">
+              <Card className="border-[#e8a020]/30 bg-[#0d0b08]">
                 <CardContent className="p-6">
                   <div className="whitespace-pre-wrap text-lg leading-relaxed text-[#faf6f0]">
                     {post.content}
@@ -278,7 +284,7 @@ export default function PostDetailPage() {
 
                   {/* 요구사항 */}
                   {post.requirements && post.requirements.length > 0 && (
-                    <div className="mt-6 border-t border-[#5a5248]/30 pt-6">
+                    <div className="mt-6 border-t border-[#e8a020]/30 pt-6">
                       <h3 className="mb-3 text-lg font-bold text-[#e8a020]">요구사항</h3>
                       <ul className="space-y-2">
                         {post.requirements.map((req, index) => (
@@ -293,12 +299,12 @@ export default function PostDetailPage() {
 
                   {/* 관련 정보 */}
                   {(post.movieId || post.actorId) && (
-                    <div className="mt-6 border-t border-[#5a5248]/30 pt-6">
+                    <div className="mt-6 border-t border-[#e8a020]/30 pt-6">
                       <h3 className="mb-3 text-lg font-bold text-[#e8a020]">관련 정보</h3>
                       <div className="space-y-2">
                         {post.movieId && (
                           <div>
-                            <span className="text-[#8a807a]">관련 영화: </span>
+                            <span className="text-[#b8a898]">관련 영화: </span>
                             <Link
                               href={`/movies/${post.movieId}`}
                               className="text-[#e8a020] hover:text-[#e8a020]/80 hover:underline"
@@ -309,7 +315,7 @@ export default function PostDetailPage() {
                         )}
                         {post.actorId && (
                           <div>
-                            <span className="text-[#8a807a]">관련 배우: </span>
+                            <span className="text-[#b8a898]">관련 배우: </span>
                             <Link
                               href={`/actors/${post.actorId}`}
                               className="text-[#e8a020] hover:text-[#e8a020]/80 hover:underline"
@@ -325,16 +331,16 @@ export default function PostDetailPage() {
               </Card>
 
               {/* 댓글 섹션 */}
-              <Card className="border-[#5a5248]/30 bg-[#181410]">
+              <Card className="border-[#e8a020]/30 bg-[#0d0b08]">
                 <CardContent className="p-6">
-                  <h3 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-lg font-bold film-gold">
+                  <h3 className="mb-4 border-b border-[#e8a020]/30 pb-2 text-lg font-bold film-gold">
                     댓글 ({comments.length})
                   </h3>
 
                   {/* 댓글 목록 */}
                   <div className="mb-6 space-y-4">
                     {comments.length === 0 ? (
-                      <div className="py-8 text-center text-[#8a807a]">
+                      <div className="py-8 text-center text-[#b8a898]">
                         아직 댓글이 없습니다.
                       </div>
                     ) : (
@@ -364,7 +370,7 @@ export default function PostDetailPage() {
                           }
                         }}
                         placeholder="댓글을 입력하세요..."
-                        className="flex-1 border-[#5a5248]/50 bg-[#181410] text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
+                        className="flex-1 border-[#e8a020]/35 bg-[#0d0b08] text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020]"
                         disabled={sending}
                       />
                       <Button
@@ -376,8 +382,8 @@ export default function PostDetailPage() {
                       </Button>
                     </div>
                   ) : (
-                    <div className="rounded-lg border border-[#5a5248]/30 bg-[#181410] p-4 text-center">
-                      <p className="mb-3 text-sm text-[#8a807a]">댓글을 작성하려면 로그인이 필요합니다.</p>
+                    <div className="rounded-lg border border-[#e8a020]/30 bg-[#0d0b08] p-4 text-center">
+                      <p className="mb-3 text-sm text-[#b8a898]">댓글을 작성하려면 로그인이 필요합니다.</p>
                       <Link href="/login">
                         <Button
                           variant="outline"
@@ -394,36 +400,36 @@ export default function PostDetailPage() {
 
             {/* 우측: 사이드바 */}
             <div className="lg:col-span-1">
-              <Card className="border-[#5a5248]/30 bg-[#181410]">
+              <Card className="border-[#e8a020]/30 bg-[#0d0b08]">
                 <CardContent className="p-6">
-                  <h3 className="mb-4 text-sm font-semibold text-[#8a807a]">게시글 정보</h3>
+                  <h3 className="mb-4 text-sm font-semibold text-[#b8a898]">게시글 정보</h3>
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-[#8a807a]">작성자</span>
+                      <span className="text-[#b8a898]">작성자</span>
                       <span className="text-[#faf6f0]">{authorName || "작성자"}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-[#8a807a]">유형</span>
+                      <span className="text-[#b8a898]">유형</span>
                       <span className="text-[#faf6f0]">{getPostTypeLabel(post.type)}</span>
                     </div>
                     {post.category && (
                       <div className="flex justify-between">
-                        <span className="text-[#8a807a]">카테고리</span>
+                        <span className="text-[#b8a898]">카테고리</span>
                         <span className="text-[#faf6f0]">{getCategoryLabel(post.category)}</span>
                       </div>
                     )}
                     {post.location && (
                       <div className="flex justify-between">
-                        <span className="text-[#8a807a]">지역</span>
+                        <span className="text-[#b8a898]">지역</span>
                         <span className="text-[#faf6f0]">{post.location}</span>
                       </div>
                     )}
                     <div className="flex justify-between">
-                      <span className="text-[#8a807a]">조회수</span>
+                      <span className="text-[#b8a898]">조회수</span>
                       <span className="text-[#faf6f0]">{post.views || 0}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-[#8a807a]">작성일</span>
+                      <span className="text-[#b8a898]">작성일</span>
                       <span className="text-[#faf6f0]">
                         {post.createdAt?.toDate
                           ? new Date(post.createdAt.toDate()).toLocaleDateString("ko-KR")
@@ -453,7 +459,7 @@ function CommentItem({
   onDelete: () => void;
 }) {
   return (
-    <div className="flex items-start gap-3 border-b border-[#5a5248]/30 pb-4 last:border-0">
+    <div className="flex items-start gap-3 border-b border-[#e8a020]/30 pb-4 last:border-0">
       <div className="flex-shrink-0">
         <div className="h-10 w-10 rounded-full bg-[#e8a020] flex items-center justify-center text-[#0a0805] font-bold">
           {userName.charAt(0).toUpperCase()}
@@ -463,9 +469,9 @@ function CommentItem({
         <div className="mb-1 flex items-center gap-2">
           <span className="font-semibold text-[#faf6f0]">{userName}</span>
           {isOwn && (
-            <span className="text-xs text-[#5a5248]">(나)</span>
+            <span className="text-xs text-[#b8a898]">(나)</span>
           )}
-          <span className="text-xs text-[#5a5248]">
+          <span className="text-xs text-[#b8a898]">
             {comment.createdAt?.toDate
               ? new Date(comment.createdAt.toDate()).toLocaleDateString("ko-KR")
               : ""}

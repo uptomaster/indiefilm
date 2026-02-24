@@ -114,7 +114,7 @@ export default function MovieRatingsPage() {
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
             <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
-            <p className="mt-4 text-[#8a807a]">로딩 중...</p>
+            <p className="mt-4 text-[#b8a898]">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -127,7 +127,7 @@ export default function MovieRatingsPage() {
         <div className="mb-8 flex items-center justify-between">
           <div>
             <h1 className="text-4xl font-bold film-gold">내 영화 평점</h1>
-            <p className="mt-2 text-[#8a807a]">
+            <p className="mt-2 text-[#b8a898]">
               좋아하는 영화를 평가하고 인생영화로 등록하세요
             </p>
           </div>
@@ -159,7 +159,7 @@ export default function MovieRatingsPage() {
                     onChange={(e) => setMovieTitle(e.target.value)}
                     placeholder="예: 인셉션"
                     required
-                    className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                    className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                   />
                 </div>
 
@@ -176,7 +176,7 @@ export default function MovieRatingsPage() {
                       placeholder="예: 2010"
                       min="1900"
                       max={new Date().getFullYear()}
-                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                      className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                     />
                   </div>
 
@@ -190,7 +190,7 @@ export default function MovieRatingsPage() {
                       value={movieThumbnail}
                       onChange={(e) => setMovieThumbnail(e.target.value)}
                       placeholder="https://..."
-                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
+                      className="bg-[#0d0b08] border-[#e8a020]/35 text-[#faf6f0]"
                     />
                   </div>
                 </div>
@@ -204,7 +204,7 @@ export default function MovieRatingsPage() {
                         type="button"
                         onClick={() => setRating(star)}
                         className={`text-3xl transition-transform hover:scale-110 ${
-                          star <= rating ? "text-[#e8a020]" : "text-[#5a5248]"
+                          star <= rating ? "text-[#e8a020]" : "text-[#b8a898]"
                         }`}
                       >
                         ★
@@ -225,7 +225,7 @@ export default function MovieRatingsPage() {
                     value={review}
                     onChange={(e) => setReview(e.target.value)}
                     placeholder="이 영화에 대한 생각을 남겨주세요..."
-                    className="w-full min-h-[100px] rounded-md border border-gray-700 bg-gray-800/50 px-3 py-2 text-white placeholder:text-[#5a5248] focus:border-[#e8a020] focus:outline-none focus:ring-1 focus:ring-[#e8a020]"
+                    className="w-full min-h-[100px] rounded-md border border-[#e8a020]/35 bg-[#0d0b08]/80 px-3 py-2 text-white placeholder:text-[#b8a898] focus:border-[#e8a020] focus:outline-none focus:ring-1 focus:ring-[#e8a020]"
                   />
                 </div>
 
@@ -235,7 +235,7 @@ export default function MovieRatingsPage() {
                     id="isFavorite"
                     checked={isFavorite}
                     onChange={(e) => setIsFavorite(e.target.checked)}
-                    className="h-5 w-5 rounded border-[#5a5248] bg-[#181410] text-[#e8a020] focus:ring-[#e8a020] cursor-pointer"
+                    className="h-5 w-5 rounded border-[#e8a020]/35 bg-[#0d0b08] text-[#e8a020] focus:ring-[#e8a020] cursor-pointer"
                   />
                   <Label htmlFor="isFavorite" className="text-[#f0e8d8] cursor-pointer">
                     ⭐ 인생영화로 등록
@@ -254,7 +254,7 @@ export default function MovieRatingsPage() {
                     type="button"
                     onClick={resetForm}
                     variant="outline"
-                    className="border-[#5a5248] text-[#f0e8d8] hover:bg-[#181410]"
+                    className="border-[#e8a020]/35 text-[#f0e8d8] hover:bg-[#0d0b08]"
                   >
                     취소
                   </Button>
@@ -267,7 +267,7 @@ export default function MovieRatingsPage() {
         {/* 평점 목록 */}
         {ratings.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-xl text-[#8a807a] mb-4">
+            <p className="text-xl text-[#b8a898] mb-4">
               아직 평가한 영화가 없습니다
             </p>
             <Button
@@ -282,7 +282,7 @@ export default function MovieRatingsPage() {
             {ratings.map((rating) => (
               <Card
                 key={rating.id}
-                className="border-[#5a5248]/30 bg-[#100e0a] hover:border-[#e8a020]/50 transition-colors"
+                className="border-[#e8a020]/30 bg-[#100e0a] hover:border-[#e8a020]/50 transition-colors"
               >
                 <CardContent className="p-6">
                   {rating.movieThumbnail && (
@@ -296,7 +296,7 @@ export default function MovieRatingsPage() {
                     {rating.movieTitle}
                   </h3>
                   {rating.movieYear && (
-                    <p className="text-sm text-[#8a807a] mb-3">
+                    <p className="text-sm text-[#b8a898] mb-3">
                       {rating.movieYear}년
                     </p>
                   )}
@@ -305,7 +305,7 @@ export default function MovieRatingsPage() {
                       <span
                         key={i}
                         className={`text-lg ${
-                          i < rating.rating ? "text-[#e8a020]" : "text-[#5a5248]"
+                          i < rating.rating ? "text-[#e8a020]" : "text-[#b8a898]"
                         }`}
                       >
                         ★
@@ -323,7 +323,7 @@ export default function MovieRatingsPage() {
                   <Button
                     onClick={() => handleEdit(rating)}
                     variant="outline"
-                    className="w-full border-[#5a5248] text-[#e8a020] hover:bg-[#e8a020]/10"
+                    className="w-full border-[#e8a020]/35 text-[#e8a020] hover:bg-[#e8a020]/10"
                   >
                     수정
                   </Button>

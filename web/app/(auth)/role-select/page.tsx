@@ -72,7 +72,7 @@ export default function RoleSelectPage() {
       <div className="flex min-h-screen items-center justify-center bg-[#0a0805]">
         <div className="text-center">
           <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
-          <p className="mt-4 text-[#8a807a]">로딩 중...</p>
+          <p className="mt-4 text-[#b8a898]">로딩 중...</p>
         </div>
       </div>
     );
@@ -81,7 +81,7 @@ export default function RoleSelectPage() {
   if (!user) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#0a0805]">
-        <Card className="w-full max-w-md border-[#5a5248]/30 bg-[#100e0a]">
+        <Card className="w-full max-w-md border-[#e8a020]/30 bg-[#100e0a]">
           <CardContent className="pt-6">
             <p className="text-center text-[#faf6f0]">로그인이 필요합니다</p>
             <Button className="mt-4 w-full bg-[#e8a020] text-[#0a0805] hover:bg-[#f0b030]" onClick={() => router.push("/login")}>
@@ -103,9 +103,9 @@ export default function RoleSelectPage() {
       <div className="w-full max-w-4xl">
         <div className="text-center mb-12">
           <h1 className="font-serif text-5xl font-light text-[#faf6f0] mb-4">당신은 누구인가요?</h1>
-          <p className="text-xl text-[#8a807a]">인디필름에서 활동할 역할을 선택해주세요</p>
+          <p className="text-xl text-[#b8a898]">인디필름에서 활동할 역할을 선택해주세요</p>
         </div>
-        <Card className="border-[#5a5248]/30 bg-[#100e0a]">
+        <Card className="border-[#e8a020]/30 bg-[#100e0a]">
           <CardContent className="pt-6 space-y-6">
             {error && (
               <div className="rounded-md bg-[#c03020]/10 border border-[#c03020]/30 p-3 text-sm text-[#e08080]">
@@ -120,12 +120,12 @@ export default function RoleSelectPage() {
                 className={`flex flex-col items-center rounded-lg border-2 p-8 transition-all disabled:opacity-50 ${
                   selectedRole === "filmmaker"
                     ? "border-[#e8a020] bg-[#e8a020]/20 scale-105"
-                    : "border-[#5a5248]/50 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
+                    : "border-[#e8a020]/35 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
                 } ${loading ? "cursor-wait" : "cursor-pointer"}`}
               >
                 <span className="text-6xl mb-4">🎬</span>
                 <h3 className="text-xl font-semibold mb-3 text-[#e8a020]">제작자</h3>
-                <p className="text-sm text-[#8a807a] text-center leading-relaxed">
+                <p className="text-sm text-[#b8a898] text-center leading-relaxed">
                   영화를 제작하고 업로드하며 배우를 찾습니다
                 </p>
                 {selectedRole === "filmmaker" && loading && (
@@ -141,12 +141,12 @@ export default function RoleSelectPage() {
                 className={`flex flex-col items-center rounded-lg border-2 p-8 transition-all disabled:opacity-50 ${
                   selectedRole === "actor"
                     ? "border-[#e8a020] bg-[#e8a020]/20 scale-105"
-                    : "border-[#5a5248]/50 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
+                    : "border-[#e8a020]/35 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
                 } ${loading ? "cursor-wait" : "cursor-pointer"}`}
               >
                 <span className="text-6xl mb-4">🎭</span>
                 <h3 className="text-xl font-semibold mb-3 text-[#e8a020]">배우</h3>
-                <p className="text-sm text-[#8a807a] text-center leading-relaxed">
+                <p className="text-sm text-[#b8a898] text-center leading-relaxed">
                   프로필을 만들고 오디션 기회를 찾습니다
                 </p>
                 {selectedRole === "actor" && loading && (
@@ -162,12 +162,12 @@ export default function RoleSelectPage() {
                 className={`flex flex-col items-center rounded-lg border-2 p-8 transition-all disabled:opacity-50 ${
                   selectedRole === "viewer"
                     ? "border-[#e8a020] bg-[#e8a020]/20 scale-105"
-                    : "border-[#5a5248]/50 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
+                    : "border-[#e8a020]/35 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
                 } ${loading ? "cursor-wait" : "cursor-pointer"}`}
               >
                 <span className="text-6xl mb-4">👁️</span>
                 <h3 className="text-xl font-semibold mb-3 text-[#e8a020]">관객</h3>
-                <p className="text-sm text-[#8a807a] text-center leading-relaxed">
+                <p className="text-sm text-[#b8a898] text-center leading-relaxed">
                   인디 영화를 감상하고 즐깁니다
                 </p>
                 {selectedRole === "viewer" && loading && (
@@ -183,12 +183,12 @@ export default function RoleSelectPage() {
                 className={`flex flex-col items-center rounded-lg border-2 p-8 transition-all disabled:opacity-50 ${
                   selectedRole === "venue"
                     ? "border-[#e8a020] bg-[#e8a020]/20 scale-105"
-                    : "border-[#5a5248]/50 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
+                    : "border-[#e8a020]/35 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
                 } ${loading ? "cursor-wait" : "cursor-pointer"}`}
               >
                 <span className="text-6xl mb-4">🏢</span>
                 <h3 className="text-xl font-semibold mb-3 text-[#e8a020]">장소대여자</h3>
-                <p className="text-sm text-[#8a807a] text-center leading-relaxed">
+                <p className="text-sm text-[#b8a898] text-center leading-relaxed">
                   촬영 장소를 등록하고 제작진과 연결합니다
                 </p>
                 {selectedRole === "venue" && loading && (
@@ -200,7 +200,7 @@ export default function RoleSelectPage() {
             </div>
 
             {loading && (
-              <div className="text-center text-sm text-[#8a807a]">
+              <div className="text-center text-sm text-[#b8a898]">
                 설정 중...
               </div>
             )}

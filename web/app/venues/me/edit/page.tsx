@@ -144,7 +144,7 @@ export default function VenueEditPage() {
                   value={form.name}
                   onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                   placeholder="예: 서울 필름 스튜디오"
-                  className="bg-[#0d0d0d] border-gray-700"
+                  className="bg-[#0d0d0d] border-[#e8a020]/35"
                 />
               </div>
               <div className="space-y-2">
@@ -154,7 +154,7 @@ export default function VenueEditPage() {
                   onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
                   placeholder="장소 소개"
                   rows={3}
-                  className="w-full rounded-md border border-gray-700 bg-[#0d0d0d] px-3 py-2 text-white"
+                  className="w-full rounded-md border border-[#e8a020]/35 bg-[#0d0d0d] px-3 py-2 text-white"
                 />
               </div>
               <div className="space-y-2">
@@ -163,7 +163,7 @@ export default function VenueEditPage() {
                   value={form.location}
                   onChange={(e) => setForm((f) => ({ ...f, location: e.target.value }))}
                   placeholder="예: 서울시 강남구, 부산 해운대"
-                  className="bg-[#0d0d0d] border-gray-700"
+                  className="bg-[#0d0d0d] border-[#e8a020]/35"
                 />
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -174,7 +174,7 @@ export default function VenueEditPage() {
                     value={form.area}
                     onChange={(e) => setForm((f) => ({ ...f, area: e.target.value }))}
                     placeholder="50"
-                    className="bg-[#0d0d0d] border-gray-700"
+                    className="bg-[#0d0d0d] border-[#e8a020]/35"
                   />
                 </div>
                 <div className="space-y-2">
@@ -183,7 +183,7 @@ export default function VenueEditPage() {
                     value={form.availableHours}
                     onChange={(e) => setForm((f) => ({ ...f, availableHours: e.target.value }))}
                     placeholder="예: 09:00-22:00"
-                    className="bg-[#0d0d0d] border-gray-700"
+                    className="bg-[#0d0d0d] border-[#e8a020]/35"
                   />
                 </div>
               </div>
@@ -195,7 +195,7 @@ export default function VenueEditPage() {
                     value={form.pricePerHour}
                     onChange={(e) => setForm((f) => ({ ...f, pricePerHour: e.target.value }))}
                     placeholder="50000"
-                    className="bg-[#0d0d0d] border-gray-700"
+                    className="bg-[#0d0d0d] border-[#e8a020]/35"
                   />
                 </div>
                 <div className="space-y-2">
@@ -205,7 +205,7 @@ export default function VenueEditPage() {
                     value={form.pricePerDay}
                     onChange={(e) => setForm((f) => ({ ...f, pricePerDay: e.target.value }))}
                     placeholder="300000"
-                    className="bg-[#0d0d0d] border-gray-700"
+                    className="bg-[#0d0d0d] border-[#e8a020]/35"
                   />
                 </div>
               </div>
@@ -235,7 +235,7 @@ export default function VenueEditPage() {
                   value={form.noiseRestriction}
                   onChange={(e) => setForm((f) => ({ ...f, noiseRestriction: e.target.value }))}
                   placeholder="예: 22시 이후 음소거"
-                  className="bg-[#0d0d0d] border-gray-700"
+                  className="bg-[#0d0d0d] border-[#e8a020]/35"
                 />
               </div>
               <label className="flex items-center gap-2 cursor-pointer">

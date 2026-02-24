@@ -15,7 +15,17 @@ import {
 import { db } from "./firebase";
 
 export type PostType = "casting_call" | "actor_seeking" | "staff_recruitment" | "general";
-export type PostCategory = "casting" | "seeking" | "collaboration" | "general";
+export type PostCategory =
+  | "free"           // 자유
+  | "review"         // 작품리뷰
+  | "tech"           // 촬영팁
+  | "equipment"      // 장비
+  | "qna"            // Q&A
+  | "casting_review" // 오디션후기
+  | "casting"        // 캐스팅 (구)
+  | "seeking"        // 구직 (구)
+  | "collaboration"  // 협업 (구)
+  | "general";       // 일반 (구) → 자유로 표시
 
 export interface Post {
   id: string;

@@ -120,14 +120,14 @@ export default function ActorsPage() {
           placeholder="이름, 스킬, 경력으로 검색..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] placeholder:text-[#8a807a] focus:border-[#e8a020] focus:ring-[#e8a020]/20 h-10 text-sm"
+          className="bg-[#0d0b08] border-[#e8a020]/25 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020] focus:ring-[#e8a020]/20 h-10 text-sm"
         />
         <div className="flex flex-wrap gap-2">
           <Select value={selectedLocation || "all"} onValueChange={(v) => setSelectedLocation(v === "all" ? null : v)}>
-            <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] h-9 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
+            <SelectTrigger className="w-[140px] bg-[#0d0b08] border-[#e8a020]/25 text-[#faf6f0] h-9 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
               <SelectValue placeholder="지역" />
             </SelectTrigger>
-            <SelectContent className="bg-[#141210] border-[#e8a020]/25">
+            <SelectContent className="bg-[#0d0b08] border-[#e8a020]/25">
               <SelectItem value="all" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">전체 지역</SelectItem>
               {locations.map((loc) => (
                 <SelectItem key={loc} value={loc} className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">{loc}</SelectItem>
@@ -135,10 +135,10 @@ export default function ActorsPage() {
             </SelectContent>
           </Select>
           <Select value={selectedAgeRange || "all"} onValueChange={(v) => setSelectedAgeRange(v === "all" ? null : (v as AgeRange))}>
-            <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] h-9 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
+            <SelectTrigger className="w-[140px] bg-[#0d0b08] border-[#e8a020]/25 text-[#faf6f0] h-9 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
               <SelectValue placeholder="나이대" />
             </SelectTrigger>
-            <SelectContent className="bg-[#141210] border-[#e8a020]/25">
+            <SelectContent className="bg-[#0d0b08] border-[#e8a020]/25">
               <SelectItem value="all" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">전체 나이대</SelectItem>
               {ageRanges.map((age) => (
                 <SelectItem key={age} value={age} className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">{getAgeRangeLabel(age)}</SelectItem>
@@ -158,12 +158,12 @@ export default function ActorsPage() {
         ) : (
           <>
             <div className="mb-6 flex items-center justify-between">
-              <div className="text-sm text-[#8a807a]">총 {filteredAndSortedActors.length}명의 배우</div>
+              <div className="text-sm text-[#b8a898]">총 {filteredAndSortedActors.length}명의 배우</div>
               <Select value={sortBy} onValueChange={(v) => setSortBy(v as SortOption)}>
-                <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] h-9 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
+                <SelectTrigger className="w-[140px] bg-[#0d0b08] border-[#e8a020]/25 text-[#faf6f0] h-9 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-[#141210] border-[#e8a020]/25">
+                <SelectContent className="bg-[#0d0b08] border-[#e8a020]/25">
                   <SelectItem value="latest" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">최신순</SelectItem>
                   <SelectItem value="name" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">이름순</SelectItem>
                 </SelectContent>
@@ -172,7 +172,7 @@ export default function ActorsPage() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
               {filteredAndSortedActors.map((actor) => (
                 <Link key={actor.id} href={`/actors/${actor.id}`} className="group block">
-                  <div className="overflow-hidden rounded border border-[#5a5248]/30 bg-[#181410] transition-colors hover:border-[#e8a020]/40">
+                  <div className="overflow-hidden rounded border border-[#e8a020]/30 bg-[#0d0b08] transition-colors hover:border-[#e8a020]/40">
                     {/* 사진 영역 - 박스에 맞게 꽉 채움 */}
                     <div className="relative aspect-[3/4] overflow-hidden bg-[#1a1510]">
                       {actor.mainPhotoUrl ? (
@@ -181,7 +181,7 @@ export default function ActorsPage() {
                         <div className="flex h-full w-full items-center justify-center">
                           <div className="text-center">
                             <div className="mb-2 text-5xl opacity-60">🎭</div>
-                            <div className="text-base font-bold text-[#8a807a] line-clamp-2 px-2">{actor.stageName}</div>
+                            <div className="text-base font-bold text-[#b8a898] line-clamp-2 px-2">{actor.stageName}</div>
                           </div>
                         </div>
                       )}
@@ -191,7 +191,7 @@ export default function ActorsPage() {
                       <h3 className="text-base font-bold text-[#faf6f0] line-clamp-1 group-hover:text-[#e8a020] transition-colors">{actor.stageName}</h3>
                       <div className="flex flex-wrap gap-1.5 mt-1.5 text-sm">
                         <span className="rounded bg-[#e8a020]/20 px-2 py-0.5 text-[#e8a020]">{getAgeRangeLabel(actor.ageRange)}</span>
-                        <span className="rounded bg-[#5a5248]/40 px-2 py-0.5 text-[#8a807a]">{actor.location}</span>
+                        <span className="rounded bg-[#e8a020]/25 px-2 py-0.5 text-[#b8a898]">{actor.location}</span>
                       </div>
                       {actor.skills.length > 0 && (
                         <div className="mt-2 flex flex-wrap gap-1">
@@ -207,7 +207,7 @@ export default function ActorsPage() {
             </div>
             {hasMore && (
               <div className="mt-8 text-center">
-                <button onClick={loadMore} className="px-6 py-2.5 border border-[#5a5248] text-[#8a807a] text-sm hover:border-[#e8a020] hover:text-[#e8a020] transition-colors">
+                <button onClick={loadMore} className="px-6 py-2.5 border border-[#e8a020]/35 text-[#b8a898] text-sm hover:border-[#e8a020] hover:text-[#e8a020] transition-colors">
                   더 보기
                 </button>
               </div>

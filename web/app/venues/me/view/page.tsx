@@ -109,7 +109,7 @@ export default function VenueViewPage() {
           </CardContent>
         </Card>
 
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-[#b8a898]">
           향후 예약 캘린더 및 제작진 채팅 기능이 추가될 예정입니다.
         </p>
       </div>

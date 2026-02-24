@@ -4,19 +4,22 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* 인디필름 디자인 토큰 */
+/* 인디필름 디자인 토큰 - 회색 없음, 따뜻한 톤만 사용 */
 :root {
   --indie-bg: #0a0805;
   --indie-bg2: #100e0a;
-  --indie-bg3: #181410;
+  --indie-bg3: #0d0b08;
   --indie-amber: #e8a020;
   --indie-amber-dim: #a06c10;
   --indie-cream: #f0e8d8;
-  --indie-gray: #5a5248;
-  --indie-gray-light: #8a807a;
+  --indie-muted: #b8a898;
+  --indie-muted-light: #c4b8a8;
   --indie-red: #c03020;
   --indie-white: #faf6f0;
   --indie-film: #1a1510;
+  --indie-input-bg: #0d0b08;
+  --indie-input-border: rgba(232, 160, 32, 0.35);
+  --indie-placeholder: #b8a898;
 }
 
 /* 그레인 오버레이 */
@@ -156,19 +159,19 @@
     @apply tracking-tighter leading-tight font-bold;
   }
   h1 {
-    @apply text-gray-900;
+    @apply text-[#faf6f0];
   }
   h2 {
-    @apply text-gray-900;
+    @apply text-[#faf6f0];
   }
   h3 {
-    @apply text-gray-800;
+    @apply text-[#f0e8d8];
   }
   p {
-    @apply tracking-tight leading-snug text-gray-800;
+    @apply tracking-tight leading-snug text-[#f0e8d8];
   }
   strong, b {
-    @apply font-bold text-gray-900;
+    @apply font-bold text-[#faf6f0];
   }
 }
 
@@ -225,7 +228,7 @@
   
   .select-gold {
     background-color: var(--indie-bg3);
-    border-color: var(--indie-gray);
+    border-color: var(--indie-input-border);
   }
   .select-gold:hover { background-color: rgba(232, 160, 32, 0.08); }
   .select-gold:focus { border-color: var(--indie-amber); }

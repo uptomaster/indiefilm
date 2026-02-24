@@ -61,7 +61,7 @@ export default function FilmmakersPage() {
             placeholder="이름, 소개, 전문 분야로 검색..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] placeholder:text-[#8a807a] focus:border-[#e8a020] focus:ring-[#e8a020]/20 font-medium"
+            className="bg-[#0d0b08] border-[#e8a020]/25 text-[#faf6f0] placeholder:text-[#b8a898] focus:border-[#e8a020] focus:ring-[#e8a020]/20 font-medium"
           />
           <div className="flex flex-wrap gap-2 justify-center">
             <Select
@@ -70,10 +70,10 @@ export default function FilmmakersPage() {
                 setSelectedType(value === "all" ? null : (value as FilmmakerType))
               }
             >
-              <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] font-medium focus:border-[#e8a020] focus:ring-[#e8a020]/20">
+              <SelectTrigger className="w-[140px] bg-[#0d0b08] border-[#e8a020]/25 text-[#faf6f0] font-medium focus:border-[#e8a020] focus:ring-[#e8a020]/20">
                 <SelectValue placeholder="유형" />
               </SelectTrigger>
-              <SelectContent className="bg-[#141210] border-[#e8a020]/25">
+              <SelectContent className="bg-[#0d0b08] border-[#e8a020]/25">
                 <SelectItem value="all" className="text-[#faf6f0] hover:bg-[#e8a020]/20 focus:bg-[#e8a020]/20 cursor-pointer font-medium">
                   전체 유형
                 </SelectItem>
@@ -91,10 +91,10 @@ export default function FilmmakersPage() {
                 setSelectedLocation(value === "all" ? null : value)
               }
             >
-              <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] font-medium focus:border-[#e8a020] focus:ring-[#e8a020]/20">
+              <SelectTrigger className="w-[140px] bg-[#0d0b08] border-[#e8a020]/25 text-[#faf6f0] font-medium focus:border-[#e8a020] focus:ring-[#e8a020]/20">
                 <SelectValue placeholder="지역" />
               </SelectTrigger>
-              <SelectContent className="bg-[#141210] border-[#e8a020]/25">
+              <SelectContent className="bg-[#0d0b08] border-[#e8a020]/25">
                 <SelectItem value="all" className="text-[#faf6f0] hover:bg-[#e8a020]/20 focus:bg-[#e8a020]/20 cursor-pointer font-medium">
                   전체 지역
                 </SelectItem>
@@ -113,23 +113,23 @@ export default function FilmmakersPage() {
         {loading && filmmakers.length === 0 ? (
           <div className="text-center py-20">
             <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
-            <p className="mt-4 text-[#8a807a] font-semibold">로딩 중...</p>
+            <p className="mt-4 text-[#b8a898] font-semibold">로딩 중...</p>
           </div>
         ) : filteredFilmmakers.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-xl text-[#8a807a] font-semibold">
+            <p className="text-xl text-[#b8a898] font-semibold">
               조건에 맞는 제작자가 없습니다.
             </p>
           </div>
         ) : (
           <>
-            <div className="mb-6 text-sm text-[#8a807a] font-semibold tracking-tight">
+            <div className="mb-6 text-sm text-[#b8a898] font-semibold tracking-tight">
               총 {filteredFilmmakers.length}명의 제작자
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
               {filteredFilmmakers.map((filmmaker) => (
                 <Link key={filmmaker.id} href={`/filmmakers/${filmmaker.id}`}>
-                  <div className="group relative h-[260px] sm:h-[300px] md:h-[340px] lg:h-[380px] overflow-hidden rounded-lg border border-[#5a5248]/30 hover:border-[#e8a020]/50 transition-all">
+                  <div className="group relative h-[260px] sm:h-[300px] md:h-[340px] lg:h-[380px] overflow-hidden rounded-lg border border-[#e8a020]/30 hover:border-[#e8a020]/50 transition-all">
                     {filmmaker.mainPhotoUrl ? (
                       <LazyImage
                         src={filmmaker.mainPhotoUrl}
@@ -137,10 +137,10 @@ export default function FilmmakersPage() {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-[#181410]">
+                      <div className="flex h-full w-full items-center justify-center bg-[#0d0b08]">
                         <div className="text-center">
                           <div className="mb-4 text-6xl">🎬</div>
-                          <div className="text-2xl font-bold text-[#8a807a]">
+                          <div className="text-2xl font-bold text-[#b8a898]">
                             {filmmaker.name}
                           </div>
                         </div>
@@ -157,7 +157,7 @@ export default function FilmmakersPage() {
                         {filmmaker.name}
                       </h3>
                       {filmmaker.location && (
-                        <span className="text-xs md:text-sm text-[#8a807a] font-medium">
+                        <span className="text-xs md:text-sm text-[#b8a898] font-medium">
                           {filmmaker.location}
                         </span>
                       )}
