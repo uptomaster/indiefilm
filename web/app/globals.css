@@ -190,18 +190,15 @@
   }
   
   .film-gold-text {
-    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #A855F7 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--indie-amber);
   }
   
   .film-gold-bg {
-    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #A855F7 100%);
+    background: var(--indie-amber);
   }
   
   .film-border-gold {
-    border-color: #6366F1;
+    border-color: var(--indie-amber);
   }
   
   /* 인디필름 버튼 */
@@ -219,46 +216,19 @@
   }
   .btn-indie-ghost:hover { border-color: var(--indie-cream); }
 
-  /* 중요 버튼 스타일 (레거시) */
   .btn-primary-gradient {
     background: var(--indie-amber);
-    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4), 0 0 0 1px rgba(139, 92, 246, 0.2);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: pulse-glow 2s ease-in-out infinite;
+    color: var(--indie-bg);
+    transition: all 0.3s;
   }
+  .btn-primary-gradient:hover { background: #f0b030; transform: translateY(-1px); }
   
-  .btn-primary-gradient:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5), 0 0 0 1px rgba(139, 92, 246, 0.3);
-  }
-  
-  .btn-primary-gradient:active {
-    transform: translateY(0);
-  }
-  
-  @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4), 0 0 0 1px rgba(139, 92, 246, 0.2);
-    }
-    50% {
-      box-shadow: 0 4px 18px rgba(99, 102, 241, 0.5), 0 0 0 1px rgba(139, 92, 246, 0.3);
-    }
-  }
-  
-  /* Select 드롭다운 스타일 */
   .select-gold {
-    background-color: white;
-    border-color: rgba(99, 102, 241, 0.3);
+    background-color: var(--indie-bg3);
+    border-color: var(--indie-gray);
   }
-  
-  .select-gold:hover {
-    background-color: rgba(99, 102, 241, 0.05);
-  }
-  
-  .select-gold:focus {
-    border-color: #6366F1;
-    ring-color: #6366F1;
-  }
+  .select-gold:hover { background-color: rgba(232, 160, 32, 0.08); }
+  .select-gold:focus { border-color: var(--indie-amber); }
   
   .film-strip {
     background-image: repeating-linear-gradient(

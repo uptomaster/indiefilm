@@ -11,6 +11,7 @@ import { Movie } from "@/lib/movies";
 import { Actor } from "@/lib/actors";
 import { Post } from "@/lib/posts";
 import { Venue } from "@/lib/venues";
+import { getUserDisplayName } from "@/lib/users";
 
 const GENRE_LABEL: Record<string, string> = {
   drama: "드라마",
@@ -25,22 +26,39 @@ export default function Home() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [actors, setActors] = useState<Actor[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
+  const [communityPosts, setCommunityPosts] = useState<Post[]>([]);
+  const [authorNames, setAuthorNames] = useState<Record<string, string>>({});
   const [venues, setVenues] = useState<Venue[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function load() {
       try {
-        const [moviesRes, actorsRes, castingPosts, venuesList] = await Promise.all([
+        const [moviesRes, actorsRes, castingPosts, feedPosts, venuesList] = await Promise.all([
           getMovies({ limitCount: 5 }),
           getActors({ limitCount: 6 }),
           getPosts({ type: "casting_call", limitCount: 5 }),
+          getPosts({ limitCount: 5 }), // 커뮤니티 피드: 전체 게시글
           getVenues({ limitCount: 5 }),
         ]);
         setMovies(moviesRes.movies.slice(0, 5));
         setActors(actorsRes.actors.slice(0, 6));
         setPosts(castingPosts);
+        setCommunityPosts(feedPosts);
         setVenues(venuesList);
+
+        // 커뮤니티 글 작성자 이름 로드
+        const names: Record<string, string> = {};
+        await Promise.all(
+          feedPosts.map(async (p) => {
+            try {
+              names[p.authorId] = await getUserDisplayName(p.authorId);
+            } catch {
+              names[p.authorId] = p.authorId.slice(0, 8);
+            }
+          })
+        );
+        setAuthorNames(names);
       } catch (e) {
         console.error(e);
       } finally {
@@ -397,35 +415,50 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-14">
           <div className="lg:col-span-2">
             <div className="flex flex-col gap-0">
-              {[
-                { badge: "배우", icon: "🎭", user: "김지아", text: "《달의 뒷면》 촬영이 드디어 끝났습니다. 너무나 소중한 경험이었고, 감독님과 스태프분들께 감사드립니다." },
-                { badge: "제작진", icon: "🎬", user: "박민준 감독", text: "단편 《잿빛 오후》를 인디필름에 업로드했습니다. 많은 관심 부탁드려요." },
-                { badge: "장소", icon: "🏢", user: "해방촌 카페", text: "이번 주말 촬영 슬롯이 비었습니다. 단기 섭외도 환영해요." },
-              ].map((item, i) => (
-                <div key={i} className="grid grid-cols-[auto_1fr_auto] gap-5 py-6 border-b border-[#5a5248]/15 hover:pl-3 transition-all">
-                  <div
-                    className="w-11 h-11 rounded-full flex items-center justify-center text-lg bg-gradient-to-br"
-                    style={{ background: `linear-gradient(135deg, ${["#301020", "#102030", "#302010"][i]} 0%, ${["#180810", "#081018", "#181008"][i]} 100%)` }}
-                  >
-                    {item.icon}
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium text-[#f0e8d8] mb-1 flex items-center gap-2">
-                      {item.user}
-                      <span className={`text-[9px] px-1.5 py-0.5 tracking-wider uppercase ${item.badge === "배우" ? "bg-red-900/20 text-red-300 border border-red-800/30" : item.badge === "제작진" ? "bg-blue-900/20 text-blue-300 border border-blue-800/30" : "bg-green-900/20 text-green-300 border border-green-800/30"}`}>
-                        {item.badge}
-                      </span>
-                    </div>
-                    <div className="text-[13px] text-[#8a807a] leading-relaxed">{item.text}</div>
-                    <div className="text-[10px] text-[#5a5248] tracking-wider mt-1">{["2시간 전", "5시간 전", "어제"][i]}</div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <button className="text-xs text-[#5a5248] hover:text-[#e8a020] transition-colors">♥ 24</button>
-                    <button className="text-xs text-[#5a5248] hover:text-[#e8a020] transition-colors">💬 6</button>
-                  </div>
-                </div>
-              ))}
+              {communityPosts.length > 0 ? (
+                communityPosts.map((post, i) => {
+                  const badgeLabel = post.authorRole === "actor" ? "배우" : post.authorRole === "filmmaker" ? "제작진" : post.authorRole === "venue" ? "장소" : "회원";
+                  const badgeClass = post.authorRole === "actor" ? "bg-red-900/20 text-red-300 border-red-800/30" : post.authorRole === "filmmaker" ? "bg-blue-900/20 text-blue-300 border-blue-800/30" : post.authorRole === "venue" ? "bg-green-900/20 text-green-300 border-green-800/30" : "bg-[#e8a020]/20 text-[#e8a020] border-[#e8a020]/30";
+                  const icon = post.authorRole === "actor" ? "🎭" : post.authorRole === "filmmaker" ? "🎬" : post.authorRole === "venue" ? "🏢" : "👤";
+                  const timeStr = post.createdAt?.toDate?.() ? (() => {
+                    const d = post.createdAt.toDate();
+                    const diff = Date.now() - d.getTime();
+                    if (diff < 3600000) return `${Math.floor(diff / 60000)}분 전`;
+                    if (diff < 86400000) return `${Math.floor(diff / 3600000)}시간 전`;
+                    if (diff < 604800000) return `${Math.floor(diff / 86400000)}일 전`;
+                    return d.toLocaleDateString("ko-KR");
+                  })() : "";
+                  return (
+                    <Link key={post.id} href={`/posts/${post.id}`} className="grid grid-cols-[auto_1fr_auto] gap-5 py-6 border-b border-[#5a5248]/15 hover:pl-3 transition-all group">
+                      <div
+                        className="w-11 h-11 rounded-full flex items-center justify-center text-lg bg-gradient-to-br flex-shrink-0"
+                        style={{ background: `linear-gradient(135deg, ${["#301020", "#102030", "#302010", "#201030", "#103020"][i % 5]} 0%, ${["#180810", "#081018", "#181008", "#100818", "#081810"][i % 5]} 100%)` }}
+                      >
+                        {icon}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-medium text-[#f0e8d8] mb-1 flex items-center gap-2 flex-wrap">
+                          {authorNames[post.authorId] || "—"}
+                          <span className={`text-[9px] px-1.5 py-0.5 tracking-wider uppercase border ${badgeClass}`}>
+                            {badgeLabel}
+                          </span>
+                        </div>
+                        <div className="text-[13px] text-[#8a807a] leading-relaxed line-clamp-2 group-hover:text-[#b0a898]">{post.title ? `[${post.title}] ` : ""}{post.content}</div>
+                        <div className="text-[10px] text-[#5a5248] tracking-wider mt-1">{timeStr}</div>
+                      </div>
+                      <div className="flex items-center gap-3 flex-shrink-0">
+                        <span className="text-xs text-[#5a5248]">조회 {post.views || 0}</span>
+                      </div>
+                    </Link>
+                  );
+                })
+              ) : (
+                <div className="py-12 text-center text-[#8a807a]">아직 커뮤니티 글이 없습니다.</div>
+              )}
             </div>
+            <Link href="/posts" className="inline-block mt-6 px-6 py-2.5 border border-[rgba(240,232,216,0.3)] text-[11px] tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-colors">
+              커뮤니티 전체 보기 →
+            </Link>
           </div>
           <div className="flex flex-col gap-8">
             <div className="bg-[#181410] p-7 border-l-2 border-[#e8a020]">

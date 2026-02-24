@@ -5,8 +5,7 @@ import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 import { getPosts, Post, PostType, PostCategory } from "@/lib/posts";
 import { getUserDisplayName } from "@/lib/users";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { IndiePageWrapper } from "@/components/IndiePageWrapper";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { PostCardSkeleton } from "@/components/SkeletonLoader";
 import { EmptyState } from "@/components/EmptyState";
@@ -121,60 +120,37 @@ export default function PostsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
-        <div className="film-strip absolute inset-0 opacity-10" />
-        <div className="container relative mx-auto px-4 py-6 md:py-12 lg:py-16">
-          <div className="mx-auto max-w-3xl">
-            <h1 className="mb-2 md:mb-4 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight film-gold px-2">
-              COMMUNITY
-            </h1>
-            <p className="mb-4 md:mb-8 text-base md:text-lg lg:text-xl text-gray-700 font-medium tracking-tight px-2">
-              구인공고, 배우 구직, 협업 정보를 공유하세요
-            </p>
-            {user && (
-            <Link href="/posts/new">
-              <Button className="btn-primary-gradient text-white font-semibold px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 text-xs md:text-sm lg:text-base w-full sm:w-auto">
-                글 작성하기
-              </Button>
-            </Link>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* 필터 */}
-      <div className="container mx-auto px-4 py-4 md:py-6 lg:py-8">
-        <div className="mb-4 md:mb-6 flex flex-wrap gap-1.5 md:gap-2">
-          <Button
-            variant={selectedType === null ? "default" : "outline"}
+    <IndiePageWrapper title="커뮤니티" subtitle="구인공고, 배우 구직, 협업 정보를 공유하세요" sectionNum="05">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <div className="flex flex-wrap gap-2">
+          <button
             onClick={() => setSelectedType(null)}
-            className={`text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5 ${
-              selectedType === null
-                ? "bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-white shadow-md hover:shadow-lg"
-                : "border-violet-300 text-violet-600 hover:bg-violet-50"
+            className={`px-3 py-1.5 text-xs tracking-wider ${
+              selectedType === null ? "bg-[#e8a020] text-[#0a0805]" : "border border-[#5a5248] text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020]"
             }`}
           >
             전체
-          </Button>
-          {postTypes.map((type) => (
-            <Button
-              key={type.value}
-              variant={selectedType === type.value ? "default" : "outline"}
-              onClick={() => setSelectedType(type.value)}
-              className={`text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5 ${
-                selectedType === type.value
-                  ? "bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-white hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
-                  : "border-violet-300 text-violet-600 hover:bg-violet-50"
+          </button>
+          {postTypes.map((t) => (
+            <button
+              key={t.value}
+              onClick={() => setSelectedType(t.value)}
+              className={`px-3 py-1.5 text-xs tracking-wider ${
+                selectedType === t.value ? "bg-[#e8a020] text-[#0a0805]" : "border border-[#5a5248] text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020]"
               }`}
             >
-              {type.label}
-            </Button>
+              {t.label}
+            </button>
           ))}
         </div>
+        {user && (
+          <Link href="/posts/new" className="px-4 py-2 bg-[#e8a020] text-[#0a0805] text-xs tracking-wider font-medium hover:bg-[#f0b030]">
+            글 작성하기
+          </Link>
+        )}
+      </div>
 
-        {/* 게시글 목록 */}
+      {/* 게시글 목록 */}
         {loading && posts.length === 0 ? (
           <div className="space-y-4">
             {Array.from({ length: 5 }).map((_, i) => (
@@ -186,69 +162,42 @@ export default function PostsPage() {
         ) : (
           <>
             <div className="mb-6 flex items-center justify-between">
-              <div className="text-sm text-gray-600 tracking-tight">
-                총 {sortedPosts.length}개의 게시글
-              </div>
-              <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortOption)}>
-                <SelectTrigger className="w-[140px] bg-white border-gray-300 text-gray-900">
+              <div className="text-sm text-[#8a807a]">총 {sortedPosts.length}개의 게시글</div>
+              <Select value={sortBy} onValueChange={(v) => setSortBy(v as SortOption)}>
+                <SelectTrigger className="w-[140px] bg-[#181410] border-[#5a5248] text-[#f0e8d8] h-9 text-xs">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-white border-gray-200">
-                  <SelectItem value="latest" className="text-gray-700 hover:bg-violet-50">최신순</SelectItem>
-                  <SelectItem value="popular" className="text-gray-700 hover:bg-violet-50">인기순</SelectItem>
-                  <SelectItem value="views" className="text-gray-700 hover:bg-violet-50">조회순</SelectItem>
+                <SelectContent className="bg-[#181410] border-[#5a5248]">
+                  <SelectItem value="latest" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">최신순</SelectItem>
+                  <SelectItem value="popular" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">인기순</SelectItem>
+                  <SelectItem value="views" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">조회순</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {sortedPosts.map((post) => (
-              <Link key={post.id} href={`/posts/${post.id}`}>
-                <Card className="border-gray-200 bg-white transition-all hover:border-violet-300 hover:shadow-lg cursor-pointer shadow-sm">
-                  <CardContent className="p-3 md:p-4 lg:p-6">
-                    <div className="flex items-start justify-between gap-3 md:gap-4">
-                      <div className="flex-1 min-w-0">
-                        <div className="mb-2 flex items-center gap-2 md:gap-3 flex-wrap">
-                          <span className="rounded-full bg-violet-50 px-2 md:px-3 py-0.5 md:py-1 text-xs font-semibold text-violet-600 tracking-tight">
-                            {getPostTypeLabel(post.type)}
-                          </span>
-                          {post.category && (
-                            <span className="rounded-full bg-gray-100 px-2 md:px-3 py-0.5 md:py-1 text-xs text-gray-700 tracking-tight">
-                              {getCategoryLabel(post.category)}
-                            </span>
-                          )}
-                          {post.location && (
-                            <span className="rounded-full bg-gray-100 px-2 md:px-3 py-0.5 md:py-1 text-xs text-gray-700 tracking-tight">
-                              {post.location}
-                            </span>
-                          )}
-                        </div>
-                        <h3 className="mb-2 text-base md:text-lg lg:text-xl font-bold text-gray-900 line-clamp-1 tracking-tight">
-                          {post.title}
-                        </h3>
-                        <p className="mb-3 line-clamp-2 text-xs md:text-sm lg:text-base text-gray-600 leading-snug tracking-tight">
-                          {post.content}
-                        </p>
-                        <div className="flex items-center gap-2 md:gap-4 text-xs md:text-sm text-gray-500 tracking-tight">
-                          <span>{userNames[post.authorId] || "작성자"}</span>
-                          <span>•</span>
-                          <span>
-                            {post.createdAt?.toDate
-                              ? new Date(post.createdAt.toDate()).toLocaleDateString("ko-KR")
-                              : "날짜 없음"}
-                          </span>
-                          <span>•</span>
-                          <span>조회 {post.views || 0}</span>
-                        </div>
-                      </div>
+                <Link key={post.id} href={`/posts/${post.id}`} className="block">
+                  <div className="border border-[#5a5248]/30 bg-[#181410] p-4 md:p-6 transition-all hover:border-[#e8a020]/40">
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      <span className="rounded px-2 py-0.5 bg-[#e8a020]/20 text-[#e8a020] text-xs">{getPostTypeLabel(post.type)}</span>
+                      {post.category && <span className="rounded px-2 py-0.5 bg-[#5a5248]/50 text-[#8a807a] text-xs">{getCategoryLabel(post.category)}</span>}
+                      {post.location && <span className="rounded px-2 py-0.5 bg-[#5a5248]/50 text-[#8a807a] text-xs">{post.location}</span>}
                     </div>
-                  </CardContent>
-                </Card>
-              </Link>
+                    <h3 className="mb-2 text-base md:text-lg font-bold text-[#faf6f0] line-clamp-1">{post.title}</h3>
+                    <p className="mb-3 line-clamp-2 text-sm text-[#8a807a]">{post.content}</p>
+                    <div className="flex items-center gap-2 text-xs text-[#5a5248]">
+                      <span>{userNames[post.authorId] || "작성자"}</span>
+                      <span>·</span>
+                      <span>{post.createdAt?.toDate?.() ? post.createdAt.toDate().toLocaleDateString("ko-KR") : "—"}</span>
+                      <span>·</span>
+                      <span>조회 {post.views || 0}</span>
+                    </div>
+                  </div>
+                </Link>
               ))}
             </div>
           </>
         )}
-      </div>
-    </div>
+    </IndiePageWrapper>
   );
 }

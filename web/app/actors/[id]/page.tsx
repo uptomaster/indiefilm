@@ -123,11 +123,11 @@ export default function ActorDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-500 border-t-transparent" />
-            <p className="mt-4 text-gray-800 font-semibold">로딩 중...</p>
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
+            <p className="mt-4 text-[#8a807a] font-semibold">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -136,14 +136,14 @@ export default function ActorDetailPage() {
 
   if (!actor) {
     return (
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <p className="mb-4 text-xl text-gray-800 font-semibold">
+            <p className="mb-4 text-xl text-[#8a807a] font-semibold">
               배우 프로필을 찾을 수 없습니다.
             </p>
             <Link href="/actors">
-              <Button className="border-violet-300 bg-violet-50 text-violet-600 hover:bg-violet-100 font-semibold">
+              <Button className="border-[#e8a020]/50 bg-[#e8a020]/20 text-[#e8a020] hover:bg-[#e8a020]/30 font-semibold">
                 배우 목록으로
               </Button>
             </Link>
@@ -165,17 +165,15 @@ export default function ActorDetailPage() {
       : null;
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900">
-      {/* 히어로 섹션 - 배경만 */}
-      <div className="relative h-[40vh] min-h-[300px] overflow-hidden border-b border-gray-200 bg-gradient-to-b from-indigo-50 via-white to-violet-50">
+    <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
+      {/* 히어로 섹션 */}
+      <div className="relative h-[40vh] min-h-[300px] overflow-hidden border-b border-[#5a5248]/20 bg-[#100e0a]">
         <div className="film-strip absolute inset-0 opacity-10" />
-        
-        {/* 상단 네비게이션 */}
         <div className="absolute left-0 right-0 top-0 z-20">
           <div className="container mx-auto flex items-center justify-between px-4 py-3 md:py-6 gap-2">
             <Link
               href="/actors"
-              className="rounded-full bg-white/90 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm text-gray-900 backdrop-blur-sm transition-colors hover:bg-gray-50 border border-gray-200 shadow-sm font-semibold whitespace-nowrap"
+              className="rounded-full bg-[#181410] px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm text-[#faf6f0] backdrop-blur-sm transition-colors hover:bg-[#e8a020]/20 border border-[#5a5248]/30 font-semibold whitespace-nowrap"
             >
               ← 배우 목록
             </Link>
@@ -183,7 +181,7 @@ export default function ActorDetailPage() {
               <Button
                 onClick={handleCastingOffer}
                 disabled={sendingRequest}
-                className="btn-primary-gradient text-white font-semibold text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 whitespace-nowrap"
+                className="bg-[#e8a020] text-[#0a0805] hover:bg-[#f0b030] font-semibold text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 whitespace-nowrap"
               >
                 {sendingRequest ? "전송 중..." : "캐스팅 제안하기"}
               </Button>
@@ -192,16 +190,15 @@ export default function ActorDetailPage() {
         </div>
       </div>
 
-      {/* 메인 콘텐츠 */}
       <div className="container mx-auto px-3 md:px-4 py-4 md:py-8 lg:py-12">
         <div className="grid gap-4 md:gap-8 lg:gap-12 lg:grid-cols-3">
           {/* 좌측: 메인 정보 */}
           <div className="lg:col-span-2 space-y-4 md:space-y-6 lg:space-y-8">
             {/* 프로필 헤더 */}
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4 lg:gap-6 pb-4 md:pb-6 lg:pb-8 border-b border-gray-200">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4 lg:gap-6 pb-4 md:pb-6 lg:pb-8 border-b border-[#5a5248]/30">
               {/* 프로필 사진 */}
               <div className="flex-shrink-0">
-                <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden border-4 border-gray-200 shadow-2xl">
+                <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden border-4 border-[#5a5248]/30 shadow-2xl">
                   {actor.mainPhotoUrl ? (
                     <img
                       src={actor.mainPhotoUrl}
@@ -222,21 +219,21 @@ export default function ActorDetailPage() {
                   {actor.stageName}
                 </h1>
                 <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-4 text-xs md:text-sm lg:text-base">
-                  <span className="text-violet-600">
+                  <span className="text-[#e8a020]">
                     {getAgeRangeLabel(actor.ageRange)}
                   </span>
-                  <span className="text-gray-800">•</span>
-                  <span className="text-gray-800">{actor.location}</span>
+                  <span className="text-[#8a807a]">•</span>
+                  <span className="text-[#8a807a]">{actor.location}</span>
                   {actor.heightCm && (
                     <>
-                      <span className="text-gray-800">•</span>
-                      <span className="text-gray-800">{actor.heightCm}cm</span>
+                      <span className="text-[#8a807a]">•</span>
+                      <span className="text-[#8a807a]">{actor.heightCm}cm</span>
                     </>
                   )}
                   {actor.bodyType && (
                     <>
-                      <span className="text-gray-800">•</span>
-                      <span className="text-gray-800">{actor.bodyType}</span>
+                      <span className="text-[#8a807a]">•</span>
+                      <span className="text-[#8a807a]">{actor.bodyType}</span>
                     </>
                   )}
                 </div>
@@ -245,10 +242,10 @@ export default function ActorDetailPage() {
             {/* 자기소개 */}
             {actor.bio && (
               <section>
-                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
                   PROFILE
                 </h2>
-                <p className="whitespace-pre-wrap text-sm md:text-base lg:text-lg leading-relaxed text-gray-800">
+                <p className="whitespace-pre-wrap text-sm md:text-base lg:text-lg leading-relaxed text-[#8a807a]">
                   {actor.bio}
                 </p>
               </section>
@@ -257,16 +254,16 @@ export default function ActorDetailPage() {
             {/* 연락처 */}
             {(actor.email || actor.phone) && (
               <section>
-                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
                   CONTACT
                 </h2>
                 <div className="space-y-3">
                   {actor.email && (
                     <div className="flex items-center gap-3">
-                      <span className="text-violet-600 font-semibold min-w-[80px]">이메일</span>
+                      <span className="text-[#e8a020] font-semibold min-w-[80px]">이메일</span>
                       <a
                         href={`mailto:${actor.email}`}
-                        className="text-gray-800 hover:text-violet-600 hover:underline"
+                        className="text-[#8a807a] hover:text-[#e8a020] hover:underline"
                       >
                         {actor.email}
                       </a>
@@ -274,10 +271,10 @@ export default function ActorDetailPage() {
                   )}
                   {actor.phone && (
                     <div className="flex items-center gap-3">
-                      <span className="text-violet-600 font-semibold min-w-[80px]">전화번호</span>
+                      <span className="text-[#e8a020] font-semibold min-w-[80px]">전화번호</span>
                       <a
                         href={`tel:${actor.phone}`}
-                        className="text-gray-800 hover:text-violet-600 hover:underline"
+                        className="text-[#8a807a] hover:text-[#e8a020] hover:underline"
                       >
                         {actor.phone}
                       </a>
@@ -290,7 +287,7 @@ export default function ActorDetailPage() {
             {/* 데모 릴 */}
             {embedUrl && (
               <section>
-                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
                   DEMO REEL
                 </h2>
                 <div className="aspect-video w-full overflow-hidden rounded-lg bg-gray-100 cinematic-shadow">
@@ -307,17 +304,17 @@ export default function ActorDetailPage() {
             {/* 경력 */}
             {actor.experience.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
                   EXPERIENCE
                 </h2>
                 <ul className="space-y-3">
                   {actor.experience.map((exp, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-3 border-l-2 border-gray-200 pl-4"
+                      className="flex items-start gap-3 border-l-2 border-[#5a5248]/30 pl-4"
                     >
-                      <span className="text-violet-600">▸</span>
-                      <span className="text-gray-800">{exp}</span>
+                      <span className="text-[#e8a020]">▸</span>
+                      <span className="text-[#8a807a]">{exp}</span>
                     </li>
                   ))}
                 </ul>
@@ -327,14 +324,14 @@ export default function ActorDetailPage() {
             {/* 스킬 */}
             {actor.skills.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
                   SKILLS
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {actor.skills.map((skill, index) => (
                     <span
                       key={index}
-                      className="rounded-full bg-violet-600/20 px-4 py-2 text-violet-600"
+                      className="rounded-full bg-[#e8a020]/20 px-4 py-2 text-[#e8a020]"
                     >
                       {skill}
                     </span>
@@ -345,22 +342,22 @@ export default function ActorDetailPage() {
 
             {/* 출연 영화 */}
             <section>
-              <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold">
+              <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
                 출연 작품 ({actorMovies.length})
               </h2>
               {moviesLoading ? (
                 <div className="text-center py-8">
-                  <div className="inline-block h-8 w-8 animate-spin rounded-full border-2 border-violet-500 border-t-transparent" />
+                  <div className="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#e8a020] border-t-transparent" />
                 </div>
               ) : actorMovies.length === 0 ? (
-                <div className="rounded-lg border border-violet-500/20 bg-gray-50 p-4 md:p-8 text-center">
-                  <p className="text-gray-400">아직 출연한 영화가 없습니다.</p>
+                <div className="rounded-lg border border-[#e8a020]/20 bg-[#181410] p-4 md:p-8 text-center">
+                  <p className="text-[#5a5248]">아직 출연한 영화가 없습니다.</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
                   {actorMovies.map((movie) => (
                     <Link key={movie.id} href={`/movies/${movie.id}`}>
-                      <Card className="group h-full border-violet-500/20 bg-gray-50 transition-all hover:scale-105 hover:bg-white/70 hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-600/20">
+                      <Card className="group h-full border-[#e8a020]/20 bg-[#181410] transition-all hover:scale-105 hover:bg-[#181410]/80 hover:border-[#e8a020]/40 hover:shadow-lg hover:shadow-[#e8a020]/20">
                         <div className="relative aspect-[2/3] overflow-hidden rounded-t-lg">
                           {movie.thumbnailUrl ? (
                             <img
@@ -372,7 +369,7 @@ export default function ActorDetailPage() {
                             <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-800 via-gray-900 to-black">
                               <div className="text-center">
                                 <span className="text-5xl opacity-50">🎬</span>
-                                <p className="mt-2 text-xs text-gray-500 line-clamp-2 px-2">
+                                <p className="mt-2 text-xs text-[#5a5248] line-clamp-2 px-2">
                                   {movie.title}
                                 </p>
                               </div>
@@ -381,7 +378,7 @@ export default function ActorDetailPage() {
                           <div className="film-overlay absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         </div>
                         <CardContent className="p-3">
-                          <h3 className="text-center text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-violet-600 transition-colors">
+                          <h3 className="text-center text-sm font-semibold text-[#faf6f0] line-clamp-2 group-hover:text-[#e8a020] transition-colors">
                             {movie.title}
                           </h3>
                         </CardContent>
@@ -395,7 +392,7 @@ export default function ActorDetailPage() {
             {/* 갤러리 */}
             {actor.gallery && actor.gallery.length > 0 && (
               <section>
-                <h2 className="mb-4 border-b border-gray-200 pb-2 text-2xl font-bold film-gold">
+                <h2 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-2xl font-bold film-gold">
                   GALLERY
                 </h2>
                 <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
@@ -420,45 +417,45 @@ export default function ActorDetailPage() {
           <div className="lg:col-span-1">
             <div className="lg:sticky lg:top-4 md:top-8 space-y-3 md:space-y-4 lg:space-y-6">
               {/* 프로필 정보 */}
-              <div className="rounded-lg border border-violet-500/20 bg-gray-50 p-4 md:p-6 backdrop-blur-sm">
-                <h3 className="mb-4 text-sm font-semibold text-gray-400">
+              <div className="rounded-lg border border-[#e8a020]/20 bg-[#181410] p-4 md:p-6 backdrop-blur-sm">
+                <h3 className="mb-4 text-sm font-semibold text-[#5a5248]">
                   프로필 정보
                 </h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-400">나이대</span>
-                    <span className="text-gray-900">
+                    <span className="text-[#5a5248]">나이대</span>
+                    <span className="text-[#faf6f0]">
                       {getAgeRangeLabel(actor.ageRange)}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">지역</span>
-                    <span className="text-gray-900">{actor.location}</span>
+                    <span className="text-[#5a5248]">지역</span>
+                    <span className="text-[#faf6f0]">{actor.location}</span>
                   </div>
                   {actor.heightCm && (
                     <div className="flex justify-between">
-                      <span className="text-gray-400">키</span>
-                      <span className="text-gray-900">{actor.heightCm}cm</span>
+                      <span className="text-[#5a5248]">키</span>
+                      <span className="text-[#faf6f0]">{actor.heightCm}cm</span>
                     </div>
                   )}
                   {actor.bodyType && (
                     <div className="flex justify-between">
-                      <span className="text-gray-400">체형</span>
-                      <span className="text-gray-900">{actor.bodyType}</span>
+                      <span className="text-[#5a5248]">체형</span>
+                      <span className="text-[#faf6f0]">{actor.bodyType}</span>
                     </div>
                   )}
                   {actor.mbti && (
                     <div className="flex justify-between">
-                      <span className="text-gray-400">MBTI</span>
-                      <span className="text-violet-600 font-semibold">{actor.mbti}</span>
+                      <span className="text-[#5a5248]">MBTI</span>
+                      <span className="text-[#e8a020] font-semibold">{actor.mbti}</span>
                     </div>
                   )}
                   {actor.email && (
                     <div className="flex justify-between">
-                      <span className="text-gray-400">이메일</span>
+                      <span className="text-[#5a5248]">이메일</span>
                       <a
                         href={`mailto:${actor.email}`}
-                        className="text-violet-600 hover:text-violet-500 hover:underline truncate max-w-[150px]"
+                        className="text-[#e8a020] hover:text-[#e8a020] hover:underline truncate max-w-[150px]"
                         title={actor.email}
                       >
                         {actor.email}
@@ -467,18 +464,18 @@ export default function ActorDetailPage() {
                   )}
                   {actor.phone && (
                     <div className="flex justify-between">
-                      <span className="text-gray-400">전화번호</span>
+                      <span className="text-[#5a5248]">전화번호</span>
                       <a
                         href={`tel:${actor.phone}`}
-                        className="text-violet-600 hover:text-violet-500 hover:underline"
+                        className="text-[#e8a020] hover:text-[#e8a020] hover:underline"
                       >
                         {actor.phone}
                       </a>
                     </div>
                   )}
                   <div className="flex justify-between">
-                    <span className="text-gray-400">공개 상태</span>
-                    <span className={actor.isPublic ? "text-green-400" : "text-gray-400"}>
+                    <span className="text-[#5a5248]">공개 상태</span>
+                    <span className={actor.isPublic ? "text-green-400" : "text-[#5a5248]"}>
                       {actor.isPublic ? "공개" : "비공개"}
                     </span>
                   </div>
@@ -487,8 +484,8 @@ export default function ActorDetailPage() {
 
               {/* 특성 육각형 차트 */}
               {actor.traits && (
-                <div className="rounded-lg border border-violet-500/20 bg-gray-50 p-4 md:p-6 backdrop-blur-sm">
-                  <h3 className="mb-4 text-sm font-semibold text-gray-400">
+                <div className="rounded-lg border border-[#e8a020]/20 bg-[#181410] p-4 md:p-6 backdrop-blur-sm">
+                  <h3 className="mb-4 text-sm font-semibold text-[#5a5248]">
                     특성 분석
                   </h3>
                   <div className="flex justify-center overflow-hidden">
@@ -498,16 +495,16 @@ export default function ActorDetailPage() {
               )}
 
               {/* 영화 평점 */}
-              <div className="rounded-lg border border-violet-500/20 bg-gray-50 p-4 md:p-6 backdrop-blur-sm">
-                <h3 className="mb-4 text-sm font-semibold text-gray-400">
+              <div className="rounded-lg border border-[#e8a020]/20 bg-[#181410] p-4 md:p-6 backdrop-blur-sm">
+                <h3 className="mb-4 text-sm font-semibold text-[#5a5248]">
                   좋아하는 영화
                 </h3>
                 {ratingsLoading ? (
                   <div className="text-center py-4">
-                    <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-violet-500 border-t-transparent" />
+                    <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-[#e8a020] border-t-transparent" />
                   </div>
                 ) : movieRatings.length === 0 ? (
-                  <p className="text-sm text-gray-500 text-center py-4">
+                  <p className="text-sm text-[#5a5248] text-center py-4">
                     아직 평가한 영화가 없습니다
                   </p>
                 ) : (
@@ -515,15 +512,15 @@ export default function ActorDetailPage() {
                     {movieRatings.map((rating) => (
                       <div
                         key={rating.id}
-                        className="rounded border border-gray-700/50 bg-gray-800/30 p-3"
+                        className="rounded border border-[#5a5248]/30 bg-[#100e0a] p-3"
                       >
                         <div className="flex items-start justify-between gap-2">
                           <div className="flex-1 min-w-0">
-                            <h4 className="text-sm font-semibold text-gray-900 truncate">
+                            <h4 className="text-sm font-semibold text-[#faf6f0] truncate">
                               {rating.movieTitle || "영화 제목 없음"}
                             </h4>
                             {rating.review && (
-                              <p className="mt-1 text-xs text-gray-400 line-clamp-2">
+                              <p className="mt-1 text-xs text-[#5a5248] line-clamp-2">
                                 {rating.review}
                               </p>
                             )}
@@ -535,8 +532,8 @@ export default function ActorDetailPage() {
                                   key={i}
                                   className={`text-sm ${
                                     i < rating.rating
-                                      ? "text-violet-600"
-                                      : "text-gray-600"
+                                      ? "text-[#e8a020]"
+                                      : "text-[#8a807a]"
                                   }`}
                                 >
                                   ★
@@ -544,7 +541,7 @@ export default function ActorDetailPage() {
                               ))}
                             </div>
                             {rating.isFavorite && (
-                              <span className="text-xs text-violet-600">⭐ 인생영화</span>
+                              <span className="text-xs text-[#e8a020]">⭐ 인생영화</span>
                             )}
                           </div>
                         </div>
@@ -559,7 +556,7 @@ export default function ActorDetailPage() {
                 <Button
                   onClick={handleCastingOffer}
                   disabled={sendingRequest}
-                  className="w-full bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-black hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
+                  className="w-full bg-[#e8a020] text-[#0a0805] hover:bg-[#f0b030]"
                 >
                   {sendingRequest ? "전송 중..." : "캐스팅 제안하기"}
                 </Button>

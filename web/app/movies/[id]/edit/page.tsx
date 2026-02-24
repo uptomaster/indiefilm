@@ -342,11 +342,11 @@ export default function EditMoviePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
-            <p className="mt-4 text-gray-400">로딩 중...</p>
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
+            <p className="mt-4 text-[#8a807a]">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -358,19 +358,19 @@ export default function EditMoviePage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
       {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-violet-900/30 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
+      <div className="relative overflow-hidden border-b border-[#5a5248]/30 bg-[#100e0a]">
         <div className="film-strip absolute inset-0 opacity-10" />
         <div className="container relative mx-auto px-4 py-16">
           <div className="mx-auto max-w-3xl">
-            <Link href={`/movies/${movie.id}`} className="mb-4 inline-block text-violet-400 hover:text-violet-300">
+            <Link href={`/movies/${movie.id}`} className="mb-4 inline-block text-[#e8a020] hover:text-[#e8a020]300">
               ← 영화로 돌아가기
             </Link>
             <h1 className="mb-4 text-4xl font-bold tracking-tight film-gold">
               영화 수정
             </h1>
-            <p className="text-gray-300">{movie.title}</p>
+            <p className="text-[#8a807a]">{movie.title}</p>
           </div>
         </div>
       </div>
@@ -378,166 +378,166 @@ export default function EditMoviePage() {
       {/* 폼 */}
       <div className="container mx-auto px-4 py-12">
         <div className="mx-auto max-w-3xl">
-          <Card className="border-violet-600/20 bg-white">
+          <Card className="border-[#5a5248]/30 bg-[#100e0a]">
             <CardContent className="p-6">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 {error && (
-                  <div className="rounded-lg bg-violet-600/20 border border-violet-600/50 p-4 text-violet-400">
+                  <div className="rounded-lg bg-[#e8a020]/20 border border-[#e8a020]/50 p-4 text-[#e8a020]">
                     {error}
                   </div>
                 )}
 
                 {/* 제목 */}
                 <div className="space-y-2">
-                  <Label htmlFor="title" className="text-gray-300">
+                  <Label htmlFor="title" className="text-[#8a807a]">
                     제목 *
                   </Label>
                   <Input
                     id="title"
                     {...register("title")}
-                    className="bg-gray-800/50 border-gray-700 text-white"
+                    className="bg-[#181410] border-[#5a5248]/40 text-white"
                   />
                   {errors.title && (
-                    <p className="text-sm text-violet-400">{errors.title.message}</p>
+                    <p className="text-sm text-[#e8a020]">{errors.title.message}</p>
                   )}
                 </div>
 
                 {/* 장르, 러닝타임, 상태 */}
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                   <div className="space-y-2">
-                    <Label htmlFor="genre" className="text-gray-300">
+                    <Label htmlFor="genre" className="text-[#8a807a]">
                       장르 *
                     </Label>
                     <Select
                       value={watch("genre") || ""}
                       onValueChange={(value) => setValue("genre", value as MovieGenre)}
                     >
-                      <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
+                      <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-violet-600/30">
-                        <SelectItem value="drama" className="text-violet-400 hover:bg-violet-50">드라마</SelectItem>
-                        <SelectItem value="comedy" className="text-violet-400 hover:bg-violet-50">코미디</SelectItem>
-                        <SelectItem value="horror" className="text-violet-400 hover:bg-violet-50">공포</SelectItem>
-                        <SelectItem value="romance" className="text-violet-400 hover:bg-violet-50">로맨스</SelectItem>
-                        <SelectItem value="etc" className="text-violet-400 hover:bg-violet-50">기타</SelectItem>
+                      <SelectContent className="bg-[#181410]900 border-[#e8a020]/30">
+                        <SelectItem value="drama" className="text-[#e8a020] hover:bg-[#e8a020]/10">드라마</SelectItem>
+                        <SelectItem value="comedy" className="text-[#e8a020] hover:bg-[#e8a020]/10">코미디</SelectItem>
+                        <SelectItem value="horror" className="text-[#e8a020] hover:bg-[#e8a020]/10">공포</SelectItem>
+                        <SelectItem value="romance" className="text-[#e8a020] hover:bg-[#e8a020]/10">로맨스</SelectItem>
+                        <SelectItem value="etc" className="text-[#e8a020] hover:bg-[#e8a020]/10">기타</SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.genre && (
-                      <p className="text-sm text-violet-400">{errors.genre.message}</p>
+                      <p className="text-sm text-[#e8a020]">{errors.genre.message}</p>
                     )}
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="runtimeMinutes" className="text-gray-300">
+                    <Label htmlFor="runtimeMinutes" className="text-[#8a807a]">
                       러닝타임 (분) *
                     </Label>
                     <Input
                       id="runtimeMinutes"
                       type="number"
                       {...register("runtimeMinutes", { valueAsNumber: true })}
-                      className="bg-gray-800/50 border-gray-700 text-white"
+                      className="bg-[#181410] border-[#5a5248]/40 text-white"
                     />
                     {errors.runtimeMinutes && (
-                      <p className="text-sm text-violet-400">{errors.runtimeMinutes.message}</p>
+                      <p className="text-sm text-[#e8a020]">{errors.runtimeMinutes.message}</p>
                     )}
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="status" className="text-gray-300">
+                    <Label htmlFor="status" className="text-[#8a807a]">
                       제작 상태 *
                     </Label>
                     <Select
                       value={watch("status") || ""}
                       onValueChange={(value) => setValue("status", value as MovieStatus)}
                     >
-                      <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
+                      <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-violet-600/30">
-                        <SelectItem value="production" className="text-violet-400 hover:bg-violet-50">제작중</SelectItem>
-                        <SelectItem value="planned" className="text-violet-400 hover:bg-violet-50">제작예정</SelectItem>
-                        <SelectItem value="completed" className="text-violet-400 hover:bg-violet-50">제작완료</SelectItem>
+                      <SelectContent className="bg-[#181410]900 border-[#e8a020]/30">
+                        <SelectItem value="production" className="text-[#e8a020] hover:bg-[#e8a020]/10">제작중</SelectItem>
+                        <SelectItem value="planned" className="text-[#e8a020] hover:bg-[#e8a020]/10">제작예정</SelectItem>
+                        <SelectItem value="completed" className="text-[#e8a020] hover:bg-[#e8a020]/10">제작완료</SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.status && (
-                      <p className="text-sm text-violet-400">{errors.status.message}</p>
+                      <p className="text-sm text-[#e8a020]">{errors.status.message}</p>
                     )}
                   </div>
                 </div>
 
                 {/* 한 줄 요약 */}
                 <div className="space-y-2">
-                  <Label htmlFor="logline" className="text-gray-300">
+                  <Label htmlFor="logline" className="text-[#8a807a]">
                     한 줄 요약 *
                   </Label>
                   <Input
                     id="logline"
                     {...register("logline")}
-                    className="bg-gray-800/50 border-gray-700 text-white"
+                    className="bg-[#181410] border-[#5a5248]/40 text-white"
                   />
                   {errors.logline && (
-                    <p className="text-sm text-violet-400">{errors.logline.message}</p>
+                    <p className="text-sm text-[#e8a020]">{errors.logline.message}</p>
                   )}
                 </div>
 
                 {/* 상세 설명 */}
                 <div className="space-y-2">
-                  <Label htmlFor="description" className="text-gray-300">
+                  <Label htmlFor="description" className="text-[#8a807a]">
                     상세 설명 *
                   </Label>
                   <textarea
                     id="description"
                     rows={6}
                     {...register("description")}
-                    className="w-full rounded-md border border-gray-700 bg-gray-800/50 px-3 py-2 text-white placeholder:text-gray-500 focus:border-violet-600 focus:outline-none focus:ring-1 focus:ring-violet-500"
+                    className="w-full rounded-md border border-[#5a5248]/40 bg-[#181410] px-3 py-2 text-white placeholder:text-[#5a5248] focus:border-[#e8a020] focus:outline-none focus:ring-1 focus:ring-[#e8a020]/20"
                   />
                   {errors.description && (
-                    <p className="text-sm text-violet-400">{errors.description.message}</p>
+                    <p className="text-sm text-[#e8a020]">{errors.description.message}</p>
                   )}
                 </div>
 
                 {/* 영상 플랫폼 및 URL */}
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="videoPlatform" className="text-gray-300">
+                    <Label htmlFor="videoPlatform" className="text-[#8a807a]">
                       영상 플랫폼 *
                     </Label>
                     <Select
                       value={watch("videoPlatform") || ""}
                       onValueChange={(value) => setValue("videoPlatform", value as "youtube" | "vimeo")}
                     >
-                      <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
+                      <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-violet-600/30">
-                        <SelectItem value="youtube" className="text-violet-400 hover:bg-violet-50">YouTube</SelectItem>
-                        <SelectItem value="vimeo" className="text-violet-400 hover:bg-violet-50">Vimeo</SelectItem>
+                      <SelectContent className="bg-[#181410]900 border-[#e8a020]/30">
+                        <SelectItem value="youtube" className="text-[#e8a020] hover:bg-[#e8a020]/10">YouTube</SelectItem>
+                        <SelectItem value="vimeo" className="text-[#e8a020] hover:bg-[#e8a020]/10">Vimeo</SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.videoPlatform && (
-                      <p className="text-sm text-violet-400">{errors.videoPlatform.message}</p>
+                      <p className="text-sm text-[#e8a020]">{errors.videoPlatform.message}</p>
                     )}
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="videoUrl" className="text-gray-300">
+                    <Label htmlFor="videoUrl" className="text-[#8a807a]">
                       영상 URL *
                     </Label>
                     <Input
                       id="videoUrl"
                       {...register("videoUrl")}
-                      className="bg-gray-800/50 border-gray-700 text-white"
+                      className="bg-[#181410] border-[#5a5248]/40 text-white"
                     />
                     {errors.videoUrl && (
-                      <p className="text-sm text-violet-400">{errors.videoUrl.message}</p>
+                      <p className="text-sm text-[#e8a020]">{errors.videoUrl.message}</p>
                     )}
                   </div>
                 </div>
 
                 {/* 썸네일 업로드 */}
                 <div className="space-y-2">
-                  <Label className="text-gray-300">썸네일</Label>
+                  <Label className="text-[#8a807a]">썸네일</Label>
                   <div
                     ref={dropZoneRef}
                     onDragOver={handleDragOver}
@@ -545,8 +545,8 @@ export default function EditMoviePage() {
                     onDrop={handleDrop}
                     className={`relative border-2 border-dashed rounded-lg p-6 transition-colors ${
                       isDragging
-                        ? "border-violet-600 bg-violet-600/10"
-                        : "border-gray-700 bg-gray-800/30"
+                        ? "border-[#e8a020] bg-[#e8a020]/10"
+                        : "border-[#5a5248]/40 bg-[#181410]800/30"
                     }`}
                   >
                     {thumbnailPreview ? (
@@ -566,14 +566,14 @@ export default function EditMoviePage() {
                               fileInputRef.current.value = "";
                             }
                           }}
-                          className="mt-2 text-sm text-violet-400 hover:text-violet-300"
+                          className="mt-2 text-sm text-[#e8a020] hover:text-[#e8a020]300"
                         >
                           제거
                         </button>
                       </div>
                     ) : (
                       <div className="text-center">
-                        <p className="mb-2 text-sm text-gray-400">
+                        <p className="mb-2 text-sm text-[#8a807a]">
                           이미지를 드래그하거나 클릭하여 업로드
                         </p>
                         <input
@@ -588,7 +588,7 @@ export default function EditMoviePage() {
                           onClick={() => fileInputRef.current?.click()}
                           disabled={uploadingThumbnail}
                           variant="outline"
-                          className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
+                          className="border-[#e8a020]/50 text-[#e8a020] hover:bg-[#e8a020]/10"
                         >
                           {uploadingThumbnail ? "업로드 중..." : "파일 선택"}
                         </Button>
@@ -599,33 +599,33 @@ export default function EditMoviePage() {
 
                 {/* 제작진 */}
                 <div className="space-y-2">
-                  <Label className="text-gray-300">제작진</Label>
+                  <Label className="text-[#8a807a]">제작진</Label>
                   {creditFields.map((field, index) => (
                     <div key={field.id} className="grid grid-cols-1 gap-4 md:grid-cols-4 mb-4">
                       <Input
                         {...register(`credits.${index}.role`)}
                         placeholder="역할"
-                        className="bg-gray-800/50 border-gray-700 text-white"
+                        className="bg-[#181410] border-[#5a5248]/40 text-white"
                       />
                       <Input
                         {...register(`credits.${index}.name`)}
                         placeholder="이름"
-                        className="bg-gray-800/50 border-gray-700 text-white"
+                        className="bg-[#181410] border-[#5a5248]/40 text-white"
                       />
                       <Select
                         value={watch(`credits.${index}.actorId`) || "none"}
                         onValueChange={(value) => setValue(`credits.${index}.actorId`, value === "none" ? undefined : value)}
                       >
-                        <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
+                        <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-white">
                           <SelectValue placeholder="배우 선택" />
                         </SelectTrigger>
-                        <SelectContent className="bg-gray-900 border-violet-600/30">
-                          <SelectItem value="none" className="text-violet-400 hover:bg-violet-50">선택 안 함</SelectItem>
+                        <SelectContent className="bg-[#181410]900 border-[#e8a020]/30">
+                          <SelectItem value="none" className="text-[#e8a020] hover:bg-[#e8a020]/10">선택 안 함</SelectItem>
                           {actors.map((actor) => (
                             <SelectItem
                               key={actor.id}
                               value={actor.id}
-                              className="text-violet-400 hover:bg-violet-50"
+                              className="text-[#e8a020] hover:bg-[#e8a020]/10"
                             >
                               {actor.stageName}
                             </SelectItem>
@@ -636,14 +636,14 @@ export default function EditMoviePage() {
                         <Input
                           {...register(`credits.${index}.profileLink`)}
                           placeholder="프로필 링크"
-                          className="bg-gray-800/50 border-gray-700 text-white"
+                          className="bg-[#181410] border-[#5a5248]/40 text-white"
                         />
                         {creditFields.length > 1 && (
                           <Button
                             type="button"
                             onClick={() => removeCredit(index)}
                             variant="outline"
-                            className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
+                            className="border-[#e8a020]/50 text-[#e8a020] hover:bg-[#e8a020]/10"
                           >
                             삭제
                           </Button>
@@ -655,7 +655,7 @@ export default function EditMoviePage() {
                     type="button"
                     onClick={() => appendCredit({ role: "", name: "", profileLink: "", actorId: undefined })}
                     variant="outline"
-                    className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
+                    className="border-[#e8a020]/50 text-[#e8a020] hover:bg-[#e8a020]/10"
                   >
                     + 제작진 추가
                   </Button>
@@ -664,29 +664,29 @@ export default function EditMoviePage() {
                 {/* 제작 연도, 태그 */}
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="year" className="text-gray-300">
+                    <Label htmlFor="year" className="text-[#8a807a]">
                       제작 연도
                     </Label>
                     <Input
                       id="year"
                       type="number"
                       {...register("year", { valueAsNumber: true })}
-                      className="bg-gray-800/50 border-gray-700 text-white"
+                      className="bg-[#181410] border-[#5a5248]/40 text-white"
                     />
                     {errors.year && (
-                      <p className="text-sm text-violet-400">{errors.year.message}</p>
+                      <p className="text-sm text-[#e8a020]">{errors.year.message}</p>
                     )}
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="tags" className="text-gray-300">
+                    <Label htmlFor="tags" className="text-[#8a807a]">
                       태그 (쉼표로 구분)
                     </Label>
                     <Input
                       id="tags"
                       {...register("tags")}
                       placeholder="예: 독립영화, 단편영화"
-                      className="bg-gray-800/50 border-gray-700 text-white"
+                      className="bg-[#181410] border-[#5a5248]/40 text-white"
                     />
                   </div>
                 </div>
@@ -697,14 +697,14 @@ export default function EditMoviePage() {
                     type="button"
                     variant="outline"
                     onClick={() => router.push(`/movies/${movie.id}`)}
-                    className="flex-1 border-gray-700 text-gray-300 hover:bg-violet-50"
+                    className="flex-1 border-[#5a5248]/40 text-[#8a807a] hover:bg-[#e8a020]/10"
                   >
                     취소
                   </Button>
                   <Button
                     type="submit"
                     disabled={saving}
-                    className="flex-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-black hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
+                    className="flex-1 bg-gradient-to-r btn-primary-gradient text-black "
                   >
                     {saving ? "저장 중..." : "저장하기"}
                   </Button>

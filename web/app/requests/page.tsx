@@ -16,6 +16,7 @@ import { getMovieById } from "@/lib/movies";
 import { getActorById } from "@/lib/actors";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { IndiePageWrapper } from "@/components/IndiePageWrapper";
 
 export default function RequestsPage() {
   const router = useRouter();
@@ -71,20 +72,20 @@ export default function RequestsPage() {
 
   const getStatusColor = (status: RequestStatus): string => {
     const colors: Record<RequestStatus, string> = {
-      pending: "bg-violet-600/20 text-violet-400",
+      pending: "bg-[#e8a020]/20 text-[#e8a020]",
       accepted: "bg-green-600/20 text-green-400",
-      rejected: "bg-violet-600/20 text-violet-400",
+      rejected: "bg-[#5a5248]/40 text-[#8a807a]",
     };
     return colors[status];
   };
 
   if (authLoading || loading) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
-            <p className="mt-4 text-gray-400">로딩 중...</p>
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
+            <p className="mt-4 text-[#8a807a]">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -94,69 +95,51 @@ export default function RequestsPage() {
   const requests = activeTab === "received" ? receivedRequests : sentRequests;
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-violet-900/30 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
-        <div className="film-strip absolute inset-0 opacity-10" />
-        <div className="container relative mx-auto px-4 py-16">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-4 text-5xl font-bold tracking-tight film-gold">
-              REQUESTS
-            </h1>
-            <p className="mb-8 text-xl text-gray-300">
-              캐스팅 제안과 출연 희망 요청을 확인하세요
-            </p>
-          </div>
-        </div>
+    <IndiePageWrapper title="요청" subtitle="캐스팅 제안과 출연 희망 요청을 확인하세요" sectionNum="">
+      <div className="mb-6 flex gap-4 border-b border-[#5a5248]/30">
+        <button
+          onClick={() => setActiveTab("received")}
+          className={`pb-4 px-4 font-semibold transition-colors ${
+            activeTab === "received"
+              ? "border-b-2 border-[#e8a020] text-[#e8a020]"
+              : "text-[#8a807a] hover:text-[#e8a020]"
+          }`}
+        >
+          받은 요청 ({receivedRequests.length})
+        </button>
+        <button
+          onClick={() => setActiveTab("sent")}
+          className={`pb-4 px-4 font-semibold transition-colors ${
+            activeTab === "sent"
+              ? "border-b-2 border-[#e8a020] text-[#e8a020]"
+              : "text-[#8a807a] hover:text-[#e8a020]"
+          }`}
+        >
+          보낸 요청 ({sentRequests.length})
+        </button>
       </div>
 
-      {/* 탭 */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="mb-6 flex gap-4 border-b border-violet-600/30">
-          <button
-            onClick={() => setActiveTab("received")}
-            className={`pb-4 px-4 font-semibold transition-colors ${
-              activeTab === "received"
-                ? "border-b-2 border-violet-600 text-violet-400"
-                : "text-gray-400 hover:text-violet-400"
-            }`}
-          >
-            받은 요청 ({receivedRequests.length})
-          </button>
-          <button
-            onClick={() => setActiveTab("sent")}
-            className={`pb-4 px-4 font-semibold transition-colors ${
-              activeTab === "sent"
-                ? "border-b-2 border-violet-600 text-violet-400"
-                : "text-gray-400 hover:text-violet-400"
-            }`}
-          >
-            보낸 요청 ({sentRequests.length})
-          </button>
-        </div>
-
-        {/* 요청 목록 */}
-        {requests.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-xl text-gray-400">
+      {/* 요청 목록 */}
+      {requests.length === 0 ? (
+        <div className="text-center py-20">
+          <p className="text-xl text-[#8a807a]">
               {activeTab === "received"
                 ? "받은 요청이 없습니다."
                 : "보낸 요청이 없습니다."}
             </p>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {requests.map((request) => (
-              <RequestCard
-                key={request.id}
-                request={request}
-                isReceived={activeTab === "received"}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {requests.map((request) => (
+            <RequestCard
+              key={request.id}
+              request={request}
+              isReceived={activeTab === "received"}
+            />
+          ))}
+        </div>
+      )}
+    </IndiePageWrapper>
   );
 }
 
@@ -222,18 +205,18 @@ function RequestCard({
 
   const getStatusColor = (status: RequestStatus): string => {
     const colors: Record<RequestStatus, string> = {
-      pending: "bg-violet-600/20 text-violet-400",
+      pending: "bg-[#e8a020]/20 text-[#e8a020]",
       accepted: "bg-green-600/20 text-green-400",
-      rejected: "bg-violet-600/20 text-violet-400",
+      rejected: "bg-[#5a5248]/40 text-[#8a807a]",
     };
     return colors[status];
   };
 
   if (loading) {
     return (
-      <Card className="border-violet-600/20 bg-gray-900/50">
+      <Card className="border-[#5a5248]/30 bg-[#100e0a]">
         <CardContent className="p-6">
-          <div className="h-20 animate-pulse bg-gray-800 rounded" />
+          <div className="h-20 animate-pulse bg-[#181410] rounded" />
         </CardContent>
       </Card>
     );
@@ -241,12 +224,12 @@ function RequestCard({
 
   return (
     <Link href={`/requests/${request.id}`}>
-      <Card className="border-violet-600/20 bg-gray-900/50 transition-all hover:border-violet-600/40 hover:bg-gray-900/70 cursor-pointer">
+      <Card className="border-[#5a5248]/30 bg-[#100e0a] transition-all hover:border-[#e8a020]/50 cursor-pointer">
         <CardContent className="p-6">
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <div className="mb-2 flex items-center gap-3">
-                <span className="rounded-full bg-violet-600/20 px-3 py-1 text-xs font-semibold text-violet-400">
+                <span className="rounded-full bg-[#e8a020]/20 px-3 py-1 text-xs font-semibold text-[#e8a020]">
                   {getRequestTypeLabel(request.type)}
                 </span>
                 <span
@@ -257,18 +240,18 @@ function RequestCard({
                   {getStatusLabel(request.status)}
                 </span>
               </div>
-              <h3 className="mb-2 text-lg font-bold text-white">
+              <h3 className="mb-2 text-lg font-bold text-[#faf6f0]">
                 {request.type === "movie_application"
                   ? movieTitle || "영화 정보 없음"
                   : actorName || "배우 정보 없음"}
               </h3>
-              <p className="mb-3 text-sm text-gray-400">
+              <p className="mb-3 text-sm text-[#8a807a]">
                 {isReceived
                   ? `${fromUserName}님이 요청을 보냈습니다`
                   : `${toUserName}님에게 요청을 보냈습니다`}
               </p>
-              <p className="text-sm text-gray-300">{request.message}</p>
-              <p className="mt-3 text-xs text-gray-500">
+              <p className="text-sm text-[#f0e8d8]">{request.message}</p>
+              <p className="mt-3 text-xs text-[#5a5248]">
                 {request.createdAt?.toDate
                   ? new Date(request.createdAt.toDate()).toLocaleDateString(
                       "ko-KR"

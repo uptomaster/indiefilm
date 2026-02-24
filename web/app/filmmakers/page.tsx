@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getFilmmakers, Filmmaker, FilmmakerType } from "@/lib/filmmakers";
-import { Button } from "@/components/ui/button";
+import { IndiePageWrapper } from "@/components/IndiePageWrapper";
 import { Input } from "@/components/ui/input";
 import { LazyImage } from "@/components/LazyImage";
 import {
@@ -54,99 +54,82 @@ export default function FilmmakersPage() {
   });
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
-        <div className="film-strip absolute inset-0 opacity-10" />
-        <div className="container relative mx-auto px-4 py-6 md:py-12 lg:py-16">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-2 md:mb-4 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight film-gold px-2">
-              FILMMAKERS
-            </h1>
-            <p className="mb-4 md:mb-8 text-base md:text-lg lg:text-xl text-gray-800 font-semibold tracking-tight px-2">
-              당신의 다음 작품을 함께 만들 제작자를 찾아보세요
-            </p>
-
-            {/* 검색 및 필터 */}
-            <div className="space-y-4">
-              <Input
-                placeholder="이름, 소개, 전문 분야로 검색..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-violet-500 font-medium"
-              />
-
-              <div className="flex flex-wrap gap-2 justify-center">
-                <Select
-                  value={selectedType || "all"}
-                  onValueChange={(value) =>
-                    setSelectedType(value === "all" ? null : (value as FilmmakerType))
-                  }
-                >
-                  <SelectTrigger className="w-[140px] bg-white border-gray-300 text-gray-900 font-medium">
-                    <SelectValue placeholder="유형" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-white border-gray-200">
-                    <SelectItem value="all" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">
-                      전체 유형
-                    </SelectItem>
-                    <SelectItem value="individual" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">
-                      개인
-                    </SelectItem>
-                    <SelectItem value="team" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">
-                      팀
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-
-                <Select
-                  value={selectedLocation || "all"}
-                  onValueChange={(value) =>
-                    setSelectedLocation(value === "all" ? null : value)
-                  }
-                >
-                  <SelectTrigger className="w-[140px] bg-white border-gray-300 text-gray-900 font-medium">
-                    <SelectValue placeholder="지역" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-white border-gray-200">
-                    <SelectItem value="all" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">
-                      전체 지역
-                    </SelectItem>
-                    {locations.map((loc) => (
-                      <SelectItem key={loc} value={loc} className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">
-                        {loc}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
+    <IndiePageWrapper title="제작자" subtitle="당신의 다음 작품을 함께 만들 제작자를 찾아보세요" sectionNum="04">
+      <div className="mx-auto max-w-3xl mb-10">
+        <div className="space-y-4">
+          <Input
+            placeholder="이름, 소개, 전문 분야로 검색..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020] font-medium"
+          />
+          <div className="flex flex-wrap gap-2 justify-center">
+            <Select
+              value={selectedType || "all"}
+              onValueChange={(value) =>
+                setSelectedType(value === "all" ? null : (value as FilmmakerType))
+              }
+            >
+              <SelectTrigger className="w-[140px] bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] font-medium">
+                <SelectValue placeholder="유형" />
+              </SelectTrigger>
+              <SelectContent className="bg-[#181410] border-[#5a5248]/30">
+                <SelectItem value="all" className="text-[#faf6f0] hover:bg-[#e8a020]/20 focus:bg-[#e8a020]/20 cursor-pointer font-medium">
+                  전체 유형
+                </SelectItem>
+                <SelectItem value="individual" className="text-[#faf6f0] hover:bg-[#e8a020]/20 focus:bg-[#e8a020]/20 cursor-pointer font-medium">
+                  개인
+                </SelectItem>
+                <SelectItem value="team" className="text-[#faf6f0] hover:bg-[#e8a020]/20 focus:bg-[#e8a020]/20 cursor-pointer font-medium">
+                  팀
+                </SelectItem>
+              </SelectContent>
+            </Select>
+            <Select
+              value={selectedLocation || "all"}
+              onValueChange={(value) =>
+                setSelectedLocation(value === "all" ? null : value)
+              }
+            >
+              <SelectTrigger className="w-[140px] bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] font-medium">
+                <SelectValue placeholder="지역" />
+              </SelectTrigger>
+              <SelectContent className="bg-[#181410] border-[#5a5248]/30">
+                <SelectItem value="all" className="text-[#faf6f0] hover:bg-[#e8a020]/20 focus:bg-[#e8a020]/20 cursor-pointer font-medium">
+                  전체 지역
+                </SelectItem>
+                {locations.map((loc) => (
+                  <SelectItem key={loc} value={loc} className="text-[#faf6f0] hover:bg-[#e8a020]/20 focus:bg-[#e8a020]/20 cursor-pointer font-medium">
+                    {loc}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
       </div>
 
-      {/* 제작자 목록 */}
-      <div className="container mx-auto px-4 py-4 md:py-8 lg:py-12">
+      <div>
         {loading && filmmakers.length === 0 ? (
           <div className="text-center py-20">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-500 border-t-transparent" />
-            <p className="mt-4 text-gray-700 font-semibold">로딩 중...</p>
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
+            <p className="mt-4 text-[#8a807a] font-semibold">로딩 중...</p>
           </div>
         ) : filteredFilmmakers.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-xl text-gray-700 font-semibold">
+            <p className="text-xl text-[#8a807a] font-semibold">
               조건에 맞는 제작자가 없습니다.
             </p>
           </div>
         ) : (
           <>
-            <div className="mb-6 text-sm text-gray-700 font-semibold tracking-tight">
+            <div className="mb-6 text-sm text-[#8a807a] font-semibold tracking-tight">
               총 {filteredFilmmakers.length}명의 제작자
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
               {filteredFilmmakers.map((filmmaker) => (
                 <Link key={filmmaker.id} href={`/filmmakers/${filmmaker.id}`}>
-                  <div className="group relative h-[260px] sm:h-[300px] md:h-[340px] lg:h-[380px] overflow-hidden rounded-lg shadow-lg border border-gray-200 hover:border-violet-300 transition-all">
+                  <div className="group relative h-[260px] sm:h-[300px] md:h-[340px] lg:h-[380px] overflow-hidden rounded-lg border border-[#5a5248]/30 hover:border-[#e8a020]/50 transition-all">
                     {filmmaker.mainPhotoUrl ? (
                       <LazyImage
                         src={filmmaker.mainPhotoUrl}
@@ -154,10 +137,10 @@ export default function FilmmakersPage() {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                      <div className="flex h-full w-full items-center justify-center bg-[#181410]">
                         <div className="text-center">
                           <div className="mb-4 text-6xl">🎬</div>
-                          <div className="text-2xl font-bold text-gray-700">
+                          <div className="text-2xl font-bold text-[#8a807a]">
                             {filmmaker.name}
                           </div>
                         </div>
@@ -166,7 +149,7 @@ export default function FilmmakersPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10" />
                     <div className="absolute bottom-0 left-0 right-0 z-20 p-4 md:p-5 lg:p-6">
                       <div className="mb-1.5 md:mb-2">
-                        <span className="rounded-full bg-violet-50 px-2 md:px-3 py-0.5 md:py-1 text-xs text-violet-600 font-semibold">
+                        <span className="rounded-full bg-[#e8a020]/20 px-2 md:px-3 py-0.5 md:py-1 text-xs text-[#e8a020] font-semibold">
                           {filmmaker.type === "team" ? "팀" : "개인"}
                         </span>
                       </div>
@@ -174,7 +157,7 @@ export default function FilmmakersPage() {
                         {filmmaker.name}
                       </h3>
                       {filmmaker.location && (
-                        <span className="text-xs md:text-sm text-gray-200 font-medium">
+                        <span className="text-xs md:text-sm text-[#8a807a] font-medium">
                           {filmmaker.location}
                         </span>
                       )}
@@ -183,7 +166,7 @@ export default function FilmmakersPage() {
                           {filmmaker.specialties.slice(0, 3).map((specialty, idx) => (
                             <span
                               key={idx}
-                              className="rounded bg-violet-500/20 px-2 py-1 text-xs text-white font-semibold backdrop-blur-sm"
+                              className="rounded bg-[#e8a020]/20 px-2 py-1 text-xs text-white font-semibold backdrop-blur-sm"
                             >
                               {specialty}
                             </span>
@@ -192,7 +175,7 @@ export default function FilmmakersPage() {
                       )}
                     </div>
                     <div className="absolute right-4 top-4 z-20">
-                      <div className="rounded-full bg-white/90 px-3 py-1 text-xs text-violet-600 backdrop-blur-sm font-semibold shadow-sm">
+                      <div className="rounded-full bg-[#e8a020]/90 px-3 py-1 text-xs text-[#0a0805] backdrop-blur-sm font-semibold shadow-sm">
                         프로필 보기 →
                       </div>
                     </div>
@@ -203,6 +186,6 @@ export default function FilmmakersPage() {
           </>
         )}
       </div>
-    </div>
+    </IndiePageWrapper>
   );
 }

@@ -49,8 +49,8 @@ export default function VenueMePage() {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-amber-500 border-t-transparent" />
-          <p className="mt-4 text-gray-400">로딩 중...</p>
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
+          <p className="mt-4 text-[#8a807a]">로딩 중...</p>
         </div>
       </div>
     );
@@ -60,21 +60,21 @@ export default function VenueMePage() {
 
   // 장소 미등록: 등록 유도 화면
   return (
-    <div className="min-h-screen bg-[#0d0d0d] text-white">
+    <div className="min-h-screen bg-[#0a0805] text-white">
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <div className="mb-8 text-7xl">🏢</div>
-          <h1 className="mb-4 text-3xl font-bold tracking-tight text-amber-400">
+          <h1 className="mb-4 text-3xl font-bold tracking-tight text-[#e8a020]">
             촬영 장소를 등록하세요
           </h1>
-          <p className="mb-8 text-gray-400 leading-relaxed">
+          <p className="mb-8 text-[#8a807a] leading-relaxed">
             사진, 위치, 면적, 대여 가능 시간대, 가격, 전기/주차/소음 여부 등
             촬영에 필요한 정보를 입력하고 제작진과 연결하세요.
           </p>
           <Link href="/venues/me/edit">
             <Button
               size="lg"
-              className="bg-amber-600 hover:bg-amber-500 text-black font-semibold px-8 py-6"
+              className="btn-primary-gradient text-black font-semibold px-8 py-6"
             >
               장소 등록하기
             </Button>

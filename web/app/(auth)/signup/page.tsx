@@ -81,16 +81,16 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#3a2f38] via-[#4a3f48] to-[#3a2f38] text-white flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8] flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold film-gold mb-2">SIGN UP</h1>
-          <p className="text-gray-300">IndieFilm Hub에 가입하고 시작하세요</p>
+          <h1 className="font-serif text-4xl font-light text-[#faf6f0] mb-2">회원가입</h1>
+          <p className="text-[#8a807a] text-sm">인디필름에 가입하고 시작하세요</p>
         </div>
-        <Card className="border-violet-500/20 bg-[#4a3f48]/50 backdrop-blur-sm">
+        <Card className="border-[#5a5248]/30 bg-[#100e0a]">
           <CardContent className="pt-6 space-y-4">
             {error && (
-              <div className="rounded-md bg-violet-900/20 border border-violet-600/30 p-3 text-sm text-violet-300">
+              <div className="rounded-md bg-[#c03020]/10 border border-[#c03020]/30 p-3 text-sm text-[#e08080]">
                 {error}
                 {error.includes("configuration-not-found") && (
                   <div className="mt-2 text-xs">
@@ -102,56 +102,56 @@ export default function SignupPage() {
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-gray-300">이메일</Label>
+                <Label htmlFor="email" className="text-[#8a807a]">이메일</Label>
                 <Input
                   id="email"
                   type="email"
-                  className="bg-gray-800/50 border-gray-700 text-white"
+                  className="bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
                   placeholder="example@email.com"
                   {...register("email")}
                 />
                 {errors.email && (
-                  <p className="text-sm text-violet-400 font-medium">{errors.email.message}</p>
+                  <p className="text-sm text-[#e8a020] font-medium">{errors.email.message}</p>
                 )}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-gray-300">비밀번호</Label>
+                <Label htmlFor="password" className="text-[#8a807a]">비밀번호</Label>
                 <Input
                   id="password"
                   type="password"
-                  className="bg-gray-800/50 border-gray-700 text-white"
+                  className="bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
                   {...register("password")}
                 />
                 {errors.password && (
-                  <p className="text-sm text-violet-400 font-medium">
+                  <p className="text-sm text-[#e8a020] font-medium">
                     {errors.password.message}
                   </p>
                 )}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword" className="text-gray-300">비밀번호 확인</Label>
+                <Label htmlFor="confirmPassword" className="text-[#8a807a]">비밀번호 확인</Label>
                 <Input
                   id="confirmPassword"
                   type="password"
-                  className="bg-gray-800/50 border-gray-700 text-white"
+                  className="bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
                   {...register("confirmPassword")}
                 />
                 {errors.confirmPassword && (
-                  <p className="text-sm text-violet-400 font-medium">
+                  <p className="text-sm text-[#e8a020] font-medium">
                     {errors.confirmPassword.message}
                   </p>
                 )}
               </div>
 
               <div className="space-y-2">
-                <Label className="text-gray-300">당신은 누구인가요?</Label>
+                <Label className="text-[#8a807a]">당신은 누구인가요?</Label>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                   <label className={`flex cursor-pointer flex-col items-center rounded-lg border-2 p-3 transition-all ${
                     selectedRole === "filmmaker"
-                      ? "border-violet-500 bg-violet-500/20 scale-105"
-                      : "border-gray-700 hover:bg-indigo-900/20"
+                      ? "border-[#e8a020] bg-[#e8a020]/20 scale-105"
+                      : "border-[#5a5248]/50 hover:bg-[#e8a020]/10 hover:border-[#e8a020]/50"
                   }`}>
                     <input
                       type="radio"
@@ -160,12 +160,12 @@ export default function SignupPage() {
                       className="sr-only"
                     />
                     <span className="text-2xl mb-1">🎬</span>
-                    <span className="text-sm font-medium text-gray-300">제작자</span>
+                    <span className="text-sm font-medium text-[#8a807a]">제작자</span>
                   </label>
                   <label className={`flex cursor-pointer flex-col items-center rounded-lg border-2 p-3 transition-all ${
                     selectedRole === "actor"
-                      ? "border-violet-500 bg-violet-500/20 scale-105"
-                      : "border-gray-700 hover:bg-indigo-900/20"
+                      ? "border-[#e8a020] bg-[#e8a020]/20 scale-105"
+                      : "border-[#5a5248]/50 hover:bg-[#e8a020]/10 hover:border-[#e8a020]/50"
                   }`}>
                     <input
                       type="radio"
@@ -174,12 +174,12 @@ export default function SignupPage() {
                       className="sr-only"
                     />
                     <span className="text-2xl mb-1">🎭</span>
-                    <span className="text-sm font-medium text-gray-300">배우</span>
+                    <span className="text-sm font-medium text-[#8a807a]">배우</span>
                   </label>
                   <label className={`flex cursor-pointer flex-col items-center rounded-lg border-2 p-3 transition-all ${
                     selectedRole === "viewer"
-                      ? "border-violet-500 bg-violet-500/20 scale-105"
-                      : "border-gray-700 hover:bg-indigo-900/20"
+                      ? "border-[#e8a020] bg-[#e8a020]/20 scale-105"
+                      : "border-[#5a5248]/50 hover:bg-[#e8a020]/10 hover:border-[#e8a020]/50"
                   }`}>
                     <input
                       type="radio"
@@ -188,12 +188,12 @@ export default function SignupPage() {
                       className="sr-only"
                     />
                     <span className="text-2xl mb-1">👁️</span>
-                    <span className="text-sm font-medium text-gray-300">관객</span>
+                    <span className="text-sm font-medium text-[#8a807a]">관객</span>
                   </label>
                   <label className={`flex cursor-pointer flex-col items-center rounded-lg border-2 p-3 transition-all ${
                     selectedRole === "venue"
-                      ? "border-violet-500 bg-violet-500/20 scale-105"
-                      : "border-gray-700 hover:bg-indigo-900/20"
+                      ? "border-[#e8a020] bg-[#e8a020]/20 scale-105"
+                      : "border-[#5a5248]/50 hover:bg-[#e8a020]/10 hover:border-[#e8a020]/50"
                   }`}>
                     <input
                       type="radio"
@@ -202,25 +202,25 @@ export default function SignupPage() {
                       className="sr-only"
                     />
                     <span className="text-2xl mb-1">🏢</span>
-                    <span className="text-sm font-medium text-gray-300">장소대여자</span>
+                    <span className="text-sm font-medium text-[#8a807a]">장소대여자</span>
                   </label>
                 </div>
                 {errors.role && (
-                  <p className="text-sm text-violet-400 font-medium">{errors.role.message}</p>
+                  <p className="text-sm text-[#e8a020] font-medium">{errors.role.message}</p>
                 )}
               </div>
 
-              <Button type="submit" className="w-full bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-white hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600" disabled={loading}>
+              <Button type="submit" className="w-full bg-[#e8a020] text-[#0a0805] hover:bg-[#f0b030] font-medium" disabled={loading}>
                 {loading ? "가입 중..." : "회원가입"}
               </Button>
             </form>
 
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t border-gray-700" />
+                <span className="w-full border-t border-[#5a5248]/30" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-[#4a3f48]/50 px-2 text-gray-400">
+                <span className="bg-[#100e0a] px-2 text-[#5a5248]">
                   또는
                 </span>
               </div>
@@ -229,7 +229,7 @@ export default function SignupPage() {
             <Button
               type="button"
               variant="outline"
-              className="w-full border-violet-500/50 text-violet-400 hover:bg-violet-500/10"
+              className="w-full border-[#5a5248]/50 text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020] hover:bg-[#e8a020]/10"
               onClick={handleGoogleSignUp}
               disabled={loading}
             >
@@ -254,9 +254,9 @@ export default function SignupPage() {
               Google로 회원가입
             </Button>
 
-            <div className="text-center text-sm text-gray-400">
+            <div className="text-center text-sm text-[#8a807a]">
               이미 계정이 있으신가요?{" "}
-              <Link href="/login" className="text-violet-400 hover:text-violet-300 hover:underline">
+              <Link href="/login" className="text-[#e8a020] hover:text-[#e8a020]/80 hover:underline">
                 로그인
               </Link>
             </div>

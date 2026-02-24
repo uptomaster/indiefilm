@@ -12,13 +12,13 @@ export function EmptyState({ type = "general", title, description }: EmptyStateP
   const getIcon = () => {
     switch (type) {
       case "movies":
-        return <Film className="h-16 w-16 text-gray-600" />;
+        return <Film className="h-16 w-16 text-[#8a807a]" />;
       case "actors":
-        return <Users className="h-16 w-16 text-gray-600" />;
+        return <Users className="h-16 w-16 text-[#8a807a]" />;
       case "posts":
-        return <MessageSquare className="h-16 w-16 text-gray-600" />;
+        return <MessageSquare className="h-16 w-16 text-[#8a807a]" />;
       default:
-        return <Search className="h-16 w-16 text-gray-600" />;
+        return <Search className="h-16 w-16 text-[#8a807a]" />;
     }
   };
 
@@ -51,14 +51,11 @@ export function EmptyState({ type = "general", title, description }: EmptyStateP
   return (
     <div className="flex flex-col items-center justify-center py-20 text-center">
       {getIcon()}
-      <h3 className="mt-4 text-xl font-semibold text-gray-400">
+      <h3 className="mt-4 text-xl font-semibold text-[#8a807a]">
         {title || getDefaultTitle()}
       </h3>
-      {description && (
-        <p className="mt-2 text-sm text-gray-500">{description}</p>
-      )}
-      {!description && getDefaultDescription() && (
-        <p className="mt-2 text-sm text-gray-500">{getDefaultDescription()}</p>
+      {(description || getDefaultDescription()) && (
+        <p className="mt-2 text-sm text-[#5a5248]">{description || getDefaultDescription()}</p>
       )}
     </div>
   );

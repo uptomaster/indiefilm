@@ -196,11 +196,11 @@ export default function NewMoviePage() {
   // 제작자만 접근 가능
   if (userProfile && userProfile.role !== "filmmaker") {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-black text-[#faf6f0]">
         <div className="container mx-auto px-4 py-20">
-          <Card className="border-violet-600/20 bg-gray-900/50 backdrop-blur-sm">
+          <Card className="border-[#e8a020]/20 bg-[#100e0a]/50 backdrop-blur-sm">
             <CardContent className="pt-6">
-              <p className="text-center text-gray-300">영화 업로드는 제작자만 가능합니다.</p>
+              <p className="text-center text-[#f0e8d8]">영화 업로드는 제작자만 가능합니다.</p>
             </CardContent>
           </Card>
         </div>
@@ -295,37 +295,37 @@ export default function NewMoviePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-gray-950 to-black text-white">
+    <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
       {/* 히어로 섹션 - 시네마틱한 디자인 */}
-      <div className="relative overflow-hidden border-b border-violet-900/30">
+      <div className="relative overflow-hidden border-b border-[#100e0a]/30">
         {/* 배경 애니메이션 */}
         <div className="absolute inset-0">
           <div className="film-strip absolute inset-0 opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-violet-900/5 via-transparent to-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#100e0a]/5 via-transparent to-black" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(234,179,8,0.1),transparent_70%)]" />
         </div>
         
         <div className="container relative mx-auto px-4 py-20 md:py-28">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-6 inline-block rounded-full bg-violet-600/10 px-6 py-2 backdrop-blur-sm">
-              <span className="text-sm font-medium text-violet-400">NEW RELEASE</span>
+            <div className="mb-6 inline-block rounded-full bg-[#e8a020]/10 px-6 py-2 backdrop-blur-sm">
+              <span className="text-sm font-medium text-[#e8a020]">NEW RELEASE</span>
             </div>
             <h1 className="mb-6 text-6xl font-bold tracking-tight md:text-7xl">
-              <span className="bg-gradient-to-r from-indigo-400 via-violet-500 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#e8a020] via-[#e8a020]/100 to-[#e8a020] bg-clip-text text-transparent">
                 UPLOAD MOVIE
               </span>
             </h1>
-            <p className="mx-auto max-w-2xl text-xl text-gray-300 md:text-2xl">
+            <p className="mx-auto max-w-2xl text-xl text-[#f0e8d8] md:text-2xl">
               당신의 작품을 세상에 공개하세요
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <div className="flex items-center gap-2 rounded-lg bg-gray-900/50 px-4 py-2 backdrop-blur-sm">
-                <span className="text-violet-400">🎬</span>
-                <span className="text-sm text-gray-300">YouTube & Vimeo 지원</span>
+              <div className="flex items-center gap-2 rounded-lg bg-[#100e0a]/50 px-4 py-2 backdrop-blur-sm">
+                <span className="text-[#e8a020]">🎬</span>
+                <span className="text-sm text-[#f0e8d8]">YouTube & Vimeo 지원</span>
               </div>
-              <div className="flex items-center gap-2 rounded-lg bg-gray-900/50 px-4 py-2 backdrop-blur-sm">
-                <span className="text-violet-400">📸</span>
-                <span className="text-sm text-gray-300">이미지 업로드 가능</span>
+              <div className="flex items-center gap-2 rounded-lg bg-[#100e0a]/50 px-4 py-2 backdrop-blur-sm">
+                <span className="text-[#e8a020]">📸</span>
+                <span className="text-sm text-[#f0e8d8]">이미지 업로드 가능</span>
               </div>
             </div>
           </div>
@@ -334,24 +334,24 @@ export default function NewMoviePage() {
 
       {/* 폼 섹션 */}
       <div className="container mx-auto max-w-4xl px-4 py-12">
-        <Card className="border-violet-600/20 bg-gradient-to-br from-gray-900/80 via-gray-900/50 to-black/50 backdrop-blur-xl shadow-2xl">
-          <CardHeader className="border-b border-violet-600/10 pb-6">
+        <Card className="border-[#e8a020]/20 bg-gradient-to-br from-[#100e0a] via-[#100e0a]/90 to-black/50 backdrop-blur-xl shadow-2xl">
+          <CardHeader className="border-b border-[#e8a020]/10 pb-6">
             <CardTitle className="text-3xl font-bold">
-              <span className="bg-gradient-to-r from-indigo-400 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#e8a020] to-[#e8a020] bg-clip-text text-transparent">
                 영화 정보
               </span>
             </CardTitle>
-            <CardDescription className="mt-2 text-base text-gray-400">
+            <CardDescription className="mt-2 text-base text-[#8a807a]">
               모든 필수 정보를 입력해주세요
             </CardDescription>
           </CardHeader>
           
           <CardContent className="pt-8">
             {error && (
-              <div className="mb-6 animate-in slide-in-from-top-2 rounded-lg border border-violet-600/30 bg-violet-900/20 p-4 backdrop-blur-sm">
+              <div className="mb-6 animate-in slide-in-from-top-2 rounded-lg border border-[#e8a020]/30 bg-[#100e0a]/20 p-4 backdrop-blur-sm">
                 <div className="flex items-center gap-2">
                   <span className="text-xl">⚠️</span>
-                  <p className="text-violet-300">{error}</p>
+                  <p className="text-[#e8a020]/80">{error}</p>
                 </div>
               </div>
             )}
@@ -362,23 +362,23 @@ export default function NewMoviePage() {
             })} className="space-y-8">
               {/* 기본 정보 섹션 */}
               <div className="space-y-6">
-                <div className="flex items-center gap-2 border-b border-violet-600/20 pb-2">
+                <div className="flex items-center gap-2 border-b border-[#e8a020]/20 pb-2">
                   <span className="text-2xl">📝</span>
-                  <h2 className="text-xl font-semibold text-violet-400">기본 정보</h2>
+                  <h2 className="text-xl font-semibold text-[#e8a020]">기본 정보</h2>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="title" className="text-base font-medium text-gray-200">
-                    제목 <span className="text-violet-400">*</span>
+                  <Label htmlFor="title" className="text-base font-medium text-[#f0e8d8]">
+                    제목 <span className="text-[#e8a020]">*</span>
                   </Label>
                   <Input
                     id="title"
-                    className="h-12 bg-gray-800/50 border-gray-700 text-white transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20"
+                    className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                     placeholder="영화 제목을 입력하세요"
                     {...register("title")}
                   />
                   {errors.title && (
-                    <p className="text-sm text-violet-400 font-medium animate-in slide-in-from-top-1">
+                    <p className="text-sm text-[#e8a020] font-medium animate-in slide-in-from-top-1">
                       {errors.title.message}
                     </p>
                   )}
@@ -386,68 +386,68 @@ export default function NewMoviePage() {
 
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="genre" className="text-base font-medium text-gray-200">
-                      장르 <span className="text-violet-400">*</span>
+                    <Label htmlFor="genre" className="text-base font-medium text-[#f0e8d8]">
+                      장르 <span className="text-[#e8a020]">*</span>
                     </Label>
                     <Select
                       value={watch("genre") || ""}
                       onValueChange={(value) => setValue("genre", value as "drama" | "comedy" | "horror" | "romance" | "etc")}
                     >
-                      <SelectTrigger className="h-12 bg-gray-800/50 border-gray-700 text-white transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20">
+                      <SelectTrigger className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20">
                         <SelectValue placeholder="장르 선택" />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-violet-600/30">
-                        <SelectItem value="drama" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">🎭 드라마</SelectItem>
-                        <SelectItem value="comedy" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">😂 코미디</SelectItem>
-                        <SelectItem value="horror" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">👻 공포</SelectItem>
-                        <SelectItem value="romance" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">💕 로맨스</SelectItem>
-                        <SelectItem value="etc" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">🎬 기타</SelectItem>
+                      <SelectContent className="bg-[#100e0a] border-[#e8a020]/30">
+                        <SelectItem value="drama" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">🎭 드라마</SelectItem>
+                        <SelectItem value="comedy" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">😂 코미디</SelectItem>
+                        <SelectItem value="horror" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">👻 공포</SelectItem>
+                        <SelectItem value="romance" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">💕 로맨스</SelectItem>
+                        <SelectItem value="etc" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">🎬 기타</SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.genre && (
-                      <p className="text-sm text-violet-400 font-medium animate-in slide-in-from-top-1">
+                      <p className="text-sm text-[#e8a020] font-medium animate-in slide-in-from-top-1">
                         {errors.genre.message}
                       </p>
                     )}
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="runtimeMinutes" className="text-base font-medium text-gray-200">
-                      러닝타임 (분) <span className="text-violet-400">*</span>
+                    <Label htmlFor="runtimeMinutes" className="text-base font-medium text-[#f0e8d8]">
+                      러닝타임 (분) <span className="text-[#e8a020]">*</span>
                     </Label>
                     <Input
                       id="runtimeMinutes"
                       type="number"
-                      className="h-12 bg-gray-800/50 border-gray-700 text-white transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20"
+                      className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                       placeholder="예: 90"
                       {...register("runtimeMinutes", { valueAsNumber: true })}
                     />
                     {errors.runtimeMinutes && (
-                      <p className="text-sm text-violet-400 font-medium animate-in slide-in-from-top-1">
+                      <p className="text-sm text-[#e8a020] font-medium animate-in slide-in-from-top-1">
                         {errors.runtimeMinutes.message}
                       </p>
                     )}
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="status" className="text-base font-medium text-gray-200">
-                      제작 상태 <span className="text-violet-400">*</span>
+                    <Label htmlFor="status" className="text-base font-medium text-[#f0e8d8]">
+                      제작 상태 <span className="text-[#e8a020]">*</span>
                     </Label>
                     <Select
                       value={watch("status") || ""}
                       onValueChange={(value) => setValue("status", value as "production" | "planned" | "completed")}
                     >
-                      <SelectTrigger className="h-12 bg-gray-800/50 border-gray-700 text-white transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20">
+                      <SelectTrigger className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20">
                         <SelectValue placeholder="제작 상태 선택" />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-violet-600/30">
-                        <SelectItem value="production" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">🎬 제작중</SelectItem>
-                        <SelectItem value="planned" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">📅 제작예정</SelectItem>
-                        <SelectItem value="completed" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">✅ 제작완료</SelectItem>
+                      <SelectContent className="bg-[#100e0a] border-[#e8a020]/30">
+                        <SelectItem value="production" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">🎬 제작중</SelectItem>
+                        <SelectItem value="planned" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">📅 제작예정</SelectItem>
+                        <SelectItem value="completed" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">✅ 제작완료</SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.status && (
-                      <p className="text-sm text-violet-400 font-medium animate-in slide-in-from-top-1">
+                      <p className="text-sm text-[#e8a020] font-medium animate-in slide-in-from-top-1">
                         {errors.status.message}
                       </p>
                     )}
@@ -455,35 +455,35 @@ export default function NewMoviePage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="logline" className="text-base font-medium text-gray-200">
-                    한 줄 요약 <span className="text-violet-400">*</span>
+                  <Label htmlFor="logline" className="text-base font-medium text-[#f0e8d8]">
+                    한 줄 요약 <span className="text-[#e8a020]">*</span>
                   </Label>
                   <Input
                     id="logline"
-                    className="h-12 bg-gray-800/50 border-gray-700 text-white transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20"
+                    className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                     placeholder="영화를 한 줄로 설명해주세요"
                     {...register("logline")}
                   />
                   {errors.logline && (
-                    <p className="text-sm text-violet-400 font-medium animate-in slide-in-from-top-1">
+                    <p className="text-sm text-[#e8a020] font-medium animate-in slide-in-from-top-1">
                       {errors.logline.message}
                     </p>
                   )}
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="description" className="text-base font-medium text-gray-200">
-                    상세 설명 <span className="text-violet-400">*</span>
+                  <Label htmlFor="description" className="text-base font-medium text-[#f0e8d8]">
+                    상세 설명 <span className="text-[#e8a020]">*</span>
                   </Label>
                   <textarea
                     id="description"
                     rows={6}
-                    className="w-full rounded-md border border-gray-700 bg-gray-800/50 px-4 py-3 text-sm text-white placeholder:text-gray-500 transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20 focus:outline-none"
+                    className="w-full rounded-md border border-[#5a5248]/40 bg-gray-800/50 px-4 py-3 text-sm text-[#faf6f0] placeholder:text-[#5a5248] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20 focus:outline-none"
                     placeholder="영화의 상세한 내용을 입력해주세요"
                     {...register("description")}
                   />
                   {errors.description && (
-                    <p className="text-sm text-violet-400 font-medium animate-in slide-in-from-top-1">
+                    <p className="text-sm text-[#e8a020] font-medium animate-in slide-in-from-top-1">
                       {errors.description.message}
                     </p>
                   )}
@@ -492,38 +492,38 @@ export default function NewMoviePage() {
 
               {/* 영상 정보 섹션 */}
               <div className="space-y-6">
-                <div className="flex items-center gap-2 border-b border-violet-600/20 pb-2">
+                <div className="flex items-center gap-2 border-b border-[#e8a020]/20 pb-2">
                   <span className="text-2xl">🎥</span>
-                  <h2 className="text-xl font-semibold text-violet-400">영상 정보</h2>
+                  <h2 className="text-xl font-semibold text-[#e8a020]">영상 정보</h2>
                 </div>
 
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="videoPlatform" className="text-base font-medium text-gray-200">
-                      영상 플랫폼 <span className="text-violet-400">*</span>
+                    <Label htmlFor="videoPlatform" className="text-base font-medium text-[#f0e8d8]">
+                      영상 플랫폼 <span className="text-[#e8a020]">*</span>
                     </Label>
                     <Select
                       value={watch("videoPlatform") || ""}
                       onValueChange={(value) => setValue("videoPlatform", value as "youtube" | "vimeo")}
                     >
-                      <SelectTrigger className="h-12 bg-gray-800/50 border-gray-700 text-white transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20">
+                      <SelectTrigger className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20">
                         <SelectValue placeholder="플랫폼 선택" />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-violet-600/30">
-                        <SelectItem value="youtube" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">▶️ YouTube</SelectItem>
-                        <SelectItem value="vimeo" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">🎬 Vimeo</SelectItem>
+                      <SelectContent className="bg-[#100e0a] border-[#e8a020]/30">
+                        <SelectItem value="youtube" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">▶️ YouTube</SelectItem>
+                        <SelectItem value="vimeo" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">🎬 Vimeo</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="year" className="text-base font-medium text-gray-200">
+                    <Label htmlFor="year" className="text-base font-medium text-[#f0e8d8]">
                       제작 연도
                     </Label>
                     <Input
                       id="year"
                       type="number"
-                      className="h-12 bg-gray-800/50 border-gray-700 text-white transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20"
+                      className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                       placeholder="예: 2024"
                       {...register("year", { valueAsNumber: true })}
                     />
@@ -531,12 +531,12 @@ export default function NewMoviePage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="videoUrl" className="text-base font-medium text-gray-200">
-                    영상 URL <span className="text-violet-400">*</span>
+                  <Label htmlFor="videoUrl" className="text-base font-medium text-[#f0e8d8]">
+                    영상 URL <span className="text-[#e8a020]">*</span>
                   </Label>
                   <Input
                     id="videoUrl"
-                    className="h-12 bg-gray-800/50 border-gray-700 text-white transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20"
+                    className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                     placeholder={
                       videoPlatform === "youtube"
                         ? "https://www.youtube.com/watch?v=..."
@@ -545,7 +545,7 @@ export default function NewMoviePage() {
                     {...register("videoUrl")}
                   />
                   {errors.videoUrl && (
-                    <p className="text-sm text-violet-400 font-medium animate-in slide-in-from-top-1">
+                    <p className="text-sm text-[#e8a020] font-medium animate-in slide-in-from-top-1">
                       {errors.videoUrl.message}
                     </p>
                   )}
@@ -554,9 +554,9 @@ export default function NewMoviePage() {
 
               {/* 썸네일 업로드 섹션 */}
               <div className="space-y-6">
-                <div className="flex items-center gap-2 border-b border-violet-600/20 pb-2">
+                <div className="flex items-center gap-2 border-b border-[#e8a020]/20 pb-2">
                   <span className="text-2xl">🖼️</span>
-                  <h2 className="text-xl font-semibold text-violet-400">썸네일 이미지</h2>
+                  <h2 className="text-xl font-semibold text-[#e8a020]">썸네일 이미지</h2>
                 </div>
 
                 {/* 드래그 앤 드롭 영역 */}
@@ -568,8 +568,8 @@ export default function NewMoviePage() {
                   onClick={() => fileInputRef.current?.click()}
                   className={`relative cursor-pointer rounded-xl border-2 border-dashed transition-all ${
                     isDragging
-                      ? "border-violet-500 bg-violet-900/20"
-                      : "border-gray-700 bg-gray-800/30 hover:border-violet-600/50 hover:bg-violet-50/50"
+                      ? "border-[#e8a020]/100 bg-[#100e0a]/20"
+                      : "border-[#5a5248]/40 bg-[#181410]/50 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
                   }`}
                 >
                   <input
@@ -590,8 +590,8 @@ export default function NewMoviePage() {
                       {uploadingThumbnail && (
                         <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/50 backdrop-blur-sm">
                           <div className="flex flex-col items-center gap-2">
-                            <div className="h-8 w-8 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
-                            <span className="text-sm text-violet-400">업로드 중...</span>
+                            <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
+                            <span className="text-sm text-[#e8a020]">업로드 중...</span>
                           </div>
                         </div>
                       )}
@@ -600,7 +600,7 @@ export default function NewMoviePage() {
                           type="button"
                           variant="outline"
                           size="sm"
-                          className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
+                          className="border-[#e8a020]/50 text-[#e8a020] hover:bg-[#e8a020]/10"
                           onClick={(e) => {
                             e.stopPropagation();
                             setThumbnailPreview(null);
@@ -617,19 +617,19 @@ export default function NewMoviePage() {
                     </div>
                   ) : (
                     <div className="p-12 text-center">
-                      <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-violet-600/10">
+                      <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#e8a020]/10">
                         <span className="text-3xl">📸</span>
                       </div>
-                      <p className="mb-2 text-lg font-medium text-gray-200">
+                      <p className="mb-2 text-lg font-medium text-[#f0e8d8]">
                         {uploadingThumbnail ? "업로드 중..." : "이미지를 드래그하거나 클릭하여 업로드"}
                       </p>
-                      <p className="text-sm text-gray-400">
+                      <p className="text-sm text-[#8a807a]">
                         PNG, JPG, GIF 최대 5MB
                       </p>
                       {uploadingThumbnail && (
                         <div className="mt-4">
-                          <div className="mx-auto h-2 w-48 overflow-hidden rounded-full bg-gray-700">
-                            <div className="h-full w-full animate-pulse bg-violet-600" />
+                          <div className="mx-auto h-2 w-48 overflow-hidden rounded-full bg-[#5a5248]/50">
+                            <div className="h-full w-full animate-pulse bg-[#e8a020]" />
                           </div>
                         </div>
                       )}
@@ -639,12 +639,12 @@ export default function NewMoviePage() {
 
                 {/* URL 입력 (대안) */}
                 <div className="space-y-2">
-                  <Label htmlFor="thumbnailUrl" className="text-sm font-medium text-gray-400">
+                  <Label htmlFor="thumbnailUrl" className="text-sm font-medium text-[#8a807a]">
                     또는 이미지 URL 직접 입력
                   </Label>
                   <Input
                     id="thumbnailUrl"
-                    className="bg-gray-800/50 border-gray-700 text-white transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20"
+                    className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                     placeholder="https://example.com/image.jpg"
                     {...register("thumbnailUrl")}
                   />
@@ -653,9 +653,9 @@ export default function NewMoviePage() {
 
               {/* 제작진 크레딧 섹션 */}
               <div className="space-y-6">
-                <div className="flex items-center gap-2 border-b border-violet-600/20 pb-2">
+                <div className="flex items-center gap-2 border-b border-[#e8a020]/20 pb-2">
                   <span className="text-2xl">👥</span>
-                  <h2 className="text-xl font-semibold text-violet-400">제작진 크레딧</h2>
+                  <h2 className="text-xl font-semibold text-[#e8a020]">제작진 크레딧</h2>
                 </div>
 
                 <div className="space-y-4">
@@ -666,10 +666,10 @@ export default function NewMoviePage() {
                     return (
                       <div
                         key={field.id}
-                        className="group rounded-xl border border-gray-700/50 bg-gradient-to-br from-gray-800/30 to-gray-900/30 p-6 backdrop-blur-sm transition-all hover:border-violet-600/30 hover:shadow-lg"
+                        className="group rounded-xl border border-[#5a5248]/40/50 bg-gradient-to-br from-[#181410]/50 to-[#100e0a]/50 p-6 backdrop-blur-sm transition-all hover:border-[#e8a020]/30 hover:shadow-lg"
                       >
                         <div className="mb-4 flex items-center justify-between">
-                          <span className="text-sm font-medium text-violet-400">
+                          <span className="text-sm font-medium text-[#e8a020]">
                             크레딧 #{index + 1}
                           </span>
                           {fields.length > 1 && (
@@ -677,7 +677,7 @@ export default function NewMoviePage() {
                               type="button"
                               variant="ghost"
                               size="sm"
-                              className="h-8 text-violet-400 hover:bg-violet-900/20 hover:text-violet-300"
+                              className="h-8 text-[#e8a020] hover:bg-[#100e0a]/20 hover:text-[#e8a020]/80"
                               onClick={() => remove(index)}
                             >
                               삭제
@@ -687,17 +687,17 @@ export default function NewMoviePage() {
 
                         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                           <div className="space-y-2">
-                            <Label className="text-sm text-gray-400">역할</Label>
+                            <Label className="text-sm text-[#8a807a]">역할</Label>
                             <Input
-                              className="bg-gray-800/50 border-gray-700 text-white"
+                              className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
                               placeholder="예: 감독, 주연"
                               {...register(`credits.${index}.role`)}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label className="text-sm text-gray-400">이름</Label>
+                            <Label className="text-sm text-[#8a807a]">이름</Label>
                             <Input
-                              className="bg-gray-800/50 border-gray-700 text-white"
+                              className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
                               placeholder="이름"
                               value={selectedActor ? selectedActor.stageName : watch(`credits.${index}.name`) || ""}
                               onChange={(e) => {
@@ -711,7 +711,7 @@ export default function NewMoviePage() {
                         </div>
 
                         <div className="mt-4 space-y-2">
-                          <Label className="text-sm text-gray-400">사이트 내 배우 선택 (선택)</Label>
+                          <Label className="text-sm text-[#8a807a]">사이트 내 배우 선택 (선택)</Label>
                           <Select
                             value={selectedActorId || "none"}
                             onValueChange={(value) => {
@@ -727,18 +727,18 @@ export default function NewMoviePage() {
                               }
                             }}
                           >
-                            <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
+                            <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]">
                               <SelectValue placeholder="배우 선택 (선택)" />
                             </SelectTrigger>
-                            <SelectContent className="bg-gray-900 border-violet-600/30 max-h-[200px]">
-                              <SelectItem value="none" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">
+                            <SelectContent className="bg-[#100e0a] border-[#e8a020]/30 max-h-[200px]">
+                              <SelectItem value="none" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">
                                 선택 안 함
                               </SelectItem>
                               {actors.map((actor) => (
                                 <SelectItem
                                   key={actor.id}
                                   value={actor.id}
-                                  className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer"
+                                  className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer"
                                 >
                                   {actor.stageName} ({actor.location})
                                 </SelectItem>
@@ -748,15 +748,15 @@ export default function NewMoviePage() {
                         </div>
 
                         <div className="mt-4 space-y-2">
-                          <Label className="text-sm text-gray-400">외부 프로필 링크 (선택)</Label>
+                          <Label className="text-sm text-[#8a807a]">외부 프로필 링크 (선택)</Label>
                           <Input
-                            className="bg-gray-800/50 border-gray-700 text-white"
+                            className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
                             placeholder="https://..."
                             {...register(`credits.${index}.profileLink`)}
                             disabled={!!selectedActorId}
                           />
                           {selectedActorId && (
-                            <p className="text-xs text-violet-400">
+                            <p className="text-xs text-[#e8a020]">
                               ✨ 배우 프로필이 자동으로 연결됩니다
                             </p>
                           )}
@@ -768,7 +768,7 @@ export default function NewMoviePage() {
                   <Button
                     type="button"
                     variant="outline"
-                    className="w-full border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
+                    className="w-full border-[#e8a020]/50 text-[#e8a020] hover:bg-[#e8a020]/10"
                     onClick={() => append({ role: "", name: "", profileLink: "", actorId: undefined })}
                   >
                     + 크레딧 추가
@@ -778,26 +778,26 @@ export default function NewMoviePage() {
 
               {/* 태그 섹션 */}
               <div className="space-y-2">
-                <Label htmlFor="tags" className="text-base font-medium text-gray-200">
+                <Label htmlFor="tags" className="text-base font-medium text-[#f0e8d8]">
                   태그
                 </Label>
                 <Input
                   id="tags"
-                  className="h-12 bg-gray-800/50 border-gray-700 text-white transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20"
+                  className="h-12 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                   placeholder="예: 독립영화, 단편영화, 대학생작품 (쉼표로 구분)"
                   {...register("tags")}
                 />
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-[#5a5248]">
                   태그는 쉼표로 구분하여 입력하세요
                 </p>
               </div>
 
               {/* 제출 버튼 */}
-              <div className="flex gap-4 border-t border-violet-600/20 pt-8">
+              <div className="flex gap-4 border-t border-[#e8a020]/20 pt-8">
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="flex-1 h-12 bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-base font-semibold text-black shadow-lg transition-all hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600 hover:shadow-violet-600/50 disabled:opacity-50"
+                  className="flex-1 h-12 bg-gradient-to-r from-[#e8a020]/100 via-[#e8a020]/100 to-[#e8a020]/100 text-base font-semibold text-black shadow-lg transition-all hover:from-[#e8a020] hover:via-[#e8a020] hover:to-[#e8a020] hover:shadow-[#e8a020]/50 disabled:opacity-50"
                 >
                   {loading ? (
                     <span className="flex items-center gap-2">
@@ -814,7 +814,7 @@ export default function NewMoviePage() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="h-12 border-gray-700 text-gray-300 transition-all hover:bg-violet-50 hover:text-white"
+                  className="h-12 border-[#5a5248]/40 text-[#f0e8d8] transition-all hover:bg-[#e8a020]/10 hover:text-[#faf6f0]"
                   onClick={() => router.back()}
                 >
                   취소

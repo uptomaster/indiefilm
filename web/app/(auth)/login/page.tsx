@@ -61,61 +61,61 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#3a2f38] via-[#4a3f48] to-[#3a2f38] text-white flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8] flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold film-gold mb-2">LOGIN</h1>
-          <p className="text-gray-300">IndieFilm Hub에 오신 것을 환영합니다</p>
+          <h1 className="font-serif text-4xl font-light text-[#faf6f0] mb-2">로그인</h1>
+          <p className="text-[#8a807a] text-sm">인디필름에 오신 것을 환영합니다</p>
         </div>
-        <Card className="border-violet-500/20 bg-[#4a3f48]/50 backdrop-blur-sm">
+        <Card className="border-[#5a5248]/30 bg-[#100e0a]">
           <CardContent className="pt-6 space-y-4">
             {error && (
-              <div className="rounded-md bg-violet-900/20 border border-violet-600/30 p-3 text-sm text-violet-300">
+              <div className="rounded-md bg-[#c03020]/10 border border-[#c03020]/30 p-3 text-sm text-[#e08080]">
                 {error}
               </div>
             )}
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-gray-300">이메일</Label>
+                <Label htmlFor="email" className="text-[#8a807a]">이메일</Label>
                 <Input
                   id="email"
                   type="email"
-                  className="bg-gray-800/50 border-gray-700 text-white"
+                  className="bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
                   placeholder="example@email.com"
                   {...register("email")}
                 />
                 {errors.email && (
-                  <p className="text-sm text-violet-400 font-medium">{errors.email.message}</p>
+                  <p className="text-sm text-[#e8a020] font-medium">{errors.email.message}</p>
                 )}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-gray-300">비밀번호</Label>
+                <Label htmlFor="password" className="text-[#8a807a]">비밀번호</Label>
                 <Input
                   id="password"
                   type="password"
-                  className="bg-gray-800/50 border-gray-700 text-white"
+                  className="bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
                   {...register("password")}
                 />
                 {errors.password && (
-                  <p className="text-sm text-violet-400 font-medium">
+                  <p className="text-sm text-[#e8a020] font-medium">
                     {errors.password.message}
                   </p>
                 )}
               </div>
 
-              <Button type="submit" className="w-full bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-white hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600" disabled={loading}>
+              <Button type="submit" className="w-full bg-[#e8a020] text-[#0a0805] hover:bg-[#f0b030] font-medium" disabled={loading}>
                 {loading ? "로그인 중..." : "로그인"}
               </Button>
             </form>
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
+              <span className="w-full border-t border-[#5a5248]/30" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-muted-foreground">
+              <span className="bg-[#100e0a] px-2 text-[#5a5248]">
                 또는
               </span>
             </div>
@@ -124,7 +124,7 @@ export default function LoginPage() {
             <Button
               type="button"
               variant="outline"
-              className="w-full border-violet-500/50 text-violet-400 hover:bg-violet-500/10"
+              className="w-full border-[#5a5248]/50 text-[#8a807a] hover:border-[#e8a020] hover:text-[#e8a020] hover:bg-[#e8a020]/10"
               onClick={handleGoogleSignIn}
               disabled={loading}
             >
@@ -149,9 +149,9 @@ export default function LoginPage() {
               Google로 로그인
             </Button>
 
-            <div className="text-center text-sm text-gray-400">
+            <div className="text-center text-sm text-[#8a807a]">
               계정이 없으신가요?{" "}
-              <Link href="/signup" className="text-violet-400 hover:text-violet-300 hover:underline">
+              <Link href="/signup" className="text-[#e8a020] hover:text-[#e8a020]/80 hover:underline">
                 회원가입
               </Link>
             </div>

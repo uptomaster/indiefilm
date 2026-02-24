@@ -249,11 +249,11 @@ export default function FilmmakerProfileEditPage() {
 
   if (authLoading || loading) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
-            <p className="mt-4 text-gray-400">로딩 중...</p>
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
+            <p className="mt-4 text-[#8a807a]">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -261,18 +261,18 @@ export default function FilmmakerProfileEditPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
       <div className="container mx-auto max-w-4xl px-4 py-12">
-        <Card className="border-violet-600/20 bg-gray-900/50 backdrop-blur-sm">
+        <Card className="border-[#e8a020]/20 bg-[#100e0a] backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-2xl film-gold">제작자 프로필</CardTitle>
-            <CardDescription className="text-gray-400">
+            <CardDescription className="text-[#8a807a]">
               제작자 프로필을 작성해주세요
             </CardDescription>
           </CardHeader>
           <CardContent>
             {error && (
-              <div className="mb-6 rounded-md bg-violet-900/20 border border-violet-600/30 p-4 text-violet-300">
+              <div className="mb-6 rounded-md bg-[#100e0a]/20 border border-[#e8a020]/30 p-4 text-[#e8a020]/80">
                 {error}
               </div>
             )}
@@ -280,24 +280,24 @@ export default function FilmmakerProfileEditPage() {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* 기본 정보 */}
               <section className="space-y-4">
-                <h3 className="text-xl font-bold text-violet-400 border-b border-violet-600/30 pb-2">
+                <h3 className="text-xl font-bold text-[#e8a020] border-b border-[#e8a020]/30 pb-2">
                   기본 정보
                 </h3>
 
                 <div className="space-y-2">
-                  <Label htmlFor="type" className="text-gray-300">유형 *</Label>
+                  <Label htmlFor="type" className="text-[#8a807a]">유형 *</Label>
                   <Select
                     value={filmmakerType}
                     onValueChange={(value) => setValue("type", value as FilmmakerType)}
                   >
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
+                    <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-white">
                       <SelectValue placeholder="유형 선택" />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-900 border-violet-600/30">
-                      <SelectItem value="individual" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">
+                    <SelectContent className="bg-[#100e0a] border-[#e8a020]/30">
+                      <SelectItem value="individual" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">
                         개인
                       </SelectItem>
-                      <SelectItem value="team" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">
+                      <SelectItem value="team" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">
                         팀
                       </SelectItem>
                     </SelectContent>
@@ -305,25 +305,25 @@ export default function FilmmakerProfileEditPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-gray-300">
+                  <Label htmlFor="name" className="text-[#8a807a]">
                     {filmmakerType === "team" ? "팀 이름" : "이름"} *
                   </Label>
                   <Input
                     id="name"
-                    className="bg-gray-800/50 border-gray-700 text-white"
+                    className="bg-[#181410] border-[#5a5248]/40 text-white"
                     {...register("name")}
                   />
                   {errors.name && (
-                    <p className="text-sm text-violet-400">{errors.name.message}</p>
+                    <p className="text-sm text-[#e8a020]">{errors.name.message}</p>
                   )}
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="bio" className="text-gray-300">소개</Label>
+                  <Label htmlFor="bio" className="text-[#8a807a]">소개</Label>
                   <textarea
                     id="bio"
                     rows={4}
-                    className="w-full rounded-md border border-gray-700 bg-gray-800/50 px-3 py-2 text-sm text-white placeholder:text-gray-500"
+                    className="w-full rounded-md border border-[#5a5248]/40 bg-[#181410] px-3 py-2 text-sm text-white placeholder:text-[#5a5248]"
                     {...register("bio")}
                     placeholder="제작자 또는 팀에 대한 소개를 작성해주세요"
                   />
@@ -331,22 +331,22 @@ export default function FilmmakerProfileEditPage() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="location" className="text-gray-300">지역</Label>
+                    <Label htmlFor="location" className="text-[#8a807a]">지역</Label>
                     <Select
                       value={watch("location") || "none"}
                       onValueChange={(value) =>
                         setValue("location", value === "none" ? "" : value)
                       }
                     >
-                      <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
+                      <SelectTrigger className="bg-[#181410] border-[#5a5248]/40 text-white">
                         <SelectValue placeholder="지역 선택" />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-900 border-violet-600/30">
-                        <SelectItem value="none" className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">
+                      <SelectContent className="bg-[#100e0a] border-[#e8a020]/30">
+                        <SelectItem value="none" className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">
                           선택 안 함
                         </SelectItem>
                         {locations.map((loc) => (
-                          <SelectItem key={loc} value={loc} className="text-violet-400 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer">
+                          <SelectItem key={loc} value={loc} className="text-[#e8a020] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">
                             {loc}
                           </SelectItem>
                         ))}
@@ -355,11 +355,11 @@ export default function FilmmakerProfileEditPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="website" className="text-gray-300">웹사이트</Label>
+                    <Label htmlFor="website" className="text-[#8a807a]">웹사이트</Label>
                     <Input
                       id="website"
                       type="url"
-                      className="bg-gray-800/50 border-gray-700 text-white"
+                      className="bg-[#181410] border-[#5a5248]/40 text-white"
                       placeholder="https://..."
                       {...register("website")}
                     />
@@ -368,22 +368,22 @@ export default function FilmmakerProfileEditPage() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-gray-300">이메일</Label>
+                    <Label htmlFor="email" className="text-[#8a807a]">이메일</Label>
                     <Input
                       id="email"
                       type="email"
-                      className="bg-gray-800/50 border-gray-700 text-white"
+                      className="bg-[#181410] border-[#5a5248]/40 text-white"
                       placeholder="contact@example.com"
                       {...register("email")}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-gray-300">전화번호</Label>
+                    <Label htmlFor="phone" className="text-[#8a807a]">전화번호</Label>
                     <Input
                       id="phone"
                       type="tel"
-                      className="bg-gray-800/50 border-gray-700 text-white"
+                      className="bg-[#181410] border-[#5a5248]/40 text-white"
                       placeholder="010-1234-5678"
                       {...register("phone")}
                     />
@@ -393,13 +393,13 @@ export default function FilmmakerProfileEditPage() {
 
               {/* 프로필 사진 */}
               <section className="space-y-6">
-                <h3 className="text-xl font-bold text-violet-400 border-b border-violet-600/30 pb-2">
+                <h3 className="text-xl font-bold text-[#e8a020] border-b border-[#e8a020]/30 pb-2">
                   프로필 사진
                 </h3>
 
                 {/* 프로필 사진 미리보기 */}
                 <div className="flex justify-center">
-                  <div className="relative h-64 w-64 rounded-full overflow-hidden border-4 border-violet-600/30 shadow-2xl">
+                  <div className="relative h-64 w-64 rounded-full overflow-hidden border-4 border-[#e8a020]/30 shadow-2xl">
                     {photoPreview || mainPhotoUrl ? (
                       <img
                         src={photoPreview || mainPhotoUrl || ""}
@@ -417,8 +417,8 @@ export default function FilmmakerProfileEditPage() {
                     {uploadingPhoto && (
                       <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
                         <div className="flex flex-col items-center gap-2">
-                          <div className="h-8 w-8 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
-                          <span className="text-sm text-violet-400">업로드 중...</span>
+                          <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
+                          <span className="text-sm text-[#e8a020]">업로드 중...</span>
                         </div>
                       </div>
                     )}
@@ -447,8 +447,8 @@ export default function FilmmakerProfileEditPage() {
                   onClick={() => fileInputRef.current?.click()}
                   className={`relative cursor-pointer rounded-xl border-2 border-dashed transition-all ${
                     isDragging
-                      ? "border-violet-500 bg-violet-900/20"
-                      : "border-gray-700 bg-gray-800/30 hover:border-violet-600/50 hover:bg-violet-50/50"
+                      ? "border-[#e8a020]/100 bg-[#100e0a]/20"
+                      : "border-[#5a5248]/40 bg-[#181410]800/30 hover:border-[#e8a020]/50 hover:bg-[#e8a020]/10"
                   }`}
                 >
                   <input
@@ -465,13 +465,13 @@ export default function FilmmakerProfileEditPage() {
                   />
                   
                   <div className="p-8 text-center">
-                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-violet-600/10">
+                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#e8a020]/10">
                       <span className="text-3xl">📸</span>
                     </div>
-                    <p className="mb-2 text-lg font-medium text-gray-200">
+                    <p className="mb-2 text-lg font-medium text-[#8a807a]">
                       {uploadingPhoto ? "업로드 중..." : "이미지를 드래그하거나 클릭하여 업로드"}
                     </p>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-[#8a807a]">
                       PNG, JPG, GIF 최대 5MB
                     </p>
                   </div>
@@ -479,12 +479,12 @@ export default function FilmmakerProfileEditPage() {
 
                 {/* URL 입력 (대안) */}
                 <div className="space-y-2">
-                  <Label htmlFor="mainPhotoUrl" className="text-sm font-medium text-gray-400">
+                  <Label htmlFor="mainPhotoUrl" className="text-sm font-medium text-[#8a807a]">
                     또는 이미지 URL 직접 입력
                   </Label>
                   <Input
                     id="mainPhotoUrl"
-                    className="bg-gray-800/50 border-gray-700 text-white transition-all focus:border-violet-600 focus:ring-2 focus:ring-violet-500/20"
+                    className="bg-[#181410] border-[#5a5248]/40 text-white transition-all focus:border-[#e8a020] focus:ring-2 focus:ring-[#e8a020]/20"
                     placeholder="https://example.com/image.jpg"
                     {...register("mainPhotoUrl")}
                     onChange={(e) => {
@@ -492,7 +492,7 @@ export default function FilmmakerProfileEditPage() {
                       setPhotoPreview(null);
                     }}
                   />
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-[#5a5248]">
                     외부 이미지 호스팅 서비스(Imgur, Cloudinary 등)의 이미지 URL을 입력하세요
                   </p>
                 </div>
@@ -500,20 +500,20 @@ export default function FilmmakerProfileEditPage() {
 
               {/* 전문 분야 */}
               <section className="space-y-4">
-                <h3 className="text-xl font-bold text-violet-400 border-b border-violet-600/30 pb-2">
+                <h3 className="text-xl font-bold text-[#e8a020] border-b border-[#e8a020]/30 pb-2">
                   전문 분야
                 </h3>
                 {specialtyFields.map((field, index) => (
                   <div key={field.id} className="flex gap-2">
                     <Input
-                      className="bg-gray-800/50 border-gray-700 text-white"
+                      className="bg-[#181410] border-[#5a5248]/40 text-white"
                       placeholder="예: 단편영화, 다큐멘터리"
                       {...register(`specialties.${index}`)}
                     />
                     <Button
                       type="button"
                       variant="outline"
-                      className="border-gray-700 text-gray-300 hover:bg-violet-50"
+                      className="border-[#5a5248]/40 text-[#8a807a] hover:bg-[#e8a020]/10"
                       onClick={() => removeSpecialty(index)}
                     >
                       삭제
@@ -523,7 +523,7 @@ export default function FilmmakerProfileEditPage() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
+                  className="border-[#e8a020]/50 text-[#e8a020] hover:bg-[#e8a020]/10"
                   onClick={() => appendSpecialty("")}
                 >
                   전문 분야 추가
@@ -532,20 +532,20 @@ export default function FilmmakerProfileEditPage() {
 
               {/* 보유 장비 */}
               <section className="space-y-4">
-                <h3 className="text-xl font-bold text-violet-400 border-b border-violet-600/30 pb-2">
+                <h3 className="text-xl font-bold text-[#e8a020] border-b border-[#e8a020]/30 pb-2">
                   보유 장비
                 </h3>
                 {equipmentFields.map((field, index) => (
                   <div key={field.id} className="flex gap-2">
                     <Input
-                      className="bg-gray-800/50 border-gray-700 text-white"
+                      className="bg-[#181410] border-[#5a5248]/40 text-white"
                       placeholder="예: Sony FX3, Canon 5D Mark IV"
                       {...register(`equipment.${index}`)}
                     />
                     <Button
                       type="button"
                       variant="outline"
-                      className="border-gray-700 text-gray-300 hover:bg-violet-50"
+                      className="border-[#5a5248]/40 text-[#8a807a] hover:bg-[#e8a020]/10"
                       onClick={() => removeEquipment(index)}
                     >
                       삭제
@@ -555,7 +555,7 @@ export default function FilmmakerProfileEditPage() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
+                  className="border-[#e8a020]/50 text-[#e8a020] hover:bg-[#e8a020]/10"
                   onClick={() => appendEquipment("")}
                 >
                   장비 추가
@@ -564,20 +564,20 @@ export default function FilmmakerProfileEditPage() {
 
               {/* 경력 */}
               <section className="space-y-4">
-                <h3 className="text-xl font-bold text-violet-400 border-b border-violet-600/30 pb-2">
+                <h3 className="text-xl font-bold text-[#e8a020] border-b border-[#e8a020]/30 pb-2">
                   경력
                 </h3>
                 {experienceFields.map((field, index) => (
                   <div key={field.id} className="flex gap-2">
                     <Input
-                      className="bg-gray-800/50 border-gray-700 text-white"
+                      className="bg-[#181410] border-[#5a5248]/40 text-white"
                       placeholder="예: 2020년 단편영화 '제목' 감독"
                       {...register(`experience.${index}`)}
                     />
                     <Button
                       type="button"
                       variant="outline"
-                      className="border-gray-700 text-gray-300 hover:bg-violet-50"
+                      className="border-[#5a5248]/40 text-[#8a807a] hover:bg-[#e8a020]/10"
                       onClick={() => removeExperience(index)}
                     >
                       삭제
@@ -587,7 +587,7 @@ export default function FilmmakerProfileEditPage() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
+                  className="border-[#e8a020]/50 text-[#e8a020] hover:bg-[#e8a020]/10"
                   onClick={() => appendExperience("")}
                 >
                   경력 추가
@@ -597,32 +597,32 @@ export default function FilmmakerProfileEditPage() {
               {/* 팀 멤버 (팀인 경우만) */}
               {filmmakerType === "team" && (
                 <section className="space-y-4">
-                  <h3 className="text-xl font-bold text-violet-400 border-b border-violet-600/30 pb-2">
+                  <h3 className="text-xl font-bold text-[#e8a020] border-b border-[#e8a020]/30 pb-2">
                     팀 멤버
                   </h3>
                   {teamMemberFields.map((field, index) => (
-                    <div key={field.id} className="space-y-2 rounded-lg border border-gray-700/50 bg-gray-800/30 p-4">
+                    <div key={field.id} className="space-y-2 rounded-lg border border-[#5a5248]/40/50 bg-[#181410]800/30 p-4">
                       <div className="grid grid-cols-2 gap-2">
                         <Input
-                          className="bg-gray-800/50 border-gray-700 text-white"
+                          className="bg-[#181410] border-[#5a5248]/40 text-white"
                           placeholder="이름"
                           {...register(`teamMembers.${index}.name`)}
                         />
                         <Input
-                          className="bg-gray-800/50 border-gray-700 text-white"
+                          className="bg-[#181410] border-[#5a5248]/40 text-white"
                           placeholder="역할 (예: 감독)"
                           {...register(`teamMembers.${index}.role`)}
                         />
                       </div>
                       <Input
-                        className="bg-gray-800/50 border-gray-700 text-white"
+                        className="bg-[#181410] border-[#5a5248]/40 text-white"
                         placeholder="프로필 링크 (선택)"
                         {...register(`teamMembers.${index}.profileLink`)}
                       />
                       <Button
                         type="button"
                         variant="outline"
-                        className="border-gray-700 text-gray-300 hover:bg-violet-50"
+                        className="border-[#5a5248]/40 text-[#8a807a] hover:bg-[#e8a020]/10"
                         onClick={() => removeTeamMember(index)}
                       >
                         삭제
@@ -632,7 +632,7 @@ export default function FilmmakerProfileEditPage() {
                   <Button
                     type="button"
                     variant="outline"
-                    className="border-violet-600/50 text-violet-400 hover:bg-violet-600/10"
+                    className="border-[#e8a020]/50 text-[#e8a020] hover:bg-[#e8a020]/10"
                     onClick={() => appendTeamMember({ name: "", role: "", profileLink: "" })}
                   >
                     팀 멤버 추가
@@ -642,17 +642,17 @@ export default function FilmmakerProfileEditPage() {
 
               {/* 공개 설정 */}
               <section className="space-y-4">
-                <div className="flex items-center gap-3 rounded-lg border border-violet-600/20 bg-violet-600/5 p-4">
+                <div className="flex items-center gap-3 rounded-lg border border-[#e8a020]/20 bg-[#e8a020]/5 p-4">
                   <input
                     type="checkbox"
                     id="isPublic"
                     checked={isPublic}
                     onChange={(e) => setValue("isPublic", e.target.checked)}
-                    className="h-5 w-5 rounded border-gray-700 bg-gray-800 text-violet-600 focus:ring-violet-600 cursor-pointer"
+                    className="h-5 w-5 rounded border-[#5a5248]/40 bg-[#181410]800 text-[#e8a020] focus:ring-[#e8a020] cursor-pointer"
                   />
-                  <Label htmlFor="isPublic" className="text-gray-300 cursor-pointer">
-                    <span className="font-semibold text-violet-400">프로필 공개</span>
-                    <span className="block text-sm text-gray-400 mt-1">
+                  <Label htmlFor="isPublic" className="text-[#8a807a] cursor-pointer">
+                    <span className="font-semibold text-[#e8a020]">프로필 공개</span>
+                    <span className="block text-sm text-[#8a807a] mt-1">
                       프로필을 공개하면 다른 사용자들이 검색하여 찾을 수 있습니다
                     </span>
                   </Label>
@@ -660,11 +660,11 @@ export default function FilmmakerProfileEditPage() {
               </section>
 
               {/* 제출 버튼 */}
-              <div className="flex gap-4 border-t border-violet-600/20 pt-6">
+              <div className="flex gap-4 border-t border-[#e8a020]/20 pt-6">
                 <Button
                   type="submit"
                   disabled={saving}
-                  className="flex-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-black hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
+                  className="flex-1 btn-primary-gradient"
                 >
                   {saving ? "저장 중..." : "프로필 저장"}
                 </Button>
@@ -672,7 +672,7 @@ export default function FilmmakerProfileEditPage() {
                   type="button"
                   variant="outline"
                   onClick={() => router.push("/filmmakers/me/view")}
-                  className="border-gray-700 text-gray-300 hover:bg-violet-50"
+                  className="border-[#5a5248]/40 text-[#8a807a] hover:bg-[#e8a020]/10"
                 >
                   취소
                 </Button>

@@ -20,6 +20,7 @@ import { getActorById } from "@/lib/actors";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { IndiePageWrapper } from "@/components/IndiePageWrapper";
 
 export default function RequestDetailPage() {
   const params = useParams();
@@ -157,11 +158,11 @@ export default function RequestDetailPage() {
 
   if (authLoading || loading) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
-            <p className="mt-4 text-gray-400">로딩 중...</p>
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
+            <p className="mt-4 text-[#8a807a]">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -170,12 +171,12 @@ export default function RequestDetailPage() {
 
   if (!request) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <p className="mb-4 text-xl text-gray-400">요청을 찾을 수 없습니다.</p>
+            <p className="mb-4 text-xl text-[#8a807a]">요청을 찾을 수 없습니다.</p>
             <Link href="/requests">
-              <Button className="border-violet-600/50 bg-violet-600/10 text-violet-400 hover:bg-violet-600/20">
+              <Button className="btn-primary-gradient">
                 요청 목록으로
               </Button>
             </Link>
@@ -201,71 +202,57 @@ export default function RequestDetailPage() {
 
   const getStatusColor = (status: RequestStatus): string => {
     const colors: Record<RequestStatus, string> = {
-      pending: "bg-violet-600/20 text-violet-400",
+      pending: "bg-[#e8a020]/20 text-[#e8a020]",
       accepted: "bg-green-600/20 text-green-400",
-      rejected: "bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500/20 text-violet-400",
+      rejected: "bg-[#5a5248]/40 text-[#8a807a]",
     };
     return colors[status];
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-violet-900/30 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
-        <div className="film-strip absolute inset-0 opacity-10" />
-        <div className="container relative mx-auto px-4 py-16">
-          <div className="mx-auto max-w-3xl">
-            <Link
-              href="/requests"
-              className="mb-4 inline-block text-violet-400 hover:text-violet-300"
-            >
-              ← 요청 목록으로
-            </Link>
-            <h1 className="mb-4 text-4xl font-bold tracking-tight film-gold">
-              {getRequestTypeLabel()}
-            </h1>
-            <div className="flex items-center gap-3">
-              <span className="rounded-full bg-violet-600/20 px-3 py-1 text-sm font-semibold text-violet-400">
-                {getRequestTypeLabel()}
-              </span>
+    <IndiePageWrapper title={getRequestTypeLabel()} subtitle="" sectionNum="">
+      <Link
+        href="/requests"
+        className="mb-6 inline-block text-[#e8a020] hover:text-[#e8a020]/80"
+      >
+        ← 요청 목록으로
+      </Link>
+      <div className="flex items-center gap-3 mb-8">
+        <span className="rounded-full bg-[#e8a020]/20 px-3 py-1 text-sm font-semibold text-[#e8a020]">
+          {getRequestTypeLabel()}
+        </span>
               <span
                 className={`rounded-full px-3 py-1 text-sm font-semibold ${getStatusColor(
                   request.status
                 )}`}
               >
                 {getStatusLabel(request.status)}
-              </span>
-            </div>
-          </div>
-        </div>
+        </span>
       </div>
 
-      {/* 메인 콘텐츠 */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="mx-auto max-w-4xl">
-          <div className="grid gap-8 lg:grid-cols-3">
-            {/* 좌측: 요청 정보 */}
-            <div className="lg:col-span-1">
-              <Card className="border-violet-600/20 bg-white">
+      <div className="mx-auto max-w-4xl">
+        <div className="grid gap-8 lg:grid-cols-3">
+          <div className="lg:col-span-1">
+            <Card className="border-[#5a5248]/30 bg-[#100e0a]">
                 <CardContent className="p-6">
-                  <h3 className="mb-4 border-b border-violet-600/30 pb-2 text-lg font-bold film-gold">
+                  <h3 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-lg font-bold film-gold">
                     요청 정보
                   </h3>
                   <div className="space-y-4 text-sm">
                     <div>
-                      <p className="text-gray-400">요청자</p>
-                      <p className="text-white">{fromUserName}</p>
+                      <p className="text-[#8a807a]">요청자</p>
+                      <p className="text-[#faf6f0]">{fromUserName}</p>
                     </div>
                     <div>
-                      <p className="text-gray-400">받는 사람</p>
-                      <p className="text-white">{toUserName}</p>
+                      <p className="text-[#8a807a]">받는 사람</p>
+                      <p className="text-[#faf6f0]">{toUserName}</p>
                     </div>
                     {request.movieId && (
                       <div>
-                        <p className="text-gray-400">영화</p>
+                        <p className="text-[#8a807a]">영화</p>
                         <Link
                           href={`/movies/${request.movieId}`}
-                          className="text-violet-400 hover:text-violet-300 hover:underline"
+                          className="text-[#e8a020] hover:text-[#e8a020]/80 hover:underline"
                         >
                           {movieTitle || "영화 정보 없음"}
                         </Link>
@@ -273,22 +260,22 @@ export default function RequestDetailPage() {
                     )}
                     {request.actorId && (
                       <div>
-                        <p className="text-gray-400">배우</p>
+                        <p className="text-[#8a807a]">배우</p>
                         <Link
                           href={`/actors/${request.actorId}`}
-                          className="text-violet-400 hover:text-violet-300 hover:underline"
+                          className="text-[#e8a020] hover:text-[#e8a020]/80 hover:underline"
                         >
                           {actorName || "배우 정보 없음"}
                         </Link>
                       </div>
                     )}
                     <div>
-                      <p className="text-gray-400">메시지</p>
-                      <p className="mt-1 text-white">{request.message}</p>
+                      <p className="text-[#8a807a]">메시지</p>
+                      <p className="mt-1 text-[#faf6f0]">{request.message}</p>
                     </div>
                     <div>
-                      <p className="text-gray-400">요청 날짜</p>
-                      <p className="text-white">
+                      <p className="text-[#8a807a]">요청 날짜</p>
+                      <p className="text-[#faf6f0]">
                         {request.createdAt?.toDate
                           ? new Date(
                               request.createdAt.toDate()
@@ -307,7 +294,8 @@ export default function RequestDetailPage() {
                         </Button>
                         <Button
                           onClick={() => handleUpdateStatus("rejected")}
-                          className="flex-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-white hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
+                          variant="outline"
+                          className="flex-1 border-[#5a5248] text-[#8a807a] hover:bg-[#181410]"
                         >
                           거절
                         </Button>
@@ -320,26 +308,26 @@ export default function RequestDetailPage() {
                           <span className="text-2xl">✅</span>
                           <h4 className="font-bold text-green-400">협업 프로젝트</h4>
                         </div>
-                        <p className="text-sm text-gray-300">
+                        <p className="text-sm text-[#f0e8d8]">
                           요청이 수락되어 프로젝트가 시작되었습니다.
                         </p>
                         {request.movieId && movieTitle && (
-                          <div className="mt-3 rounded-lg bg-white p-3">
-                            <p className="text-xs text-gray-400 mb-1">프로젝트 영화</p>
+                          <div className="mt-3 rounded-lg bg-[#181410] p-3">
+                            <p className="text-xs text-[#8a807a] mb-1">프로젝트 영화</p>
                             <Link
                               href={`/movies/${request.movieId}`}
-                              className="text-base font-semibold text-violet-400 hover:text-violet-300 hover:underline"
+                              className="text-base font-semibold text-[#e8a020] hover:text-[#e8a020]/80 hover:underline"
                             >
                               {movieTitle}
                             </Link>
                           </div>
                         )}
                         {request.actorId && actorName && (
-                          <div className="mt-3 rounded-lg bg-white p-3">
-                            <p className="text-xs text-gray-400 mb-1">협업 배우</p>
+                          <div className="mt-3 rounded-lg bg-[#181410] p-3">
+                            <p className="text-xs text-[#8a807a] mb-1">협업 배우</p>
                             <Link
                               href={`/actors/${request.actorId}`}
-                              className="text-base font-semibold text-violet-400 hover:text-violet-300 hover:underline"
+                              className="text-base font-semibold text-[#e8a020] hover:text-[#e8a020]/80 hover:underline"
                             >
                               {actorName}
                             </Link>
@@ -352,17 +340,15 @@ export default function RequestDetailPage() {
               </Card>
             </div>
 
-            {/* 우측: 채팅 */}
-            <div className="lg:col-span-2">
-              <Card className="border-violet-600/20 bg-white">
-                <CardContent className="p-6">
-                  <h3 className="mb-4 border-b border-violet-600/30 pb-2 text-lg font-bold film-gold">
-                    채팅
-                  </h3>
-                  {/* 메시지 목록 */}
-                  <div className="mb-4 max-h-[500px] space-y-4 overflow-y-auto">
-                    {messages.length === 0 ? (
-                      <div className="py-8 text-center text-gray-400">
+          <div className="lg:col-span-2">
+            <Card className="border-[#5a5248]/30 bg-[#100e0a]">
+              <CardContent className="p-6">
+                <h3 className="mb-4 border-b border-[#5a5248]/30 pb-2 text-lg font-bold film-gold">
+                  채팅
+                </h3>
+                <div className="mb-4 max-h-[500px] space-y-4 overflow-y-auto">
+                  {messages.length === 0 ? (
+                    <div className="py-8 text-center text-[#8a807a]">
                         아직 메시지가 없습니다.
                       </div>
                     ) : (
@@ -388,13 +374,13 @@ export default function RequestDetailPage() {
                         }
                       }}
                       placeholder="메시지를 입력하세요..."
-                      className="flex-1 border-gray-700 bg-gray-800/50 text-white placeholder:text-gray-500 focus:border-violet-600"
+                      className="flex-1 border-[#5a5248] bg-[#181410] text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
                       disabled={sending || request.status === "rejected"}
                     />
                     <Button
                       onClick={handleSendMessage}
                       disabled={sending || !message.trim() || request.status === "rejected"}
-                      className="bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-white hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
+                      className="btn-primary-gradient"
                     >
                       전송
                     </Button>
@@ -404,17 +390,17 @@ export default function RequestDetailPage() {
                       <p className="text-sm font-semibold text-green-400 mb-2">
                         ✅ 협업이 시작되었습니다!
                       </p>
-                      <p className="text-xs text-gray-400">
+                      <p className="text-xs text-[#8a807a]">
                         프로젝트 진행에 대한 소통은 이 채팅방을 통해 계속하실 수 있습니다.
                       </p>
                     </div>
                   )}
                   {request.status === "rejected" && (
-                    <div className="mt-4 rounded-lg border border-violet-600/30 bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500/10 p-4">
-                      <p className="text-sm font-semibold text-violet-400 mb-2">
+                    <div className="mt-4 rounded-lg border border-[#5a5248]/30 bg-[#181410] p-4">
+                      <p className="text-sm font-semibold text-[#8a807a] mb-2">
                         요청이 거절되었습니다.
                       </p>
-                      <p className="text-xs text-gray-400">
+                      <p className="text-xs text-[#5a5248]">
                         요청이 거절되어 채팅이 종료되었습니다.
                       </p>
                     </div>
@@ -424,8 +410,7 @@ export default function RequestDetailPage() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+    </IndiePageWrapper>
   );
 }
 
@@ -447,17 +432,17 @@ function MessageBubble({
       <div
         className={`max-w-[70%] rounded-lg px-4 py-2 ${
           isOwn
-            ? "bg-violet-600/20 text-white"
-            : "bg-gray-800/50 text-gray-300"
+            ? "bg-[#e8a020]/20 text-[#faf6f0]"
+            : "bg-[#181410] text-[#f0e8d8]"
         }`}
       >
         {!isOwn && (
-          <p className="mb-1 text-xs font-semibold text-violet-400">
+          <p className="mb-1 text-xs font-semibold text-[#e8a020]">
             {userName}
           </p>
         )}
         <p className="whitespace-pre-wrap">{message.message}</p>
-        <p className="mt-1 text-xs text-gray-500">
+        <p className="mt-1 text-xs text-[#5a5248]">
           {message.createdAt?.toDate
             ? new Date(message.createdAt.toDate()).toLocaleTimeString("ko-KR", {
                 hour: "2-digit",

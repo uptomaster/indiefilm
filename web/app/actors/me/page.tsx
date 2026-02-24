@@ -38,10 +38,10 @@ export default function ActorProfilePage() {
   }, [user, userProfile, authLoading, router]);
 
   return (
-    <div className="container mx-auto px-4 py-20">
+    <div className="min-h-screen bg-[#0a0805] flex items-center justify-center">
       <div className="text-center">
-        <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
-        <p className="mt-4 text-gray-400">로딩 중...</p>
+        <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
+        <p className="mt-4 text-[#8a807a]">로딩 중...</p>
       </div>
     </div>
   );

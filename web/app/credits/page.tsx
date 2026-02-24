@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { IndiePageWrapper } from "@/components/IndiePageWrapper";
 
 const commonRoles = [
   "감독",
@@ -90,11 +91,11 @@ export default function CreditsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-500 border-t-transparent" />
-            <p className="mt-4 text-gray-700 font-medium">로딩 중...</p>
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
+            <p className="mt-4 text-[#8a807a] font-medium">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -104,126 +105,108 @@ export default function CreditsPage() {
   const allRoles = Array.from(creditsByRole.keys()).sort();
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      {/* 히어로 섹션 */}
-      <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
-        <div className="film-strip absolute inset-0 opacity-10" />
-        <div className="container relative mx-auto px-4 py-6 md:py-12 lg:py-16">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-2 md:mb-4 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight film-gold px-2">
-              CREDITS
-            </h1>
-            <p className="text-base md:text-lg lg:text-xl text-gray-800 font-semibold tracking-tight px-2">
-              영화 제작에 참여한 모든 제작진을 만나보세요
-            </p>
-          </div>
+    <IndiePageWrapper title="제작진" subtitle="영화 제작에 참여한 모든 제작진을 만나보세요" sectionNum="">
+      <div className="mb-6 flex flex-col gap-4 md:flex-row">
+        <div className="flex-1">
+          <Input
+            placeholder="이름 또는 역할로 검색..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020] font-medium"
+          />
         </div>
+        <Select
+          value={selectedRole || "all"}
+          onValueChange={(value) =>
+            setSelectedRole(value === "all" ? null : value)
+          }
+        >
+          <SelectTrigger className="w-full md:w-[200px] bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] font-medium">
+            <SelectValue placeholder="역할 선택" />
+          </SelectTrigger>
+          <SelectContent className="bg-[#100e0a] border-[#5a5248]/30">
+            <SelectItem value="all" className="text-[#faf6f0] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer font-medium">
+              전체 역할
+            </SelectItem>
+            {allRoles.map((role) => (
+              <SelectItem
+                key={role}
+                value={role}
+                className="text-[#faf6f0] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer font-medium"
+              >
+                {role}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
-      {/* 필터 섹션 */}
-      <div className="container mx-auto px-4 py-4 md:py-6 lg:py-8">
-        <div className="mb-6 flex flex-col gap-4 md:flex-row">
-          <div className="flex-1">
-            <Input
-              placeholder="이름 또는 역할로 검색..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-violet-500 font-medium"
-            />
-          </div>
-          <Select
-            value={selectedRole || "all"}
-            onValueChange={(value) =>
-              setSelectedRole(value === "all" ? null : value)
-            }
-          >
-            <SelectTrigger className="w-full md:w-[200px] bg-white border-gray-300 text-gray-900 font-medium">
-              <SelectValue placeholder="역할 선택" />
-            </SelectTrigger>
-            <SelectContent className="bg-white border-gray-200">
-              <SelectItem value="all" className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium">
-                전체 역할
-              </SelectItem>
-              {allRoles.map((role) => (
-                <SelectItem
-                  key={role}
-                  value={role}
-                  className="text-gray-900 hover:bg-violet-50 focus:bg-violet-50 cursor-pointer font-medium"
-                >
-                  {role}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+      {filteredCredits.length === 0 ? (
+        <div className="text-center py-20">
+          <p className="text-xl text-[#8a807a] font-semibold">
+            조건에 맞는 제작진이 없습니다.
+          </p>
         </div>
-
-        {/* 제작진 목록 */}
-        {filteredCredits.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-xl text-gray-700 font-semibold">
-              조건에 맞는 제작진이 없습니다.
-            </p>
+      ) : (
+        <>
+          <div className="mb-6 text-sm text-[#8a807a] font-semibold tracking-tight">
+            총 {filteredCredits.length}명의 제작진
           </div>
-        ) : (
-          <>
-            <div className="mb-6 text-sm text-gray-700 font-semibold tracking-tight">
-              총 {filteredCredits.length}명의 제작진
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {filteredCredits.map((credit, index) => (
-                <Card
-                  key={`${credit.name}_${credit.role}_${index}`}
-                  className="border-gray-200 bg-white hover:border-violet-300 hover:shadow-lg transition-all shadow-sm"
-                >
-                  <CardHeader className="p-3 md:p-4 lg:p-6 pb-2 md:pb-3">
-                    <CardTitle className="text-base md:text-lg lg:text-xl film-gold font-bold tracking-tight">
-                      {credit.name}
-                    </CardTitle>
-                    <p className="text-xs md:text-sm text-violet-600 font-semibold">{credit.role}</p>
-                  </CardHeader>
-                  <CardContent className="p-3 md:p-4 lg:p-6 pt-0">
-                    <div className="mb-3 md:mb-4">
-                      <p className="text-xs md:text-sm text-gray-700 font-medium">
-                        참여 영화: <span className="text-violet-600 font-bold">{credit.movieCount}편</span>
-                      </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {filteredCredits.map((credit, index) => (
+              <Card
+                key={`${credit.name}_${credit.role}_${index}`}
+                className="border-[#5a5248]/30 bg-[#100e0a] hover:border-[#e8a020]/50 transition-all"
+              >
+                <CardHeader className="p-3 md:p-4 lg:p-6 pb-2 md:pb-3">
+                  <CardTitle className="text-base md:text-lg lg:text-xl film-gold font-bold tracking-tight">
+                    {credit.name}
+                  </CardTitle>
+                  <p className="text-xs md:text-sm text-[#e8a020] font-semibold">{credit.role}</p>
+                </CardHeader>
+                <CardContent className="p-3 md:p-4 lg:p-6 pt-0">
+                  <div className="mb-3 md:mb-4">
+                    <p className="text-xs md:text-sm text-[#f0e8d8] font-medium">
+                      참여 영화: <span className="text-[#e8a020] font-bold">{credit.movieCount}편</span>
+                    </p>
+                  </div>
+                  {credit.profileLink && (
+                    <div className="mb-4">
+                      <a
+                        href={credit.profileLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-[#e8a020] hover:text-[#e8a020]/80 hover:underline font-semibold"
+                      >
+                        프로필 보기 →
+                      </a>
                     </div>
-                    {credit.profileLink && (
-                      <div className="mb-4">
-                        <a
-                          href={credit.profileLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm text-violet-600 hover:text-violet-500 hover:underline font-semibold"
-                        >
-                          프로필 보기 →
-                        </a>
-                      </div>
-                    )}
-                    {credit.actorId && (
-                      <Link href={`/actors/${credit.actorId}`}>
-                        <Button
-                          variant="outline"
-                          className="w-full border-violet-300 text-violet-600 hover:bg-violet-50 font-semibold"
-                        >
-                          배우 프로필 보기
-                        </Button>
-                      </Link>
-                    )}
-                    {credit.movies.length > 0 && (
-                      <div className="mt-4 pt-4 border-t border-gray-200">
-                        <p className="text-xs text-gray-600 mb-2 font-semibold">참여 작품:</p>
-                        <div className="space-y-1">
-                          {credit.movies.slice(0, 3).map((movie) => (
-                            <Link
-                              key={movie.id}
-                              href={`/movies/${movie.id}`}
-                              className="block text-xs text-gray-700 hover:text-violet-600 truncate font-medium"
-                            >
-                              • {movie.title}
-                            </Link>
-                          ))}
-                          {credit.movies.length > 3 && (
-                            <p className="text-xs text-gray-600 font-medium">
+                  )}
+                  {credit.actorId && (
+                    <Link href={`/actors/${credit.actorId}`}>
+                      <Button
+                        variant="outline"
+                        className="w-full border-[#5a5248] text-[#e8a020] hover:bg-[#e8a020]/10 font-semibold"
+                      >
+                        배우 프로필 보기
+                      </Button>
+                    </Link>
+                  )}
+                  {credit.movies.length > 0 && (
+                    <div className="mt-4 pt-4 border-t border-[#5a5248]/30">
+                      <p className="text-xs text-[#8a807a] mb-2 font-semibold">참여 작품:</p>
+                      <div className="space-y-1">
+                        {credit.movies.slice(0, 3).map((movie) => (
+                          <Link
+                            key={movie.id}
+                            href={`/movies/${movie.id}`}
+                            className="block text-xs text-[#f0e8d8] hover:text-[#e8a020] truncate font-medium"
+                          >
+                            • {movie.title}
+                          </Link>
+                        ))}
+                        {credit.movies.length > 3 && (
+                          <p className="text-xs text-[#8a807a] font-medium">
                               +{credit.movies.length - 3}편 더
                             </p>
                           )}
@@ -236,7 +219,6 @@ export default function CreditsPage() {
             </div>
           </>
         )}
-      </div>
-    </div>
+    </IndiePageWrapper>
   );
 }

@@ -172,7 +172,7 @@ export function HexagonChart({ traits, size = 200, className = "" }: HexagonChar
                 y={pos.y}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                className="fill-violet-400 text-xs font-semibold"
+                className="fill-[#e8a020] text-xs font-semibold"
                 fontSize="12"
               >
                 {traitLabels[traitKey]}
@@ -182,7 +182,7 @@ export function HexagonChart({ traits, size = 200, className = "" }: HexagonChar
                 y={pos.y + 16}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                className="fill-violet-500 text-xs"
+                className="fill-[#8a807a] text-xs"
                 fontSize="10"
               >
                 {value}

@@ -110,11 +110,11 @@ export default function MovieRatingsPage() {
 
   if (authLoading || loading) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
         <div className="container mx-auto px-4 py-20">
           <div className="text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
-            <p className="mt-4 text-gray-400">로딩 중...</p>
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#e8a020] border-t-transparent" />
+            <p className="mt-4 text-[#8a807a]">로딩 중...</p>
           </div>
         </div>
       </div>
@@ -122,18 +122,18 @@ export default function MovieRatingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#0a0805] text-[#f0e8d8]">
       <div className="container mx-auto px-4 py-12">
         <div className="mb-8 flex items-center justify-between">
           <div>
             <h1 className="text-4xl font-bold film-gold">내 영화 평점</h1>
-            <p className="mt-2 text-gray-400">
+            <p className="mt-2 text-[#8a807a]">
               좋아하는 영화를 평가하고 인생영화로 등록하세요
             </p>
           </div>
           <Button
             onClick={() => setShowAddForm(!showAddForm)}
-            className="bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-black hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
+            className="btn-primary-gradient"
           >
             {showAddForm ? "취소" : "+ 영화 추가"}
           </Button>
@@ -141,16 +141,16 @@ export default function MovieRatingsPage() {
 
         {/* 추가/수정 폼 */}
         {showAddForm && (
-          <Card className="mb-8 border-violet-600/20 bg-white">
+          <Card className="mb-8 border-[#e8a020]/20 bg-white">
             <CardHeader>
-              <CardTitle className="text-violet-400">
+              <CardTitle className="text-[#e8a020]">
                 {editingRating ? "평점 수정" : "새 영화 추가"}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <Label htmlFor="movieTitle" className="text-violet-400">
+                  <Label htmlFor="movieTitle" className="text-[#e8a020]">
                     영화 제목 *
                   </Label>
                   <Input
@@ -159,13 +159,13 @@ export default function MovieRatingsPage() {
                     onChange={(e) => setMovieTitle(e.target.value)}
                     placeholder="예: 인셉션"
                     required
-                    className="bg-gray-800/50 border-gray-700 text-white"
+                    className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="movieYear" className="text-violet-400">
+                    <Label htmlFor="movieYear" className="text-[#e8a020]">
                       제작 연도 (선택)
                     </Label>
                     <Input
@@ -176,12 +176,12 @@ export default function MovieRatingsPage() {
                       placeholder="예: 2010"
                       min="1900"
                       max={new Date().getFullYear()}
-                      className="bg-gray-800/50 border-gray-700 text-white"
+                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
                     />
                   </div>
 
                   <div>
-                    <Label htmlFor="movieThumbnail" className="text-violet-400">
+                    <Label htmlFor="movieThumbnail" className="text-[#e8a020]">
                       포스터 URL (선택)
                     </Label>
                     <Input
@@ -190,13 +190,13 @@ export default function MovieRatingsPage() {
                       value={movieThumbnail}
                       onChange={(e) => setMovieThumbnail(e.target.value)}
                       placeholder="https://..."
-                      className="bg-gray-800/50 border-gray-700 text-white"
+                      className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <Label className="text-violet-400 mb-2 block">별점</Label>
+                  <Label className="text-[#e8a020] mb-2 block">별점</Label>
                   <div className="flex items-center gap-2">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
@@ -204,20 +204,20 @@ export default function MovieRatingsPage() {
                         type="button"
                         onClick={() => setRating(star)}
                         className={`text-3xl transition-transform hover:scale-110 ${
-                          star <= rating ? "text-violet-400" : "text-gray-600"
+                          star <= rating ? "text-[#e8a020]" : "text-[#5a5248]"
                         }`}
                       >
                         ★
                       </button>
                     ))}
-                    <span className="ml-2 text-violet-400 font-semibold">
+                    <span className="ml-2 text-[#e8a020] font-semibold">
                       {rating}점
                     </span>
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="review" className="text-violet-400">
+                  <Label htmlFor="review" className="text-[#e8a020]">
                     리뷰 (선택)
                   </Label>
                   <textarea
@@ -225,7 +225,7 @@ export default function MovieRatingsPage() {
                     value={review}
                     onChange={(e) => setReview(e.target.value)}
                     placeholder="이 영화에 대한 생각을 남겨주세요..."
-                    className="w-full min-h-[100px] rounded-md border border-gray-700 bg-gray-800/50 px-3 py-2 text-white placeholder:text-gray-500 focus:border-violet-600 focus:outline-none focus:ring-1 focus:ring-violet-500"
+                    className="w-full min-h-[100px] rounded-md border border-gray-700 bg-gray-800/50 px-3 py-2 text-white placeholder:text-[#5a5248] focus:border-[#e8a020] focus:outline-none focus:ring-1 focus:ring-[#e8a020]"
                   />
                 </div>
 
@@ -235,9 +235,9 @@ export default function MovieRatingsPage() {
                     id="isFavorite"
                     checked={isFavorite}
                     onChange={(e) => setIsFavorite(e.target.checked)}
-                    className="h-5 w-5 rounded border-gray-700 bg-gray-800 text-violet-600 focus:ring-violet-500 cursor-pointer"
+                    className="h-5 w-5 rounded border-[#5a5248] bg-[#181410] text-[#e8a020] focus:ring-[#e8a020] cursor-pointer"
                   />
-                  <Label htmlFor="isFavorite" className="text-gray-300 cursor-pointer">
+                  <Label htmlFor="isFavorite" className="text-[#f0e8d8] cursor-pointer">
                     ⭐ 인생영화로 등록
                   </Label>
                 </div>
@@ -246,7 +246,7 @@ export default function MovieRatingsPage() {
                   <Button
                     type="submit"
                     disabled={saving}
-                    className="flex-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-black hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
+                    className="flex-1 btn-primary-gradient"
                   >
                     {saving ? "저장 중..." : editingRating ? "수정" : "추가"}
                   </Button>
@@ -254,7 +254,7 @@ export default function MovieRatingsPage() {
                     type="button"
                     onClick={resetForm}
                     variant="outline"
-                    className="border-gray-700 text-gray-300 hover:bg-gray-800"
+                    className="border-[#5a5248] text-[#f0e8d8] hover:bg-[#181410]"
                   >
                     취소
                   </Button>
@@ -267,12 +267,12 @@ export default function MovieRatingsPage() {
         {/* 평점 목록 */}
         {ratings.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-xl text-gray-400 mb-4">
+            <p className="text-xl text-[#8a807a] mb-4">
               아직 평가한 영화가 없습니다
             </p>
             <Button
               onClick={() => setShowAddForm(true)}
-              className="bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 text-black hover:from-indigo-600 hover:via-violet-600 hover:to-purple-600"
+              className="btn-primary-gradient"
             >
               첫 영화 추가하기
             </Button>
@@ -282,7 +282,7 @@ export default function MovieRatingsPage() {
             {ratings.map((rating) => (
               <Card
                 key={rating.id}
-                className="border-violet-600/20 bg-white hover:bg-gray-900/70 transition-colors"
+                className="border-[#5a5248]/30 bg-[#100e0a] hover:border-[#e8a020]/50 transition-colors"
               >
                 <CardContent className="p-6">
                   {rating.movieThumbnail && (
@@ -292,11 +292,11 @@ export default function MovieRatingsPage() {
                       className="w-full h-64 object-cover rounded-lg mb-4"
                     />
                   )}
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-[#faf6f0] mb-2">
                     {rating.movieTitle}
                   </h3>
                   {rating.movieYear && (
-                    <p className="text-sm text-gray-400 mb-3">
+                    <p className="text-sm text-[#8a807a] mb-3">
                       {rating.movieYear}년
                     </p>
                   )}
@@ -305,25 +305,25 @@ export default function MovieRatingsPage() {
                       <span
                         key={i}
                         className={`text-lg ${
-                          i < rating.rating ? "text-violet-400" : "text-gray-600"
+                          i < rating.rating ? "text-[#e8a020]" : "text-[#5a5248]"
                         }`}
                       >
                         ★
                       </span>
                     ))}
                     {rating.isFavorite && (
-                      <span className="ml-auto text-violet-400">⭐</span>
+                      <span className="ml-auto text-[#e8a020]">⭐</span>
                     )}
                   </div>
                   {rating.review && (
-                    <p className="text-sm text-gray-300 mb-4 line-clamp-3">
+                    <p className="text-sm text-[#f0e8d8] mb-4 line-clamp-3">
                       {rating.review}
                     </p>
                   )}
                   <Button
                     onClick={() => handleEdit(rating)}
                     variant="outline"
-                    className="w-full border-violet-600/50 text-violet-400 hover:bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500/10"
+                    className="w-full border-[#5a5248] text-[#e8a020] hover:bg-[#e8a020]/10"
                   >
                     수정
                   </Button>
