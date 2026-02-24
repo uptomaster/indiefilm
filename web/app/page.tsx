@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 import { getMovies } from "@/lib/movies";
@@ -12,6 +12,7 @@ import { Actor } from "@/lib/actors";
 import { Post } from "@/lib/posts";
 import { Venue } from "@/lib/venues";
 import { getUserDisplayName } from "@/lib/users";
+import { useToastContext } from "@/components/ToastProvider";
 
 const GENRE_LABEL: Record<string, string> = {
   drama: "드라마",
@@ -23,6 +24,7 @@ const GENRE_LABEL: Record<string, string> = {
 
 export default function Home() {
   const { user, loading: authLoading } = useAuth();
+  const { error: showError } = useToastContext();
   const [movies, setMovies] = useState<Movie[]>([]);
   const [actors, setActors] = useState<Actor[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
@@ -30,23 +32,39 @@ export default function Home() {
   const [authorNames, setAuthorNames] = useState<Record<string, string>>({});
   const [venues, setVenues] = useState<Venue[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function load() {
-      try {
-        const [moviesRes, actorsRes, castingPosts, feedPosts, venuesList] = await Promise.all([
-          getMovies({ limitCount: 5 }),
-          getActors({ limitCount: 6 }),
-          getPosts({ type: "casting_call", limitCount: 5 }),
-          getPosts({ limitCount: 5 }), // 커뮤니티 피드: 전체 게시글
-          getVenues({ limitCount: 5 }),
-        ]);
-        setMovies(moviesRes.movies.slice(0, 5));
-        setActors(actorsRes.actors.slice(0, 6));
-        setPosts(castingPosts);
+  const loadData = useCallback(async () => {
+    setLoading(true);
+    setLoadError(null);
+    try {
+      // 목록 페이지와 동일한 API로 데이터 로드 (일부 실패해도 나머지는 표시)
+      const [moviesRes, actorsRes, castingRes, feedRes, venuesRes] = await Promise.allSettled([
+        getMovies({ limitCount: 5 }),
+        getActors({ limitCount: 6 }),
+        getPosts({ type: "casting_call", limitCount: 5 }),
+        getPosts({ limitCount: 5 }),
+        getVenues({ limitCount: 5 }),
+      ]);
+
+      if (moviesRes.status === "fulfilled") {
+        setMovies((moviesRes.value.movies || []).slice(0, 5));
+      } else {
+        console.error("영화 로드 실패:", moviesRes.reason);
+      }
+      if (actorsRes.status === "fulfilled") {
+        setActors((actorsRes.value.actors || []).slice(0, 6));
+      } else {
+        console.error("배우 로드 실패:", actorsRes.reason);
+      }
+      if (castingRes.status === "fulfilled") {
+        setPosts(Array.isArray(castingRes.value) ? castingRes.value : []);
+      } else {
+        console.error("캐스팅 공고 로드 실패:", castingRes.reason);
+      }
+      if (feedRes.status === "fulfilled") {
+        const feedPosts = Array.isArray(feedRes.value) ? feedRes.value : [];
         setCommunityPosts(feedPosts);
-        setVenues(venuesList);
-
         // 커뮤니티 글 작성자 이름 로드
         const names: Record<string, string> = {};
         await Promise.all(
@@ -54,19 +72,37 @@ export default function Home() {
             try {
               names[p.authorId] = await getUserDisplayName(p.authorId);
             } catch {
-              names[p.authorId] = p.authorId.slice(0, 8);
+              names[p.authorId] = p.authorId?.slice?.(0, 8) || "—";
             }
           })
         );
         setAuthorNames(names);
-      } catch (e) {
-        console.error(e);
-      } finally {
-        setLoading(false);
+      } else {
+        console.error("커뮤니티 로드 실패:", feedRes.reason);
       }
+      if (venuesRes.status === "fulfilled") {
+        setVenues(Array.isArray(venuesRes.value) ? venuesRes.value : []);
+      } else {
+        console.error("장소 로드 실패:", venuesRes.reason);
+      }
+
+      const failed = [moviesRes, actorsRes, castingRes, feedRes, venuesRes].filter((r) => r.status === "rejected");
+      if (failed.length > 0) {
+        setLoadError("일부 데이터를 불러오는데 실패했습니다. 새로고침해 주세요.");
+        showError?.("일부 데이터를 불러오는데 실패했습니다.");
+      }
+    } catch (e) {
+      console.error("메인 페이지 데이터 로드 오류:", e);
+      setLoadError("데이터를 불러오는데 실패했습니다.");
+      showError?.("데이터를 불러오는데 실패했습니다.");
+    } finally {
+      setLoading(false);
     }
-    load();
-  }, []);
+  }, [showError]);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   const scrollTo = (id: string) => () => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -271,6 +307,16 @@ export default function Home() {
                 </Link>
               ))}
             </>
+          ) : loadError ? (
+            <div className="col-span-full py-20 text-center">
+              <p className="text-[#8a807a] mb-4">{loadError}</p>
+              <button
+                onClick={loadData}
+                className="px-6 py-2.5 border border-[#e8a020] text-[#e8a020] text-xs tracking-[0.15em] uppercase hover:bg-[#e8a020]/10 transition-colors"
+              >
+                새로고침
+              </button>
+            </div>
           ) : (
             <div className="col-span-full py-20 text-center text-[#8a807a]">등록된 작품이 없습니다.</div>
           )}
