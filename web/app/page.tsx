@@ -130,9 +130,10 @@ export default function Home() {
           className="absolute inset-0 -z-10"
           style={{
             background: `
-              radial-gradient(ellipse at 70% 40%, rgba(80,50,10,0.3) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 35%, rgba(232,160,32,0.12) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 40%, rgba(80,50,10,0.35) 0%, transparent 60%),
               radial-gradient(ellipse at 20% 80%, rgba(30,20,10,0.5) 0%, transparent 50%),
-              linear-gradient(135deg, #0a0805 0%, #1a1208 50%, #0a0805 100%)
+              linear-gradient(135deg, #0a0805 0%, #1a1208 40%, #1e1508 50%, #1a1208 60%, #0a0805 100%)
             `,
           }}
         />

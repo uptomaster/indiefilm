@@ -136,7 +136,10 @@ service cloud.firestore {
     
     // venues 컬렉션 (촬영 장소)
     match /venues/{venueId} {
-      allow read: if resource.data.isPublic == true || isOwner(venueId);
+      // 읽기: 공개된 장소만 또는 본인 (resource == null: getDoc으로 존재하지 않는 문서 조회 시)
+      allow read: if resource == null || 
+                     resource.data.isPublic == true || 
+                     isOwner(venueId);
       allow create: if isSignedIn() && hasRole("venue") && venueId == request.auth.uid;
       allow update: if isOwner(venueId);
       allow delete: if false;
