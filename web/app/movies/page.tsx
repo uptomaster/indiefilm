@@ -151,10 +151,10 @@ export default function MoviesPage() {
                 총 {sortedMovies.length}개의 영화
               </div>
               <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortOption)}>
-                <SelectTrigger className="w-[140px] bg-[#181410] border-[#5a5248] text-[#f0e8d8] font-medium h-9 md:h-10 text-xs md:text-sm">
+                <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] font-medium h-9 md:h-10 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-[#181410] border-[#5a5248]">
+                <SelectContent className="bg-[#141210] border-[#e8a020]/25">
                   <SelectItem value="latest" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">최신순</SelectItem>
                   <SelectItem value="popular" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">인기순</SelectItem>
                   <SelectItem value="rating" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 focus:bg-[#e8a020]/10 cursor-pointer">평점순</SelectItem>
@@ -164,13 +164,14 @@ export default function MoviesPage() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
               {sortedMovies.map((movie) => (
                 <Link key={movie.id} href={`/movies/${movie.id}`} className="group block">
-                  <div className="overflow-hidden rounded border border-[#5a5248]/30 bg-[#181410] transition-all hover:border-[#e8a020]/40 hover:scale-[1.02]">
-                    <div className="relative aspect-[2/3] overflow-hidden max-h-[200px] sm:max-h-[240px] md:max-h-[280px]">
+                  <div className="overflow-hidden rounded border border-[#5a5248]/30 bg-[#181410] transition-colors hover:border-[#e8a020]/40">
+                    {/* 포스터 영역 - 박스에 맞게 꽉 채움 (2:3 비율) */}
+                    <div className="relative aspect-[2/3] overflow-hidden bg-[#1a1510]">
                       {movie.thumbnailUrl ? (
                         <LazyImage
                           src={movie.thumbnailUrl}
                           alt={movie.title}
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          className="h-full w-full object-cover object-center"
                         />
                       ) : (
                         <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#1a1510] via-[#100e0a] to-[#0a0805]">
@@ -182,10 +183,6 @@ export default function MoviesPage() {
                           </div>
                         </div>
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <div className="absolute right-3 top-3 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        <span className="rounded-full bg-[#e8a020] px-3 py-1.5 text-xs font-semibold text-[#0a0805]">보기 →</span>
-                      </div>
                     </div>
                     <div className="p-4">
                       <h3 className="mb-2 text-base font-bold text-[#faf6f0] line-clamp-1 group-hover:text-[#e8a020] transition-colors">

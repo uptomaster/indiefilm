@@ -164,10 +164,10 @@ export default function PostsPage() {
             <div className="mb-6 flex items-center justify-between">
               <div className="text-sm text-[#8a807a]">총 {sortedPosts.length}개의 게시글</div>
               <Select value={sortBy} onValueChange={(v) => setSortBy(v as SortOption)}>
-                <SelectTrigger className="w-[140px] bg-[#181410] border-[#5a5248] text-[#f0e8d8] h-9 text-xs">
+                <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] h-9 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-[#181410] border-[#5a5248]">
+                <SelectContent className="bg-[#141210] border-[#e8a020]/25">
                   <SelectItem value="latest" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">최신순</SelectItem>
                   <SelectItem value="popular" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">인기순</SelectItem>
                   <SelectItem value="views" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">조회순</SelectItem>

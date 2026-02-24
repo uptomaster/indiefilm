@@ -79,7 +79,7 @@ function SearchContent() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="영화, 배우, 제작자, 게시글 검색..."
-            className="flex-1 bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020]"
+            className="flex-1 bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] placeholder:text-[#8a807a] focus:border-[#e8a020] focus:ring-[#e8a020]/20"
           />
           <Button
             type="submit"

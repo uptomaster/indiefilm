@@ -120,14 +120,14 @@ export default function ActorsPage() {
           placeholder="이름, 스킬, 경력으로 검색..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="bg-[#181410] border-[#5a5248] text-[#f0e8d8] placeholder:text-[#5a5248] focus:border-[#e8a020] h-10 text-sm"
+          className="bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] placeholder:text-[#8a807a] focus:border-[#e8a020] focus:ring-[#e8a020]/20 h-10 text-sm"
         />
         <div className="flex flex-wrap gap-2">
           <Select value={selectedLocation || "all"} onValueChange={(v) => setSelectedLocation(v === "all" ? null : v)}>
-            <SelectTrigger className="w-[140px] bg-[#181410] border-[#5a5248] text-[#f0e8d8] h-9 text-xs">
+            <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] h-9 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
               <SelectValue placeholder="지역" />
             </SelectTrigger>
-            <SelectContent className="bg-[#181410] border-[#5a5248]">
+            <SelectContent className="bg-[#141210] border-[#e8a020]/25">
               <SelectItem value="all" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">전체 지역</SelectItem>
               {locations.map((loc) => (
                 <SelectItem key={loc} value={loc} className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">{loc}</SelectItem>
@@ -135,10 +135,10 @@ export default function ActorsPage() {
             </SelectContent>
           </Select>
           <Select value={selectedAgeRange || "all"} onValueChange={(v) => setSelectedAgeRange(v === "all" ? null : (v as AgeRange))}>
-            <SelectTrigger className="w-[140px] bg-[#181410] border-[#5a5248] text-[#f0e8d8] h-9 text-xs">
+            <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] h-9 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
               <SelectValue placeholder="나이대" />
             </SelectTrigger>
-            <SelectContent className="bg-[#181410] border-[#5a5248]">
+            <SelectContent className="bg-[#141210] border-[#e8a020]/25">
               <SelectItem value="all" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">전체 나이대</SelectItem>
               {ageRanges.map((age) => (
                 <SelectItem key={age} value={age} className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">{getAgeRangeLabel(age)}</SelectItem>
@@ -160,10 +160,10 @@ export default function ActorsPage() {
             <div className="mb-6 flex items-center justify-between">
               <div className="text-sm text-[#8a807a]">총 {filteredAndSortedActors.length}명의 배우</div>
               <Select value={sortBy} onValueChange={(v) => setSortBy(v as SortOption)}>
-                <SelectTrigger className="w-[140px] bg-[#181410] border-[#5a5248] text-[#f0e8d8] h-9 text-xs">
+                <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] h-9 text-sm focus:border-[#e8a020] focus:ring-[#e8a020]/20">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-[#181410] border-[#5a5248]">
+                <SelectContent className="bg-[#141210] border-[#e8a020]/25">
                   <SelectItem value="latest" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">최신순</SelectItem>
                   <SelectItem value="name" className="text-[#f0e8d8] hover:bg-[#e8a020]/10 cursor-pointer">이름순</SelectItem>
                 </SelectContent>
@@ -172,34 +172,34 @@ export default function ActorsPage() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
               {filteredAndSortedActors.map((actor) => (
                 <Link key={actor.id} href={`/actors/${actor.id}`} className="group block">
-                  <div className="relative h-[280px] sm:h-[320px] overflow-hidden rounded border border-[#5a5248]/30 bg-[#181410] transition-all hover:border-[#e8a020]/40 hover:scale-[1.02]">
-                    {actor.mainPhotoUrl ? (
-                      <LazyImage src={actor.mainPhotoUrl} alt={actor.stageName} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#1a1510] to-[#0a0805]">
-                        <div className="text-center">
-                          <div className="mb-2 text-5xl">🎭</div>
-                          <div className="text-lg font-bold text-[#8a807a]">{actor.stageName}</div>
+                  <div className="overflow-hidden rounded border border-[#5a5248]/30 bg-[#181410] transition-colors hover:border-[#e8a020]/40">
+                    {/* 사진 영역 - 박스에 맞게 꽉 채움 */}
+                    <div className="relative aspect-[3/4] overflow-hidden bg-[#1a1510]">
+                      {actor.mainPhotoUrl ? (
+                        <LazyImage src={actor.mainPhotoUrl} alt={actor.stageName} className="h-full w-full object-cover object-center" />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center">
+                          <div className="text-center">
+                            <div className="mb-2 text-5xl opacity-60">🎭</div>
+                            <div className="text-base font-bold text-[#8a807a] line-clamp-2 px-2">{actor.stageName}</div>
+                          </div>
                         </div>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <h3 className="text-lg font-bold text-white">{actor.stageName}</h3>
-                      <div className="flex flex-wrap gap-1.5 text-xs mt-1">
+                      )}
+                    </div>
+                    {/* 기본 정보 - 사진 밑에 항상 표시 */}
+                    <div className="p-3">
+                      <h3 className="text-base font-bold text-[#faf6f0] line-clamp-1 group-hover:text-[#e8a020] transition-colors">{actor.stageName}</h3>
+                      <div className="flex flex-wrap gap-1.5 mt-1.5 text-sm">
                         <span className="rounded bg-[#e8a020]/20 px-2 py-0.5 text-[#e8a020]">{getAgeRangeLabel(actor.ageRange)}</span>
-                        <span className="rounded bg-[#5a5248]/50 px-2 py-0.5 text-[#8a807a]">{actor.location}</span>
+                        <span className="rounded bg-[#5a5248]/40 px-2 py-0.5 text-[#8a807a]">{actor.location}</span>
                       </div>
                       {actor.skills.length > 0 && (
                         <div className="mt-2 flex flex-wrap gap-1">
                           {actor.skills.slice(0, 3).map((s, i) => (
-                            <span key={i} className="rounded bg-[#e8a020]/10 px-1.5 py-0.5 text-[10px] text-[#e8a020]">{s}</span>
+                            <span key={i} className="rounded bg-[#e8a020]/10 px-1.5 py-0.5 text-xs text-[#e8a020]">{s}</span>
                           ))}
                         </div>
                       )}
-                    </div>
-                    <div className="absolute right-3 top-3 rounded-full bg-[#e8a020] px-2.5 py-1 text-[10px] font-semibold text-[#0a0805] opacity-0 group-hover:opacity-100 transition-opacity">
-                      프로필 →
                     </div>
                   </div>
                 </Link>

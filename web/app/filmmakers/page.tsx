@@ -61,7 +61,7 @@ export default function FilmmakersPage() {
             placeholder="이름, 소개, 전문 분야로 검색..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020] font-medium"
+            className="bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] placeholder:text-[#8a807a] focus:border-[#e8a020] focus:ring-[#e8a020]/20 font-medium"
           />
           <div className="flex flex-wrap gap-2 justify-center">
             <Select
@@ -70,10 +70,10 @@ export default function FilmmakersPage() {
                 setSelectedType(value === "all" ? null : (value as FilmmakerType))
               }
             >
-              <SelectTrigger className="w-[140px] bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] font-medium">
+              <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] font-medium focus:border-[#e8a020] focus:ring-[#e8a020]/20">
                 <SelectValue placeholder="유형" />
               </SelectTrigger>
-              <SelectContent className="bg-[#181410] border-[#5a5248]/30">
+              <SelectContent className="bg-[#141210] border-[#e8a020]/25">
                 <SelectItem value="all" className="text-[#faf6f0] hover:bg-[#e8a020]/20 focus:bg-[#e8a020]/20 cursor-pointer font-medium">
                   전체 유형
                 </SelectItem>
@@ -91,10 +91,10 @@ export default function FilmmakersPage() {
                 setSelectedLocation(value === "all" ? null : value)
               }
             >
-              <SelectTrigger className="w-[140px] bg-[#181410] border-[#5a5248]/50 text-[#faf6f0] font-medium">
+              <SelectTrigger className="w-[140px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] font-medium focus:border-[#e8a020] focus:ring-[#e8a020]/20">
                 <SelectValue placeholder="지역" />
               </SelectTrigger>
-              <SelectContent className="bg-[#181410] border-[#5a5248]/30">
+              <SelectContent className="bg-[#141210] border-[#e8a020]/25">
                 <SelectItem value="all" className="text-[#faf6f0] hover:bg-[#e8a020]/20 focus:bg-[#e8a020]/20 cursor-pointer font-medium">
                   전체 지역
                 </SelectItem>

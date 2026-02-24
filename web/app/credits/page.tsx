@@ -112,7 +112,7 @@ export default function CreditsPage() {
             placeholder="이름 또는 역할로 검색..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] placeholder:text-[#5a5248] focus:border-[#e8a020] font-medium"
+            className="bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] placeholder:text-[#8a807a] focus:border-[#e8a020] focus:ring-[#e8a020]/20 font-medium"
           />
         </div>
         <Select
@@ -121,7 +121,7 @@ export default function CreditsPage() {
             setSelectedRole(value === "all" ? null : value)
           }
         >
-          <SelectTrigger className="w-full md:w-[200px] bg-[#181410] border-[#5a5248]/40 text-[#faf6f0] font-medium">
+          <SelectTrigger className="w-full md:w-[200px] bg-[#141210] border-[#e8a020]/25 text-[#faf6f0] font-medium focus:border-[#e8a020] focus:ring-[#e8a020]/20">
             <SelectValue placeholder="역할 선택" />
           </SelectTrigger>
           <SelectContent className="bg-[#100e0a] border-[#5a5248]/30">

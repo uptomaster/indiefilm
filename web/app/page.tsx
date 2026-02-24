@@ -175,7 +175,7 @@ export default function Home() {
             </button>
           </div>
           <div className="flex gap-0 max-w-[700px]">
-            <select className="flex-[0_0_120px] bg-[#181410] border border-[#5a5248] border-r-0 text-[#8a807a] px-4 py-3 text-sm outline-none">
+            <select className="flex-[0_0_120px] bg-[#141210] border border-[#e8a020]/25 border-r-0 text-[#faf6f0] px-4 py-3 text-sm outline-none focus:border-[#e8a020]">
               <option>전체</option>
               <option>배우 찾기</option>
               <option>구인 공고</option>
@@ -185,7 +185,7 @@ export default function Home() {
             <input
               type="text"
               placeholder="찾고 있는 게 있으신가요?"
-              className="flex-1 bg-[#181410] border border-[#5a5248] border-r-0 px-5 py-3 text-[13px] text-[#f0e8d8] placeholder:text-[#5a5248] outline-none focus:border-[#e8a020]"
+              className="flex-1 bg-[#141210] border border-[#e8a020]/25 border-r-0 px-5 py-3 text-sm text-[#faf6f0] placeholder:text-[#8a807a] outline-none focus:border-[#e8a020]"
             />
             <Link
               href="/search"
