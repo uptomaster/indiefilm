@@ -177,5 +177,42 @@ service cloud.firestore {
                         resource.data.userId == request.auth.uid;
       }
     }
+    
+    // postViewCounts 컬렉션 (게시글 조회수 - 누구나 증가 가능)
+    match /postViewCounts/{postId} {
+      allow read: if true;
+      allow create, update: if true;
+      allow delete: if false;
+    }
+    
+    // postLikes 컬렉션 (게시글 좋아요)
+    match /postLikes/{likeId} {
+      allow read: if true;
+      allow create: if isSignedIn() && 
+                       request.resource.data.userId == request.auth.uid;
+      allow delete: if isSignedIn() && 
+                       resource.data.userId == request.auth.uid;
+      allow update: if false;
+    }
+    
+    // userBookmarks 컬렉션 (북마크)
+    match /userBookmarks/{bookmarkId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && 
+                       request.resource.data.userId == request.auth.uid;
+      allow delete: if isSignedIn() && 
+                       resource.data.userId == request.auth.uid;
+      allow update: if false;
+    }
+    
+    // follows 컬렉션 (팔로우)
+    match /follows/{followId} {
+      allow read: if true;
+      allow create: if isSignedIn() && 
+                       request.resource.data.followerId == request.auth.uid;
+      allow delete: if isSignedIn() && 
+                       resource.data.followerId == request.auth.uid;
+      allow update: if false;
+    }
   }
 }

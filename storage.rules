@@ -42,6 +42,14 @@ service firebase.storage {
                       request.resource.contentType.matches('image/.*');
     }
     
+    // 제작자 프로필 사진: filmmakers/{userId}/{fileName}
+    match /filmmakers/{userId}/{fileName} {
+      allow read: if true;
+      allow write: if isOwner(userId) && 
+                      request.resource.size < 5 * 1024 * 1024 &&
+                      request.resource.contentType.matches('image/.*');
+    }
+    
     // 기타 모든 경로는 거부
     match /{allPaths=**} {
       allow read, write: if false;

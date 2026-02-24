@@ -10,7 +10,6 @@ import {
   deleteDoc,
   serverTimestamp,
   orderBy,
-  increment,
 } from "firebase/firestore";
 import { db } from "./firebase";
 
@@ -230,14 +229,10 @@ export async function deletePost(postId: string, authorId: string): Promise<void
 }
 
 /**
- * 조회수 증가
+ * 조회수 증가 - postViews.ts의 incrementPostViews 사용 권장 (누구나 호출 가능)
+ * 기존 posts 문서의 views 필드는 createPost 시 0으로 초기화됨
  */
-export async function incrementPostViews(postId: string): Promise<void> {
-  const postRef = doc(db, "posts", postId);
-  await updateDoc(postRef, {
-    views: increment(1),
-  });
-}
+export { incrementPostViews } from "./postViews";
 
 /**
  * 댓글 작성
