@@ -8,7 +8,7 @@ export interface UserProfile {
   email: string | null;
   displayName: string | null;
   photoURL: string | null;
-  role: "actor" | "filmmaker" | "viewer" | null;
+  role: "actor" | "filmmaker" | "viewer" | "venue" | null;
   createdAt: any;
   updatedAt: any;
 }
@@ -150,6 +150,12 @@ export async function getUserDisplayName(userId: string): Promise<string> {
     }
   }
   
+  // 장소대여자인 경우
+  if (profile.role === "venue") {
+    // venues 컬렉션에서 이름 가져오기 (추후 구현)
+    return profile.displayName || profile.email?.split("@")[0] || userId.slice(0, 8);
+  }
+
   // 제작자인 경우
   if (profile.role === "filmmaker") {
     const filmmaker = await getFilmmakerByUserId(userId);

@@ -134,6 +134,14 @@ service cloud.firestore {
       allow delete: if false;
     }
     
+    // venues 컬렉션 (촬영 장소)
+    match /venues/{venueId} {
+      allow read: if resource.data.isPublic == true || isOwner(venueId);
+      allow create: if isSignedIn() && hasRole("venue") && venueId == request.auth.uid;
+      allow update: if isOwner(venueId);
+      allow delete: if false;
+    }
+    
     // posts 컬렉션 (커뮤니티)
     match /posts/{postId} {
       // 읽기: 공개된 게시글만 또는 작성자

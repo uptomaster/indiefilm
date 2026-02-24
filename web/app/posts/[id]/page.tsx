@@ -173,7 +173,8 @@ export default function PostDetailPage() {
 
   const getPostTypeLabel = (type: string): string => {
     const typeMap: Record<string, string> = {
-      casting_call: "구인공고",
+      casting_call: "오디션 공고",
+      staff_recruitment: "스태프 구인",
       actor_seeking: "배우 구직",
       general: "일반",
     };

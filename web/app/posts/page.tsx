@@ -13,7 +13,8 @@ import { EmptyState } from "@/components/EmptyState";
 import { useToastContext } from "@/components/ToastProvider";
 
 const postTypes: { value: PostType; label: string }[] = [
-  { value: "casting_call", label: "구인공고" },
+  { value: "casting_call", label: "오디션 공고" },
+  { value: "staff_recruitment", label: "스태프 구인" },
   { value: "actor_seeking", label: "배우 구직" },
   { value: "general", label: "일반" },
 ];
@@ -100,7 +101,8 @@ export default function PostsPage() {
 
   const getPostTypeLabel = (type: PostType): string => {
     const typeMap: Record<PostType, string> = {
-      casting_call: "구인공고",
+      casting_call: "오디션 공고",
+      staff_recruitment: "스태프 구인",
       actor_seeking: "배우 구직",
       general: "일반",
     };

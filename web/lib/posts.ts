@@ -14,14 +14,14 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase";
 
-export type PostType = "casting_call" | "actor_seeking" | "general";
+export type PostType = "casting_call" | "actor_seeking" | "staff_recruitment" | "general";
 export type PostCategory = "casting" | "seeking" | "collaboration" | "general";
 
 export interface Post {
   id: string;
   type: PostType;
   authorId: string;
-  authorRole: "filmmaker" | "actor" | "viewer";
+  authorRole: "filmmaker" | "actor" | "viewer" | "venue";
   title: string;
   content: string;
   category?: PostCategory;
@@ -117,7 +117,7 @@ export async function getPostById(postId: string): Promise<Post | null> {
  */
 export async function createPost(
   authorId: string,
-  authorRole: "filmmaker" | "actor" | "viewer",
+  authorRole: "filmmaker" | "actor" | "viewer" | "venue",
   data: {
     type: PostType;
     title: string;

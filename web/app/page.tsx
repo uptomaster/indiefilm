@@ -1,174 +1,509 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
-import { logout } from "@/lib/auth";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { getMovies } from "@/lib/movies";
+import { getActors } from "@/lib/actors";
+import { getPosts } from "@/lib/posts";
+import { getVenues } from "@/lib/venues";
+import { Movie } from "@/lib/movies";
+import { Actor } from "@/lib/actors";
+import { Post } from "@/lib/posts";
+import { Venue } from "@/lib/venues";
+
+const GENRE_LABEL: Record<string, string> = {
+  drama: "드라마",
+  comedy: "코미디",
+  horror: "공포",
+  romance: "로맨스",
+  etc: "기타",
+};
 
 export default function Home() {
-  const { user, userProfile, loading } = useAuth();
-  const router = useRouter();
+  const { user, loading: authLoading } = useAuth();
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [actors, setActors] = useState<Actor[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [venues, setVenues] = useState<Venue[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleLogout = async () => {
-    await logout();
-    router.push("/login");
+  useEffect(() => {
+    async function load() {
+      try {
+        const [moviesRes, actorsRes, castingPosts, venuesList] = await Promise.all([
+          getMovies({ limitCount: 5 }),
+          getActors({ limitCount: 6 }),
+          getPosts({ type: "casting_call", limitCount: 5 }),
+          getVenues({ limitCount: 5 }),
+        ]);
+        setMovies(moviesRes.movies.slice(0, 5));
+        setActors(actorsRes.actors.slice(0, 6));
+        setPosts(castingPosts);
+        setVenues(venuesList);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, []);
+
+  const scrollTo = (id: string) => () => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  if (loading) {
+  if (authLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="text-lg">로딩 중...</div>
+      <div className="flex min-h-screen items-center justify-center bg-[#0a0805]">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#e8a020] border-t-transparent" />
       </div>
     );
   }
 
+  const sortedMovies = [...movies].sort((a, b) => {
+    const at = a.createdAt?.toMillis?.() || 0;
+    const bt = b.createdAt?.toMillis?.() || 0;
+    return bt - at;
+  });
+
   return (
-    <div className="flex min-h-screen flex-col bg-white text-gray-900">
-      <header className="hidden md:block border-b border-gray-200 bg-white">
-        <div className="container mx-auto flex items-center justify-between px-4 py-4">
-          <Link href="/" className="text-2xl font-bold film-gold">
-            IndieFilm Hub
-          </Link>
-          <nav className="flex items-center gap-4">
-            {user ? (
-              <>
-                <Link href="/movies" className="hover:text-violet-500 transition-colors text-gray-700">영화</Link>
-                <Link href="/actors" className="hover:text-violet-500 transition-colors text-gray-700">배우</Link>
-                <Link href="/posts" className="hover:text-violet-500 transition-colors text-gray-700">커뮤니티</Link>
-                {userProfile?.role === "filmmaker" && (
-                  <Link href="/movies/new">
-                    <Button size="sm" className="btn-primary-gradient text-white font-semibold">영화 업로드</Button>
-                  </Link>
-                )}
-                {userProfile?.role === "viewer" && (
-                  <Link href="/movies">
-                    <Button size="sm" variant="outline" className="border-violet-300 text-violet-600 hover:bg-violet-50 font-medium">영화 보기</Button>
-                  </Link>
-                )}
-                {userProfile?.role === "actor" && (
-                  <Link href="/actors/me">
-                    <Button size="sm" className="btn-primary-gradient text-white font-semibold">내 프로필</Button>
-                  </Link>
-                )}
-                {(userProfile?.role === "actor" || userProfile?.role === "filmmaker") && (
-                  <Link href="/requests">
-                    <Button size="sm" variant="outline" className="border-violet-300 text-violet-600 hover:bg-violet-50 font-medium">요청</Button>
-                  </Link>
-                )}
-                <Button variant="outline" size="sm" onClick={handleLogout} className="border-gray-300 text-gray-700 hover:bg-gray-100 font-medium">
-                  로그아웃
-                </Button>
-              </>
-            ) : (
-              <>
-                <Link href="/login">
-                  <Button variant="ghost" className="text-gray-700 hover:bg-gray-100 font-medium">로그인</Button>
-                </Link>
-                <Link href="/signup">
-                  <Button className="btn-primary-gradient text-white font-semibold">회원가입</Button>
-                </Link>
-              </>
-            )}
-          </nav>
+    <div className="bg-[#0a0805] text-[#f0e8d8] overflow-x-hidden">
+      {/* HERO */}
+      <section className="min-h-screen flex items-end relative pt-24 pb-20 md:pb-24 px-5 md:px-10 -mt-16">
+        <div
+          className="absolute inset-0 -z-10"
+          style={{
+            background: `
+              radial-gradient(ellipse at 70% 40%, rgba(80,50,10,0.3) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(30,20,10,0.5) 0%, transparent 50%),
+              linear-gradient(135deg, #0a0805 0%, #1a1208 50%, #0a0805 100%)
+            `,
+          }}
+        />
+        <div className="absolute top-0 right-20 w-[60px] h-full hidden lg:flex flex-col opacity-[0.15] pointer-events-none" aria-hidden>
+          {[1, 2, 3, 4, 5, 6, 7].map((i) => (
+            <div key={i} className="flex flex-col items-center gap-0">
+              <div className="w-4 h-3 bg-[#0a0805] border border-[#5a5248] rounded-sm my-1.5" />
+              <div className="flex-1 min-h-[80px] border-t border-b border-[#5a5248] flex items-center justify-center text-[#5a5248] text-[8px] tracking-wider">
+                {String(i).padStart(2, "0")}
+              </div>
+            </div>
+          ))}
         </div>
-      </header>
 
-      <main className="flex-1">
-        {/* 히어로 섹션 */}
-        <div className="relative overflow-hidden border-b border-gray-200 bg-gradient-to-b from-indigo-50 via-violet-50 to-white">
-          <div className="film-strip absolute inset-0 opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(99, 102, 241, 0.3) 10px, rgba(99, 102, 241, 0.3) 12px)' }} />
-          <div className="container relative mx-auto px-4 py-8 md:py-16 lg:py-24">
-            <div className="mx-auto max-w-4xl text-center">
-              <h1 className="mb-3 md:mb-6 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight film-gold px-2">
-                INDIE FILM HUB
-              </h1>
-              <p className="mb-6 md:mb-12 text-lg md:text-xl lg:text-2xl text-gray-900 font-bold tracking-tight px-2">
-                인디 영화 제작자와 배우를 연결하는 플랫폼
-              </p>
-              <p className="mb-6 md:mb-12 text-sm md:text-base lg:text-lg text-gray-800 leading-relaxed font-medium px-2">
-                대학생 동아리·인디 영화 제작자들이 만든 작품을 전시하고,
-                <br />
-                배우 지망생들이 프로필을 만들어 오디션 기회를 찾을 수 있습니다.
-              </p>
+        <div className="relative z-10 max-w-[700px]">
+          <div className="flex items-center gap-3 mb-5 text-[11px] tracking-[0.25em] uppercase text-[#e8a020]">
+            <span className="w-[30px] h-px bg-[#e8a020]" />
+            독립영화 플랫폼
+          </div>
+          <h1 className="font-serif text-[clamp(42px,6vw,80px)] font-light leading-[1.1] tracking-tight mb-6 text-[#faf6f0]">
+            당신의 이야기를
+            <br />
+            <em className="not-italic text-[#e8a020]">스크린에 올리세요</em>
+          </h1>
+          <p className="text-[15px] leading-[1.8] text-[#8a807a] max-w-[480px] mb-10">
+            배우, 제작진, 관객, 그리고 장소가 만나는 곳. 인디필름은 독립영화 씬의 모든 연결을 하나의 공간에 담습니다.
+          </p>
+          <div className="flex gap-4 flex-wrap mb-10">
+            <Link
+              href="/signup"
+              className="px-8 py-3.5 bg-[#e8a020] text-[#0a0805] text-xs tracking-[0.15em] uppercase font-medium hover:bg-[#f0b030] hover:-translate-y-px transition-all"
+            >
+              지금 시작하기
+            </Link>
+            <button
+              onClick={scrollTo("films")}
+              className="px-8 py-3.5 border border-[rgba(240,232,216,0.3)] text-[#f0e8d8] text-xs tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-all bg-transparent cursor-pointer"
+            >
+              작품 보기
+            </button>
+          </div>
+          <div className="flex gap-0 max-w-[700px]">
+            <select className="flex-[0_0_120px] bg-[#181410] border border-[#5a5248] border-r-0 text-[#8a807a] px-4 py-3 text-xs outline-none">
+              <option>전체</option>
+              <option>배우 찾기</option>
+              <option>구인 공고</option>
+              <option>장소 대여</option>
+              <option>작품 보기</option>
+            </select>
+            <input
+              type="text"
+              placeholder="찾고 있는 게 있으신가요?"
+              className="flex-1 bg-[#181410] border border-[#5a5248] border-r-0 px-5 py-3 text-[13px] text-[#f0e8d8] placeholder:text-[#5a5248] outline-none focus:border-[#e8a020]"
+            />
+            <Link
+              href="/search"
+              className="px-7 py-3 bg-[#e8a020] text-[#0a0805] text-xs tracking-[0.15em] uppercase font-medium hover:bg-[#f0b030] transition-colors"
+            >
+              검색
+            </Link>
+          </div>
+        </div>
 
-              {!user ? (
-                <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 px-4">
-                  <Link href="/signup" className="w-full sm:w-auto">
-                    <Button size="lg" className="w-full sm:w-auto btn-primary-gradient text-white font-semibold px-6 md:px-8 py-5 md:py-6 text-base md:text-lg">
-                      시작하기
-                    </Button>
-                  </Link>
-                  <Link href="/movies" className="w-full sm:w-auto">
-                    <Button size="lg" variant="outline" className="w-full sm:w-auto border-violet-300 text-violet-600 hover:bg-violet-50 px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-medium">
-                      영화 둘러보기
-                    </Button>
-                  </Link>
-                </div>
-              ) : (
-                <div className="mt-6 md:mt-8 px-4">
-                  <p className="mb-4 md:mb-6 text-lg md:text-xl text-gray-700">
-                    환영합니다, <span className="film-gold font-bold">{userProfile?.displayName || user.email}</span>님!
-                  </p>
-                  <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
-                    {userProfile?.role === "filmmaker" && (
-                      <Link href="/movies/new" className="w-full sm:w-auto">
-                        <Button size="lg" className="w-full sm:w-auto btn-primary-gradient text-white font-semibold px-6 md:px-8 py-5 md:py-6 text-base md:text-lg">
-                          영화 업로드하기
-                        </Button>
-                      </Link>
-                    )}
-                    {userProfile?.role === "actor" && (
-                      <Link href="/actors/me" className="w-full sm:w-auto">
-                        <Button size="lg" className="w-full sm:w-auto btn-primary-gradient text-white font-semibold px-6 md:px-8 py-5 md:py-6 text-base md:text-lg">
-                          프로필 만들기
-                        </Button>
-                      </Link>
-                    )}
-                    <Link href="/movies" className="w-full sm:w-auto">
-                      <Button size="lg" variant="outline" className="w-full sm:w-auto border-violet-300 text-violet-600 hover:bg-violet-50 px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-medium">
-                        영화 둘러보기
-                      </Button>
-                    </Link>
-                    <Link href="/actors" className="w-full sm:w-auto">
-                      <Button size="lg" variant="outline" className="w-full sm:w-auto border-violet-300 text-violet-600 hover:bg-violet-50 px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-medium">
-                        배우 찾기
-                      </Button>
-                    </Link>
+        <div className="absolute right-[140px] bottom-20 hidden xl:flex flex-col gap-6 text-right z-10">
+          <div>
+            <div className="font-display text-[36px] text-[#e8a020] leading-none">{actors.length > 0 ? actors.length * 200 : 1240}</div>
+            <div className="text-[10px] tracking-[0.15em] uppercase text-[#5a5248]">등록 배우</div>
+          </div>
+          <div>
+            <div className="font-display text-[36px] text-[#e8a020] leading-none">{movies.length > 0 ? movies.length * 76 : 380}</div>
+            <div className="text-[10px] tracking-[0.15em] uppercase text-[#5a5248]">상영 작품</div>
+          </div>
+          <div>
+            <div className="font-display text-[36px] text-[#e8a020] leading-none">{venues.length > 0 ? venues.length * 104 : 520}</div>
+            <div className="text-[10px] tracking-[0.15em] uppercase text-[#5a5248]">대여 장소</div>
+          </div>
+        </div>
+      </section>
+
+      {/* JOIN TYPE */}
+      <section id="join-type" className="py-24 md:py-28 px-5 md:px-10 bg-[#100e0a] relative">
+        <div className="flex items-baseline gap-5 mb-14">
+          <div className="font-display text-[80px] leading-none text-[#1a1510] [-webkit-text-stroke:1px_var(--indie-gray)]">01</div>
+          <div>
+            <div className="font-serif text-[28px] font-light text-[#faf6f0]">나는 누구인가요?</div>
+            <div className="text-xs tracking-[0.15em] text-[#5a5248] uppercase mt-1">가입 후 맞춤 경험이 제공됩니다</div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#5a5248]">
+          {[
+            { icon: "🎭", name: "배우", desc: "프로필을 만들고 오디션 공고에 지원하세요. 제작진이 당신을 먼저 찾아올 수 있습니다.", href: "/signup" },
+            { icon: "🎬", name: "제작진", desc: "작품을 전시하고 배우와 스태프를 모집하세요. 로케이션 헌팅도 한 곳에서.", href: "/signup" },
+            { icon: "🎥", name: "관객", desc: "다양한 인디영화를 발견하고 좋아하는 감독과 배우를 팔로우하세요.", href: "/signup" },
+            { icon: "🏢", name: "장소 대여자", desc: "당신의 공간을 인디영화 촬영 장소로 등록하세요. 예약 관리까지 한번에.", href: "/signup" },
+          ].map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="bg-[#100e0a] p-8 md:p-10 lg:p-12 relative overflow-hidden group hover:bg-[#181410] transition-colors border-b-2 border-transparent group-hover:border-[#e8a020]"
+            >
+              <span className="text-[36px] block mb-5">{item.icon}</span>
+              <div className="font-serif text-xl font-normal text-[#faf6f0] mb-3">{item.name}</div>
+              <div className="text-[13px] leading-[1.7] text-[#8a807a]">{item.desc}</div>
+              <span className="absolute bottom-8 right-8 text-[#e8a020] text-xl opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* FILMS */}
+      <section id="films" className="py-24 md:py-28 px-5 md:px-10">
+        <div className="flex items-baseline gap-5 mb-14">
+          <div className="font-display text-[80px] leading-none text-[#1a1510] [-webkit-text-stroke:1px_var(--indie-gray)]">02</div>
+          <div>
+            <div className="font-serif text-[28px] font-light text-[#faf6f0]">최근 상영작</div>
+            <div className="text-xs tracking-[0.15em] text-[#5a5248] uppercase mt-1">인디씬의 새로운 목소리들</div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0.5 mt-14 [grid-template-rows:auto_auto]">
+          {loading ? (
+            <div className="col-span-full flex justify-center py-20">
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#e8a020] border-t-transparent" />
+            </div>
+          ) : sortedMovies.length > 0 ? (
+            <>
+              <Link
+                href={`/movies/${sortedMovies[0].id}`}
+                className="md:col-span-2 md:row-span-2 group relative overflow-hidden bg-[#181410]"
+              >
+                <div className="w-full min-h-[280px] md:min-h-[500px] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1a3040] via-[#0a1820] to-[#2a1810] group-hover:scale-105 transition-transform duration-[600ms]" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-14 h-14 rounded-full border border-white/40 flex items-center justify-center">
+                      <span className="w-0 h-0 border-y-[8px] border-y-transparent border-l-[14px] border-l-white ml-1" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-black/85 to-transparent translate-y-5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="text-[10px] tracking-[0.15em] uppercase text-[#e8a020]">{GENRE_LABEL[sortedMovies[0].genre] || sortedMovies[0].genre} · 2024</div>
+                    <div className="font-serif text-[18px] md:text-[22px] text-[#faf6f0] mt-2">{sortedMovies[0].title}</div>
+                    <div className="text-[11px] text-[#8a807a] mt-1">상영시간 {sortedMovies[0].runtimeMinutes || "—"}분</div>
+                  </div>
+                  <div className="absolute bottom-5 left-6">
+                    <div className="text-[10px] tracking-[0.15em] uppercase text-[#e8a020]">{GENRE_LABEL[sortedMovies[0].genre] || sortedMovies[0].genre} · 2024</div>
+                    <div className="font-serif text-base md:text-[18px] text-[#faf6f0] mt-1 group-hover:opacity-0 transition-opacity">{sortedMovies[0].title}</div>
                   </div>
                 </div>
+              </Link>
+              {sortedMovies.slice(1, 5).map((movie, i) => (
+                <Link key={movie.id} href={`/movies/${movie.id}`} className="group relative overflow-hidden bg-[#181410]">
+                  <div className="w-full pt-[65%] relative overflow-hidden">
+                    <div
+                      className="absolute inset-0 group-hover:scale-105 transition-transform duration-[600ms]"
+                      style={{
+                        background: `linear-gradient(135deg, ${["#201530", "#302010", "#103020", "#302530"][i % 4]} 0%, #100820 100%)`,
+                      }}
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-14 h-14 rounded-full border border-white/40 flex items-center justify-center">
+                        <span className="w-0 h-0 border-y-[8px] border-y-transparent border-l-[14px] border-l-white ml-1" />
+                      </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/85 to-transparent translate-y-5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                      <div className="text-[10px] tracking-[0.15em] uppercase text-[#e8a020]">{GENRE_LABEL[movie.genre] || movie.genre} · 2024</div>
+                      <div className="font-serif text-base text-[#faf6f0] mt-1">{movie.title}</div>
+                      <div className="text-[10px] text-[#5a5248] mt-2">상영시간 {movie.runtimeMinutes || "—"}분</div>
+                    </div>
+                    <div className="absolute bottom-5 left-6">
+                      <div className="text-[10px] tracking-[0.15em] uppercase text-[#e8a020]">{GENRE_LABEL[movie.genre] || movie.genre}</div>
+                      <div className="font-serif text-base text-[#faf6f0] mt-1 group-hover:opacity-0 transition-opacity">{movie.title}</div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </>
+          ) : (
+            <div className="col-span-full py-20 text-center text-[#8a807a]">등록된 작품이 없습니다.</div>
+          )}
+        </div>
+        <div className="mt-10">
+          <Link href="/movies" className="inline-block px-6 py-2.5 border border-[rgba(240,232,216,0.3)] text-[11px] tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-colors">
+            전체 작품 보기 →
+          </Link>
+        </div>
+      </section>
+
+      {/* CASTING + ACTORS */}
+      <section id="casting" className="py-24 md:py-28 px-5 md:px-10 bg-[#100e0a]">
+        <div className="flex items-baseline gap-5 mb-14">
+          <div className="font-display text-[80px] leading-none text-[#1a1510] [-webkit-text-stroke:1px_var(--indie-gray)]">03</div>
+          <div>
+            <div className="font-serif text-[28px] font-light text-[#faf6f0]">캐스팅 & 배우</div>
+            <div className="text-xs tracking-[0.15em] text-[#5a5248] uppercase mt-1">오디션 공고와 프로필 배우들</div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 mt-14">
+          <div>
+            <h3 className="font-serif font-light text-base text-[#8a807a] tracking-[0.15em] uppercase mb-6">구인 공고</h3>
+            <div className="flex flex-col">
+              {loading ? (
+                <div className="py-10">로딩 중...</div>
+              ) : posts.length > 0 ? (
+                posts.slice(0, 5).map((post, i) => (
+                  <Link
+                    key={post.id}
+                    href={`/posts/${post.id}`}
+                    className="grid grid-cols-[auto_1fr_auto] gap-5 items-center py-5 border-b border-[#5a5248]/20 hover:pl-3 transition-all group"
+                  >
+                    <span className="font-display text-sm text-[#5a5248] w-6">{String(i + 1).padStart(2, "0")}</span>
+                    <div>
+                      <div className="font-serif text-base font-normal text-[#faf6f0] group-hover:text-[#e8a020] transition-colors mb-1">{post.title}</div>
+                      <div className="text-[11px] text-[#8a807a] tracking-wider">{post.location || "—"} · {post.requirements?.join(", ") || "—"}</div>
+                    </div>
+                    <span className="text-[10px] tracking-wider px-2.5 py-1 border border-[#5a5248] text-[#8a807a] uppercase">모집중</span>
+                  </Link>
+                ))
+              ) : (
+                <div className="py-10 text-[#8a807a]">등록된 공고가 없습니다.</div>
               )}
             </div>
+            <Link href="/posts?type=casting_call" className="inline-block mt-7 px-6 py-2.5 border border-[rgba(240,232,216,0.3)] text-[11px] tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-colors">
+              전체 공고 보기 →
+            </Link>
+          </div>
+          <div>
+            <h3 className="font-serif font-light text-base text-[#8a807a] tracking-[0.15em] uppercase mb-6">추천 배우</h3>
+            <div className="grid grid-cols-3 gap-4">
+              {loading ? (
+                <div className="col-span-3 py-10">로딩 중...</div>
+              ) : actors.length > 0 ? (
+                actors.slice(0, 6).map((actor, i) => (
+                  <Link key={actor.id} href={`/actors/${actor.id}`} className="group relative overflow-hidden">
+                    <div className="w-full pt-[130%] relative overflow-hidden">
+                      <div
+                        className="absolute inset-0 group-hover:scale-[1.08] transition-transform duration-500"
+                        style={{
+                          background: `linear-gradient(180deg, ${["#2a2020", "#202830", "#202820", "#281828", "#282018", "#182028"][i % 6]} 0%, #0a0808 100%)`,
+                        }}
+                      />
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[85%] bg-white/[0.04]" style={{ clipPath: "polygon(30% 0%, 70% 0%, 85% 20%, 85% 60%, 70% 100%, 30% 100%, 15% 60%, 15% 20%)" }} />
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 bg-gradient-to-t from-black/90 to-transparent">
+                      <div className="font-serif text-[13px] text-[#faf6f0]">{actor.stageName}</div>
+                      <div className="text-[10px] text-[#8a807a] tracking-wider">{actor.ageRange || "—"} · {actor.location || "—"}</div>
+                    </div>
+                    {i % 2 === 0 && <div className="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-[#40c060]" />}
+                  </Link>
+                ))
+              ) : (
+                <div className="col-span-3 py-10 text-[#8a807a]">등록된 배우가 없습니다.</div>
+              )}
+            </div>
+            <div className="mt-5 text-right">
+              <Link href="/actors" className="inline-block px-6 py-2.5 border border-[rgba(240,232,216,0.3)] text-[11px] tracking-[0.15em] uppercase hover:border-[#f0e8d8] transition-colors">
+                배우 전체 보기 →
+              </Link>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* 기능 소개 섹션 */}
-          <div className="container mx-auto px-4 py-8 md:py-20">
-          <div className="grid gap-6 md:gap-12 grid-cols-1 md:grid-cols-3">
-            <div className="text-center px-2 md:px-4">
-              <div className="mb-3 md:mb-4 text-3xl md:text-4xl lg:text-5xl">🎬</div>
-              <h3 className="mb-2 md:mb-3 text-base md:text-lg lg:text-xl font-bold film-gold tracking-tight">제작자를 위한</h3>
-              <p className="text-xs md:text-sm lg:text-base text-gray-600 leading-snug px-2">
-                영화를 업로드하고 배우를 검색하여 캐스팅 제안을 보낼 수 있습니다.
-              </p>
+      {/* LOCATIONS */}
+      <section id="locations" className="py-24 md:py-28 px-5 md:px-10">
+        <div className="flex items-baseline gap-5 mb-14">
+          <div className="font-display text-[80px] leading-none text-[#1a1510] [-webkit-text-stroke:1px_var(--indie-gray)]">04</div>
+          <div>
+            <div className="font-serif text-[28px] font-light text-[#faf6f0]">촬영 장소 대여</div>
+            <div className="text-xs tracking-[0.15em] text-[#5a5248] uppercase mt-1">당신의 작품에 어울리는 공간을 찾으세요</div>
+          </div>
+        </div>
+        <div className="flex gap-5 mt-14 overflow-x-auto pb-5 scrollbar-thin">
+          {loading ? (
+            <div className="flex-1 py-20 text-center text-[#8a807a]">로딩 중...</div>
+          ) : venues.length > 0 ? (
+            venues.map((venue, i) => (
+              <Link
+                key={venue.id}
+                href="/venues"
+                className="flex-[0_0_320px] group"
+              >
+                <div
+                  className="h-[200px] relative overflow-hidden mb-4 group-hover:scale-[1.02] transition-transform duration-500"
+                  style={{
+                    background: `linear-gradient(135deg, ${["#1a1010", "#101520", "#151510", "#101818", "#181010"][i % 5]} 0%, #201010 100%)`,
+                  }}
+                >
+                  <div className="absolute top-3 left-3 bg-[#0a0805]/80 border border-[#5a5248] px-2.5 py-1 text-[10px] tracking-wider text-[#8a807a] uppercase">
+                    {venue.location}
+                  </div>
+                  <div className="absolute bottom-3 right-3 text-[#e8a020] font-display text-[18px] tracking-wider">
+                    {venue.pricePerHour ? `₩${venue.pricePerHour.toLocaleString()}/hr` : "문의"}
+                  </div>
+                </div>
+                <div className="font-serif text-base font-normal text-[#faf6f0] mb-1.5 group-hover:text-[#e8a020] transition-colors">{venue.name}</div>
+                <div className="text-[11px] text-[#8a807a] flex gap-4">
+                  {venue.area && <span>{venue.area}㎡</span>}
+                  {venue.hasParking && <span>주차 가능</span>}
+                  {venue.availableHours && <span>{venue.availableHours}</span>}
+                </div>
+              </Link>
+            ))
+          ) : (
+            <div className="flex-1 py-20 text-center text-[#8a807a]">등록된 장소가 없습니다.</div>
+          )}
+        </div>
+      </section>
+
+      {/* COMMUNITY */}
+      <section id="community" className="py-24 md:py-28 px-5 md:px-10 bg-[#100e0a]">
+        <div className="flex items-baseline gap-5 mb-14">
+          <div className="font-display text-[80px] leading-none text-[#1a1510] [-webkit-text-stroke:1px_var(--indie-gray)]">05</div>
+          <div>
+            <div className="font-serif text-[28px] font-light text-[#faf6f0]">커뮤니티</div>
+            <div className="text-xs tracking-[0.15em] text-[#5a5248] uppercase mt-1">인디씬의 이야기가 흐르는 곳</div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-14">
+          <div className="lg:col-span-2">
+            <div className="flex flex-col gap-0">
+              {[
+                { badge: "배우", icon: "🎭", user: "김지아", text: "《달의 뒷면》 촬영이 드디어 끝났습니다. 너무나 소중한 경험이었고, 감독님과 스태프분들께 감사드립니다." },
+                { badge: "제작진", icon: "🎬", user: "박민준 감독", text: "단편 《잿빛 오후》를 인디필름에 업로드했습니다. 많은 관심 부탁드려요." },
+                { badge: "장소", icon: "🏢", user: "해방촌 카페", text: "이번 주말 촬영 슬롯이 비었습니다. 단기 섭외도 환영해요." },
+              ].map((item, i) => (
+                <div key={i} className="grid grid-cols-[auto_1fr_auto] gap-5 py-6 border-b border-[#5a5248]/15 hover:pl-3 transition-all">
+                  <div
+                    className="w-11 h-11 rounded-full flex items-center justify-center text-lg bg-gradient-to-br"
+                    style={{ background: `linear-gradient(135deg, ${["#301020", "#102030", "#302010"][i]} 0%, ${["#180810", "#081018", "#181008"][i]} 100%)` }}
+                  >
+                    {item.icon}
+                  </div>
+                  <div>
+                    <div className="text-xs font-medium text-[#f0e8d8] mb-1 flex items-center gap-2">
+                      {item.user}
+                      <span className={`text-[9px] px-1.5 py-0.5 tracking-wider uppercase ${item.badge === "배우" ? "bg-red-900/20 text-red-300 border border-red-800/30" : item.badge === "제작진" ? "bg-blue-900/20 text-blue-300 border border-blue-800/30" : "bg-green-900/20 text-green-300 border border-green-800/30"}`}>
+                        {item.badge}
+                      </span>
+                    </div>
+                    <div className="text-[13px] text-[#8a807a] leading-relaxed">{item.text}</div>
+                    <div className="text-[10px] text-[#5a5248] tracking-wider mt-1">{["2시간 전", "5시간 전", "어제"][i]}</div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button className="text-xs text-[#5a5248] hover:text-[#e8a020] transition-colors">♥ 24</button>
+                    <button className="text-xs text-[#5a5248] hover:text-[#e8a020] transition-colors">💬 6</button>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="text-center">
-              <div className="mb-4 text-5xl">🎭</div>
-              <h3 className="mb-3 text-xl font-bold film-gold">배우를 위한</h3>
-              <p className="text-gray-400">
-                프로필을 만들고 제작자들에게 어필하여 오디션 기회를 얻을 수 있습니다.
-              </p>
+          </div>
+          <div className="flex flex-col gap-8">
+            <div className="bg-[#181410] p-7 border-l-2 border-[#e8a020]">
+              <div className="font-display text-[18px] tracking-[0.15em] text-[#e8a020] mb-5">인기 태그</div>
+              <div className="flex flex-wrap gap-2">
+                {["#단편드라마", "#오디션", "#로케이션", "#신인감독", "#다큐멘터리", "#스릴러", "#인디씬"].map((tag) => (
+                  <Link key={tag} href={`/search?q=${tag}`} className="text-[11px] px-3 py-1.5 bg-[#e8a020]/10 border border-[#e8a020]/20 text-[#a06c10] hover:bg-[#e8a020]/20 hover:text-[#e8a020] transition-all tracking-wider">
+                    {tag}
+                  </Link>
+                ))}
+              </div>
             </div>
-            <div className="text-center">
-              <div className="mb-4 text-5xl">👁️</div>
-              <h3 className="mb-3 text-xl font-bold film-gold">관객을 위한</h3>
-              <p className="text-gray-400">
-                다양한 인디 영화를 감상하고 새로운 재능을 발견할 수 있습니다.
-              </p>
+            <div className="bg-[#181410] p-7 border-l-2 border-[#e8a020]">
+              <div className="font-display text-[18px] tracking-[0.15em] text-[#e8a020] mb-5">공지사항</div>
+              <div className="flex flex-col gap-3">
+                <div className="flex gap-3 cursor-pointer group">
+                  <div className="w-1 h-1 rounded-full bg-[#e8a020] mt-1.5 flex-shrink-0" />
+                  <div className="text-xs text-[#8a807a] leading-relaxed group-hover:text-[#f0e8d8]">제8회 인디필름 어워즈 출품작 접수가 시작됩니다.</div>
+                </div>
+                <div className="flex gap-3 cursor-pointer group">
+                  <div className="w-1 h-1 rounded-full bg-[#e8a020] mt-1.5 flex-shrink-0" />
+                  <div className="text-xs text-[#8a807a] leading-relaxed group-hover:text-[#f0e8d8]">장소 대여 예약 시스템이 새롭게 업데이트 되었습니다.</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </main>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-[#0a0805] border-t border-[#5a5248]/20 py-16 px-5 md:px-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+          <div>
+            <Link href="/" className="font-display text-2xl tracking-[0.15em] text-[#e8a020] no-underline inline-block mb-4">
+              INDIE<span className="text-[#faf6f0]">FILM</span>
+            </Link>
+            <p className="text-xs leading-[1.8] text-[#5a5248] max-w-[280px]">
+              독립영화의 배우, 제작진, 관객, 장소가 한 곳에서 만나는 플랫폼. 인디씬의 모든 연결을 지원합니다.
+            </p>
+          </div>
+          <div>
+            <div className="text-[10px] tracking-[0.25em] uppercase text-[#e8a020] mb-5">플랫폼</div>
+            <ul className="flex flex-col gap-2.5 list-none">
+              {["작품 보기", "캐스팅 공고", "배우 검색", "장소 대여", "커뮤니티"].map((label, i) => (
+                <li key={i}>
+                  <Link href={["/movies", "/posts", "/actors", "/venues", "/posts"][i]} className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8] transition-colors">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div className="text-[10px] tracking-[0.25em] uppercase text-[#e8a020] mb-5">정보</div>
+            <ul className="flex flex-col gap-2.5 list-none">
+              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">소개</Link></li>
+              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">공지사항</Link></li>
+              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">이용약관</Link></li>
+              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">문의하기</Link></li>
+            </ul>
+          </div>
+          <div>
+            <div className="text-[10px] tracking-[0.25em] uppercase text-[#e8a020] mb-5">리소스</div>
+            <ul className="flex flex-col gap-2.5 list-none">
+              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">인디영화 가이드</Link></li>
+              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">오디션 준비법</Link></li>
+              <li><Link href="#" className="text-xs text-[#5a5248] no-underline hover:text-[#f0e8d8]">촬영 체크리스트</Link></li>
+            </ul>
+          </div>
+        </div>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-[#5a5248]/15">
+          <div className="text-[11px] text-[#5a5248] tracking-wider">© 2025 인디필름. All rights reserved.</div>
+          <div className="flex gap-5">
+            <Link href="#" className="text-[11px] tracking-wider text-[#5a5248] no-underline uppercase hover:text-[#e8a020] transition-colors">Instagram</Link>
+            <Link href="#" className="text-[11px] tracking-wider text-[#5a5248] no-underline uppercase hover:text-[#e8a020] transition-colors">Youtube</Link>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

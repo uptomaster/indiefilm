@@ -23,7 +23,7 @@ import {
 import { z } from "zod";
 
 const postSchema = z.object({
-  type: z.enum(["casting_call", "actor_seeking", "general"], {
+  type: z.enum(["casting_call", "actor_seeking", "staff_recruitment", "general"], {
     message: "게시글 유형을 선택해주세요",
   }),
   title: z.string().min(1, "제목을 입력해주세요").max(100, "제목은 100자 이하로 입력해주세요"),
@@ -68,11 +68,13 @@ export default function NewPostPage() {
       return;
     }
 
-    // 제작자는 구인공고, 배우는 구직 글을 기본으로
+    // 역할별 기본 게시글 유형
     if (userProfile?.role === "filmmaker") {
       setFormData((prev) => ({ ...prev, type: "casting_call" }));
     } else if (userProfile?.role === "actor") {
       setFormData((prev) => ({ ...prev, type: "actor_seeking" }));
+    } else if (userProfile?.role === "venue") {
+      setFormData((prev) => ({ ...prev, type: "general" }));
     }
 
     loadRelatedData();
@@ -193,7 +195,10 @@ export default function NewPostPage() {
                     </SelectTrigger>
                     <SelectContent className="bg-gray-900 border-violet-600/30">
                       <SelectItem value="casting_call" className="text-violet-400 hover:bg-violet-50">
-                        구인공고
+                        오디션 공고
+                      </SelectItem>
+                      <SelectItem value="staff_recruitment" className="text-violet-400 hover:bg-violet-50">
+                        스태프 구인
                       </SelectItem>
                       <SelectItem value="actor_seeking" className="text-violet-400 hover:bg-violet-50">
                         배우 구직
@@ -292,8 +297,8 @@ export default function NewPostPage() {
                   />
                 </div>
 
-                {/* 요구사항 (구인공고인 경우) */}
-                {formData.type === "casting_call" && (
+                {/* 요구사항 (오디션/스태프 구인인 경우) */}
+                {(formData.type === "casting_call" || formData.type === "staff_recruitment") && (
                   <div className="space-y-2">
                     <Label htmlFor="requirements" className="text-gray-300">
                       요구사항 (쉼표로 구분)

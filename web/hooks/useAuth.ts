@@ -8,7 +8,7 @@ import { auth as firebaseAuth, db } from "@/lib/firebase";
 // auth가 undefined일 수 있으므로 안전하게 처리
 const auth = firebaseAuth;
 
-export type UserRole = "filmmaker" | "actor" | "viewer";
+export type UserRole = "filmmaker" | "actor" | "viewer" | "venue";
 
 export interface UserProfile {
   uid: string;

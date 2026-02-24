@@ -17,7 +17,7 @@ const signupSchema = z.object({
   email: z.string().min(1, "이메일을 입력해주세요").email("올바른 이메일 형식을 입력해주세요"),
   password: z.string().min(6, "비밀번호는 최소 6자 이상이어야 합니다"),
   confirmPassword: z.string().min(1, "비밀번호 확인을 입력해주세요"),
-  role: z.enum(["filmmaker", "actor", "viewer"], {
+  role: z.enum(["filmmaker", "actor", "viewer", "venue"], {
     message: "역할을 선택해주세요",
   }),
 }).refine((data) => data.password === data.confirmPassword, {
@@ -54,6 +54,8 @@ export default function SignupPage() {
       // 역할에 따라 적절한 페이지로 리다이렉트
       if (data.role === "actor") {
         router.push("/actors/me/view");
+      } else if (data.role === "venue") {
+        router.push("/venues/me");
       } else {
         router.push("/");
       }
@@ -144,8 +146,8 @@ export default function SignupPage() {
               </div>
 
               <div className="space-y-2">
-                <Label className="text-gray-300">역할 선택</Label>
-                <div className="grid grid-cols-3 gap-2">
+                <Label className="text-gray-300">당신은 누구인가요?</Label>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                   <label className={`flex cursor-pointer flex-col items-center rounded-lg border-2 p-3 transition-all ${
                     selectedRole === "filmmaker"
                       ? "border-violet-500 bg-violet-500/20 scale-105"
@@ -187,6 +189,20 @@ export default function SignupPage() {
                     />
                     <span className="text-2xl mb-1">👁️</span>
                     <span className="text-sm font-medium text-gray-300">관객</span>
+                  </label>
+                  <label className={`flex cursor-pointer flex-col items-center rounded-lg border-2 p-3 transition-all ${
+                    selectedRole === "venue"
+                      ? "border-violet-500 bg-violet-500/20 scale-105"
+                      : "border-gray-700 hover:bg-indigo-900/20"
+                  }`}>
+                    <input
+                      type="radio"
+                      value="venue"
+                      {...register("role")}
+                      className="sr-only"
+                    />
+                    <span className="text-2xl mb-1">🏢</span>
+                    <span className="text-sm font-medium text-gray-300">장소대여자</span>
                   </label>
                 </div>
                 {errors.role && (

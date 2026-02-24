@@ -15,12 +15,13 @@ export default function RoleSelectPage() {
   const [selectedRole, setSelectedRole] = useState<UserRole | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // 이미 역할이 설정되어 있으면 홈으로 리다이렉트
+  // 이미 역할이 설정되어 있으면 역할별 대시보드로 리다이렉트
   useEffect(() => {
     if (!authLoading && userProfile?.role) {
-      // 역할이 actor면 프로필 페이지로, 아니면 홈으로
       if (userProfile.role === "actor") {
         router.push("/actors/me/view");
+      } else if (userProfile.role === "venue") {
+        router.push("/venues/me");
       } else {
         router.push("/");
       }
@@ -53,6 +54,8 @@ export default function RoleSelectPage() {
       // 역할에 따라 적절한 페이지로 리다이렉트
       if (role === "actor") {
         window.location.href = "/actors/me/view";
+      } else if (role === "venue") {
+        window.location.href = "/venues/me";
       } else {
         window.location.href = "/";
       }
@@ -99,8 +102,8 @@ export default function RoleSelectPage() {
     <div className="min-h-screen bg-gradient-to-br from-[#3a2f38] via-[#4a3f48] to-[#3a2f38] text-white flex items-center justify-center px-4">
       <div className="w-full max-w-4xl">
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold film-gold mb-4">ROLE SELECTION</h1>
-          <p className="text-xl text-gray-300">IndieFilm Hub에서 어떤 역할로 활동하시나요?</p>
+          <h1 className="text-5xl font-bold film-gold mb-4">당신은 누구인가요?</h1>
+          <p className="text-xl text-gray-300">IndiFilm에서 활동할 역할을 선택해주세요</p>
         </div>
         <Card className="border-violet-500/20 bg-[#4a3f48]/50 backdrop-blur-sm">
           <CardContent className="pt-6 space-y-6">
@@ -110,7 +113,7 @@ export default function RoleSelectPage() {
               </div>
             )}
 
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               <button
                 onClick={() => handleRoleSelect("filmmaker")}
                 disabled={loading}
@@ -168,6 +171,27 @@ export default function RoleSelectPage() {
                   인디 영화를 감상하고 즐깁니다
                 </p>
                 {selectedRole === "viewer" && loading && (
+                  <div className="mt-4">
+                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-violet-500 border-t-transparent" />
+                  </div>
+                )}
+              </button>
+
+              <button
+                onClick={() => handleRoleSelect("venue")}
+                disabled={loading}
+                className={`flex flex-col items-center rounded-lg border-2 p-8 transition-all disabled:opacity-50 ${
+                  selectedRole === "venue"
+                    ? "border-violet-500 bg-violet-500/20 scale-105 cinematic-shadow"
+                    : "border-gray-700 hover:border-violet-500/50 hover:bg-indigo-900/20"
+                } ${loading ? "cursor-wait" : "cursor-pointer"}`}
+              >
+                <span className="text-6xl mb-4">🏢</span>
+                <h3 className="text-xl font-bold mb-3 film-gold">장소대여자</h3>
+                <p className="text-sm text-gray-400 text-center leading-relaxed">
+                  촬영 장소를 등록하고 제작진과 연결합니다
+                </p>
+                {selectedRole === "venue" && loading && (
                   <div className="mt-4">
                     <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-violet-500 border-t-transparent" />
                   </div>
